@@ -27,9 +27,9 @@
   "headline":
     "Jupyter Book",
   "datePublished":
-    "2019-01-31T16:54:31+00:00",
+    "2019-02-08T16:38:34+00:00",
   "dateModified":
-    "2019-01-31T16:54:31+00:00",
+    "2019-02-08T16:38:34+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -1437,6 +1437,7 @@ initFunction(initQuery);
     </ul>
   </li>
   <li><a href="#why-isnt-my-math-showing-up-properly">Why isn’t my math showing up properly?</a></li>
+  <li><a href="#how-can-i-include-interactive-plotly-figures">How can I include interactive Plotly figures?</a></li>
   <li><a href="#what-if-i-have-an-issue-or-question">What if I have an issue or question?</a></li>
 </ul>
     </nav>
@@ -1575,6 +1576,27 @@ escape characters when needed. This is done automatically for many escape
 characters in <code class="highlighter-rouge">generate_book.py</code>, and if you notice something that should
 be included in this script, please open an issue
 <a href="https://github.com/jupyter/jupyter-book/issues">at the textbook template issues page</a></p>
+
+<h2 id="how-can-i-include-interactive-plotly-figures">How can I include interactive Plotly figures?</h2>
+
+<p>To display interactive <a href="https://plot.ly/python/">Plotly</a> figures, they must 
+first be generated in a Jupyter notebook using the <a href="https://plot.ly/python/offline/">offline mode</a>.
+You must then plot the figure with <code class="highlighter-rouge">plotly.offline.plot()</code>, which generates an HTML file (<code class="highlighter-rouge">plotly.offline.iplot()</code> does not),
+and then load the HTML into the notebook with <code class="highlighter-rouge">display(HTML('file.html'))</code> prior to saving your *.ipynb file.</p>
+
+<p>e.g.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from IPython.core.display import display, HTML
+from plotly.offline import init_notebook_mode, plot
+init_notebook_mode(connected=True)
+.
+.
+.
+plot(fig, filename = 'figure.html')
+display(HTML('figure.html')
+</code></pre></div></div>
+
+<p>Note that, if viewing the file on a Jupyter Notebook session, the figure will not be displayed there (<code class="highlighter-rouge">iplot</code> is needed for this). However, if working on a <a href="https://github.com/binder-examples/jupyterlab">JupyterLab</a> session, the figure can be displayed there using the <code class="highlighter-rouge">plot</code> code above by having the <a href="https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension">JupyterLab plotly extension</a> installed.</p>
 
 <h2 id="what-if-i-have-an-issue-or-question">What if I have an issue or question?</h2>
 
