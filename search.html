@@ -27,9 +27,9 @@
   "headline":
     "Search the site",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -273,7 +273,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,10 +693,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
+                  Create your book
                 </a>
 
                 
@@ -710,10 +710,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Prepare your book
+                  Build and publish your book
                 </a>
 
                 
@@ -727,41 +727,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +744,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1623,7 +1589,7 @@ initFunction(initQuery);
         "title": "Features and customization",
         
         "excerpt":
-            "Features This is a short demonstration textbook to show the general layout / style of textbooks built with Jupyter and Jekyll. The markdown files for this page (and others in the textbook) is generated from the notebooks with the scripts/generate_textbook.py script, which is called when you run make book. The content for the book is contained in a folder in the site’s repository called content/. It has a combination of markdown and Jupyter notebooks. This content is rendered into the textbook that you see here! To begin, click on one of the chapter sections in the sidebar to the left....",
+            "Features   This is a short demonstration textbook to show the general layout / style of textbooks built with Jupyter and Jekyll.   To begin, click on one of the chapter sections in the sidebar to the left. Alternatively, click on the “next” button below in order to read further.   The first sections demonstrate some simple functionality of Jupyter Books, while the final chapters contain a subset of content from the Foundations in Data Science textbook.  ",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/features.html",
@@ -1671,63 +1637,47 @@ initFunction(initQuery);
         "title": "Getting started",
         
         "excerpt":
-            "The Jupyter Books Guide This repository / website is a guide for hosting your own book using Jupyter Notebooks and Jekyll. All course content is written in markdown and Jupyter Notebooks, and a set of helper scripts converts these notebooks into Jekyll-based markdown fit for hosting on the web. This short guide will help you through the process should you want to do this for your own book. The structure underneath Jupyter Books This page gives a general idea for what we mean by a “Jupyter Book”. Jupyter Books are essentially these two things: A collection of notebooks and markdown...",
+            "The Jupyter Book Guide This is a guide for creating your own book using Jupyter Notebooks and Jekyll. Book content is written in markdown and Jupyter Notebooks, and jupyter-book converts these into a book fit for hosting on the web. Install the command-line interface First off, make sure you have the CLI installed so that you can work with Jupyter Book. The Jupyter-Book CLI allows you to create, build, upgrade, and otherwise control your Jupyter Book. You can install it via pip with the following command: pip install jupyter-book A quick tour of a Jupyter Book Jupyter-Book comes with a...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/guide/01_overview.html",
         "teaser":null},{
-        "title": "Setup and Install",
+        "title": "Create your book",
         
         "excerpt":
-            "This page should get you set up with the software and code needed to build your textbook! Follow the steps below… Get your own copy of this repository The easiest way to get a copy of the template repository is to use GitHub’s Import Feature. This gives you a new copy of the contents of the template, without creating a “fork”. This should make it easier for you to re-use the repository multiple times. If you’d like to contribute improvements to the template itself, then please do fork it! To import the template repository to your GitHub account, take the...",
+            "Create your Jupyter Book This page covers how to create a Jupyter Book with your own content. You’ve got three primary ways to create your Jupyter Book. by starting with a minimal book Running the following command will create a new Jupyter Book with a few content pages and a Table of Contents to get you started: jupyter-book create mybookname This will create a new book using your content in mybookname/. You’ll then need to Add your content to mybookname/content/ Modify mybookname/_data/toc.yml to match your content Modify mybookname/_config.yml to the configuration you’d like Note that if you choose to create...",
         "categories": [],
         "tags": [],
-        "url": "https://jupyter.org/jupyter-book/guide/02_setup.html",
+        "url": "https://jupyter.org/jupyter-book/guide/02_create.html",
         "teaser":null},{
-        "title": "Prepare your book",
+        "title": "Build and publish your book",
         
         "excerpt":
-            "Add content to your book Jupyter Book expects all of your content to be placed in the /content/ directory of the repository. You should place the following files somewhere in this directory: notebook files for your content markdown files for your content any images referenced in notebook / markdown files. Make sure to use relative paths for your images! Any other files you’d like copied over to the /_build/ directory when you build your book. You can store these files in whatever collection of folders you’d like, note that the structure of your book when it is built will depend...",
+            "Building and publishing your book Once you’ve added content and configured your book, it’s time to build the raw material that Jekyll will use to turn your book into a website. We’ll also cover how to turn this book into the HTML for a website that can be served online. Build the book’s markdown Now that you’ve got the files installed content is in the book, you can build your book. Build your book by running the following command: jupyter-book build mybookname/ This will: Use the links specified in the _data/toc.yml file (pointing to files in /content/) and do the...",
         "categories": [],
         "tags": [],
-        "url": "https://jupyter.org/jupyter-book/guide/03_prepare.html",
-        "teaser":null},{
-        "title": "Build your book",
-        
-        "excerpt":
-            "To build your site, take the following steps.: (optionally) clean out the auto-generated folders by running make clean Build the textbook by navigating to the site root, and running the following command: make book This will: Use the links specified in the _data/toc.yml file (pointing to files in /content/) and do the following: Run nbconvert to turn the .ipynb files into markdown Replace relative image file paths so that they work on your new built site Clean up formatting issues for things like MathJax to display properly Place all these generated files in the /_build/ directory. Note that if make...",
-        "categories": [],
-        "tags": [],
-        "url": "https://jupyter.org/jupyter-book/guide/04_build.html",
-        "teaser":null},{
-        "title": "Publish your book",
-        
-        "excerpt":
-            "Once you’ve generated the markdown for your notebooks, your site is ready to be pushed and served by GitHub. To do this, take the following steps: Confirm that your site files are built. You should see a collection of markdown files/folders in the _build folder, or a collection of HTML in your _site/ folder. Commit and push the changes to your repository. Enable GitHub site building for your repository. From your GitHub repository, click Settings then scroll down to the GitHub Pages section. You should see the message Your site is published at &lt;YOUR-URL&gt;. Ensure that you’re building from the...",
-        "categories": [],
-        "tags": [],
-        "url": "https://jupyter.org/jupyter-book/guide/05_publish.html",
+        "url": "https://jupyter.org/jupyter-book/guide/03_build.html",
         "teaser":null},{
         "title": "FAQ",
         
         "excerpt":
-            "The following are some common issues and questions that have arisen when building your textbook with Jekyll. How can I update my book? Sometimes Jupyter Book will get updates that you want to incorporate into a book you’ve already built. The easiest way to do this is to checkout the latest versions of the relevant files from the Jupyter Book repository, make sure that you haven’t overwritten anything important in your site, and then commit them. To pull in new changes, take the following steps: Add Jupyter Book repository as a “remote” on your local git repo: git remote add...",
+            "The following are some common issues and questions that have arisen when building your textbook with Jekyll. How can I update my book? Sometimes Jupyter Book will get updates that you want to incorporate into a book you’ve already built. The easiest way to do this is to use the Command-Line Interface to upgrade your book. To upgrade a pre-existing Jupyter Book, run the following command: jupyter-book upgrade path/to/mybook This will do the following: Generate a fresh Jupyter Book in mybook_UPGRADED using the content files in your current book. If this succeeds, copy over the contents of mybook_UPGRADED into your...",
         "categories": [],
         "tags": [],
-        "url": "https://jupyter.org/jupyter-book/guide/06_faq.html",
+        "url": "https://jupyter.org/jupyter-book/guide/04_faq.html",
         "teaser":null},{
         "title": "How-to and advanced topics",
         
         "excerpt":
-            "This page contains more advanced and complete information about the jupyter-book repository. See the sections below. Customize your book with your own custom CSS or Javascript To add your own CSS or Javascript files, you should add your own code to the following files: assets/custom/custom.css assets/custom/custom.js These are empty by default, but are loaded into your HTML’s header. They can be used to style your book however you’d like. For example, you may want to apply some of the distill.pub stylesheets. Hide cells or cell outputs in the built site Sometimes you want to use code to generate visualizations or...",
+            "This page contains more advanced and complete information about the jupyter-book repository. See the sections below. Hide cells or cell outputs in the built site Sometimes you want to use code to generate visualizations or prepare data, but you don’t want users to see it in your built book. To prevent code cells from showing up in your built site, you can use the following two configuration options in your _config.yml file. To remove entire code cells from your book, use the following configuration: hide_cell_text : \"YOUR TEXT\" Any code cell with the value of hide_cell_text (above it is YOUR...",
         "categories": [],
         "tags": [],
-        "url": "https://jupyter.org/jupyter-book/guide/07_advanced.html",
+        "url": "https://jupyter.org/jupyter-book/guide/05_advanced.html",
         "teaser":null},{
         "title": "Home",
         
         "excerpt":
-            "Books with Jupyter and Jekyll Jupyter Books lets you build an online book using a collection of Jupyter Notebooks and Markdown files. Its output is similar to the excellent Bookdown tool, and adds extra functionality for people running a Jupyter stack. For an example of a book built with Jupyter Books, see the textbook for Data 100 at UC Berkeley. Here are a few features of Jupyter Books All course content is written in markdown and Jupyter Notebooks, stored in notebooks/ The Jupyter Book repo comes packaged with helper scripts to convert these into Jekyll pages (in scripts/) that can...",
+            "Books with Jupyter and Jekyll Jupyter Books lets you build an online book using a collection of Jupyter Notebooks and Markdown files. Its output is similar to the excellent Bookdown tool, and adds extra functionality for people running a Jupyter stack. For an example of a book built with Jupyter Books, see the textbook for Data 100 at UC Berkeley (or this website!) Here are a few features of Jupyter Books A Command-Line Interface (CLI) to quickly create, build, and upgrade books. Write book content in markdown and Jupyter Notebooks Convert these into Jekyll pages that can be hosted for...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/intro.html",

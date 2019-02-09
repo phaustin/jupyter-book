@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Setup and Install</title>
-  <meta name="description" content="This page should get you set up with the software and code needed to buildyour textbook! Follow the steps below…">
+  <title>Create your book</title>
+  <meta name="description" content="Create your Jupyter Book">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/02_setup.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/02_create.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/02_setup.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/02_create.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Setup and Install" />
-<meta property="og:description" content="This page should get you set up with the software and code needed to buildyour textbook! Follow the steps below…" />
+<meta property="og:title"       content="Create your book" />
+<meta property="og:description" content="Create your Jupyter Book" />
 <meta property="og:image"       content="" />
 
 
@@ -23,15 +23,15 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/guide/02_setup.html",
+    "https://jupyter.org/jupyter-book/guide/02_create.html",
   "headline":
-    "Setup and Install",
+    "Create your book",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "description":
-    "This page should get you set up with the software and code needed to buildyour textbook! Follow the steps below…",
+    "Create your Jupyter Book",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -273,7 +273,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,10 +693,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
+                  Create your book
                 </a>
 
                 
@@ -710,10 +710,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Prepare your book
+                  Build and publish your book
                 </a>
 
                 
@@ -727,41 +727,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +744,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1428,9 +1394,9 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#get-your-own-copy-of-this-repository">Get your own copy of this repository</a></li>
-  <li><a href="#set-up-your-repository-and-dependencies">Set up your repository and dependencies</a></li>
-  <li><a href="#deploying-a-jupyterhub">Deploying a JupyterHub</a></li>
+  <li><a href="#by-starting-with-a-minimal-book">by starting with a minimal book</a></li>
+  <li><a href="#by-modifying-the-demo-book">by modifying the Demo Book</a></li>
+  <li><a href="#by-using-a-pre-existing-book-configuration">by using a pre-existing book configuration</a></li>
 </ul>
     </nav>
   </aside>
@@ -1455,105 +1421,79 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <p>This page should get you set up with the software and code needed to build
-your textbook! Follow the steps below…</p>
+              <h1 id="create-your-jupyter-book">Create your Jupyter Book</h1>
 
-<h2 id="get-your-own-copy-of-this-repository">Get your own copy of this repository</h2>
+<p>This page covers how to create a Jupyter Book with your own content.
+You’ve got three primary ways to create your Jupyter Book.</p>
 
-<p>The easiest way to get a copy of the template repository is to use <strong>GitHub’s Import Feature</strong>.
-This gives you a new copy of the contents of the template, without creating
-a “fork”. This should make it easier for you to re-use the repository multiple
-times. <strong>If you’d like to contribute improvements to the template itself, then please do fork it!</strong></p>
+<h2 id="by-starting-with-a-minimal-book">by starting with a minimal book</h2>
 
-<p>To import the template repository to your GitHub account, take the following steps:</p>
+<p>Running the following command will create a new Jupyter Book with a few
+content pages and a Table of Contents to get you started:</p>
 
-<ul>
-  <li>Go to <a href="https://github.com/new/import" target="_blank">https://github.com/new/import</a></li>
-  <li>
-    <p>Enter the URL of the <code class="highlighter-rouge">jupyter-book</code> template repository in the
-“old repository’s clone URL” field:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create mybookname
+</code></pre></div></div>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/jupyter/jupyter-book
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Choose a new name for your repository, and whether you want it to be public.</p>
-
-    <p>For example:</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my-course-spring-2018
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Wait while GitHub creates a version of this repository for your account. You
-can watch the progress of this process by looking at this URL:</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/&lt;YOUR-USERNAME&gt;/&lt;YOUR-NEW-REPO-NAME&gt;/import
-</code></pre></div>    </div>
-  </li>
-  <li>Clone your repository to your computer and make edits as you wish. You may
-want to still add the URL of the original repository as a “remote” in case
-you want to pull in new changes to the template / build system.</li>
-</ul>
-
-<p>That’s it!</p>
-
-<h2 id="set-up-your-repository-and-dependencies">Set up your repository and dependencies</h2>
-
-<p>The Jupyter Book repository primarily depends on three sets of tools:</p>
-
-<ul>
-  <li>Python and Jupyter for converting Jupyter Notebooks into Jekyll-ready markdown</li>
-  <li>GitHub (specifically, GitHub-pages) for hosting your textbook online with Jekyll</li>
-  <li>(optionally) Ruby and Jekyll for building or previewing your site locally before pushing to GitHub</li>
-</ul>
-
-<p>This section helps you set each of these up</p>
+<p>This will create a new book using your content in <code class="highlighter-rouge">mybookname/</code>. You’ll then need to</p>
 
 <ol>
-  <li><strong>Install the Anaconda distribution of Python</strong>. This is useful to install
-the dependencies in <code class="highlighter-rouge">build-environment.yml</code>. It’s only <em>strictly</em> necessary if
-you wish to preview your book locally before pushing to GitHub. Next, you have
-two install options depending on whether you wish to only build the markdown
-for your Jupyter Book, or if you wish to preview your site locally.</li>
-  <li>
-    <p><strong>Option 1: Install the dependencies to build your book markdown only</strong>.</p>
-
-    <p>To build the markdown for your book, you need the dependencies
-specified in <code class="highlighter-rouge">build-requirements.txt</code>. You can install these with <code class="highlighter-rouge">pip install -r build-requirements.txt</code>.
-In this case, you <em>don’t</em> need Ruby or Jekyll since you’ll use GitHub to do all of the site creation.</p>
-  </li>
-  <li>
-    <p><strong>Option 2: Install the dependencies to build your book AND preview it locally</strong>.</p>
-
-    <p>To preview your book locally, you’ll need Ruby and a set of Jekyll dependencies
-to build your site. You can install these with the following steps:</p>
-
-    <ul>
-      <li>Install Ruby with conda forge (<code class="highlighter-rouge">conda install -c conda-forge ruby</code>) and install the requirements
-above with <code class="highlighter-rouge">pip install -r build-requirements.txt</code>)</li>
-      <li><em>Alternatively</em>, install Ruby <em>and</em> the dependencies above in one step with
-<code class="highlighter-rouge">conda env create -f build-environment.yml</code>. This will create a fresh conda environment for you to
-build the book. Run <code class="highlighter-rouge">conda activate jupyter-book</code> to activate this environment once it’s installed.</li>
-      <li>Once you have Ruby installed, run <code class="highlighter-rouge">make install</code>, which will install Bundler (a Ruby depency management tool) and then
-install the plugins needed to build the site.</li>
-    </ul>
-  </li>
+  <li>Add your content to <code class="highlighter-rouge">mybookname/content/</code></li>
+  <li>Modify <code class="highlighter-rouge">mybookname/_data/toc.yml</code> to match your content</li>
+  <li>Modify <code class="highlighter-rouge">mybookname/_config.yml</code> to the configuration you’d like</li>
 </ol>
 
-<h2 id="deploying-a-jupyterhub">Deploying a JupyterHub</h2>
+<p>Note that if you choose to create the book template and later add content
+to it, you can quickly <strong>generate a basic Table of Contents</strong> by running
+the following command:</p>
 
-<p>If you wish, you may deploy a JupyterHub alongside your textbook. This way, for pages that are built from
-Jupyter Notebooks, students can click the “interact” links
-at the top of each page and be taken to a live Jupyter Notebook running on your JupyterHub.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book toc mybookname/
+</code></pre></div></div>
 
-<p>The easiest way to set up a JupyterHub is to follow <a href="https://the-littlest-jupyterhub.readthedocs.io/en/latest/index.html">The Littlest JupyterHub guide</a>.
-This is a straightforward deployment of JupyterHub on a single VM, and is suitable for
-courses / workshops of less than 50-60 students.</p>
+<h2 id="by-modifying-the-demo-book">by modifying the Demo Book</h2>
 
-<p>Once you have your JupyterHub set up, you can use the <a href="https://github.com/data-8/nbgitpuller">nbgitpuller</a>
-package to send links to course material to your students, or use the interact links that Textbooks for Jupyter
-automatically inserts into your course material.</p>
+<p>If you’d like to see a more fully-functioning demo book for inspiration, you can
+create the book that lives at the <a href="https://jupyter.org/jupyter-book">jupyter-book website</a>
+by adding the <code class="highlighter-rouge">--demo</code> flag:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create mybookname --demo
+</code></pre></div></div>
+
+<p>See the previous section for a description of all of the relevant files you
+should modify for your book.</p>
+
+<h2 id="by-using-a-pre-existing-book-configuration">by using a pre-existing book configuration</h2>
+
+<p>If you’ve used Jupyter Book before, you can quickly generate a <em>new</em> book using a pre-existing
+set of folders and files. These are all available as arguments in the command line interface.</p>
+
+<p>For example, if you have your book’s content in a folder structure like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myoldbook/
+├── content
+│   ├── root_test.md
+│   └── tests
+├── _data
+│   └── toc.yml
+├── images
+│   └── tests
+├── mylicense.md
+├── myextrafolder
+│   └── myextrafile.txt
+└── config.yml
+</code></pre></div></div>
+
+<p>You can generate a Jupyter Book from it with the following command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create mybookname --content-folder myoldbook/content \
+                               --toc myoldbook/_data/toc.yml \
+                               --config myoldbook/_config.yml \
+                               --license myoldbook/mylicense.md \
+                               --extra-files myoldbook/myextrafolder
+</code></pre></div></div>
+
+<p>This will create a new Jupyter Book using these files. In this case, you need to ensure
+that the values in <code class="highlighter-rouge">_config.yml</code> are correct, and that the Table of Contents (<code class="highlighter-rouge">toc.yml</code>) file
+has the structure that you want.</p>
 
               <nav class="c-page__nav">
   
@@ -1565,8 +1505,8 @@ automatically inserts into your course material.</p>
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/03_prepare">
-      Prepare your book <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/03_build">
+      Build and publish your book <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

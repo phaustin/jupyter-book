@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>FAQ</title>
-  <meta name="description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.">
+  <title>Build and publish your book</title>
+  <meta name="description" content="Building and publishing your book">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/06_faq.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/03_build.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/06_faq.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/03_build.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="FAQ" />
-<meta property="og:description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll." />
+<meta property="og:title"       content="Build and publish your book" />
+<meta property="og:description" content="Building and publishing your book" />
 <meta property="og:image"       content="" />
 
 
@@ -23,15 +23,15 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/guide/06_faq.html",
+    "https://jupyter.org/jupyter-book/guide/03_build.html",
   "headline":
-    "FAQ",
+    "Build and publish your book",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "description":
-    "The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.",
+    "Building and publishing your book",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -273,7 +273,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,61 +693,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
-                >
-                  
-                  Prepare your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
+                  Create your book
                 </a>
 
                 
@@ -761,7 +710,24 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/03_build.html"
+                >
+                  
+                  Build and publish your book
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +744,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1428,16 +1394,16 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#how-can-i-update-my-book">How can I update my book?</a></li>
-  <li><a href="#which-files-do-i-need-to-update">Which files do I need to update?</a>
+  <li><a href="#build-the-books-markdown">Build the book’s markdown</a></li>
+  <li><a href="#build-the-books-site-html-locally-optional">Build the book’s site HTML locally (optional)</a>
     <ul>
-      <li><a href="#files-that-you-should-force-update">Files that you should force-update</a></li>
-      <li><a href="#files-that-you-might-want-to-check">Files that you might want to check</a></li>
-      <li><a href="#files-that-you-shouldnt-need-to-change-to-upgrade">Files that you shouldn’t need to change to upgrade</a></li>
+      <li><a href="#install-the-dependencies-to-preview-your-book-locally">Install the dependencies to preview your book locally</a></li>
+      <li><a href="#build-the-site-html-for-your-book">Build the site HTML for your book</a></li>
+      <li><a href="#when-should-you-build-the-html-locally">When should you build the HTML locally?</a></li>
     </ul>
   </li>
-  <li><a href="#why-isnt-my-math-showing-up-properly">Why isn’t my math showing up properly?</a></li>
-  <li><a href="#what-if-i-have-an-issue-or-question">What if I have an issue or question?</a></li>
+  <li><a href="#create-an-online-repository-for-your-book">Create an online repository for your book</a></li>
+  <li><a href="#publish-your-book-online-with-github-pages">Publish your book online with GitHub Pages</a></li>
 </ul>
     </nav>
   </aside>
@@ -1462,137 +1428,194 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <p>The following are some common issues and questions that have arisen when
-building your textbook with Jekyll.</p>
+              <h1 id="building-and-publishing-your-book">Building and publishing your book</h1>
 
-<h2 id="how-can-i-update-my-book">How can I update my book?</h2>
+<p>Once you’ve added content and configured your book, it’s time to
+build the raw material that Jekyll will use to turn your book into a website.
+We’ll also cover how to turn this book into the HTML for a website that can
+be served online.</p>
 
-<p>Sometimes Jupyter Book will get updates that you want to incorporate into
-a book you’ve already built. The easiest way to do this is to checkout the latest
-versions of the relevant files from the <a href="https://github.com/jupyter/jupyter-book">Jupyter Book repository</a>,
-make sure that you haven’t overwritten anything important in your site, and then commit them.</p>
+<h2 id="build-the-books-markdown">Build the book’s markdown</h2>
 
-<p>To pull in new changes, take the following steps:</p>
+<p>Now that you’ve got the files installed content is in the book, you can build
+your book.</p>
+
+<p>Build your book by running the following command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book build mybookname/
+</code></pre></div></div>
+
+<p>This will:</p>
+
+<ul>
+  <li>Use the links specified in the <code class="highlighter-rouge">_data/toc.yml</code> file (pointing to files in <code class="highlighter-rouge">/content/</code>) and
+do the following:
+    <ul>
+      <li>Run <code class="highlighter-rouge">nbconvert</code> to turn the <code class="highlighter-rouge">.ipynb</code> files into markdown</li>
+      <li>Replace relative image file paths so that they work on your new built site</li>
+      <li>Clean up formatting issues for things like MathJax to display properly</li>
+      <li>Place all these generated files in the <code class="highlighter-rouge">mybookname/_build/</code> directory.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Note that <code class="highlighter-rouge">jupyter-book</code> will automatically update any files in <code class="highlighter-rouge">_build/</code> that are older
+than the timestamp of the corresponding file in your <code class="highlighter-rouge">content/</code> folder.</p>
+
+<p>From here, you have <strong>two options</strong></p>
 
 <ol>
   <li>
-    <p>Add <a href="https://github.com/jupyter/jupyter-book">Jupyter Book repository</a> as a “remote” on your local git repo:</p>
+    <p><strong>Option 1: Jekyll builds the site for you</strong>:</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add template https://github.com/jupyter/jupyter-book
+    <p>By default, pushing a repository
+cloned from Jupyter Book will tell GitHub to use Jekyll to build the repository
+when you push changes (your repository is configured properly on GitHub).
+Simply tell GitHub to build a site from your repo, then push the changes to
+your GitHub repo and that’s it!</p>
+  </li>
+  <li>
+    <p><strong>Option 2: Build your site’s HTML locally</strong>:</p>
+
+    <p>Building your book’s site locally lets you preview your book locally before you
+push it online. It also gives you a bit more functionality than using
+GitHub Pages to build your book. However, it also requires you to install Ruby.
+If you’d like to build your site locally then jump to the next section.</p>
+  </li>
+</ol>
+
+<h2 id="build-the-books-site-html-locally-optional">Build the book’s site HTML locally (optional)</h2>
+
+<p>If you’d like to build your book’s site HTML locally, you’ll need to first
+install the necessary dependencies and then build the HTML. Follow these
+steps to do so.</p>
+
+<h3 id="install-the-dependencies-to-preview-your-book-locally">Install the dependencies to preview your book locally</h3>
+
+<p>You’ll need Ruby, an open-source programming language, to build your site’s
+HTML with Jekyll. The easiest way to install Ruby on <em>nix systems is to use
+the *<code class="highlighter-rouge">conda</code></em> package manager:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge ruby
+</code></pre></div></div>
+<p>Once you have Ruby installed, run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make install
+</code></pre></div></div>
+
+<p>which will install Bundler (a Ruby depency management tool) and then install the plugins
+needed to build the site for your book.</p>
+
+<h3 id="build-the-site-html-for-your-book">Build the site HTML for your book</h3>
+
+<p>Once you’ve generated the markdown for your notebooks and installed the
+necessary dependencies. You are ready to build your site HTML.</p>
+
+<p>Ensure that your notebooks have been converted to markdown, there should be a
+collection of them in <code class="highlighter-rouge">_build/</code>.</p>
+
+<p>Once you’ve confirmed this, run this command to generate your book’s HTML using
+Jekyll:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make site
+</code></pre></div></div>
+
+<p>Alternatively, you can preview your book’s site locally by running this command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make serve
+</code></pre></div></div>
+
+<p>This should open up a port on your computer with a live version of the book.</p>
+
+<h3 id="when-should-you-build-the-html-locally">When should you build the HTML locally?</h3>
+
+<p>You might ask: if GitHub pages can build my site automatically from the markdown files, why
+build it locally? The main reason for this is that you get more flexibility by building locally
+and serving raw HTML, as opposed to auto-building the site with GitHub-pages.</p>
+
+<p>In particular, if you wish to use any <strong>extra Jekyll plugins</strong>, such as the <code class="highlighter-rouge">jekyll-scholar</code> plugin that
+enables you to add citations and bibliographies, then you need to build your site
+locally as HTML. GitHub-pages doesn’t let you enable any extra plugins if it auto-builds your site.</p>
+
+<h2 id="create-an-online-repository-for-your-book">Create an <em>online</em> repository for your book</h2>
+
+<p>You’ve created your book on your own computer, but you haven’t yet added it
+online. This section covers the steps to create your own GitHub repository,
+and to add your book’s content to it.</p>
+
+<ol>
+  <li>First, log-in to GitHub, then go to the “create a new repository” page:</li>
+</ol>
+
+<p>https://github.com/new</p>
+
+<ol>
+  <li>
+    <p>Next, add a name and description for your book. You can choose whatever
+initialization you’d like.</p>
+  </li>
+  <li>
+    <p>Now, clone the empty repository to your computer:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/&lt;my-org&gt;/&lt;my-book-name&gt;
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Check out the latest versions of relevant files from the template. Here’s the command to do this for one file.</p>
+    <p>Copy all of your book files and folders (what was created when you ran <code class="highlighter-rouge">jupyter-book create mybook</code>)
+into the new repository. For example, if you created your book locally with <code class="highlighter-rouge">jupyter-book create mylocalbook</code>
+and your online repository is called <code class="highlighter-rouge">myonlinebook</code>, the command would be:</p>
 
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout template/master path/to/myfile.css
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp <span class="nt">-r</span> mylocalbook/<span class="k">*</span> myonlinebook/
 </code></pre></div>    </div>
 
-    <p>See the section below for which files you should focus on.</p>
+    <p>This will copy over the local book files into the online book folder.</p>
   </li>
   <li>
-    <p>Check the diff between your newly-checked-out file and its previous version, to make sure that
-you haven’t overwritten any changes that you’ve made.</p>
+    <p>Commit the new files to the repository in <code class="highlighter-rouge">myonlinebook/</code>:</p>
 
-    <p>This is especially important for configuration files like <code class="highlighter-rouge">_config.yml</code>.</p>
-  </li>
-  <li>
-    <p>Demo your book, then push changes to your github repository once you’re happy:</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>myonlinebook
+git add ./<span class="k">*</span>
+git commit <span class="nt">-m</span> <span class="s2">"adding my first book!"</span>
+git push
 </code></pre></div>    </div>
   </li>
 </ol>
 
-<h2 id="which-files-do-i-need-to-update">Which files do I need to update?</h2>
+<p>That’s it!</p>
 
-<p>These sections help give you an idea for which files you should manually upgrade, vs. which you can automatically update
-with the latest version from <code class="highlighter-rouge">jupyter-book</code></p>
+<h2 id="publish-your-book-online-with-github-pages">Publish your book online with GitHub Pages</h2>
 
-<p>These sections assume that the <code class="highlighter-rouge">jupyter-book</code> repository is added as a “remote” repository called <code class="highlighter-rouge">template</code> to your local copy.</p>
+<p>Once you’ve built the markdown for your book (in <code class="highlighter-rouge">_build</code>) or built the HTML
+for your book (in <code class="highlighter-rouge">_site</code>), you can push your book contents to GitHub so that
+others can access your book. To do so, follow these steps:</p>
 
-<h3 id="files-that-you-should-force-update">Files that you should force-update</h3>
+<ol>
+  <li>Confirm that your site files are built. You should see a
+collection of markdown files/folders in the <code class="highlighter-rouge">_build</code> folder,
+or a collection of HTML in your <code class="highlighter-rouge">_site/</code> folder.</li>
+  <li>Commit and push the changes to your repository.</li>
+  <li>
+    <p>Enable GitHub site building for your repository.</p>
 
-<p>These are files that you can probably just upgrade directly, you probably haven’t changed their
-contents for your site.</p>
-
-<ul>
-  <li><code class="highlighter-rouge">scripts/</code> - these are scripts for building and cleaning the book. You should just pull in the latest contents
-of this folder (unless you know what you’re doing and have modified these scripts yourself).</li>
-  <li><code class="highlighter-rouge">Makefile</code> - the Makefile is tuned to whatever is inside <code class="highlighter-rouge">scripts/</code>. You should update it to the latest version
-as well.</li>
-  <li><code class="highlighter-rouge">assets/</code> - these are assets used by jupyter-book. You should update to grab the newest ones, unless you have
-modified or added your own assets.</li>
-  <li><code class="highlighter-rouge">_sass/</code> - the SASS defines the styling of the site. You should also just grab the latest version unless you know
-what you’re doing.</li>
-  <li><code class="highlighter-rouge">_includes/</code> and <code class="highlighter-rouge">_layouts/</code>. These are template files, and should be auto-updated.</li>
-  <li><code class="highlighter-rouge">Gemfile</code> which lists the Ruby dependencies for the site.</li>
-</ul>
-
-<h3 id="files-that-you-might-want-to-check">Files that you might want to check</h3>
-
-<p>You can check the <code class="highlighter-rouge">diff</code> with the latest <code class="highlighter-rouge">jupyter-book</code> file with:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff master...template/master
-</code></pre></div></div>
-
-<ul>
-  <li><code class="highlighter-rouge">_config.yml</code> - occasionally, there are new fields added to <code class="highlighter-rouge">jupyter-book</code>’s configuration file. You should
-check that the newer version of <code class="highlighter-rouge">jupyter-book</code> hasn’t added or removed something.</li>
-</ul>
-
-<p>Here is the code needed to add jupyter book as a remote</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add template https://github.com/jupyter/jupyter-book
-</code></pre></div></div>
-
-<p>and to check out the latest version of the above files:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch template master
-git checkout template/master scripts/ Makefile assets/ _sass/ _includes/ _layouts/ Gemfile _config.yml
-</code></pre></div></div>
-
-<p>Don’t forget to check the diff to make sure that you’re not overwriting your own changes!</p>
-
-<h3 id="files-that-you-shouldnt-need-to-change-to-upgrade">Files that you shouldn’t need to change to upgrade</h3>
-
-<p>These are files you shouldn’t need to update unless there is a major change to <code class="highlighter-rouge">jupyter-book</code>.</p>
-
-<ul>
-  <li><code class="highlighter-rouge">contents/</code> - these are files unique to your book, so you shouldn’t need to change them.</li>
-  <li><code class="highlighter-rouge">_data/toc.yml</code> - the Table of Contents structure will not change unless there is a major version change in <code class="highlighter-rouge">jupyter-book</code>.</li>
-  <li>Any other folders/files that are unique to your book.</li>
-</ul>
-
-<h2 id="why-isnt-my-math-showing-up-properly">Why isn’t my math showing up properly?</h2>
-
-<p>This site uses MathJax to render all math, with <code class="highlighter-rouge">$</code> denoting inline math,
-and <code class="highlighter-rouge">$$</code> denoting multi-line math blocks. Make sure that all of your math
-is wrapped in these characters.</p>
-
-<p>Another tip is to make sure that your math isn’t being escaped improperly.
-Jekyll strips escape characters, so you should make sure to add <strong>two</strong>
-escape characters when needed. This is done automatically for many escape
-characters in <code class="highlighter-rouge">generate_book.py</code>, and if you notice something that should
-be included in this script, please open an issue
-<a href="https://github.com/jupyter/jupyter-book/issues">at the textbook template issues page</a></p>
-
-<h2 id="what-if-i-have-an-issue-or-question">What if I have an issue or question?</h2>
-
-<p>If you’ve got questions, concerns, or suggestions, please open an issue at
-<a href="https://github.com/jupyter/jupyter-book/issues">at the jupyter book issues page</a></p>
+    <p>From your GitHub repository, click <code class="highlighter-rouge">Settings</code> then scroll down to the
+<code class="highlighter-rouge">GitHub Pages</code> section. You should see the message <code class="highlighter-rouge">Your site is published at &lt;YOUR-URL&gt;</code>.
+Ensure that you’re building from the correct folder.</p>
+  </li>
+  <li>Go to the URL listed at <code class="highlighter-rouge">&lt;YOUR-URL&gt;</code> and you should see your live site.</li>
+</ol>
 
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/05_publish">
-      〈 <span class="u-margin-right-tiny"></span> Publish your book
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/02_create">
+      〈 <span class="u-margin-right-tiny"></span> Create your book
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/07_advanced">
-      How-to and advanced topics <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/04_faq">
+      FAQ <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

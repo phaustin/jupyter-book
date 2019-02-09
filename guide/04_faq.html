@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Publish your book</title>
-  <meta name="description" content="Once you’ve generated the markdown for your notebooks, your site is ready to bepushed and served by GitHub. To do this, take the following steps:">
+  <title>FAQ</title>
+  <meta name="description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/05_publish.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/04_faq.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/05_publish.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/04_faq.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Publish your book" />
-<meta property="og:description" content="Once you’ve generated the markdown for your notebooks, your site is ready to bepushed and served by GitHub. To do this, take the following steps:" />
+<meta property="og:title"       content="FAQ" />
+<meta property="og:description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll." />
 <meta property="og:image"       content="" />
 
 
@@ -23,15 +23,15 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/guide/05_publish.html",
+    "https://jupyter.org/jupyter-book/guide/04_faq.html",
   "headline":
-    "Publish your book",
+    "FAQ",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "description":
-    "Once you’ve generated the markdown for your notebooks, your site is ready to bepushed and served by GitHub. To do this, take the following steps:",
+    "The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -273,7 +273,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,10 +693,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
+                  Create your book
                 </a>
 
                 
@@ -710,27 +710,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Prepare your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
+                  Build and publish your book
                 </a>
 
                 
@@ -744,24 +727,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +744,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1428,7 +1394,10 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#to-preview-your-built-site-locally">To preview your built site locally</a></li>
+  <li><a href="#how-can-i-update-my-book">How can I update my book?</a></li>
+  <li><a href="#why-isnt-my-math-showing-up-properly">Why isn’t my math showing up properly?</a></li>
+  <li><a href="#how-can-i-include-interactive-plotly-figures">How can I include interactive Plotly figures?</a></li>
+  <li><a href="#what-if-i-have-an-issue-or-question">What if I have an issue or question?</a></li>
 </ul>
     </nav>
   </aside>
@@ -1453,55 +1422,89 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <p>Once you’ve generated the markdown for your notebooks, your site is ready to be
-pushed and served by GitHub. To do this, take the following steps:</p>
+              <p>The following are some common issues and questions that have arisen when
+building your textbook with Jekyll.</p>
+
+<h2 id="how-can-i-update-my-book">How can I update my book?</h2>
+
+<p>Sometimes Jupyter Book will get updates that you want to incorporate into
+a book you’ve already built. The easiest way to do this is to use the Command-Line Interface to
+upgrade your book.</p>
+
+<p>To upgrade a pre-existing Jupyter Book, run the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book upgrade path/to/mybook
+</code></pre></div></div>
+
+<p>This will do the following:</p>
 
 <ol>
-  <li>Confirm that your site files are built. You should see a
-collection of markdown files/folders in the <code class="highlighter-rouge">_build</code> folder,
-or a collection of HTML in your <code class="highlighter-rouge">_site/</code> folder.</li>
-  <li>Commit and push the changes to your repository.</li>
-  <li>
-    <p>Enable GitHub site building for your repository.</p>
-
-    <p>From your GitHub repository, click <code class="highlighter-rouge">Settings</code> then scroll down to the
-<code class="highlighter-rouge">GitHub Pages</code> section. You should see the message <code class="highlighter-rouge">Your site is published at &lt;YOUR-URL&gt;</code>.
-Ensure that you’re building from the correct folder.</p>
-  </li>
-  <li>Go to the URL listed at <code class="highlighter-rouge">&lt;YOUR-URL&gt;</code> and you should see your live site.</li>
+  <li>Generate a fresh Jupyter Book in <code class="highlighter-rouge">mybook_UPGRADED</code> using the content files in your
+current book.</li>
+  <li>If this succeeds, copy over the contents of <code class="highlighter-rouge">mybook_UPGRADED</code> into your current book folder.</li>
+  <li>If this succeeds, delete the <code class="highlighter-rouge">mybook_UPGRADED</code> folder.</li>
 </ol>
 
-<h2 id="to-preview-your-built-site-locally">To preview your built site locally</h2>
+<p>Note that only the content that you can manually specify via the <code class="highlighter-rouge">jupyter-book create</code> command
+will be retained in your upgraded book. For a list of these options, see the help menu for this command:</p>
 
-<p>You can also preview your built site using Jekyll on your computer.
-To do this, you must take the following steps:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create <span class="nt">-h</span>
+</code></pre></div></div>
 
-<ol>
-  <li>Ensure that Jekyll and Ruby are installed.</li>
-  <li>Ensure that your notebooks have been converted to markdown, there should be a
-collection of them in <code class="highlighter-rouge">_build/</code></li>
-  <li>
-    <p>Run the Jekyll site preview command:</p>
+<p>You should check out the content in your upgraded book to make sure it looks correct, then
+commit the changes to your repository.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make serve
-</code></pre></div>    </div>
-  </li>
-</ol>
+<h2 id="why-isnt-my-math-showing-up-properly">Why isn’t my math showing up properly?</h2>
 
-<p>This should open up a port on your computer with a live version of the book.</p>
+<p>This site uses MathJax to render all math, with <code class="highlighter-rouge">$</code> denoting inline math,
+and <code class="highlighter-rouge">$$</code> denoting multi-line math blocks. Make sure that all of your math
+is wrapped in these characters.</p>
+
+<p>Another tip is to make sure that your math isn’t being escaped improperly.
+Jekyll strips escape characters, so you should make sure to add <strong>two</strong>
+escape characters when needed. This is done automatically for many escape
+characters in <code class="highlighter-rouge">generate_book.py</code>, and if you notice something that should
+be included in this script, please open an issue
+<a href="https://github.com/jupyter/jupyter-book/issues">at the textbook template issues page</a></p>
+
+<h2 id="how-can-i-include-interactive-plotly-figures">How can I include interactive Plotly figures?</h2>
+
+<p>To display interactive <a href="https://plot.ly/python/">Plotly</a> figures, they must 
+first be generated in a Jupyter notebook using the <a href="https://plot.ly/python/offline/">offline mode</a>.
+You must then plot the figure with <code class="highlighter-rouge">plotly.offline.plot()</code>, which generates an HTML file (<code class="highlighter-rouge">plotly.offline.iplot()</code> does not),
+and then load the HTML into the notebook with <code class="highlighter-rouge">display(HTML('file.html'))</code> prior to saving your *.ipynb file.</p>
+
+<p>e.g.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from IPython.core.display import display, HTML
+from plotly.offline import init_notebook_mode, plot
+init_notebook_mode(connected=True)
+.
+.
+.
+plot(fig, filename = 'figure.html')
+display(HTML('figure.html')
+</code></pre></div></div>
+
+<p>Note that, if viewing the file on a Jupyter Notebook session, the figure will not be displayed there (<code class="highlighter-rouge">iplot</code> is needed for this). However, if working on a <a href="https://github.com/binder-examples/jupyterlab">JupyterLab</a> session, the figure can be displayed there using the <code class="highlighter-rouge">plot</code> code above by having the <a href="https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension">JupyterLab plotly extension</a> installed.</p>
+
+<h2 id="what-if-i-have-an-issue-or-question">What if I have an issue or question?</h2>
+
+<p>If you’ve got questions, concerns, or suggestions, please open an issue at
+<a href="https://github.com/jupyter/jupyter-book/issues">at the jupyter book issues page</a></p>
 
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/04_build">
-      〈 <span class="u-margin-right-tiny"></span> Build your book
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/03_build">
+      〈 <span class="u-margin-right-tiny"></span> Build and publish your book
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/06_faq">
-      FAQ <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/05_advanced">
+      How-to and advanced topics <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

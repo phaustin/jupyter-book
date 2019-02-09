@@ -27,9 +27,9 @@
   "headline":
     "Introduction to Tables",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "description":
     "We can now apply Python to analyze data. We will work with data stored in Table structures.",
   "author": {
@@ -150,7 +150,7 @@ initFunction(function () {
         ref: 'master',
       },
       kernelOptions: {
-        name: 'python3',
+        name: 'Python [Root]',
       },
     }
 </script>
@@ -273,7 +273,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,10 +693,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
+                  Create your book
                 </a>
 
                 
@@ -710,10 +710,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Prepare your book
+                  Build and publish your book
                 </a>
 
                 
@@ -727,41 +727,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +744,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics

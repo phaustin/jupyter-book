@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Build your book</title>
-  <meta name="description" content="To build your site, take the following steps.:">
+  <title>How-to and advanced topics</title>
+  <meta name="description" content="This page contains more advanced and complete information about thejupyter-book repository. See the sections below.">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/04_build.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/05_advanced.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/04_build.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/05_advanced.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Build your book" />
-<meta property="og:description" content="To build your site, take the following steps.:" />
+<meta property="og:title"       content="How-to and advanced topics" />
+<meta property="og:description" content="This page contains more advanced and complete information about thejupyter-book repository. See the sections below." />
 <meta property="og:image"       content="" />
 
 
@@ -23,15 +23,15 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/guide/04_build.html",
+    "https://jupyter.org/jupyter-book/guide/05_advanced.html",
   "headline":
-    "Build your book",
+    "How-to and advanced topics",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-09T00:31:05+00:00",
   "description":
-    "To build your site, take the following steps.:",
+    "This page contains more advanced and complete information about thejupyter-book repository. See the sections below.",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -273,7 +273,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,10 +693,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
+                  Create your book
                 </a>
 
                 
@@ -710,27 +710,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Prepare your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
+                  Build and publish your book
                 </a>
 
                 
@@ -744,24 +727,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -777,8 +743,8 @@ initFunction(initQuery);
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1428,7 +1394,9 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#when-should-you-build-the-html-locally">When should you build the HTML locally?</a></li>
+  <li><a href="#hide-cells-or-cell-outputs-in-the-built-site">Hide cells or cell outputs in the built site</a></li>
+  <li><a href="#retain-custom-yaml-front-matter-in-your-files">Retain custom YAML front-matter in your files</a></li>
+  <li><a href="#deploying-a-jupyterhub">Deploying a JupyterHub</a></li>
 </ul>
     </nav>
   </aside>
@@ -1453,91 +1421,74 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <p>To build your site, take the following steps.:</p>
+              <p>This page contains more advanced and complete information about the
+<a href="https://github.com/jupyter/jupyter-book"><code class="highlighter-rouge">jupyter-book</code> repository</a>. See the sections below.</p>
 
-<ol>
-  <li>
-    <p>(optionally) clean out the auto-generated folders by running</p>
+<h2 id="hide-cells-or-cell-outputs-in-the-built-site">Hide cells or cell outputs in the built site</h2>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make clean
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Build the textbook by navigating to the site root, and running the following command:</p>
+<p>Sometimes you want to use code to generate visualizations or prepare data,
+but you don’t want users to see it in your built book. To prevent code cells
+from showing up in your built site, you can use the following two configuration
+options in your <code class="highlighter-rouge">_config.yml</code> file.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make book
-</code></pre></div>    </div>
+<p><strong>To remove entire code cells from your book</strong>, use the following configuration:</p>
 
-    <p>This will:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hide_cell_text </span><span class="pi">:</span> <span class="s2">"</span><span class="s">YOUR</span><span class="nv"> </span><span class="s">TEXT"</span>
+</code></pre></div></div>
 
-    <ul>
-      <li>Use the links specified in the <code class="highlighter-rouge">_data/toc.yml</code> file (pointing to files in <code class="highlighter-rouge">/content/</code>) and
-do the following:</li>
-      <li>Run <code class="highlighter-rouge">nbconvert</code> to turn the <code class="highlighter-rouge">.ipynb</code> files into markdown</li>
-      <li>Replace relative image file paths so that they work on your new built site</li>
-      <li>Clean up formatting issues for things like MathJax to display properly</li>
-      <li>Place all these generated files in the <code class="highlighter-rouge">/_build/</code> directory.</li>
-    </ul>
+<p>Any code cell with the value of <code class="highlighter-rouge">hide_cell_text</code> (above it is <code class="highlighter-rouge">YOUR TEXT</code>)
+will not show up in your built book.</p>
 
-    <p>Note that if <code class="highlighter-rouge">make book</code> will automatically update and files in <code class="highlighter-rouge">_build/</code> that are older
-than the timestamp of the corresponding file in your <code class="highlighter-rouge">content/</code> folder.</p>
-  </li>
-  <li>
-    <p>From here, you have <strong>two options</strong></p>
-    <ul>
-      <li><strong>Option 1: Jekyll builds the site for you</strong>: By default, pushing a repository
-cloned from Jupyter Book will tell GitHub to use Jekyll to build the repository
-when you push changes (your repository is configured properly on GitHub).
-Simply tell GitHub to build a site from your repo, then push the changes to
-your GitHub repo and that’s it!</li>
-      <li>
-        <p><strong>Option 2: Build your site’s HTML locally</strong>:</p>
+<p><strong>To remove only the code, but retain the outputs or a cell</strong>, use the following
+configuration:</p>
 
-        <p>When you build the site locally, all of the HTML needed to run the site is
-generated in your <code class="highlighter-rouge">_site/</code> folder. This can be copy/pasted into whatever site
-management setup you would like. GitHub can also host the raw HTML of a site
-if you add a <code class="highlighter-rouge">.nojekyll</code> file to the root of the repository that hosts your site.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hide_code_text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">YOUR</span><span class="nv"> </span><span class="s">TEXT"</span>
+</code></pre></div></div>
 
-        <p>To summarize, you can take the following steps:</p>
+<p>Any code cell with the value of <code class="highlighter-rouge">hide_code_text</code> (above it is <code class="highlighter-rouge">YOUR TEXT</code>)
+will show the output (e.g. images, HTML, etc) but not the input code that
+generated this output.</p>
 
-        <ul>
-          <li><code class="highlighter-rouge">make build</code> will build the site locally and place the HTML in the <code class="highlighter-rouge">_site/</code> folder.</li>
-          <li><code class="highlighter-rouge">touch .nojekyll</code> will create an empty <code class="highlighter-rouge">.nojekyll</code> file that will prevent GitHub from
-trying to use Jekyll to build your site.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ol>
+<p>In both cases, the cells <em>will</em> remain in the notebooks themselves, they
+simply won’t show up in the site’s HTML, so links that point to a JupyterHub/
+Binder/etc will still work as expected.</p>
 
-<ul>
-  <li>Push your site to GitHub and configure it to build a website out of your repository.
-You can the push the changes to GitHub, which will automatically build a Jekyll site with
-your newly-created Markdown files. We’ll cover this next.</li>
-</ul>
+<h2 id="retain-custom-yaml-front-matter-in-your-files">Retain custom YAML front-matter in your files</h2>
 
-<h2 id="when-should-you-build-the-html-locally">When should you build the HTML locally?</h2>
+<p>Jupyter book will check your files for YAML front-matter and will <strong>append</strong>
+any newly-generated YAML to the built files for the page. This means you
+can provide your own custom YAML to files (which may be useful if you’d like
+to modify this site’s HTML).</p>
 
-<p>You might ask: if GitHub pages can build my site automatically from the markdown files, why
-build it locally? The main reason for this is that you get more flexibility by building locally
-and serving raw HTML, as opposed to auto-building the site with GitHub-pages.</p>
+<p>Be careful not to add YAML with the same key names as the auto-generated YAML, as
+this will create duplicated keys in your page’s front-matter.</p>
 
-<p>In particular, if you wish to use any <strong>extra Jekyll plugins</strong>, such as the <code class="highlighter-rouge">jekyll-scholar</code> plugin that
-enables you to add citations and bibliographies, then you need to build your site
-locally as HTML. GitHub-pages doesn’t let you enable any extra plugins if it auto-builds your site.</p>
+<h2 id="deploying-a-jupyterhub">Deploying a JupyterHub</h2>
+
+<p>If you wish, you may deploy a JupyterHub alongside your textbook. This way, for pages that are built from
+Jupyter Notebooks, students can click the “interact” links
+at the top of each page and be taken to a live Jupyter Notebook running on your JupyterHub.</p>
+
+<p>The easiest way to set up a JupyterHub is to follow <a href="https://the-littlest-jupyterhub.readthedocs.io/en/latest/index.html">The Littlest JupyterHub guide</a>.
+This is a straightforward deployment of JupyterHub on a single VM, and is suitable for
+courses / workshops of less than 50-60 students.</p>
+
+<p>Once you have your JupyterHub set up, you can use the <a href="https://github.com/data-8/nbgitpuller">nbgitpuller</a>
+package to send links to course material to your students, or use the interact links that Textbooks for Jupyter
+automatically inserts into your course material.</p>
 
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/03_prepare">
-      〈 <span class="u-margin-right-tiny"></span> Prepare your book
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/04_faq">
+      〈 <span class="u-margin-right-tiny"></span> FAQ
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/05_publish">
-      Publish your book <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/features/features">
+      Features and customization <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>
