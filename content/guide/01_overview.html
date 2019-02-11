@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>The Jupyter Books Guide</title>
+  <title>The Jupyter Book Guide</title>
   <meta name="description" content="This is an example book built with Jupyter Books.">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/content/guide/01_overview.html">
@@ -13,7 +13,7 @@
 
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/content/guide/01_overview.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="The Jupyter Books Guide" />
+<meta property="og:title"       content="The Jupyter Book Guide" />
 <meta property="og:description" content="This is an example book built with Jupyter Books." />
 <meta property="og:image"       content="" />
 
@@ -25,11 +25,11 @@
   "mainEntityOfPage":
     "https://jupyter.org/jupyter-book/content/guide/01_overview.html",
   "headline":
-    "The Jupyter Books Guide",
+    "The Jupyter Book Guide",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -151,7 +151,7 @@ initFunction(function () {
       },
       kernelOptions: {
         name: 'python3',
-      },
+      }
     }
 </script>
 <script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
@@ -159,7 +159,7 @@ initFunction(function () {
     /**
      * Add attributes to Thebelab blocks
      */
-    
+
     const initThebelab = () => {
         const addThebelabToCodeCells = () => {
             console.log("Adding thebelab to code cells...");
@@ -169,12 +169,12 @@ initFunction(function () {
                 setTimeout(addThebelabToCodeCells, 250)
             return
             }
-    
+
             // If we already detect a Thebelab cell, don't re-run
             if (document.querySelectorAll('div.thebelab-cell').length > 0) {
                 return;
             }
-            
+
             // Find all code cells, replace with Thebelab interactive code cells
             const codeCells = document.querySelectorAll('.input_area pre')
             codeCells.forEach((codeCell, index) => {
@@ -201,9 +201,14 @@ initFunction(function () {
                 }
             });
 
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
             // Init thebelab
             thebelab.bootstrap();
-    
+
             // Remove copy buttons since they won't work anymore
             const copyButtons = document.querySelectorAll('.copybtn')
             copyButtons.forEach((copyButton, index) => {
@@ -216,7 +221,7 @@ initFunction(function () {
                 output.remove();
             });
         }
-    
+
         // Add event listener for the function to modify code cells
         const thebelabButton = document.getElementById('interact-button-thebelab');
         if (thebelabButton === null) {
@@ -225,7 +230,7 @@ initFunction(function () {
         };
         thebelabButton.addEventListener('click', addThebelabToCodeCells);
     }
-    
+
     // Initialize Thebelab
     initFunction(initThebelab);
 </script>
@@ -273,7 +278,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,10 +698,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
+                  Create your book
                 </a>
 
                 
@@ -710,10 +715,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Prepare your book
+                  Build and publish your book
                 </a>
 
                 
@@ -727,41 +732,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +749,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1428,8 +1399,19 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#the-structure-underneath-jupyter-books">The structure underneath Jupyter Books</a></li>
-  <li><a href="#to-build-your-own-jupyter-book">To build your own Jupyter Book</a></li>
+  <li><a href="#install-the-command-line-interface">Install the command-line interface</a></li>
+  <li><a href="#a-quick-tour-of-a-jupyter-book">A quick tour of a Jupyter Book</a>
+    <ul>
+      <li><a href="#book-configuration">Book configuration</a></li>
+      <li><a href="#book-content">Book content</a></li>
+      <li><a href="#table-of-contents">Table of Contents</a></li>
+      <li><a href="#a-license-for-your-content">A license for your content</a></li>
+      <li><a href="#book-code-requirements-files">Book code requirements files</a></li>
+      <li><a href="#book-bibliography-for-citations">Book bibliography for citations</a></li>
+      <li><a href="#custom-javascript-and-css">Custom Javascript and CSS</a></li>
+    </ul>
+  </li>
+  <li><a href="#next-section">Next section</a></li>
 </ul>
     </nav>
   </aside>
@@ -1454,59 +1436,198 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <h1 id="the-jupyter-books-guide">The Jupyter Books Guide</h1>
+              <h1 id="the-jupyter-book-guide">The Jupyter Book Guide</h1>
 
-<p>This repository / website is a guide for hosting your own book using
-Jupyter Notebooks and Jekyll. All course content is written in markdown and
-Jupyter Notebooks, and a set of helper scripts converts these notebooks into
-Jekyll-based markdown fit for hosting on the web. This short guide will
-help you through the process should you want to do this for your own book.</p>
+<p>This is a guide for creating your own book using
+Jupyter Notebooks and Jekyll. Book content is written in markdown and
+Jupyter Notebooks, and <code class="highlighter-rouge">jupyter-book</code> converts these into
+a book fit for hosting on the web.</p>
 
-<h2 id="the-structure-underneath-jupyter-books">The structure underneath Jupyter Books</h2>
+<h2 id="install-the-command-line-interface">Install the command-line interface</h2>
 
-<p>This page gives a general idea for what we mean by a “Jupyter Book”. Jupyter Books
-are essentially these two things:</p>
+<p>First off, make sure you have the CLI installed so that you can work with Jupyter Book.
+The Jupyter-Book CLI allows you to create, build, upgrade, and otherwise control your
+Jupyter Book. You can install it via pip with the following command:</p>
 
-<ol>
-  <li><a href="https://github.com/jupyter/jupyter-book/tree/master/content"><strong>A collection of notebooks and markdown files</strong></a>. These are in <code class="highlighter-rouge">content/</code>. When you run <code class="highlighter-rouge">scripts/generate_book.py</code>,
-they’ll be converted to <code class="highlighter-rouge">.md</code> files (or just copied if they’re already <code class="highlighter-rouge">.md</code> files) and placed in <code class="highlighter-rouge">/_build</code>.</li>
-  <li><a href="https://github.com/jupyter/jupyter-book/tree/master/_data/toc.yml"><strong>A Table of Contents file</strong></a> (<code class="highlighter-rouge">_data/toc.yml</code>). This is
-the Table of Contents, which will be used to create the sidebar for your site. Links in this file are <strong>relative to the <code class="highlighter-rouge">/content/</code> folder.</strong>
-See <a href="https://github.com/jupyter/jupyter-book/tree/master/_data/toc.yml">the TOC for this book</a> for a couple of examples.</li>
-  <li><a href="https://github.com/jupyter/jupyter-book/tree/master/config.yml"><strong>A Jekyll configuration file</strong></a> that defines information about your book,
-such as its title or the URL of a JupyterHub you want interact links to point to. This is also how you turn on / off many features
-of your Jupyter Book.</li>
-</ol>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install jupyter-book
+</code></pre></div></div>
 
-<h2 id="to-build-your-own-jupyter-book">To build your own Jupyter Book</h2>
+<h2 id="a-quick-tour-of-a-jupyter-book">A quick tour of a Jupyter Book</h2>
 
-<p>To build your own Jupyter Book, you’ll follow a process similar to this (we’ll go into each
-step in more detail in this guide):</p>
+<p>Jupyter-Book comes with a demo book so that you can see how the content files
+are used in the book. We’ll begin with a quick tour of these files, as they are
+the pieces that you’ll modify for your own book.</p>
 
-<ul>
-  <li>Get yourself a copy of the jupyter-book repository. <a href="https://github.com/jupyter/jupyter-book">Here’s the repo URL on GitHub</a>.</li>
-  <li>Put your Jupyter Notebooks / markdown files in <code class="highlighter-rouge">/content/</code></li>
-  <li>Edit the <code class="highlighter-rouge">_data/toc.yml</code> file for your Table of Contents. This defines the structure
-of your book. The location of URLs should be <strong>relative to the <code class="highlighter-rouge">/content/</code> folder.</strong></li>
-  <li>Navigate to the repo root, then run <code class="highlighter-rouge">make book</code> to convert your Jupyter Notebooks into Jekyll-ready markdown. It will be placed in <code class="highlighter-rouge">/_build</code>.</li>
-  <li>From here, you have <strong>two options</strong>
-    <ul>
-      <li><strong>Option 1</strong>: Use GitHub pages to auto-generate your site from the markdown. Once you build your book, push the
-changes to your GitHub repo and that’s it!</li>
-      <li><strong>Option 2</strong>: Build the site HTML locally with <code class="highlighter-rouge">make build</code> and then host it wherever you like. You can still use
-GitHub pages to host the HTML by putting it in the root of the repository, or in the <code class="highlighter-rouge">docs/</code> folder, if you add a <code class="highlighter-rouge">.nojekyll</code> file.</li>
-    </ul>
-  </li>
-  <li>Tell GitHub to build a website out of your repository.</li>
-  <li>That’s it!</li>
-</ul>
+<p>To create a <strong>demo Jupyter Book</strong> to use as a template, run the following command:</p>
 
-<p>See the rest of this guide in the links to the left for detailed
-instructions on this process. The next section covers <a href="02_setup.html">Setting up your environment</a>.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create mybookname --demo
+</code></pre></div></div>
 
-<p>For a more complete description of the relevant files for the template repository,
-see the <a href="../07_advanced">Advanced topics section</a>.</p>
+<p>A new book will be created at the path that you’ve given (in this case, <code class="highlighter-rouge">mybookname/</code>).</p>
 
+<p>Let’s take a quick look at some important files in the demo book you created:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
+├── assets
+│   └── custom
+│       ├── custom.css
+│       └── custom.js
+├── _config.yml
+├── content
+│   ├── features
+│   │  ├── features.md
+│   │  └── notebooks.ipynb
+│   └── LICENSE.md
+├── _data
+│   └── toc.yml
+└── requirements.txt
+</code></pre></div></div>
+
+<p>Here’s a quick rundown of the files you can modify for yourself, and that
+ultimately make up your book.</p>
+
+<h3 id="book-configuration">Book configuration</h3>
+
+<p>All of the configuration for your book is in the following file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
+├── _config.yml
+</code></pre></div></div>
+
+<p>You can define metadata for your book (such as its title), add
+a book logo, turn on different “interactive” buttons (such as a
+Binder button for pages built from a Jupyter Notebook), and more.</p>
+
+<h3 id="book-content">Book content</h3>
+
+<p>Your book’s content can be found in the <code class="highlighter-rouge">content/</code> folder. Some content
+files for the demo book are shown below:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
+├── content
+    └── features
+       ├── features.md
+       └── notebooks.ipynb
+</code></pre></div></div>
+
+<p>Note that the content files are either <strong>Jupyter Notebooks</strong> or <strong>Markdown</strong>
+files. These are the files that define “pages” in your book.</p>
+
+<p>You can store these files in whatever collection of folders you’d like, note that
+the <em>structure</em> of your book when it is built will depend solely on the order of
+items in your <code class="highlighter-rouge">_data/toc.yml</code> file (see below section)</p>
+
+<h3 id="table-of-contents">Table of Contents</h3>
+
+<p>Jupyter Book uses your Table of Contents to define the structure of your book.
+For example, your chapters, sub-chapters, etc.</p>
+
+<p>The Table of Contents lives at this location:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
+├── _data
+    └── toc.yml
+</code></pre></div></div>
+
+<p>This is a YAML file with a collection of pages, each one linking to a
+file in your <code class="highlighter-rouge">content/</code> folder. Here’s an example of a few pages defined in <code class="highlighter-rouge">toc.yml</code>.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Features and customization</span>
+  <span class="na">url</span><span class="pi">:</span> <span class="s">/features/features</span>
+  <span class="na">not_numbered</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">expand_sections</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">sections</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Markdown files</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">/features/markdown</span>
+    <span class="na">not_numbered</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Jupyter notebooks</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">/features/notebooks</span>
+    <span class="na">not_numbered</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>The top-most level of your TOC file are <strong>book chapters</strong>. Above, this is the
+“Features and customization” page. Each chapter can have
+several sections (defined in <code class="highlighter-rouge">sections:</code>) and each section can have several sub-sections
+(which would be define with a deeper level of <code class="highlighter-rouge">sections:</code>). In addition, you can
+use a few extra YAML values to control the behavior of Jupyter-Book (for example,
+<code class="highlighter-rouge">not_numbered: true</code> will prevent Jupyter Book from numbering the pages in that chapter).</p>
+
+<p>Each item in the YAML file points to a single content file. The links
+should be <strong>relative to the <code class="highlighter-rouge">/content/</code> folder and with no extension.</strong></p>
+
+<p>For example, in the example above there is a file in
+<code class="highlighter-rouge">mybookname/content/features/notebooks.ipynb</code>. The TOC entry that points to
+this file is here:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Jupyter notebooks</span>
+        <span class="s">url</span><span class="pi">:</span> <span class="s">/features/notebooks</span>
+</code></pre></div></div>
+
+<h3 id="a-license-for-your-content">A license for your content</h3>
+
+<p>When you share content online, it’s a good idea to add a license so that others know
+what rights you retain to the work. This can make your book more sharable and (re)usable.</p>
+
+<p>The license for a Jupyter Book lives in this location:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
+├── content
+    └── LICENSE.md
+</code></pre></div></div>
+
+<p>When you create a new book, if you don’t specify a license, then <code class="highlighter-rouge">jupyter-book</code> will by default
+add a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a>
+(CC BY-SA 4.0) license to your book. CC BY-SA requires attribution of
+your work, and also requires that any derivations someone creates are released
+under a license <em>at least as permissive</em> as CC BY-SA.</p>
+
+<p>If you’d like to choose a different license, you can add whatever text you like to the file
+in <code class="highlighter-rouge">/content/LICENSE.md</code>. We commend checking out the <a href="https://creativecommons.org/licenses">Creative Commons licenses page</a>
+for several options for licenses that may suit your needs.</p>
+
+<h3 id="book-code-requirements-files">Book code requirements files</h3>
+
+<p>Since your Jupyter Book likely has computational material specified in Jupyter
+Notebooks, you should specify the packages needed to run your Jupyter Book.
+In this case, we use a <code class="highlighter-rouge">requirements.txt</code> file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
+└── requirements.txt
+</code></pre></div></div>
+
+<p>The demo book uses <code class="highlighter-rouge">requirements.txt</code> because it has Python code, but you can
+include any other files that you’d like to.</p>
+
+<h3 id="book-bibliography-for-citations">Book bibliography for citations</h3>
+
+<p>If you’d like to build a bibliography for your book, you can do so by including
+the following file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
+├── _bibliography
+    └── references.bib
+</code></pre></div></div>
+
+<p>This BiBTex file can be used along with the <code class="highlighter-rouge">jekyll-scholar</code> extension. For more information
+on how to use citations in Jupyter Book, see <a href="../features/citations">Citations with Jupyter Book</a></p>
+
+<h3 id="custom-javascript-and-css">Custom Javascript and CSS</h3>
+
+<p>These are the files in this location:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── assets
+    └── custom
+        ├── custom.css
+        └── custom.js
+</code></pre></div></div>
+
+<p>Jupyter Book lets you supply your own CSS and Javascript that will be
+built into your book. Feel free to edit these files with whatever you like.</p>
+
+<h2 id="next-section">Next section</h2>
+
+<p>Now that you’re familiar with the Jupyter Book structure, head to the next section
+to learn how to create your own!</p>
 
               <nav class="c-page__nav">
   

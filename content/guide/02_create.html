@@ -5,15 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Add content to your book</title>
+  <title>Create your Jupyter Book</title>
   <meta name="description" content="This is an example book built with Jupyter Books.">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/content/guide/03_prepare.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/content/guide/02_create.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/content/guide/03_prepare.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/content/guide/02_create.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Add content to your book" />
+<meta property="og:title"       content="Create your Jupyter Book" />
 <meta property="og:description" content="This is an example book built with Jupyter Books." />
 <meta property="og:image"       content="" />
 
@@ -23,13 +23,13 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/content/guide/03_prepare.html",
+    "https://jupyter.org/jupyter-book/content/guide/02_create.html",
   "headline":
-    "Add content to your book",
+    "Create your Jupyter Book",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -151,7 +151,7 @@ initFunction(function () {
       },
       kernelOptions: {
         name: 'python3',
-      },
+      }
     }
 </script>
 <script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
@@ -159,7 +159,7 @@ initFunction(function () {
     /**
      * Add attributes to Thebelab blocks
      */
-    
+
     const initThebelab = () => {
         const addThebelabToCodeCells = () => {
             console.log("Adding thebelab to code cells...");
@@ -169,12 +169,12 @@ initFunction(function () {
                 setTimeout(addThebelabToCodeCells, 250)
             return
             }
-    
+
             // If we already detect a Thebelab cell, don't re-run
             if (document.querySelectorAll('div.thebelab-cell').length > 0) {
                 return;
             }
-            
+
             // Find all code cells, replace with Thebelab interactive code cells
             const codeCells = document.querySelectorAll('.input_area pre')
             codeCells.forEach((codeCell, index) => {
@@ -201,9 +201,14 @@ initFunction(function () {
                 }
             });
 
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
             // Init thebelab
             thebelab.bootstrap();
-    
+
             // Remove copy buttons since they won't work anymore
             const copyButtons = document.querySelectorAll('.copybtn')
             copyButtons.forEach((copyButton, index) => {
@@ -216,7 +221,7 @@ initFunction(function () {
                 output.remove();
             });
         }
-    
+
         // Add event listener for the function to modify code cells
         const thebelabButton = document.getElementById('interact-button-thebelab');
         if (thebelabButton === null) {
@@ -225,7 +230,7 @@ initFunction(function () {
         };
         thebelabButton.addEventListener('click', addThebelabToCodeCells);
     }
-    
+
     // Initialize Thebelab
     initFunction(initThebelab);
 </script>
@@ -273,7 +278,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -692,28 +697,11 @@ initFunction(initQuery);
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
-                >
-                  
-                  Setup and Install
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
                 <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Prepare your book
+                  Create your book
                 </a>
 
                 
@@ -727,10 +715,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_build.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Build your book
+                  Build and publish your book
                 </a>
 
                 
@@ -744,24 +732,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +749,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1428,11 +1399,9 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#add-content-to-your-book">Add content to your book</a></li>
-  <li><a href="#update-your-books-table-of-contents">Update your book’s Table of Contents</a></li>
-  <li><a href="#configure-your-book">Configure your book</a></li>
-  <li><a href="#site-css-and-javascript">Site CSS and Javascript</a></li>
-  <li><a href="#add-a-license-for-your-book">Add a license for your book</a></li>
+  <li><a href="#by-starting-with-a-minimal-book">by starting with a minimal book</a></li>
+  <li><a href="#by-modifying-the-demo-book">by modifying the Demo Book</a></li>
+  <li><a href="#by-using-a-pre-existing-book-configuration">by using a pre-existing book configuration</a></li>
 </ul>
     </nav>
   </aside>
@@ -1457,76 +1426,79 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <h2 id="add-content-to-your-book">Add content to your book</h2>
+              <h1 id="create-your-jupyter-book">Create your Jupyter Book</h1>
 
-<p>Jupyter Book expects all of your content to be placed in the <code class="highlighter-rouge">/content/</code> directory
-of the repository. You should place the following files somewhere in this directory:</p>
+<p>This page covers how to create a Jupyter Book with your own content.
+You’ve got three primary ways to create your Jupyter Book.</p>
 
-<ul>
-  <li>notebook files for your content</li>
-  <li>markdown files for your content</li>
-  <li>any images referenced in notebook / markdown files. 
-Make sure to use relative paths for your images!</li>
-  <li>Any other files you’d like copied over to the <code class="highlighter-rouge">/_build/</code> directory when you build
-your book.</li>
-</ul>
+<h2 id="by-starting-with-a-minimal-book">by starting with a minimal book</h2>
 
-<p>You can store these files in whatever collection of folders you’d like, note that
-the <em>structure</em> of your book when it is built will depend solely on the order of
-items in your <code class="highlighter-rouge">_data/toc.yml</code> file (see below section)</p>
+<p>Running the following command will create a new Jupyter Book with a few
+content pages and a Table of Contents to get you started:</p>
 
-<h2 id="update-your-books-table-of-contents">Update your book’s Table of Contents</h2>
-
-<p>Ensure that your Table of Contents file (<code class="highlighter-rouge">_data/toc.yml</code>) is up to date. The links in
-that file should be <strong>relative to the <code class="highlighter-rouge">/content/</code> folder and with no extension.</strong> For example,
-the file that’s located in <code class="highlighter-rouge">mysite/content/mychapter/mypage.ipynb</code> should have an entry like this:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- title: My page title
-    url: /mychapter/mypage
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create mybookname
 </code></pre></div></div>
 
-<p>See <a href="https://github.com/jupyter/jupyter-book/tree/master/_data/toc.yml">the template <code class="highlighter-rouge">toc.yml</code></a> for examples.</p>
+<p>This will create a new book using your content in <code class="highlighter-rouge">mybookname/</code>. You’ll then need to</p>
 
-<p>Jupyter Book has a helper script to quickly generate part of your <code class="highlighter-rouge">toc.yml</code> file by alphabetically
-parsing the directories of your content folder. You can run this script with the following command:</p>
+<ol>
+  <li>Add your content to <code class="highlighter-rouge">mybookname/content/</code></li>
+  <li>Modify <code class="highlighter-rouge">mybookname/_data/toc.yml</code> to match your content</li>
+  <li>Modify <code class="highlighter-rouge">mybookname/_config.yml</code> to the configuration you’d like</li>
+</ol>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python scripts/generate_toc_from_folders.py content/ --out_path _data/toc_tmp.yml
+<p>Note that if you choose to create the book template and later add content
+to it, you can quickly <strong>generate a basic Table of Contents</strong> by running
+the following command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book toc mybookname/
 </code></pre></div></div>
 
-<p>This won’t create a fully-functioning TOC file,
-but it should help you get started with the bulk of the file. You should inspect the resulting
-contents, and when you are happy with them, rename it to <code class="highlighter-rouge">_data/toc.yml</code>.</p>
+<h2 id="by-modifying-the-demo-book">by modifying the Demo Book</h2>
 
-<h2 id="configure-your-book">Configure your book</h2>
+<p>If you’d like to see a more fully-functioning demo book for inspiration, you can
+create the book that lives at the <a href="https://jupyter.org/jupyter-book">jupyter-book website</a>
+by adding the <code class="highlighter-rouge">--demo</code> flag:</p>
 
-<p>You can configure several aspects of your site. This is primarily done
-by changing <a href="https://github.com/jupyter/jupyter-book/blob/master/_config.yml">the values in <code class="highlighter-rouge">_config.yml</code></a>. Values that are unique to the
-textbook can be found under the <code class="highlighter-rouge"># Jupyter Books settings</code> section. See the
-<a href="https://github.com/jupyter/jupyter-book/blob/master/_config.yml">comments in that file</a> for information about what each field does.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create mybookname --demo
+</code></pre></div></div>
 
-<p>You can modify things like where your interact links point (if you’ve set up your
-own JupyterHub or BinderHub) or whether these links should use JupyterLab by default.</p>
+<p>See the previous section for a description of all of the relevant files you
+should modify for your book.</p>
 
-<h2 id="site-css-and-javascript">Site CSS and Javascript</h2>
+<h2 id="by-using-a-pre-existing-book-configuration">by using a pre-existing book configuration</h2>
 
-<p>You can change the site’s CSS rules to get the look and feel you desire, as well as add
-any javascript that you wish. To do so, find the relevant folders in the <code class="highlighter-rouge">assets/</code> folder.</p>
+<p>If you’ve used Jupyter Book before, you can quickly generate a <em>new</em> book using a pre-existing
+set of folders and files. These are all available as arguments in the command line interface.</p>
 
-<p>This site uses SCSS to make it easier to create modular and beautiful CSS rules. If you create
-a new CSS file, make sure that you include it in <code class="highlighter-rouge">_sass/main.scss</code>.</p>
+<p>For example, if you have your book’s content in a folder structure like this:</p>
 
-<h2 id="add-a-license-for-your-book">Add a license for your book</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myoldbook/
+├── content
+│   ├── root_test.md
+│   └── tests
+├── _data
+│   └── toc.yml
+├── images
+│   └── tests
+├── mylicense.md
+├── myextrafolder
+│   └── myextrafile.txt
+└── config.yml
+</code></pre></div></div>
 
-<p>When you share content online, it’s a good idea to add a license so that others know
-what rights you retain to the work. This can make your book more sharable and (re)usable
-(or not, if that’s what you with). When you build your book, <code class="highlighter-rouge">jupyter-book</code> will check
-whether a <code class="highlighter-rouge">LICENSE.md</code> file exists in the <code class="highlighter-rouge">content/</code> folder. If it does not exist,
-you’ll be given the option to add a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> (CC BY-SA 4.0)
-license to your book. CC BY-SA requires attribution of your work, and also requires that any derivations someone creates are released under a license <em>at least as permissive</em> as CC BY-SA.</p>
+<p>You can generate a Jupyter Book from it with the following command:</p>
 
-<p>If you’d like to choose a different license, you can add whatever text you like to the file
-in <code class="highlighter-rouge">/content/LICENSE.md</code>. We commend checking out the <a href="https://creativecommons.org/licenses">Creative Commons licenses page</a>
-for several options for licenses that may suit your needs.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create mybookname --content-folder myoldbook/content \
+                               --toc myoldbook/_data/toc.yml \
+                               --config myoldbook/_config.yml \
+                               --license myoldbook/mylicense.md \
+                               --extra-files myoldbook/myextrafolder
+</code></pre></div></div>
+
+<p>This will create a new Jupyter Book using these files. In this case, you need to ensure
+that the values in <code class="highlighter-rouge">_config.yml</code> are correct, and that the Table of Contents (<code class="highlighter-rouge">toc.yml</code>) file
+has the structure that you want.</p>
 
               <nav class="c-page__nav">
   

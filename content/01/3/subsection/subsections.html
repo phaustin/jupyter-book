@@ -27,9 +27,9 @@
   "headline":
     "Subsections",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -151,7 +151,7 @@ initFunction(function () {
       },
       kernelOptions: {
         name: 'python3',
-      },
+      }
     }
 </script>
 <script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
@@ -159,7 +159,7 @@ initFunction(function () {
     /**
      * Add attributes to Thebelab blocks
      */
-    
+
     const initThebelab = () => {
         const addThebelabToCodeCells = () => {
             console.log("Adding thebelab to code cells...");
@@ -169,12 +169,12 @@ initFunction(function () {
                 setTimeout(addThebelabToCodeCells, 250)
             return
             }
-    
+
             // If we already detect a Thebelab cell, don't re-run
             if (document.querySelectorAll('div.thebelab-cell').length > 0) {
                 return;
             }
-            
+
             // Find all code cells, replace with Thebelab interactive code cells
             const codeCells = document.querySelectorAll('.input_area pre')
             codeCells.forEach((codeCell, index) => {
@@ -201,9 +201,14 @@ initFunction(function () {
                 }
             });
 
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
             // Init thebelab
             thebelab.bootstrap();
-    
+
             // Remove copy buttons since they won't work anymore
             const copyButtons = document.querySelectorAll('.copybtn')
             copyButtons.forEach((copyButton, index) => {
@@ -216,7 +221,7 @@ initFunction(function () {
                 output.remove();
             });
         }
-    
+
         // Add event listener for the function to modify code cells
         const thebelabButton = document.getElementById('interact-button-thebelab');
         if (thebelabButton === null) {
@@ -225,7 +230,7 @@ initFunction(function () {
         };
         thebelabButton.addEventListener('click', addThebelabToCodeCells);
     }
-    
+
     // Initialize Thebelab
     initFunction(initThebelab);
 </script>
@@ -273,7 +278,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,10 +698,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
+                  Create your book
                 </a>
 
                 
@@ -710,10 +715,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Prepare your book
+                  Build and publish your book
                 </a>
 
                 
@@ -727,41 +732,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +749,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics

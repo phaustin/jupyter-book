@@ -8,10 +8,10 @@
   <title>Jupyter Book</title>
   <meta name="description" content="This is an example book built with Jupyter Books.">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/content/guide/04_build.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/content/guide/04_faq.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/content/guide/04_build.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/content/guide/04_faq.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Jupyter Book" />
 <meta property="og:description" content="This is an example book built with Jupyter Books." />
@@ -23,13 +23,13 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/content/guide/04_build.html",
+    "https://jupyter.org/jupyter-book/content/guide/04_faq.html",
   "headline":
     "Jupyter Book",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -151,7 +151,7 @@ initFunction(function () {
       },
       kernelOptions: {
         name: 'python3',
-      },
+      }
     }
 </script>
 <script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
@@ -159,7 +159,7 @@ initFunction(function () {
     /**
      * Add attributes to Thebelab blocks
      */
-    
+
     const initThebelab = () => {
         const addThebelabToCodeCells = () => {
             console.log("Adding thebelab to code cells...");
@@ -169,12 +169,12 @@ initFunction(function () {
                 setTimeout(addThebelabToCodeCells, 250)
             return
             }
-    
+
             // If we already detect a Thebelab cell, don't re-run
             if (document.querySelectorAll('div.thebelab-cell').length > 0) {
                 return;
             }
-            
+
             // Find all code cells, replace with Thebelab interactive code cells
             const codeCells = document.querySelectorAll('.input_area pre')
             codeCells.forEach((codeCell, index) => {
@@ -201,9 +201,14 @@ initFunction(function () {
                 }
             });
 
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
             // Init thebelab
             thebelab.bootstrap();
-    
+
             // Remove copy buttons since they won't work anymore
             const copyButtons = document.querySelectorAll('.copybtn')
             copyButtons.forEach((copyButton, index) => {
@@ -216,7 +221,7 @@ initFunction(function () {
                 output.remove();
             });
         }
-    
+
         // Add event listener for the function to modify code cells
         const thebelabButton = document.getElementById('interact-button-thebelab');
         if (thebelabButton === null) {
@@ -225,7 +230,7 @@ initFunction(function () {
         };
         thebelabButton.addEventListener('click', addThebelabToCodeCells);
     }
-    
+
     // Initialize Thebelab
     initFunction(initThebelab);
 </script>
@@ -273,7 +278,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,10 +698,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
+                  Create your book
                 </a>
 
                 
@@ -710,10 +715,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Prepare your book
+                  Build and publish your book
                 </a>
 
                 
@@ -727,41 +732,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +749,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1428,7 +1399,11 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#when-should-you-build-the-html-locally">When should you build the HTML locally?</a></li>
+  <li><a href="#how-can-i-update-my-book">How can I update my book?</a></li>
+  <li><a href="#does-the-book-behave-differently-depending-on-the-browser">Does the book behave differently depending on the browser?</a></li>
+  <li><a href="#why-isnt-my-math-showing-up-properly">Why isn’t my math showing up properly?</a></li>
+  <li><a href="#how-can-i-include-interactive-plotly-figures">How can I include interactive Plotly figures?</a></li>
+  <li><a href="#what-if-i-have-an-issue-or-question">What if I have an issue or question?</a></li>
 </ul>
     </nav>
   </aside>
@@ -1453,78 +1428,85 @@ initFunction(initQuery);
             
 
             <div class="c-textbook__content">
-              <p>To build your site, take the following steps.:</p>
+              <p>The following are some common issues and questions that have arisen when
+building your textbook with Jekyll.</p>
+
+<h2 id="how-can-i-update-my-book">How can I update my book?</h2>
+
+<p>Sometimes Jupyter Book will get updates that you want to incorporate into
+a book you’ve already built. The easiest way to do this is to use the Command-Line Interface to
+upgrade your book.</p>
+
+<p>To upgrade a pre-existing Jupyter Book, run the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book upgrade path/to/mybook
+</code></pre></div></div>
+
+<p>This will do the following:</p>
 
 <ol>
-  <li>
-    <p>(optionally) clean out the auto-generated folders by running</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make clean
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Build the textbook by navigating to the site root, and running the following command:</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make book
-</code></pre></div>    </div>
-
-    <p>This will:</p>
-
-    <ul>
-      <li>Use the links specified in the <code class="highlighter-rouge">_data/toc.yml</code> file (pointing to files in <code class="highlighter-rouge">/content/</code>) and
-do the following:</li>
-      <li>Run <code class="highlighter-rouge">nbconvert</code> to turn the <code class="highlighter-rouge">.ipynb</code> files into markdown</li>
-      <li>Replace relative image file paths so that they work on your new built site</li>
-      <li>Clean up formatting issues for things like MathJax to display properly</li>
-      <li>Place all these generated files in the <code class="highlighter-rouge">/_build/</code> directory.</li>
-    </ul>
-
-    <p>Note that if <code class="highlighter-rouge">make book</code> will automatically update and files in <code class="highlighter-rouge">_build/</code> that are older
-than the timestamp of the corresponding file in your <code class="highlighter-rouge">content/</code> folder.</p>
-  </li>
-  <li>
-    <p>From here, you have <strong>two options</strong></p>
-    <ul>
-      <li><strong>Option 1: Jekyll builds the site for you</strong>: By default, pushing a repository
-cloned from Jupyter Book will tell GitHub to use Jekyll to build the repository
-when you push changes (your repository is configured properly on GitHub).
-Simply tell GitHub to build a site from your repo, then push the changes to
-your GitHub repo and that’s it!</li>
-      <li>
-        <p><strong>Option 2: Build your site’s HTML locally</strong>:</p>
-
-        <p>When you build the site locally, all of the HTML needed to run the site is
-generated in your <code class="highlighter-rouge">_site/</code> folder. This can be copy/pasted into whatever site
-management setup you would like. GitHub can also host the raw HTML of a site
-if you add a <code class="highlighter-rouge">.nojekyll</code> file to the root of the repository that hosts your site.</p>
-
-        <p>To summarize, you can take the following steps:</p>
-
-        <ul>
-          <li><code class="highlighter-rouge">make build</code> will build the site locally and place the HTML in the <code class="highlighter-rouge">_site/</code> folder.</li>
-          <li><code class="highlighter-rouge">touch .nojekyll</code> will create an empty <code class="highlighter-rouge">.nojekyll</code> file that will prevent GitHub from
-trying to use Jekyll to build your site.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
+  <li>Generate a fresh Jupyter Book in <code class="highlighter-rouge">mybook_UPGRADED</code> using the content files in your
+current book.</li>
+  <li>If this succeeds, copy over the contents of <code class="highlighter-rouge">mybook_UPGRADED</code> into your current book folder.</li>
+  <li>If this succeeds, delete the <code class="highlighter-rouge">mybook_UPGRADED</code> folder.</li>
 </ol>
 
-<ul>
-  <li>Push your site to GitHub and configure it to build a website out of your repository.
-You can the push the changes to GitHub, which will automatically build a Jekyll site with
-your newly-created Markdown files. We’ll cover this next.</li>
-</ul>
+<p>Note that only the content that you can manually specify via the <code class="highlighter-rouge">jupyter-book create</code> command
+will be retained in your upgraded book. For a list of these options, see the help menu for this command:</p>
 
-<h2 id="when-should-you-build-the-html-locally">When should you build the HTML locally?</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create <span class="nt">-h</span>
+</code></pre></div></div>
 
-<p>You might ask: if GitHub pages can build my site automatically from the markdown files, why
-build it locally? The main reason for this is that you get more flexibility by building locally
-and serving raw HTML, as opposed to auto-building the site with GitHub-pages.</p>
+<p>You should check out the content in your upgraded book to make sure it looks correct, then
+commit the changes to your repository.</p>
 
-<p>In particular, if you wish to use any <strong>extra Jekyll plugins</strong>, such as the <code class="highlighter-rouge">jekyll-scholar</code> plugin that
-enables you to add citations and bibliographies, then you need to build your site
-locally as HTML. GitHub-pages doesn’t let you enable any extra plugins if it auto-builds your site.</p>
+<h2 id="does-the-book-behave-differently-depending-on-the-browser">Does the book behave differently depending on the browser?</h2>
+
+<p>Maybe - Jupyter Book does use some features that might have different behaviors in
+some browsers. For example, Safari <a href="https://github.com/jupyter/jupyter-book/pull/104#issuecomment-462461188">tends to treat downloadable objects</a>
+differently for some reason.</p>
+
+<p>The two browsers on which Jupyter Book should always behave as expected are
+<strong>Firefox</strong> and <strong>Chrome</strong>.</p>
+
+<h2 id="why-isnt-my-math-showing-up-properly">Why isn’t my math showing up properly?</h2>
+
+<p>This site uses MathJax to render all math, with <code class="highlighter-rouge">$</code> denoting inline math,
+and <code class="highlighter-rouge">$$</code> denoting multi-line math blocks. Make sure that all of your math
+is wrapped in these characters.</p>
+
+<p>Another tip is to make sure that your math isn’t being escaped improperly.
+Jekyll strips escape characters, so you should make sure to add <strong>two</strong>
+escape characters when needed. This is done automatically for many escape
+characters in <code class="highlighter-rouge">generate_book.py</code>, and if you notice something that should
+be included in this script, please open an issue
+<a href="https://github.com/jupyter/jupyter-book/issues">at the textbook template issues page</a></p>
+
+<h2 id="how-can-i-include-interactive-plotly-figures">How can I include interactive Plotly figures?</h2>
+
+<p>To display interactive <a href="https://plot.ly/python/">Plotly</a> figures, they must
+first be generated in a Jupyter notebook using the <a href="https://plot.ly/python/offline/">offline mode</a>.
+You must then plot the figure with <code class="highlighter-rouge">plotly.offline.plot()</code>, which generates an HTML file (<code class="highlighter-rouge">plotly.offline.iplot()</code> does not),
+and then load the HTML into the notebook with <code class="highlighter-rouge">display(HTML('file.html'))</code> prior to saving your *.ipynb file.</p>
+
+<p>e.g.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from IPython.core.display import display, HTML
+from plotly.offline import init_notebook_mode, plot
+init_notebook_mode(connected=True)
+.
+.
+.
+plot(fig, filename = 'figure.html')
+display(HTML('figure.html')
+</code></pre></div></div>
+
+<p>Note that, if viewing the file on a Jupyter Notebook session, the figure will not be displayed there (<code class="highlighter-rouge">iplot</code> is needed for this). However, if working on a <a href="https://github.com/binder-examples/jupyterlab">JupyterLab</a> session, the figure can be displayed there using the <code class="highlighter-rouge">plot</code> code above by having the <a href="https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension">JupyterLab plotly extension</a> installed.</p>
+
+<h2 id="what-if-i-have-an-issue-or-question">What if I have an issue or question?</h2>
+
+<p>If you’ve got questions, concerns, or suggestions, please open an issue at
+<a href="https://github.com/jupyter/jupyter-book/issues">at the jupyter book issues page</a></p>
 
               <nav class="c-page__nav">
   

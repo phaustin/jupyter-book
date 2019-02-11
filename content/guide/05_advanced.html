@@ -8,10 +8,10 @@
   <title>Jupyter Book</title>
   <meta name="description" content="This is an example book built with Jupyter Books.">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/content/guide/07_advanced.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/content/guide/05_advanced.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/content/guide/07_advanced.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/content/guide/05_advanced.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Jupyter Book" />
 <meta property="og:description" content="This is an example book built with Jupyter Books." />
@@ -23,13 +23,13 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/content/guide/07_advanced.html",
+    "https://jupyter.org/jupyter-book/content/guide/05_advanced.html",
   "headline":
     "Jupyter Book",
   "datePublished":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "dateModified":
-    "2019-02-08T16:38:34+00:00",
+    "2019-02-11T19:50:51+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -151,7 +151,7 @@ initFunction(function () {
       },
       kernelOptions: {
         name: 'python3',
-      },
+      }
     }
 </script>
 <script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
@@ -159,7 +159,7 @@ initFunction(function () {
     /**
      * Add attributes to Thebelab blocks
      */
-    
+
     const initThebelab = () => {
         const addThebelabToCodeCells = () => {
             console.log("Adding thebelab to code cells...");
@@ -169,12 +169,12 @@ initFunction(function () {
                 setTimeout(addThebelabToCodeCells, 250)
             return
             }
-    
+
             // If we already detect a Thebelab cell, don't re-run
             if (document.querySelectorAll('div.thebelab-cell').length > 0) {
                 return;
             }
-            
+
             // Find all code cells, replace with Thebelab interactive code cells
             const codeCells = document.querySelectorAll('.input_area pre')
             codeCells.forEach((codeCell, index) => {
@@ -201,9 +201,14 @@ initFunction(function () {
                 }
             });
 
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
             // Init thebelab
             thebelab.bootstrap();
-    
+
             // Remove copy buttons since they won't work anymore
             const copyButtons = document.querySelectorAll('.copybtn')
             copyButtons.forEach((copyButton, index) => {
@@ -216,7 +221,7 @@ initFunction(function () {
                 output.remove();
             });
         }
-    
+
         // Add event listener for the function to modify code cells
         const thebelabButton = document.getElementById('interact-button-thebelab');
         if (thebelabButton === null) {
@@ -225,7 +230,7 @@ initFunction(function () {
         };
         thebelabButton.addEventListener('click', addThebelabToCodeCells);
     }
-    
+
     // Initialize Thebelab
     initFunction(initThebelab);
 </script>
@@ -273,7 +278,7 @@ const addCopyButtonToCodeCells = () => {
     return
   }
 
-  const codeCells = document.querySelectorAll('.input_area pre')
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -693,10 +698,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_setup.html"
+                  href="/jupyter-book/guide/02_create.html"
                 >
                   
-                  Setup and Install
+                  Create your book
                 </a>
 
                 
@@ -710,10 +715,10 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_prepare.html"
+                  href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Prepare your book
+                  Build and publish your book
                 </a>
 
                 
@@ -727,41 +732,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_build.html"
-                >
-                  
-                  Build your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_publish.html"
-                >
-                  
-                  Publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_faq.html"
+                  href="/jupyter-book/guide/04_faq.html"
                 >
                   
                   FAQ
@@ -778,7 +749,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/jupyter-book/guide/07_advanced.html"
+                  href="/jupyter-book/guide/05_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1428,19 +1399,9 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#customize-your-book-with-your-own-custom-css-or-javascript">Customize your book with your own custom CSS or Javascript</a></li>
   <li><a href="#hide-cells-or-cell-outputs-in-the-built-site">Hide cells or cell outputs in the built site</a></li>
   <li><a href="#retain-custom-yaml-front-matter-in-your-files">Retain custom YAML front-matter in your files</a></li>
-  <li><a href="#add-buttons-to-direct-users-to-a-jupyterhub-or-binderhub">Add buttons to direct users to a JupyterHub or BinderHub</a></li>
-  <li><a href="#make-your-static-pages-interactive-with-thebelab">Make your static pages interactive with Thebelab</a></li>
-  <li><a href="#list-of-relevant-files">List of relevant files</a>
-    <ul>
-      <li><a href="#course-materials">Course materials</a></li>
-      <li><a href="#auto-generated-folders-and-files">Auto-generated folders and files</a></li>
-      <li><a href="#repository-configuration-and-build-files">Repository configuration and build files</a></li>
-      <li><a href="#helper-scripts">Helper scripts</a></li>
-    </ul>
-  </li>
+  <li><a href="#deploying-a-jupyterhub">Deploying a JupyterHub</a></li>
 </ul>
     </nav>
   </aside>
@@ -1468,20 +1429,6 @@ initFunction(initQuery);
               <p>This page contains more advanced and complete information about the
 <a href="https://github.com/jupyter/jupyter-book"><code class="highlighter-rouge">jupyter-book</code> repository</a>. See the sections below.</p>
 
-<h2 id="customize-your-book-with-your-own-custom-css-or-javascript">Customize your book with your own custom CSS or Javascript</h2>
-
-<p>To add your own CSS or Javascript files, you should add your own code
-to the following files:</p>
-
-<ul>
-  <li><code class="highlighter-rouge">assets/custom/custom.css</code></li>
-  <li><code class="highlighter-rouge">assets/custom/custom.js</code></li>
-</ul>
-
-<p>These are empty by default, but are loaded into your HTML’s header.
-They can be used to style your book however you’d like. For example,
-you may want to apply some of the <a href="https://github.com/distillpub/template/tree/master/src/styles">distill.pub stylesheets</a>.</p>
-
 <h2 id="hide-cells-or-cell-outputs-in-the-built-site">Hide cells or cell outputs in the built site</h2>
 
 <p>Sometimes you want to use code to generate visualizations or prepare data,
@@ -1489,7 +1436,7 @@ but you don’t want users to see it in your built book. To prevent code cells
 from showing up in your built site, you can use the following two configuration
 options in your <code class="highlighter-rouge">_config.yml</code> file.</p>
 
-<p><em>*To remove entire code cells from your book</em>, use the following configuration:</p>
+<p><strong>To remove entire code cells from your book</strong>, use the following configuration:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hide_cell_text </span><span class="pi">:</span> <span class="s2">"</span><span class="s">YOUR</span><span class="nv"> </span><span class="s">TEXT"</span>
 </code></pre></div></div>
@@ -1497,7 +1444,7 @@ options in your <code class="highlighter-rouge">_config.yml</code> file.</p>
 <p>Any code cell with the value of <code class="highlighter-rouge">hide_cell_text</code> (above it is <code class="highlighter-rouge">YOUR TEXT</code>)
 will not show up in your built book.</p>
 
-<p><em>*To remove only the code, but retain the outputs or a cell</em>, use the following
+<p><strong>To remove only the code, but retain the outputs or a cell</strong>, use the following
 configuration:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hide_code_text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">YOUR</span><span class="nv"> </span><span class="s">TEXT"</span>
@@ -1521,83 +1468,19 @@ to modify this site’s HTML).</p>
 <p>Be careful not to add YAML with the same key names as the auto-generated YAML, as
 this will create duplicated keys in your page’s front-matter.</p>
 
-<h2 id="add-buttons-to-direct-users-to-a-jupyterhub-or-binderhub">Add buttons to direct users to a JupyterHub or BinderHub</h2>
+<h2 id="deploying-a-jupyterhub">Deploying a JupyterHub</h2>
 
-<p>It is often helpful to let readers quickly interact with their own version of a
-page in order to run the code, experiment, etc. Since many of the pages in a Jupyter
-book are powered by notebooks, it is possible to set up a JupyterHub/BinderHub
-with an environment that is needed to run your book’s content.</p>
+<p>If you wish, you may deploy a JupyterHub alongside your textbook. This way, for pages that are built from
+Jupyter Notebooks, students can click the “interact” links
+at the top of each page and be taken to a live Jupyter Notebook running on your JupyterHub.</p>
 
-<p>You can place a button at the top of each page that will direct users to a JupyterHub
-that you specify and load the content from that page. To enable this, use the following
-configuration:</p>
+<p>The easiest way to set up a JupyterHub is to follow <a href="https://the-littlest-jupyterhub.readthedocs.io/en/latest/index.html">The Littlest JupyterHub guide</a>.
+This is a straightforward deployment of JupyterHub on a single VM, and is suitable for
+courses / workshops of less than 50-60 students.</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">use_interact_button</span><span class="pi">:</span> <span class="no">true</span>
-</code></pre></div></div>
-
-<p>You can configure this button according to the location of the JupyterHub/BinderHub
-that you have set up. For example,</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hub_url </span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://&lt;url-to-your-hub&gt;"</span>  <span class="c1"># The URL for your JupyterHub/BinderHub.</span>
-
-<span class="c1"># ['binder', 'jupyterhub']  Whether to build interact links for a BinderHub or a JupyterHub</span>
-<span class="na">hub_type </span><span class="pi">:</span> <span class="s2">"</span><span class="s">binder"</span>
-</code></pre></div></div>
-
-<p>Alternatively, you can use <code class="highlighter-rouge">https://mybinder.org</code> for your <code class="highlighter-rouge">hub_url</code> in order to
-use the free mybinder.org service.</p>
-
-<h2 id="make-your-static-pages-interactive-with-thebelab">Make your static pages interactive with Thebelab</h2>
-
-<p><a href="https://github.com/minrk/thebelab">Thebelab</a> is a project to automatically turn
-static code cells into interactive cells powered by a Binder kernel. This is triggered
-with a <code class="highlighter-rouge">Thebelab</code> button at the top of each page that has been generated from a notebook.
-To make this button appear, use the following configuration in your <code class="highlighter-rouge">_config.yaml</code> file:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">use_thebelab_button </span><span class="pi">:</span> <span class="no">true</span>
-</code></pre></div></div>
-
-<h2 id="list-of-relevant-files">List of relevant files</h2>
-
-<p>There are a few moving parts associated with Jupyter Books, and this
-section tries to cover most of the relevant pieces. The following list contains some
-of the more important files/folders worth knowing about.</p>
-
-<h3 id="course-materials">Course materials</h3>
-
-<ul>
-  <li><code class="highlighter-rouge">content/</code> contains all course content in Jupyter notebook or markdown form</li>
-</ul>
-
-<h3 id="auto-generated-folders-and-files">Auto-generated folders and files</h3>
-<ul>
-  <li><code class="highlighter-rouge">_build/</code> contain markdown and assets created when you run <code class="highlighter-rouge">make book</code>. This is what Jekyll uses to serve your site.</li>
-  <li><code class="highlighter-rouge">_site/</code> contains the HTML for the built site. It is created by Jekyll, and should only exist if you build the site locally</li>
-</ul>
-
-<h3 id="repository-configuration-and-build-files">Repository configuration and build files</h3>
-<ul>
-  <li><code class="highlighter-rouge">_config.yml</code> contains all site configuration.</li>
-  <li><code class="highlighter-rouge">_data/toc.yml</code> contains the table of contents for the book (AKA, the sidebar)</li>
-  <li><code class="highlighter-rouge">assets/</code> contains CSS and Javascript for the book and website</li>
-  <li><code class="highlighter-rouge">requirements.txt</code> contains the packages needed to run the notebooks in the Jupyter book</li>
-  <li><code class="highlighter-rouge">build-requirements.txt</code> contains the packages needed to build the Jupyter book</li>
-</ul>
-
-<h3 id="helper-scripts">Helper scripts</h3>
-<ul>
-  <li><code class="highlighter-rouge">scripts/</code> contains scripts to generate the textbook from the Jupyter notebooks. These helper scripts are
-all run with the <code class="highlighter-rouge">Makefile</code> included with this repository.
-    <ul>
-      <li><code class="highlighter-rouge">scripts/generate_book.py</code> will generate the markdown for your book.
- After you make any changes in <code class="highlighter-rouge">contents/</code>, you should run this script via
- <code class="highlighter-rouge">make book</code> so your site stays up-to-date.</li>
-      <li><code class="highlighter-rouge">scripts/clean.py</code> is used to clean out any auto-generated files</li>
-      <li><code class="highlighter-rouge">scripts/execute_all_notebooks.py</code> will use nbconvert to execute all notebooks in <code class="highlighter-rouge">contents/</code> in-place.</li>
-    </ul>
-  </li>
-</ul>
-
+<p>Once you have your JupyterHub set up, you can use the <a href="https://github.com/data-8/nbgitpuller">nbgitpuller</a>
+package to send links to course material to your students, or use the interact links that Textbooks for Jupyter
+automatically inserts into your course material.</p>
 
               <nav class="c-page__nav">
   
