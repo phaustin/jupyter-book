@@ -29,9 +29,9 @@
   "headline":
     "Building and publishing your book",
   "datePublished":
-    "2019-03-16T00:07:48+00:00",
+    "2019-03-16T00:17:41+00:00",
   "dateModified":
-    "2019-03-16T00:07:48+00:00",
+    "2019-03-16T00:17:41+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -1402,10 +1402,11 @@ initFunction(initQuery);
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
   <li><a href="#build-the-books-markdown">Build the book’s markdown</a></li>
-  <li><a href="#build-the-books-site-html-locally-optional">Build the book’s site HTML locally (optional)</a>
+  <li><a href="#build-the-books-site-html-locally">Build the book’s site HTML locally</a>
     <ul>
-      <li><a href="#install-the-dependencies-to-preview-your-book-locally">Install the dependencies to preview your book locally</a></li>
-      <li><a href="#build-the-site-html-for-your-book">Build the site HTML for your book</a></li>
+      <li><a href="#building-your-site-locally-with-containers-docker">Building your site locally with Containers: Docker</a></li>
+      <li><a href="#building-your-site-locally-with-containers-singularity">Building your site locally with Containers: Singularity</a></li>
+      <li><a href="#building-your-site-locally-with-ruby">Building your site locally with Ruby</a></li>
       <li><a href="#when-should-you-build-the-html-locally">When should you build the HTML locally?</a></li>
     </ul>
   </li>
@@ -1473,7 +1474,7 @@ than the timestamp of the corresponding file in your <code class="highlighter-ro
 
 <ol>
   <li>
-    <p><strong>Option 1: Jekyll builds the site for you</strong>:</p>
+    <p><strong>Option 1: GitHub builds the site for you</strong>:</p>
 
     <p>By default, pushing a repository
 cloned from Jupyter Book will tell GitHub to use Jekyll to build the repository
@@ -1486,20 +1487,87 @@ your GitHub repo and that’s it!</p>
 
     <p>Building your book’s site locally lets you preview your book locally before you
 push it online. It also gives you a bit more functionality than using
-GitHub Pages to build your book. However, it also requires you to install Ruby.
+GitHub Pages to build your book. However, it also requires you to install
+Docker or Singularity (containerization platforms) <em>or</em>
+Ruby (an open source programming language).
 If you’d like to build your site locally then jump to the next section.</p>
   </li>
 </ol>
 
-<h2 id="build-the-books-site-html-locally-optional">Build the book’s site HTML locally (optional)</h2>
+<h2 id="build-the-books-site-html-locally">Build the book’s site HTML locally</h2>
 
-<p>If you’d like to build your book’s site HTML locally, you’ll need to first
-install the necessary dependencies and then build the HTML. Follow these
-steps to do so.</p>
+<p>Once you’ve generated the markdown for your notebooks and installed the
+necessary dependencies. You are ready to build your site HTML.</p>
 
-<h3 id="install-the-dependencies-to-preview-your-book-locally">Install the dependencies to preview your book locally</h3>
+<p>Ensure that your notebooks have been converted to markdown, there should be a
+collection of them in <code class="highlighter-rouge">_build/</code>.</p>
 
-<p>You’ll need Ruby, an open-source programming language, to build your site’s
+<p>In order to locally build your site’s HTML with Jekyll, you’ll need to either install
+a container software (Docker or Singularity) or Ruby.</p>
+
+<p>In our experience, we’ve found that <a href="https://www.docker.com/resources/what-container">containers</a>
+provide an easier installation for most systems.
+If you are developing on a system where you have administrator privileges
+(i.e., you have <code class="highlighter-rouge">root</code> permissions), we recommend you use <a href="https://docs.docker.com/get-started/">Docker</a>.</p>
+
+<p>We also provide instructions for using <a href="https://www.sylabs.io/guides/2.6/user-guide/quick_start.html">Singularity</a>,
+an alternate containerization software for systems where you do not have administrator privileges.
+To learn more about using containers, please see the
+<a href="https://neurohackweek.github.io/docker-for-scientists/">Docker for scientists guide</a>.</p>
+
+<h3 id="building-your-site-locally-with-containers-docker">Building your site locally with Containers: Docker</h3>
+
+<p>First, you’ll need to make sure you have Docker installed.
+There are <a href="https://hub.docker.com/search/?type=edition&amp;offering=community">installation instructions for each operating system</a>
+to guide you through this process.</p>
+
+<p>Once Docker is available on your system, you can build the image locally with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull emdupre/jupyter-book
+</code></pre></div></div>
+
+<p>You can then access this image with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">--security-opt</span> label:disable  <span class="se">\</span>
+   <span class="nt">-v</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
+   <span class="nt">-p</span> 4000:4000 <span class="se">\</span>
+   <span class="nt">-it</span> <span class="nt">-u</span> 1000:1000 <span class="se">\</span>
+   emdupre/jupyter-book bundle <span class="nb">exec </span>jekyll serve <span class="nt">--host</span> 0.0.0.0
+</code></pre></div></div>
+
+<p>If you navigate to <code class="highlighter-rouge">http://0.0.0.0:4000/jupyter-book/</code> in your browser,
+you should see a preview copy of your book.
+If you instead see an error, please try to update your local book;
+see <a href="https://jupyter.org/jupyter-book/guide/04_faq.html#how-can-i-update-my-book">the Jupyter Book FAQ section</a>
+for more details on how to do so.</p>
+
+<h3 id="building-your-site-locally-with-containers-singularity">Building your site locally with Containers: Singularity</h3>
+
+<p>If you are on a system where you do not have administrator privileges (such as a shared
+computing cluster), you will not be able to use Docker.
+Instead, you can use Singularity.
+First, you’ll need to check with your resource manager that Singularity is available
+on your system.</p>
+
+<p>You can then create a Jupyter Book Singularity image using:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity build jupyter-book.simg docker://emdupre/jupyter-book
+</code></pre></div></div>
+
+<p>Next, you can access this image with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity run <span class="nt">-B</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
+    <span class="nt">--pwd</span> /srv/jekyll <span class="se">\</span>
+    jupyter-book.simg bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>And that’s it! If you navigate to <code class="highlighter-rouge">http://127.0.0.1:4000/jupyter-book/</code> in your browser,
+you should see a preview copy of your book.</p>
+
+<h3 id="building-your-site-locally-with-ruby">Building your site locally with Ruby</h3>
+
+<p>You can also choose to build your site locally without a container.
+In this case, you’ll need Ruby, an open-source programming language, to build your site’s
 HTML with Jekyll. The easiest way to install Ruby on <em>nix systems is to use
 the *<code class="highlighter-rouge">conda</code></em> package manager:</p>
 
@@ -1510,19 +1578,10 @@ the *<code class="highlighter-rouge">conda</code></em> package manager:</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make install
 </code></pre></div></div>
 
-<p>which will install Bundler (a Ruby depency management tool) and then install the plugins
+<p>which will install Bundler (a Ruby dependency management tool) and then install the plugins
 needed to build the site for your book.</p>
 
-<h3 id="build-the-site-html-for-your-book">Build the site HTML for your book</h3>
-
-<p>Once you’ve generated the markdown for your notebooks and installed the
-necessary dependencies. You are ready to build your site HTML.</p>
-
-<p>Ensure that your notebooks have been converted to markdown, there should be a
-collection of them in <code class="highlighter-rouge">_build/</code>.</p>
-
-<p>Once you’ve confirmed this, run this command to generate your book’s HTML using
-Jekyll:</p>
+<p>You can then build the site locally by running:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make site
 </code></pre></div></div>
