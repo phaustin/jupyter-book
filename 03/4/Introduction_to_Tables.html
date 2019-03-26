@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Introduction to Tables</title>
-  <meta name="description" content="We can now apply Python to analyze data. We will work with data stored in Table structures.">
+  <meta name="description" content="      ```pythonfrom datascience import *path_data = ‘../../data/’import numpy as np%matplotlib inlineimport matplotlib.pyplot as plotsplots.style.use(‘fiveth...">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/03/4/Introduction_to_Tables.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/03/4/Introduction_to_Tables.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Introduction to Tables" />
-<meta property="og:description" content="We can now apply Python to analyze data. We will work with data stored in Table structures." />
+<meta property="og:description" content="      ```pythonfrom datascience import *path_data = ‘../../data/’import numpy as np%matplotlib inlineimport matplotlib.pyplot as plotsplots.style.use(‘fiveth..." />
 <meta property="og:image"       content="" />
 
 
@@ -29,11 +29,11 @@
   "headline":
     "Introduction to Tables",
   "datePublished":
-    "2019-03-26T18:24:50+00:00",
+    "2019-03-26T23:15:07+00:00",
   "dateModified":
-    "2019-03-26T18:24:50+00:00",
+    "2019-03-26T23:15:07+00:00",
   "description":
-    "We can now apply Python to analyze data. We will work with data stored in Table structures.",
+    "      ```pythonfrom datascience import *path_data = ‘../../data/’import numpy as np%matplotlib inlineimport matplotlib.pyplot as plotsplots.style.use(‘fiveth...",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -155,7 +155,7 @@ initFunction(function () {
         theme: "abcdef"
       },
       kernelOptions: {
-        name: 'Python [Root]',
+        name: 'python3',
       }
     }
 </script>
@@ -1453,7 +1453,24 @@ initFunction(initQuery);
 
 
             <div class="c-textbook__content">
-              <p>We can now apply Python to analyze data. We will work with data stored in Table structures.</p>
+              <div class="cell code_cell removed">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">path_data</span> <span class="o">=</span> <span class="s">'../../data/'</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plots</span>
+<span class="n">plots</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+
+<span class="n">cones</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">path_data</span> <span class="o">+</span> <span class="s">'cones.csv'</span><span class="p">)</span>
+<span class="n">nba</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">path_data</span> <span class="o">+</span> <span class="s">'nba_salaries.csv'</span><span class="p">)</span><span class="o">.</span><span class="n">relabeled</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">'SALARY'</span><span class="p">)</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">path_data</span> <span class="o">+</span> <span class="s">'movies_by_year.csv'</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<p>We can now apply Python to analyze data. We will work with data stored in Table structures.</p>
 
 <p>Tables are a fundamental way of representing data sets. A table can be viewed in two ways:</p>
 <ul>

@@ -29,9 +29,9 @@
   "headline":
     "Hiding code blocks or entire cells",
   "datePublished":
-    "2019-03-26T18:24:50+00:00",
+    "2019-03-26T23:15:07+00:00",
   "dateModified":
-    "2019-03-26T18:24:50+00:00",
+    "2019-03-26T23:15:07+00:00",
   "description":
     "Hiding code blocks or entire cells",
   "author": {
@@ -1406,7 +1406,7 @@ initFunction(initQuery);
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
   <li><a href="#hiding-code-cells-and-displaying-a-button-to-show-them">Hiding code cells and displaying a button to show them</a></li>
-  <li><a href="#hiding-the-inputs-and-outputs-of-a-cell">Hiding the inputs and outputs of a cell</a></li>
+  <li><a href="#hiding-an-entire-cell">Hiding an entire cell</a></li>
 </ul>
     </nav>
   </aside>
@@ -1524,19 +1524,27 @@ tag:</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">use_hide_code_button      </span><span class="pi">:</span> <span class="no">false</span> 
 </code></pre></div></div>
 
-<h2 id="hiding-the-inputs-and-outputs-of-a-cell">Hiding the inputs and outputs of a cell</h2>
+<p>In this case, the inputs will be hidden, only the outputs will be shown, and
+users won’t have the opportunity to see the inputs on the book’s page.</p>
+
+<h2 id="hiding-an-entire-cell">Hiding an entire cell</h2>
 
 <p>You can also hide <strong>both</strong> the inputs and outputs of a cell, in which case it
 won’t show up in your book at all. These cells remain in the notebook file itself,
 so they’ll show up if readers click on a JupyterHub or Binder link from a page.</p>
 
-<p>To hide both the inputs and outputs of a cell, use the following configuration option:</p>
+<p>To hide both the inputs and outputs of a cell, add the tag <code class="highlighter-rouge">removecell</code> to the tags
+of the cell. Here’s an example of cell metadata that would trigger the “remove cell” behavior:</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hide_cell_text            </span><span class="pi">:</span> <span class="s2">"</span><span class="s">#</span><span class="nv"> </span><span class="s">YOUR</span><span class="nv"> </span><span class="s">SEARCH</span><span class="nv"> </span><span class="s">TEXT"</span>
-</code></pre></div></div>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"removecell"</span><span class="p">,</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
-<p>When you build your book, Jupyter Book will search each code cell for the text specified
-by <code class="highlighter-rouge">hide_cell_text</code>. It will remove any cells that contain this text.</p>
+<p>These cells will be entirely removed from each book page - remember that if you’d like to
+optionally display the inputs of a cell instead, you should use the <code class="highlighter-rouge">hidecode</code> tag.</p>
 
               <nav class="c-page__nav">
   
