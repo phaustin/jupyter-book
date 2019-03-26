@@ -29,9 +29,9 @@
   "headline":
     "Names",
   "datePublished":
-    "2019-03-25T19:16:09+00:00",
+    "2019-03-26T01:22:09+00:00",
   "dateModified":
-    "2019-03-25T19:16:09+00:00",
+    "2019-03-26T01:22:09+00:00",
   "description":
     "3.2 NamesNames are given to values in Python using an assignment statement. In an assignment, a name is followed by =, which is followed by any expression. T...",
   "author": {
@@ -139,7 +139,7 @@ initFunction(function () {
   <meta name="turbolinks-cache-control" content="no-cache">
 
   <!-- Load nbinteract for widgets -->
-  <script src="https://unpkg.com/nbinteract-core" async></script>
+  
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
@@ -322,7 +322,7 @@ Add buttons to hide code cells
 var setCodeCellVisibility = function(inputField, kind) {
     // Update the image and class for hidden
     var id = inputField.getAttribute('data-id');
-    var codeCell = document.querySelector(`#${id}`);
+    var codeCell = document.querySelector(`#${id} div.highlight`);
 
     if (kind === "visible") {
         codeCell.classList.remove('hidden');
@@ -360,18 +360,19 @@ var addHideButton = function () {
   }
 
   // Find the input cells and add a hide button
-  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
-    if (!item.parentElement.classList.contains("hidecode")) {
+  document.querySelectorAll('div.input_area').forEach(function (item, index) {
+    if (!item.classList.contains("hidecode")) {
         // Skip the cell if it doesn't have a hidecode class
         return;
     }
 
     const id = codeCellId(index)
     item.setAttribute('id', id);
-    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+    // Insert the button just inside the end of the next div
+    item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
 
     // Set up the visibility toggle
-    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink = document.querySelector(`#${id} div.highlight + input + label`);
     hideLink.addEventListener('click', toggleCodeCellVisibility)
   });
 }
@@ -1441,6 +1442,7 @@ initFunction(initQuery);
 
 
 
+
 <a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2F03%2F2%2FNames.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
 
 
@@ -1451,47 +1453,86 @@ initFunction(initQuery);
               <h2 id="32-names">3.2 Names</h2>
 <p>Names are given to values in Python using an <em>assignment</em> statement. In an assignment, a name is followed by <code class="highlighter-rouge">=</code>, which is followed by any expression. The value of the expression to the right of <code class="highlighter-rouge">=</code> is <em>assigned</em> to the name. Once a name has a value assigned to it, the value will be substituted for that name in future expressions.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <p>A previously assigned name can be used in the expression to the right of <code class="highlighter-rouge">=</code>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span>
 <span class="n">half</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">quarter</span>
 <span class="n">half</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <p>However, only the current value of an expression is assigned to a name. If that value changes later, names that were defined in terms of that value will not change automatically.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">half</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <p>Names must start with a letter, but can contain both letters and numbers. A name cannot contain a space; instead, it is common to use an underscore character <code class="highlighter-rouge">_</code> to replace each space. Names are only as useful as you make them; it’s up to the programmer to choose names that are easy to interpret. Typically, more meaningful names can be invented than <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>. For example, to describe the sales tax on a $5 purchase in Berkeley, CA, the following names clarify the meaning of the various quantities involved.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">purchase_price</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">purchase_price</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">state_tax_rate</span> <span class="o">=</span> <span class="mf">0.075</span>
 <span class="n">county_tax_rate</span> <span class="o">=</span> <span class="mf">0.02</span>
 <span class="n">city_tax_rate</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">sales_tax_rate</span> <span class="o">=</span> <span class="n">state_tax_rate</span> <span class="o">+</span> <span class="n">county_tax_rate</span> <span class="o">+</span> <span class="n">city_tax_rate</span>
 <span class="n">sales_tax</span> <span class="o">=</span> <span class="n">purchase_price</span> <span class="o">*</span> <span class="n">sales_tax_rate</span>
 <span class="n">sales_tax</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.475
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.475
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
               <nav class="c-page__nav">
   

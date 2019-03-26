@@ -29,9 +29,9 @@
   "headline":
     "Numbers",
   "datePublished":
-    "2019-03-25T19:16:09+00:00",
+    "2019-03-26T01:22:09+00:00",
   "dateModified":
-    "2019-03-25T19:16:09+00:00",
+    "2019-03-26T01:22:09+00:00",
   "description":
     "Computers are designed to perform numerical calculations, but there are some important details about working with numbers that every programmer working with ...",
   "author": {
@@ -139,7 +139,7 @@ initFunction(function () {
   <meta name="turbolinks-cache-control" content="no-cache">
 
   <!-- Load nbinteract for widgets -->
-  <script src="https://unpkg.com/nbinteract-core" async></script>
+  
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
@@ -322,7 +322,7 @@ Add buttons to hide code cells
 var setCodeCellVisibility = function(inputField, kind) {
     // Update the image and class for hidden
     var id = inputField.getAttribute('data-id');
-    var codeCell = document.querySelector(`#${id}`);
+    var codeCell = document.querySelector(`#${id} div.highlight`);
 
     if (kind === "visible") {
         codeCell.classList.remove('hidden');
@@ -360,18 +360,19 @@ var addHideButton = function () {
   }
 
   // Find the input cells and add a hide button
-  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
-    if (!item.parentElement.classList.contains("hidecode")) {
+  document.querySelectorAll('div.input_area').forEach(function (item, index) {
+    if (!item.classList.contains("hidecode")) {
         // Skip the cell if it doesn't have a hidecode class
         return;
     }
 
     const id = codeCellId(index)
     item.setAttribute('id', id);
-    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+    // Insert the button just inside the end of the next div
+    item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
 
     // Set up the visibility toggle
-    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink = document.querySelector(`#${id} div.highlight + input + label`);
     hideLink.addEventListener('click', toggleCodeCellVisibility)
   });
 }
@@ -1441,6 +1442,7 @@ initFunction(initQuery);
 
 
 
+
 <a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2F04%2F1%2FNumbers.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
 
 
@@ -1457,86 +1459,206 @@ initFunction(initQuery);
 
 <p>The type of a number is evident from the way it is displayed: <code class="highlighter-rouge">int</code> values have no decimal point and <code class="highlighter-rouge">float</code> values always have a decimal point.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Some int values</span>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Some int values</span>
 <span class="mi">2</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span>
-</code></pre></div></div>
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div>      </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
-</code></pre></div></div>
+    </div>
+  </div>
+</div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span><span class="mi">1234567890000000000</span>
-</code></pre></div></div>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1234567890000000000
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Some float values</span>
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span><span class="mi">1234567890000000000</span>
+</code></pre></div>    </div>
+  </div>
+
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1234567890000000000
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Some float values</span>
 <span class="mf">1.2</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.2
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">3.0</span>
-</code></pre></div></div>
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.2
+</code></pre></div>      </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
-</code></pre></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">3.0</span>
+</code></pre></div>    </div>
+  </div>
+
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <p>When a <code class="highlighter-rouge">float</code> value is combined with an <code class="highlighter-rouge">int</code> value using some arithmetic operator, then the result is always a <code class="highlighter-rouge">float</code> value. In most cases, two integers combine to form another integer, but any number (<code class="highlighter-rouge">int</code> or <code class="highlighter-rouge">float</code>) divided by another will be a <code class="highlighter-rouge">float</code> value. Very large or very small <code class="highlighter-rouge">float</code> values are displayed using scientific notation.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">1.5</span> <span class="o">+</span> <span class="mi">2</span>
-</code></pre></div></div>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">1.5</span> <span class="o">+</span> <span class="mi">2</span>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.5
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">/</span> <span class="mi">1</span>
-</code></pre></div></div>
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.5
+</code></pre></div>      </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
-</code></pre></div></div>
+    </div>
+  </div>
+</div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span><span class="mf">12345678900000000000.0</span>
-</code></pre></div></div>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">/</span> <span class="mi">1</span>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.23456789e+19
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span><span class="mf">12345678900000000000.0</span>
+</code></pre></div>    </div>
+  </div>
+
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.23456789e+19
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <p>The <code class="highlighter-rouge">type</code> function can be used to find the type of any number.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</code></pre></div></div>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">1</span><span class="p">)</span>
-</code></pre></div></div>
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
+</code></pre></div>      </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
-</code></pre></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </div>
+
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <p>The <code class="highlighter-rouge">type</code> of an expression is the type of its final value. So, the <code class="highlighter-rouge">type</code> function will never indicate that the type of an expression is a name, because names are always evaluated to their assigned values.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c"># The type of x is an int, not a name</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">)</span>
-</code></pre></div></div>
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
+</code></pre></div>      </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
-</code></pre></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </div>
+
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <h2 id="more-about-float-values">More About Float Values</h2>
 
@@ -1550,57 +1672,137 @@ initFunction(initQuery);
 
 <p>The first limit can be observed in two ways. If the result of a computation is a very large number, then it is represented as infinite. If the result is a very small number, then it is represented as zero.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e306</span> <span class="o">*</span> <span class="mi">10</span>
-</code></pre></div></div>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e306</span> <span class="o">*</span> <span class="mi">10</span>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2e+307
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e306</span> <span class="o">*</span> <span class="mi">100</span>
-</code></pre></div></div>
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2e+307
+</code></pre></div>      </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inf
-</code></pre></div></div>
+    </div>
+  </div>
+</div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e-322</span> <span class="o">/</span> <span class="mi">10</span>
-</code></pre></div></div>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e306</span> <span class="o">*</span> <span class="mi">100</span>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2e-323
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e-322</span> <span class="o">/</span> <span class="mi">100</span>
-</code></pre></div></div>
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inf
+</code></pre></div>      </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
-</code></pre></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e-322</span> <span class="o">/</span> <span class="mi">10</span>
+</code></pre></div>    </div>
+  </div>
+
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2e-323
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e-322</span> <span class="o">/</span> <span class="mi">100</span>
+</code></pre></div>    </div>
+  </div>
+
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <p>The second limit can be observed by an expression that involves numbers with more than 15 significant digits. These extra digits are discarded before any arithmetic is carried out.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">0.6666666666666666</span> <span class="o">-</span> <span class="mf">0.6666666666666666123456789</span>
-</code></pre></div></div>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">0.6666666666666666</span> <span class="o">-</span> <span class="mf">0.6666666666666666123456789</span>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <p>The third limit can be observed when taking the difference between two expressions that should be equivalent. For example, the expression <code class="highlighter-rouge">2 ** 0.5</code> computes the square root of 2, but squaring this value does not exactly recover 2.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span>
-</code></pre></div></div>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.4142135623730951
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
-</code></pre></div></div>
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.4142135623730951
+</code></pre></div>      </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.0000000000000004
-</code></pre></div></div>
+    </div>
+  </div>
+</div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
-</code></pre></div></div>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.440892098500626e-16
-</code></pre></div></div>
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.0000000000000004
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
+</code></pre></div>    </div>
+  </div>
+
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.440892098500626e-16
+</code></pre></div>      </div>
+
+    </div>
+  </div>
+</div>
 
 <p>The final result above is <code class="highlighter-rouge">0.0000000000000004440892098500626</code>, a number that is very close to zero. The correct answer to this arithmetic expression is 0, but a small error in the final significant digit appears very different in scientific notation. This behavior appears in almost all programming languages because it is the result of the standard way that arithmetic is carried out on computers.</p>
 

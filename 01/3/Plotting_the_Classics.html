@@ -29,9 +29,9 @@
   "headline":
     "Plotting the Classics",
   "datePublished":
-    "2019-03-25T19:16:09+00:00",
+    "2019-03-26T01:22:09+00:00",
   "dateModified":
-    "2019-03-25T19:16:09+00:00",
+    "2019-03-26T01:22:09+00:00",
   "description":
     "In this example, we will explore statistics for two classic novels: The Adventures of Huckleberry Finn by Mark Twain, and Little Women by Louisa May Alcott. ...",
   "author": {
@@ -139,7 +139,7 @@ initFunction(function () {
   <meta name="turbolinks-cache-control" content="no-cache">
 
   <!-- Load nbinteract for widgets -->
-  <script src="https://unpkg.com/nbinteract-core" async></script>
+  
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
@@ -322,7 +322,7 @@ Add buttons to hide code cells
 var setCodeCellVisibility = function(inputField, kind) {
     // Update the image and class for hidden
     var id = inputField.getAttribute('data-id');
-    var codeCell = document.querySelector(`#${id}`);
+    var codeCell = document.querySelector(`#${id} div.highlight`);
 
     if (kind === "visible") {
         codeCell.classList.remove('hidden');
@@ -360,18 +360,19 @@ var addHideButton = function () {
   }
 
   // Find the input cells and add a hide button
-  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
-    if (!item.parentElement.classList.contains("hidecode")) {
+  document.querySelectorAll('div.input_area').forEach(function (item, index) {
+    if (!item.classList.contains("hidecode")) {
         // Skip the cell if it doesn't have a hidecode class
         return;
     }
 
     const id = codeCellId(index)
     item.setAttribute('id', id);
-    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+    // Insert the button just inside the end of the next div
+    item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
 
     // Set up the visibility toggle
-    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink = document.querySelector(`#${id} div.highlight + input + label`);
     hideLink.addEventListener('click', toggleCodeCellVisibility)
   });
 }
@@ -1432,6 +1433,7 @@ initFunction(initQuery);
 
 
 
+
 <a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2F01%2F3%2FPlotting_the_Classics.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
 
 
@@ -1445,7 +1447,9 @@ initFunction(initQuery);
 
 <p>First, we read the text of both books into lists of chapters, called <code class="highlighter-rouge">huck_finn_chapters</code> and <code class="highlighter-rouge">little_women_chapters</code>. In Python, a name cannot contain any spaces, and so we will often use an underscore <code class="highlighter-rouge">_</code> to stand in for a space. The <code class="highlighter-rouge">=</code> in the lines below give a name on the left to the result of some computation described on the right. A <em>uniform resource locator</em> or <em>URL</em> is an address on the Internet for some content; in this case, the text of a book. The <code class="highlighter-rouge">#</code> symbol starts a comment, which is ignored by the computer but helpful for people reading the code.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Read two books, fast!</span>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Read two books, fast!</span>
 
 <span class="n">huck_finn_url</span> <span class="o">=</span> <span class="s">'https://www.inferentialthinking.com/chapters/01/3/huck_finn.txt'</span>
 <span class="n">huck_finn_text</span> <span class="o">=</span> <span class="n">read_url</span><span class="p">(</span><span class="n">huck_finn_url</span><span class="p">)</span>
@@ -1454,16 +1458,25 @@ initFunction(initQuery);
 <span class="n">little_women_url</span> <span class="o">=</span> <span class="s">'https://www.inferentialthinking.com/chapters/01/3/little_women.txt'</span>
 <span class="n">little_women_text</span> <span class="o">=</span> <span class="n">read_url</span><span class="p">(</span><span class="n">little_women_url</span><span class="p">)</span>
 <span class="n">little_women_chapters</span> <span class="o">=</span> <span class="n">little_women_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'CHAPTER '</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
+
+</div>
 
 <p>While a computer cannot understand the text of a book, it can provide us with some insight into the structure of the text. The name <code class="highlighter-rouge">huck_finn_chapters</code> is currently bound to a list of all the chapters in the book. We can place them into a table to see how each chapter begins.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Display the chapters of Huckleberry Finn in a table.</span>
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Display the chapters of Huckleberry Finn in a table.</span>
 
 <span class="n">Table</span><span class="p">()</span><span class="o">.</span><span class="n">with_column</span><span class="p">(</span><span class="s">'Chapters'</span><span class="p">,</span> <span class="n">huck_finn_chapters</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
 
-<div class="output output_html">
+  <div class="output_wrapper">
+    <div class="output_subarea">
+
+      <div class="output output_html">
 <table border="1" class="dataframe">
     <thead>
         <tr>
@@ -1504,6 +1517,10 @@ initFunction(initQuery);
     </tbody>
 </table>
 <p>... (33 rows omitted)</p>
+</div>
+
+    </div>
+  </div>
 </div>
 
 <p>Each chapter begins with a chapter number in Roman numerals, followed by the first sentence of the chapter. Project Gutenberg has printed the first word of each chapter in upper case.</p>
