@@ -29,9 +29,9 @@
   "headline":
     "Programming in Python",
   "datePublished":
-    "2019-03-27T16:25:19+00:00",
+    "2019-03-29T03:34:10+00:00",
   "dateModified":
-    "2019-03-27T16:25:19+00:00",
+    "2019-03-29T03:34:10+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -144,6 +144,36 @@ initFunction(function () {
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
 
+
+<!-- Display Thebelab button in each code cell -->
+<script>
+/**
+ * Set up thebelab button for code blocks
+ */
+
+const thebelabCellButton = id =>
+  `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
+    <img src="/jupyter-book/assets/images/edit-button.svg" alt="Start interactive mode">
+  </a>`
+
+
+const addThebelabButtonToCodeCells =  () => {
+
+  const codeCells = document.querySelectorAll('div.input_area > div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.getElementById("thebelab-cell-button-" + id) == null) {
+      codeCell.insertAdjacentHTML('afterend', thebelabCellButton(id));
+    }
+  })
+}
+
+initFunction(addThebelabButtonToCodeCells);
+</script>
+
+
+
 <script type="text/x-thebe-config">
     {
       requestKernel: true,
@@ -215,9 +245,9 @@ initFunction(function () {
             thebelab.bootstrap();
 
             // Remove copy buttons since they won't work anymore
-            const copyButtons = document.querySelectorAll('.copybtn')
-            copyButtons.forEach((copyButton, index) => {
-                copyButton.remove();
+            const copyAndThebeButtons = document.querySelectorAll('.copybtn, .thebebtn')
+            copyAndThebeButtons.forEach((button, index) => {
+                button.remove();
             });
 
             // Remove outputs since they'll be stale
@@ -228,17 +258,20 @@ initFunction(function () {
         }
 
         // Add event listener for the function to modify code cells
-        const thebelabButton = document.getElementById('interact-button-thebelab');
-        if (thebelabButton === null) {
-            setTimeout(initThebelab, 250)
-        return
-        };
-        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+        const thebelabButtons = document.querySelectorAll('[id^=thebelab], [id$=thebelab]')
+        thebelabButtons.forEach((thebelabButton,index) => {
+            if (thebelabButton === null) {
+                setTimeout(initThebelab, 250)
+                return
+            };
+            thebelabButton.addEventListener('click', addThebelabToCodeCells);
+        });
     }
 
     // Initialize Thebelab
     initFunction(initThebelab);
 </script>
+
 
 
   <!-- Google analytics -->
@@ -255,7 +288,7 @@ initFunction(function () {
 const codeCellId = index => `codecell${index}`
 
 const clipboardButton = id =>
-  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+  `<a id="copy-button-${id}" class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
     <img src="/jupyter-book/assets/images/copy-button.svg" alt="Copy to clipboard">
   </a>`
 
@@ -287,7 +320,7 @@ const addCopyButtonToCodeCells = () => {
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
-    if (document.querySelector(`pre#${id} + a`) == null) {
+    if (document.getElementById("copy-button" + id) == null) {
       codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
     }
   })
@@ -310,6 +343,7 @@ const addCopyButtonToCodeCells = () => {
 
 initFunction(addCopyButtonToCodeCells);
 </script>
+
 
   <!-- Hide cell code -->
   
