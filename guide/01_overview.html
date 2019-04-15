@@ -29,9 +29,9 @@
   "headline":
     "Getting started",
   "datePublished":
-    "2019-03-29T03:34:10+00:00",
+    "2019-04-15T15:33:13+00:00",
   "dateModified":
-    "2019-03-29T03:34:10+00:00",
+    "2019-04-15T15:33:13+00:00",
   "description":
     "The Jupyter Book Guide",
   "author": {
@@ -273,6 +273,25 @@ initFunction(addThebelabButtonToCodeCells);
 </script>
 
 
+
+  <!-- Load the auto-generating TOC -->
+  <script src="/jupyter-book/assets/js/tocbot.min.js"  type="text/javascript"></script>
+  <script>
+var initToc = function () {
+  tocbot.init({
+    tocSelector: 'nav.onthispage',
+    contentSelector: '.c-textbook__content',
+    headingSelector: 'h2, h3',
+    orderedList: false,
+    collapseDepth: 6,
+    listClass: 'toc__menu',
+    activeListItemClass: "",  // Not using
+    activeLinkClass: "", // Not using
+  });
+  tocbot.refresh();
+}
+initFunction(initToc);
+</script>
 
   <!-- Google analytics -->
   <script src="/jupyter-book/assets/js/ga.js" async></script>
@@ -1446,34 +1465,12 @@ initFunction(initQuery);
 </nav>
 
       
-      <!-- Shamelessly copied from minimal mistakes -->
-
-
-<!-- TOC will only show up if it has at least one item -->
-
-
-  <aside class="sidebar__right">
-    <nav class="onthispage">
-      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
-      <ul class="toc__menu">
-  <li><a href="#install-the-command-line-interface">Install the command-line interface</a></li>
-  <li><a href="#a-quick-tour-of-a-jupyter-book">A quick tour of a Jupyter Book</a>
-    <ul>
-      <li><a href="#book-configuration">Book configuration</a></li>
-      <li><a href="#book-content">Book content</a></li>
-      <li><a href="#table-of-contents">Table of Contents</a></li>
-      <li><a href="#a-license-for-your-content">A license for your content</a></li>
-      <li><a href="#book-code-requirements-files">Book code requirements files</a></li>
-      <li><a href="#book-bibliography-for-citations">Book bibliography for citations</a></li>
-      <li><a href="#custom-javascript-and-css">Custom Javascript and CSS</a></li>
-    </ul>
-  </li>
-  <li><a href="#next-section">Next section</a></li>
-</ul>
-    </nav>
-  </aside>
-
-
+      <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+      <aside class="sidebar__right">
+          <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+          <nav class="onthispage">
+          </nav>
+      </aside>
       
       <main class="c-textbook__page" tabindex="-1">
           <div class="o-wrapper">
