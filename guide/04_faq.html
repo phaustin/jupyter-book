@@ -29,9 +29,9 @@
   "headline":
     "FAQ",
   "datePublished":
-    "2019-04-17T16:52:40+00:00",
+    "2019-04-18T03:26:56+00:00",
   "dateModified":
-    "2019-04-17T16:52:40+00:00",
+    "2019-04-18T03:26:56+00:00",
   "description":
     "The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.",
   "author": {
@@ -1586,6 +1586,45 @@ display(HTML('figure.html')
 
 <p>If you’ve got questions, concerns, or suggestions, please open an issue at
 <a href="https://github.com/jupyter/jupyter-book/issues">at the jupyter book issues page</a></p>
+
+<h2 id="how-should-i-add-cell-tags-to-my-notebooks">How should I add cell tags to my notebooks?</h2>
+
+<p>You can control the behavior of Jupyter Book by putting custom tags
+in the metadata of your cells. This allows you to do things like
+<a href="../features/hiding">automatically hide code cells</a> as well as
+<a href="../features/interactive_cells">adding interactive widgets to cells</a>.</p>
+
+<p>There are two straightforward ways to add metadata to cells:</p>
+
+<ol>
+  <li>
+    <p><strong>Use the Jupyter Notebook cell tag editor</strong>. The Jupyter Notebook ships with a
+cell tag editor by default. This lets you add cell tags to each cell quickly.</p>
+
+    <p>To enable the cell tag editor, go click <code class="highlighter-rouge">View -&gt; Cell Toolbar -&gt; Tags</code>. This
+will enable the tags UI. Here’s what the menu looks like.</p>
+
+    <p><img src="../images/tags_notebook.png" alt="" /></p>
+  </li>
+  <li>
+    <p><strong>Use the JupyterLab Cell Tags plugin</strong>. JupyterLab is an IDE-like Jupyter
+environment that runs in your browser. It has a rich extension ecosystem.
+A particularly useful extension
+<a href="https://github.com/jupyterlab/jupyterlab-celltags">is the “cell tags” plugin</a>,
+which exposes a user interface that lets you quickly insert cell tags.</p>
+
+    <p>You can install the cell tags plugin with the following command (after installing
+JupyterLab).</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter labextension install @jupyterlab/celltags
+</code></pre></div>    </div>
+
+    <p>Then, you’ll find tags under the “wrench” menu section.
+Here’s what the tags UI in JupyterLab looks like.</p>
+
+    <p><img src="../images/tags_jupyterlab.png" alt="" /></p>
+  </li>
+</ol>
 
               <nav class="c-page__nav">
   
