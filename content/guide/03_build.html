@@ -29,9 +29,9 @@
   "headline":
     "Building and publishing your book",
   "datePublished":
-    "2019-05-02T22:14:34+00:00",
+    "2019-05-04T02:37:21+00:00",
   "dateModified":
-    "2019-05-02T22:14:34+00:00",
+    "2019-05-04T02:37:21+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -1644,7 +1644,32 @@ the *<code class="highlighter-rouge">conda</code></em> package manager:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge ruby
 </code></pre></div></div>
-<p>Once you have Ruby installed, run</p>
+
+<p>Once you have Ruby installed, the conda-built clang compiler for your system need to be installed. Details depend on your OS.</p>
+
+<h4 id="on-osx">On OSX</h4>
+
+<p>Two steps are needed on OSX. First, install the <em><code class="highlighter-rouge">conda</code>’s</em> clang compiler:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge clangxx_osx-64
+</code></pre></div></div>
+
+<p>If you are running OSX 10.14 (Mojave) you also need to install system libraries in
+the default *nix locations by running</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+</code></pre></div></div>
+
+<h4 id="on-linux">On Linux</h4>
+
+<p>Install <em><code class="highlighter-rouge">conda</code>’s</em> clang compiler:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gxx_linux-64
+</code></pre></div></div>
+
+<h4 id="install-ruby-plugins">Install Ruby plugins</h4>
+
+<p>Finally, run</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make install
 </code></pre></div></div>
