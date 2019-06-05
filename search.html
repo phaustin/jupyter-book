@@ -29,9 +29,9 @@
   "headline":
     "Search the site",
   "datePublished":
-    "2019-05-18T16:17:26+00:00",
+    "2019-06-05T16:19:33+00:00",
   "dateModified":
-    "2019-05-18T16:17:26+00:00",
+    "2019-06-05T16:19:33+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -365,88 +365,86 @@ initFunction(addCopyButtonToCodeCells);
 
 
   <!-- Hide cell code -->
-  
-<script>
-/**
-Add buttons to hide code cells
-*/
+  <script>
+    /**
+    Add buttons to hide code cells
+    */
 
 
-var setCodeCellVisibility = function(inputField, kind) {
-    // Update the image and class for hidden
-    var id = inputField.getAttribute('data-id');
-    var codeCell = document.querySelector(`#${id} div.highlight`);
+    var setCodeCellVisibility = function (inputField, kind) {
+        // Update the image and class for hidden
+        var id = inputField.getAttribute('data-id');
+        var codeCell = document.querySelector(`#${id} div.highlight`);
 
-    if (kind === "visible") {
-        codeCell.classList.remove('hidden');
-        inputField.checked = true;
-    } else {
-        codeCell.classList.add('hidden');
-        inputField.checked = false;
-    }
-}
-
-var toggleCodeCellVisibility = function (event) {
-    // The label is clicked, and now we decide what to do based on the input field's clicked status
-    if (event.target.tagName === "LABEL") {
-        var inputField = event.target.previousElementSibling;
-    } else {
-        // It is the span inside the target
-        var inputField = event.target.parentElement.previousElementSibling;
+        if (kind === "visible") {
+            codeCell.classList.remove('hidden');
+            inputField.checked = true;
+        } else {
+            codeCell.classList.add('hidden');
+            inputField.checked = false;
+        }
     }
 
-    if (inputField.checked === true) {
-        setCodeCellVisibility(inputField, "visible");
-    } else {
-        setCodeCellVisibility(inputField, "hidden");
-    }
-}
+    var toggleCodeCellVisibility = function (event) {
+        // The label is clicked, and now we decide what to do based on the input field's clicked status
+        if (event.target.tagName === "LABEL") {
+            var inputField = event.target.previousElementSibling;
+        } else {
+            // It is the span inside the target
+            var inputField = event.target.parentElement.previousElementSibling;
+        }
 
-
-// Button constructor
-const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
-
-var addHideButton = function () {
-  // If a hide button is already added, don't add another
-  if (document.querySelector('div.hidecode input') !== null) {
-      return;
-  }
-
-  // Find the input cells and add a hide button
-  document.querySelectorAll('div.input_area').forEach(function (item, index) {
-    if (!item.classList.contains("hidecode")) {
-        // Skip the cell if it doesn't have a hidecode class
-        return;
+        if (inputField.checked === true) {
+            setCodeCellVisibility(inputField, "visible");
+        } else {
+            setCodeCellVisibility(inputField, "hidden");
+        }
     }
 
-    const id = codeCellId(index)
-    item.setAttribute('id', id);
-    // Insert the button just inside the end of the next div
-    item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
 
-    // Set up the visibility toggle
-    hideLink = document.querySelector(`#${id} div.highlight + input + label`);
-    hideLink.addEventListener('click', toggleCodeCellVisibility)
-  });
-}
+    // Button constructor
+    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+    var addHideButton = function () {
+        // If a hide button is already added, don't add another
+        if (document.querySelector('div.hidecode input') !== null) {
+            return;
+        }
+
+        // Find the input cells and add a hide button
+        document.querySelectorAll('div.input_area').forEach(function (item, index) {
+            if (!item.classList.contains("hidecode")) {
+                // Skip the cell if it doesn't have a hidecode class
+                return;
+            }
+
+            const id = codeCellId(index)
+            item.setAttribute('id', id);
+            // Insert the button just inside the end of the next div
+            item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
+
+            // Set up the visibility toggle
+            hideLink = document.querySelector(`#${id} div.highlight + input + label`);
+            hideLink.addEventListener('click', toggleCodeCellVisibility)
+        });
+    }
 
 
-// Initialize the hide buttos
-var initHiddenCells = function () {
-    // Add hide buttons to the cells
-    addHideButton();
+    // Initialize the hide buttos
+    var initHiddenCells = function () {
+        // Add hide buttons to the cells
+        addHideButton();
 
-    // Toggle the code cells that should be hidden
-    document.querySelectorAll('div.hidecode input').forEach(function (item) {
-        setCodeCellVisibility(item, 'hidden');
-        item.checked = true;
-    })
-}
+        // Toggle the code cells that should be hidden
+        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+            setCodeCellVisibility(item, 'hidden');
+            item.checked = true;
+        })
+    }
 
-initFunction(initHiddenCells);
+    initFunction(initHiddenCells);
 
 </script>
-
 
   <!-- Load custom website scripts -->
   <script src="/jupyter-book/assets/js/scripts.js" async></script>
@@ -1527,7 +1525,7 @@ initFunction(initQuery);
         "title": "Plotting the Classics",
         
         "excerpt":
-            "from datascience import * from datascience.predicates import are path_data = '../../data/' import numpy as np import matplotlib matplotlib.use('Agg', warn=False) %matplotlib inline import matplotlib.pyplot as plots plots.style.use('fivethirtyeight') import warnings warnings.simplefilter(action=\"ignore\", category=FutureWarning) from urllib.request import urlopen import re def read_url(url): return re.sub('\\\\s+', ' ', urlopen(url).read().decode()) In this example, we will explore statistics for two classic novels: The Adventures of Huckleberry Finn by Mark Twain, and Little Women by Louisa May Alcott. The text of any book can be read by a computer at great speed. Books published before 1923 are currently in the public domain, meaning that everyone has the right to...",
+            "In this example, we will explore statistics for two classic novels: The Adventures of Huckleberry Finn by Mark Twain, and Little Women by Louisa May Alcott. The text of any book can be read by a computer at great speed. Books published before 1923 are currently in the public domain, meaning that everyone has the right to copy or use the text in any way. Project Gutenberg is a website that publishes public domain books online. Using Python, we can load the text of these books directly from the web. This example is meant to illustrate some of the broad...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/01/3/Plotting_the_Classics.html",
@@ -1631,7 +1629,7 @@ initFunction(initQuery);
         "title": "Introduction to Tables",
         
         "excerpt":
-            "from datascience import * path_data = '../../data/' import numpy as np %matplotlib inline import matplotlib.pyplot as plots plots.style.use('fivethirtyeight') cones = Table.read_table(path_data + 'cones.csv') nba = Table.read_table(path_data + 'nba_salaries.csv').relabeled(3, 'SALARY') movies = Table.read_table(path_data + 'movies_by_year.csv') We can now apply Python to analyze data. We will work with data stored in Table structures. Tables are a fundamental way of representing data sets. A table can be viewed in two ways: a sequence of named columns that each describe a single attribute of all entries in a data set, or a sequence of rows that each contain all information about a single individual...",
+            "We can now apply Python to analyze data. We will work with data stored in Table structures. Tables are a fundamental way of representing data sets. A table can be viewed in two ways: a sequence of named columns that each describe a single attribute of all entries in a data set, or a sequence of rows that each contain all information about a single individual in a data set. We will study tables in great detail in the next several chapters. For now, we will just introduce a few methods without going into technical details. The table cones has...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/03/4/Introduction_to_Tables.html",
@@ -1671,7 +1669,7 @@ initFunction(initQuery);
         "title": "Data Types",
         
         "excerpt":
-            "Every value has a type, and the built-in type function returns the type of the result of any expression.   One type we have encountered already is a built-in function. Python indicates that the type is a builtin_function_or_method; the distinction between a function and a method is not important at this stage.           type(abs)                         builtin_function_or_method                   This chapter will explore many useful types of data.  ",
+            "Every value has a type, and the built-in type function returns the type of the result of any expression.   One type we have encountered already is a built-in function. Python indicates that the type is a builtin_function_or_method; the distinction between a function and a method is not important at this stage.           type(abs)                          builtin_function_or_method                   This chapter will explore many useful types of data.   ",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/04/Types.html",
@@ -1695,7 +1693,7 @@ initFunction(initQuery);
         "title": "Hiding code blocks or entire cells",
         
         "excerpt":
-            "Hiding code blocks or entire cells It’s possible to control which cells show up in your final book pages. For example, you may want to display a complex visualization to illustrate an idea, but don’t want the page to be cluttered with a large code cell that generated the viz. In other cases, you may want to remove a code cell entirely. This page explains how to accomplish this with Jupyter Book. Hiding code cells and displaying a button to show them Jupyter Books uses notebook cell tags to determine which code cells to hide. If you add the tag...",
+            "Hiding or removing code blocks or entire cells It’s possible to control which cells show up in your final book pages. For example, you may want to display a complex visualization to illustrate an idea, but don’t want the page to be cluttered with a large code cell that generated the viz. In other cases, you may want to remove a code cell entirely. In this case, you have two options: Hiding the inputs of a code cell will hide the cell’s contents and provide a button that lets readers reveal the content. Removing the inputs (or the entire cell)...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/hiding.html",

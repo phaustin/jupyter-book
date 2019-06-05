@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Plotting the Classics</title>
-  <meta name="description" content="      ```pythonfrom datascience import *from datascience.predicates import arepath_data = ‘../../data/’import numpy as npimport matplotlibmatplotlib.use(‘Agg...">
+  <meta name="description" content="In this example, we will explore statistics for two classic novels: The Adventures of Huckleberry Finn by Mark Twain, and Little Women by Louisa May Alcott. ...">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/01/3/Plotting_the_Classics.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/01/3/Plotting_the_Classics.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Plotting the Classics" />
-<meta property="og:description" content="      ```pythonfrom datascience import *from datascience.predicates import arepath_data = ‘../../data/’import numpy as npimport matplotlibmatplotlib.use(‘Agg..." />
+<meta property="og:description" content="In this example, we will explore statistics for two classic novels: The Adventures of Huckleberry Finn by Mark Twain, and Little Women by Louisa May Alcott. ..." />
 <meta property="og:image"       content="" />
 
 
@@ -29,11 +29,11 @@
   "headline":
     "Plotting the Classics",
   "datePublished":
-    "2019-05-18T16:17:26+00:00",
+    "2019-06-05T16:19:33+00:00",
   "dateModified":
-    "2019-05-18T16:17:26+00:00",
+    "2019-06-05T16:19:33+00:00",
   "description":
-    "      ```pythonfrom datascience import *from datascience.predicates import arepath_data = ‘../../data/’import numpy as npimport matplotlibmatplotlib.use(‘Agg...",
+    "In this example, we will explore statistics for two classic novels: The Adventures of Huckleberry Finn by Mark Twain, and Little Women by Louisa May Alcott. ...",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -365,88 +365,86 @@ initFunction(addCopyButtonToCodeCells);
 
 
   <!-- Hide cell code -->
-  
-<script>
-/**
-Add buttons to hide code cells
-*/
+  <script>
+    /**
+    Add buttons to hide code cells
+    */
 
 
-var setCodeCellVisibility = function(inputField, kind) {
-    // Update the image and class for hidden
-    var id = inputField.getAttribute('data-id');
-    var codeCell = document.querySelector(`#${id} div.highlight`);
+    var setCodeCellVisibility = function (inputField, kind) {
+        // Update the image and class for hidden
+        var id = inputField.getAttribute('data-id');
+        var codeCell = document.querySelector(`#${id} div.highlight`);
 
-    if (kind === "visible") {
-        codeCell.classList.remove('hidden');
-        inputField.checked = true;
-    } else {
-        codeCell.classList.add('hidden');
-        inputField.checked = false;
-    }
-}
-
-var toggleCodeCellVisibility = function (event) {
-    // The label is clicked, and now we decide what to do based on the input field's clicked status
-    if (event.target.tagName === "LABEL") {
-        var inputField = event.target.previousElementSibling;
-    } else {
-        // It is the span inside the target
-        var inputField = event.target.parentElement.previousElementSibling;
+        if (kind === "visible") {
+            codeCell.classList.remove('hidden');
+            inputField.checked = true;
+        } else {
+            codeCell.classList.add('hidden');
+            inputField.checked = false;
+        }
     }
 
-    if (inputField.checked === true) {
-        setCodeCellVisibility(inputField, "visible");
-    } else {
-        setCodeCellVisibility(inputField, "hidden");
-    }
-}
+    var toggleCodeCellVisibility = function (event) {
+        // The label is clicked, and now we decide what to do based on the input field's clicked status
+        if (event.target.tagName === "LABEL") {
+            var inputField = event.target.previousElementSibling;
+        } else {
+            // It is the span inside the target
+            var inputField = event.target.parentElement.previousElementSibling;
+        }
 
-
-// Button constructor
-const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
-
-var addHideButton = function () {
-  // If a hide button is already added, don't add another
-  if (document.querySelector('div.hidecode input') !== null) {
-      return;
-  }
-
-  // Find the input cells and add a hide button
-  document.querySelectorAll('div.input_area').forEach(function (item, index) {
-    if (!item.classList.contains("hidecode")) {
-        // Skip the cell if it doesn't have a hidecode class
-        return;
+        if (inputField.checked === true) {
+            setCodeCellVisibility(inputField, "visible");
+        } else {
+            setCodeCellVisibility(inputField, "hidden");
+        }
     }
 
-    const id = codeCellId(index)
-    item.setAttribute('id', id);
-    // Insert the button just inside the end of the next div
-    item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
 
-    // Set up the visibility toggle
-    hideLink = document.querySelector(`#${id} div.highlight + input + label`);
-    hideLink.addEventListener('click', toggleCodeCellVisibility)
-  });
-}
+    // Button constructor
+    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+    var addHideButton = function () {
+        // If a hide button is already added, don't add another
+        if (document.querySelector('div.hidecode input') !== null) {
+            return;
+        }
+
+        // Find the input cells and add a hide button
+        document.querySelectorAll('div.input_area').forEach(function (item, index) {
+            if (!item.classList.contains("hidecode")) {
+                // Skip the cell if it doesn't have a hidecode class
+                return;
+            }
+
+            const id = codeCellId(index)
+            item.setAttribute('id', id);
+            // Insert the button just inside the end of the next div
+            item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
+
+            // Set up the visibility toggle
+            hideLink = document.querySelector(`#${id} div.highlight + input + label`);
+            hideLink.addEventListener('click', toggleCodeCellVisibility)
+        });
+    }
 
 
-// Initialize the hide buttos
-var initHiddenCells = function () {
-    // Add hide buttons to the cells
-    addHideButton();
+    // Initialize the hide buttos
+    var initHiddenCells = function () {
+        // Add hide buttons to the cells
+        addHideButton();
 
-    // Toggle the code cells that should be hidden
-    document.querySelectorAll('div.hidecode input').forEach(function (item) {
-        setCodeCellVisibility(item, 'hidden');
-        item.checked = true;
-    })
-}
+        // Toggle the code cells that should be hidden
+        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+            setCodeCellVisibility(item, 'hidden');
+            item.checked = true;
+        })
+    }
 
-initFunction(initHiddenCells);
+    initFunction(initHiddenCells);
 
 </script>
-
 
   <!-- Load custom website scripts -->
   <script src="/jupyter-book/assets/js/scripts.js" async></script>
@@ -1527,30 +1525,7 @@ initFunction(initQuery);
 
 
             <div class="c-textbook__content">
-              <div class="cell code_cell removed">
-  <div class="input_area">
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">datascience.predicates</span> <span class="kn">import</span> <span class="n">are</span>
-<span class="n">path_data</span> <span class="o">=</span> <span class="s">'../../data/'</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'Agg'</span><span class="p">,</span> <span class="n">warn</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plots</span>
-<span class="n">plots</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">"ignore"</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="nb">FutureWarning</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span> 
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="k">def</span> <span class="nf">read_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span> 
-    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'</span><span class="se">\\</span><span class="s">s+'</span><span class="p">,</span> <span class="s">' '</span><span class="p">,</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-</code></pre></div>    </div>
-  </div>
-
-</div>
-
-<p>In this example, we will explore statistics for two classic novels: <em>The Adventures of Huckleberry Finn</em> by Mark Twain, and <em>Little Women</em> by Louisa May Alcott. The text of any book can be read by a computer at great speed. Books published before 1923 are currently in the <em>public domain</em>, meaning that everyone has the right to copy or use the text in any way. <a href="http://www.gutenberg.org/">Project Gutenberg</a> is a website that publishes public domain books online. Using Python, we can load the text of these books directly from the web.</p>
+              <p>In this example, we will explore statistics for two classic novels: <em>The Adventures of Huckleberry Finn</em> by Mark Twain, and <em>Little Women</em> by Louisa May Alcott. The text of any book can be read by a computer at great speed. Books published before 1923 are currently in the <em>public domain</em>, meaning that everyone has the right to copy or use the text in any way. <a href="http://www.gutenberg.org/">Project Gutenberg</a> is a website that publishes public domain books online. Using Python, we can load the text of these books directly from the web.</p>
 
 <p>This example is meant to illustrate some of the broad themes of this text. Don’t worry if the details of the program don’t yet make sense. Instead, focus on interpreting the images generated below. Later sections of the text will describe most of the features of the Python programming language used below.</p>
 
@@ -1567,6 +1542,7 @@ initFunction(initQuery);
 <span class="n">little_women_url</span> <span class="o">=</span> <span class="s">'https://www.inferentialthinking.com/chapters/01/3/little_women.txt'</span>
 <span class="n">little_women_text</span> <span class="o">=</span> <span class="n">read_url</span><span class="p">(</span><span class="n">little_women_url</span><span class="p">)</span>
 <span class="n">little_women_chapters</span> <span class="o">=</span> <span class="n">little_women_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'CHAPTER '</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1579,6 +1555,7 @@ initFunction(initQuery);
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Display the chapters of Huckleberry Finn in a table.</span>
 
 <span class="n">Table</span><span class="p">()</span><span class="o">.</span><span class="n">with_column</span><span class="p">(</span><span class="s">'Chapters'</span><span class="p">,</span> <span class="n">huck_finn_chapters</span><span class="p">)</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1633,6 +1610,7 @@ initFunction(initQuery);
 </div>
 
 <p>Each chapter begins with a chapter number in Roman numerals, followed by the first sentence of the chapter. Project Gutenberg has printed the first word of each chapter in upper case.</p>
+
 
               <nav class="c-page__nav">
   

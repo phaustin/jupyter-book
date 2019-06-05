@@ -29,9 +29,9 @@
   "headline":
     "Numbers",
   "datePublished":
-    "2019-05-18T16:17:26+00:00",
+    "2019-06-05T16:19:33+00:00",
   "dateModified":
-    "2019-05-18T16:17:26+00:00",
+    "2019-06-05T16:19:33+00:00",
   "description":
     "Computers are designed to perform numerical calculations, but there are some important details about working with numbers that every programmer working with ...",
   "author": {
@@ -365,88 +365,86 @@ initFunction(addCopyButtonToCodeCells);
 
 
   <!-- Hide cell code -->
-  
-<script>
-/**
-Add buttons to hide code cells
-*/
+  <script>
+    /**
+    Add buttons to hide code cells
+    */
 
 
-var setCodeCellVisibility = function(inputField, kind) {
-    // Update the image and class for hidden
-    var id = inputField.getAttribute('data-id');
-    var codeCell = document.querySelector(`#${id} div.highlight`);
+    var setCodeCellVisibility = function (inputField, kind) {
+        // Update the image and class for hidden
+        var id = inputField.getAttribute('data-id');
+        var codeCell = document.querySelector(`#${id} div.highlight`);
 
-    if (kind === "visible") {
-        codeCell.classList.remove('hidden');
-        inputField.checked = true;
-    } else {
-        codeCell.classList.add('hidden');
-        inputField.checked = false;
-    }
-}
-
-var toggleCodeCellVisibility = function (event) {
-    // The label is clicked, and now we decide what to do based on the input field's clicked status
-    if (event.target.tagName === "LABEL") {
-        var inputField = event.target.previousElementSibling;
-    } else {
-        // It is the span inside the target
-        var inputField = event.target.parentElement.previousElementSibling;
+        if (kind === "visible") {
+            codeCell.classList.remove('hidden');
+            inputField.checked = true;
+        } else {
+            codeCell.classList.add('hidden');
+            inputField.checked = false;
+        }
     }
 
-    if (inputField.checked === true) {
-        setCodeCellVisibility(inputField, "visible");
-    } else {
-        setCodeCellVisibility(inputField, "hidden");
-    }
-}
+    var toggleCodeCellVisibility = function (event) {
+        // The label is clicked, and now we decide what to do based on the input field's clicked status
+        if (event.target.tagName === "LABEL") {
+            var inputField = event.target.previousElementSibling;
+        } else {
+            // It is the span inside the target
+            var inputField = event.target.parentElement.previousElementSibling;
+        }
 
-
-// Button constructor
-const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
-
-var addHideButton = function () {
-  // If a hide button is already added, don't add another
-  if (document.querySelector('div.hidecode input') !== null) {
-      return;
-  }
-
-  // Find the input cells and add a hide button
-  document.querySelectorAll('div.input_area').forEach(function (item, index) {
-    if (!item.classList.contains("hidecode")) {
-        // Skip the cell if it doesn't have a hidecode class
-        return;
+        if (inputField.checked === true) {
+            setCodeCellVisibility(inputField, "visible");
+        } else {
+            setCodeCellVisibility(inputField, "hidden");
+        }
     }
 
-    const id = codeCellId(index)
-    item.setAttribute('id', id);
-    // Insert the button just inside the end of the next div
-    item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
 
-    // Set up the visibility toggle
-    hideLink = document.querySelector(`#${id} div.highlight + input + label`);
-    hideLink.addEventListener('click', toggleCodeCellVisibility)
-  });
-}
+    // Button constructor
+    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+    var addHideButton = function () {
+        // If a hide button is already added, don't add another
+        if (document.querySelector('div.hidecode input') !== null) {
+            return;
+        }
+
+        // Find the input cells and add a hide button
+        document.querySelectorAll('div.input_area').forEach(function (item, index) {
+            if (!item.classList.contains("hidecode")) {
+                // Skip the cell if it doesn't have a hidecode class
+                return;
+            }
+
+            const id = codeCellId(index)
+            item.setAttribute('id', id);
+            // Insert the button just inside the end of the next div
+            item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
+
+            // Set up the visibility toggle
+            hideLink = document.querySelector(`#${id} div.highlight + input + label`);
+            hideLink.addEventListener('click', toggleCodeCellVisibility)
+        });
+    }
 
 
-// Initialize the hide buttos
-var initHiddenCells = function () {
-    // Add hide buttons to the cells
-    addHideButton();
+    // Initialize the hide buttos
+    var initHiddenCells = function () {
+        // Add hide buttons to the cells
+        addHideButton();
 
-    // Toggle the code cells that should be hidden
-    document.querySelectorAll('div.hidecode input').forEach(function (item) {
-        setCodeCellVisibility(item, 'hidden');
-        item.checked = true;
-    })
-}
+        // Toggle the code cells that should be hidden
+        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+            setCodeCellVisibility(item, 'hidden');
+            item.checked = true;
+        })
+    }
 
-initFunction(initHiddenCells);
+    initFunction(initHiddenCells);
 
 </script>
-
 
   <!-- Load custom website scripts -->
   <script src="/jupyter-book/assets/js/scripts.js" async></script>
@@ -1540,6 +1538,7 @@ initFunction(initQuery);
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Some int values</span>
 <span class="mi">2</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1556,6 +1555,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1572,6 +1572,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span><span class="mi">1234567890000000000</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1589,6 +1590,7 @@ initFunction(initQuery);
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Some float values</span>
 <span class="mf">1.2</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1605,6 +1607,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">3.0</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1623,6 +1626,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">1.5</span> <span class="o">+</span> <span class="mi">2</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1639,6 +1643,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">/</span> <span class="mi">1</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1655,6 +1660,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span><span class="mf">12345678900000000000.0</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1673,6 +1679,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1689,6 +1696,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">1</span><span class="p">)</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1708,6 +1716,7 @@ initFunction(initQuery);
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c"># The type of x is an int, not a name</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1724,6 +1733,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">)</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1752,6 +1762,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e306</span> <span class="o">*</span> <span class="mi">10</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1768,6 +1779,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e306</span> <span class="o">*</span> <span class="mi">100</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1784,6 +1796,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e-322</span> <span class="o">/</span> <span class="mi">10</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1800,6 +1813,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e-322</span> <span class="o">/</span> <span class="mi">100</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1818,6 +1832,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">0.6666666666666666</span> <span class="o">-</span> <span class="mf">0.6666666666666666123456789</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1836,6 +1851,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1852,6 +1868,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1868,6 +1885,7 @@ initFunction(initQuery);
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1884,6 +1902,7 @@ initFunction(initQuery);
 <p>The final result above is <code class="highlighter-rouge">0.0000000000000004440892098500626</code>, a number that is very close to zero. The correct answer to this arithmetic expression is 0, but a small error in the final significant digit appears very different in scientific notation. This behavior appears in almost all programming languages because it is the result of the standard way that arithmetic is carried out on computers.</p>
 
 <p>Although <code class="highlighter-rouge">float</code> values are not always exact, they are certainly reliable and work the same way across all different kinds of computers and programming languages.</p>
+
 
               <nav class="c-page__nav">
   

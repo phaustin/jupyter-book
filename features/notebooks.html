@@ -29,9 +29,9 @@
   "headline":
     "Jupyter notebooks",
   "datePublished":
-    "2019-05-18T16:17:26+00:00",
+    "2019-06-05T16:19:33+00:00",
   "dateModified":
-    "2019-05-18T16:17:26+00:00",
+    "2019-06-05T16:19:33+00:00",
   "description":
     "Content with notebooks",
   "author": {
@@ -365,88 +365,86 @@ initFunction(addCopyButtonToCodeCells);
 
 
   <!-- Hide cell code -->
-  
-<script>
-/**
-Add buttons to hide code cells
-*/
+  <script>
+    /**
+    Add buttons to hide code cells
+    */
 
 
-var setCodeCellVisibility = function(inputField, kind) {
-    // Update the image and class for hidden
-    var id = inputField.getAttribute('data-id');
-    var codeCell = document.querySelector(`#${id} div.highlight`);
+    var setCodeCellVisibility = function (inputField, kind) {
+        // Update the image and class for hidden
+        var id = inputField.getAttribute('data-id');
+        var codeCell = document.querySelector(`#${id} div.highlight`);
 
-    if (kind === "visible") {
-        codeCell.classList.remove('hidden');
-        inputField.checked = true;
-    } else {
-        codeCell.classList.add('hidden');
-        inputField.checked = false;
-    }
-}
-
-var toggleCodeCellVisibility = function (event) {
-    // The label is clicked, and now we decide what to do based on the input field's clicked status
-    if (event.target.tagName === "LABEL") {
-        var inputField = event.target.previousElementSibling;
-    } else {
-        // It is the span inside the target
-        var inputField = event.target.parentElement.previousElementSibling;
+        if (kind === "visible") {
+            codeCell.classList.remove('hidden');
+            inputField.checked = true;
+        } else {
+            codeCell.classList.add('hidden');
+            inputField.checked = false;
+        }
     }
 
-    if (inputField.checked === true) {
-        setCodeCellVisibility(inputField, "visible");
-    } else {
-        setCodeCellVisibility(inputField, "hidden");
-    }
-}
+    var toggleCodeCellVisibility = function (event) {
+        // The label is clicked, and now we decide what to do based on the input field's clicked status
+        if (event.target.tagName === "LABEL") {
+            var inputField = event.target.previousElementSibling;
+        } else {
+            // It is the span inside the target
+            var inputField = event.target.parentElement.previousElementSibling;
+        }
 
-
-// Button constructor
-const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
-
-var addHideButton = function () {
-  // If a hide button is already added, don't add another
-  if (document.querySelector('div.hidecode input') !== null) {
-      return;
-  }
-
-  // Find the input cells and add a hide button
-  document.querySelectorAll('div.input_area').forEach(function (item, index) {
-    if (!item.classList.contains("hidecode")) {
-        // Skip the cell if it doesn't have a hidecode class
-        return;
+        if (inputField.checked === true) {
+            setCodeCellVisibility(inputField, "visible");
+        } else {
+            setCodeCellVisibility(inputField, "hidden");
+        }
     }
 
-    const id = codeCellId(index)
-    item.setAttribute('id', id);
-    // Insert the button just inside the end of the next div
-    item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
 
-    // Set up the visibility toggle
-    hideLink = document.querySelector(`#${id} div.highlight + input + label`);
-    hideLink.addEventListener('click', toggleCodeCellVisibility)
-  });
-}
+    // Button constructor
+    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+    var addHideButton = function () {
+        // If a hide button is already added, don't add another
+        if (document.querySelector('div.hidecode input') !== null) {
+            return;
+        }
+
+        // Find the input cells and add a hide button
+        document.querySelectorAll('div.input_area').forEach(function (item, index) {
+            if (!item.classList.contains("hidecode")) {
+                // Skip the cell if it doesn't have a hidecode class
+                return;
+            }
+
+            const id = codeCellId(index)
+            item.setAttribute('id', id);
+            // Insert the button just inside the end of the next div
+            item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
+
+            // Set up the visibility toggle
+            hideLink = document.querySelector(`#${id} div.highlight + input + label`);
+            hideLink.addEventListener('click', toggleCodeCellVisibility)
+        });
+    }
 
 
-// Initialize the hide buttos
-var initHiddenCells = function () {
-    // Add hide buttons to the cells
-    addHideButton();
+    // Initialize the hide buttos
+    var initHiddenCells = function () {
+        // Add hide buttons to the cells
+        addHideButton();
 
-    // Toggle the code cells that should be hidden
-    document.querySelectorAll('div.hidecode input').forEach(function (item) {
-        setCodeCellVisibility(item, 'hidden');
-        item.checked = true;
-    })
-}
+        // Toggle the code cells that should be hidden
+        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+            setCodeCellVisibility(item, 'hidden');
+            item.checked = true;
+        })
+    }
 
-initFunction(initHiddenCells);
+    initFunction(initHiddenCells);
 
 </script>
-
 
   <!-- Load custom website scripts -->
   <script src="/jupyter-book/assets/js/scripts.js" async></script>
@@ -1565,6 +1563,7 @@ For example, here’s some sample Matplotlib code:</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1590,6 +1589,7 @@ For example, here’s some sample Matplotlib code:</p>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s">'Cold'</span><span class="p">,</span> <span class="s">'Medium'</span><span class="p">,</span> <span class="s">'Hot'</span><span class="p">]);</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1610,28 +1610,6 @@ For example, here’s some sample Matplotlib code:</p>
 in <a href="https://github.com/jupyter/jupyter-book/blob/master/notebooks/introduction/notebooks.ipynb">the original notebook</a> there
 used to be a cell below…</p>
 
-<div class="cell code_cell removed">
-  <div class="input_area">
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">thisvariable</span> <span class="o">=</span> <span class="s">"none of this should show up in the textbook"</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="n">thisvariable</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-</code></pre></div>    </div>
-  </div>
-
-  <div class="output_wrapper">
-    <div class="output_subarea">
-
-      <p class="output_png"><img src="../images/features/notebooks_5_0.png" alt="png" /></p>
-
-    </div>
-  </div>
-</div>
-
 <p>You can also <strong>remove only the code</strong> so that images and other output still show up.</p>
 
 <p>Below we’ll <em>only</em> display an image. It was generated with Python code in a cell,
@@ -1648,6 +1626,7 @@ which you can <a href="https://github.com/jupyter/jupyter-book/blob/master/noteb
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="n">thisvariable</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1668,6 +1647,7 @@ from <a href="https://github.com/jupyter/textbooks-with-jupyter/blob/master/note
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># NO CODE</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s">'hi'</span><span class="p">,</span> <span class="s">'there'</span><span class="p">],</span> <span class="p">[</span><span class="s">'this'</span><span class="p">,</span> <span class="s">'is'</span><span class="p">],</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'DataFrame'</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'Word A'</span><span class="p">,</span> <span class="s">'Word B'</span><span class="p">])</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1735,6 +1715,7 @@ depend on an underlying Python kernel to work.</p>
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">folium</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1769,6 +1750,7 @@ depend on an underlying Python kernel to work.</p>
 
 <span class="n">m</span>
 
+
 </code></pre></div>    </div>
   </div>
 
@@ -1791,6 +1773,7 @@ your Jupyter Book as well!</p>
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">create</span> <span class="o">-</span><span class="n">h</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1847,6 +1830,7 @@ optional arguments:
 <div class="cell code_cell">
   <div class="input_area">
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">this_will_error</span>
+
 </code></pre></div>    </div>
   </div>
 
@@ -1868,6 +1852,7 @@ optional arguments:
     </div>
   </div>
 </div>
+
 
               <nav class="c-page__nav">
   
