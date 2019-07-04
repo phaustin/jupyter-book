@@ -29,9 +29,9 @@
   "headline":
     "Building and publishing your book",
   "datePublished":
-    "2019-06-09T01:15:12+00:00",
+    "2019-07-04T16:33:10+00:00",
   "dateModified":
-    "2019-06-09T01:15:12+00:00",
+    "2019-07-04T16:33:10+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -1595,7 +1595,8 @@ to guide you through this process.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull emdupre/jupyter-book
 </code></pre></div></div>
 
-<p>You can then access this image with:</p>
+<p>You can then access this image with the following command.
+Make sure to specify the full path to your Jupyter Book, rather than the relative path!</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">--security-opt</span> label:disable  <span class="se">\</span>
    <span class="nt">-v</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
@@ -1623,7 +1624,8 @@ on your system.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity build jupyter-book.simg docker://emdupre/jupyter-book
 </code></pre></div></div>
 
-<p>Next, you can access this image with:</p>
+<p>Next, you can access this image with the following command.
+Make sure to specify the full path to your Jupyter Book, rather than the relative path!</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity run <span class="nt">-B</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
     <span class="nt">--pwd</span> /srv/jekyll <span class="se">\</span>
