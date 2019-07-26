@@ -29,9 +29,9 @@
   "headline":
     "How-to and advanced topics",
   "datePublished":
-    "2019-07-15T18:01:20+00:00",
+    "2019-07-26T20:07:19+00:00",
   "dateModified":
-    "2019-07-15T18:01:20+00:00",
+    "2019-07-26T20:07:19+00:00",
   "description":
     "This page contains more advanced and complete information about thejupyter-book repository. See the sections below.",
   "author": {
@@ -1508,35 +1508,6 @@ initFunction(initQuery);
               <p>This page contains more advanced and complete information about the
 <a href="https://github.com/jupyter/jupyter-book"><code class="highlighter-rouge">jupyter-book</code> repository</a>. See the sections below.</p>
 
-<h2 id="hide-cells-or-cell-outputs-in-the-built-site">Hide cells or cell outputs in the built site</h2>
-
-<p>Sometimes you want to use code to generate visualizations or prepare data,
-but you don’t want users to see it in your built book. To prevent code cells
-from showing up in your built site, you can use the following two configuration
-options in your <code class="highlighter-rouge">_config.yml</code> file.</p>
-
-<p><strong>To remove entire code cells from your book</strong>, use the following configuration:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hide_cell_text </span><span class="pi">:</span> <span class="s2">"</span><span class="s">YOUR</span><span class="nv"> </span><span class="s">TEXT"</span>
-</code></pre></div></div>
-
-<p>Any code cell with the value of <code class="highlighter-rouge">hide_cell_text</code> (above it is <code class="highlighter-rouge">YOUR TEXT</code>)
-will not show up in your built book.</p>
-
-<p><strong>To remove only the code, but retain the outputs or a cell</strong>, use the following
-configuration:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hide_code_text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">YOUR</span><span class="nv"> </span><span class="s">TEXT"</span>
-</code></pre></div></div>
-
-<p>Any code cell with the value of <code class="highlighter-rouge">hide_code_text</code> (above it is <code class="highlighter-rouge">YOUR TEXT</code>)
-will show the output (e.g. images, HTML, etc) but not the input code that
-generated this output.</p>
-
-<p>In both cases, the cells <em>will</em> remain in the notebooks themselves, they
-simply won’t show up in the site’s HTML, so links that point to a JupyterHub/
-Binder/etc will still work as expected.</p>
-
 <h2 id="enable-google-analytics">Enable Google Analytics</h2>
 
 <p>If you have a Google Account, you can use Google Analytics to collect some 
@@ -1583,14 +1554,14 @@ automatically inserts into your course material.</p>
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/04_faq">
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/04_faq.html">
       〈 <span class="u-margin-right-tiny"></span> FAQ
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/features/features">
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/features/features.html">
       Features and customization <span class="u-margin-right-tiny"></span> 〉
     </a>
   
