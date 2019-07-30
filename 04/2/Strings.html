@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Strings</title>
-  <meta name="description" content="Much of the world’s data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the co...">
+  <meta name="description" content="Much of the world's data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the co...">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/04/2/Strings.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/04/2/Strings.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Strings" />
-<meta property="og:description" content="Much of the world’s data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the co..." />
+<meta property="og:description" content="Much of the world's data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the co..." />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "Strings",
   "datePublished":
-    "2019-07-30T00:41:12+00:00",
+    "2019-07-30T01:18:05+00:00",
   "dateModified":
-    "2019-07-30T00:41:12+00:00",
+    "2019-07-30T01:18:05+00:00",
   "description":
-    "Much of the world’s data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the co...",
+    "Much of the world's data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the co...",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -140,6 +140,45 @@ initFunction(function () {
   <script src="/jupyter-book/assets/js/turbolinks.js" async></script>
   <meta name="turbolinks-cache-control" content="no-cache">
 
+  <!-- Selectors for elements on the page -->
+  <script>
+/**
+ * Select various elements on the page for later use
+ */
+
+// IDs we'll attach to cells
+const codeCellId = index => `codecell${index}`
+const inputCellId = index => `inputcell${index}`
+
+pageElements = {}
+
+// All code cells
+findCodeCells = function() {
+    var codeCells = document.querySelectorAll('div.c-textbook__content > div.highlighter-rouge > div.highlight > pre, div.input_area pre, div.text_cell_render div.highlight pre')
+    pageElements['codeCells'] = codeCells;
+
+    codeCells.forEach((codeCell, index) => {
+      const id = codeCellId(index)
+      codeCell.setAttribute('id', id)
+    })
+};
+
+initFunction(findCodeCells);
+
+
+findInputCells = function() {
+    var inputCells = document.querySelectorAll('div.jb_input')
+    pageElements['inputCells'] = inputCells;
+
+    inputCells.forEach((inputCell, index) => {
+        const id = inputCellId(index)
+        inputCell.setAttribute('id', id)
+    })
+};
+
+initFunction(findInputCells);
+</script>
+
   <!-- Load nbinteract for widgets -->
   
 
@@ -161,7 +200,7 @@ const thebelabCellButton = id =>
 
 const addThebelabButtonToCodeCells =  () => {
 
-  const codeCells = document.querySelectorAll('div.input_area > div.highlighter-rouge:not(.output) pre')
+  const codeCells = document.querySelectorAll('div.input_area > div.highlight:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -300,153 +339,6 @@ initFunction(initToc);
 
   <!-- Clipboard copy button -->
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
-
-  <!-- Load JS that depends on site variables -->
-  <script>
-/**
- * Set up copy/paste for code blocks
- */
-const codeCellId = index => `codecell${index}`
-
-const clipboardButton = id =>
-  `<a id="copy-button-${id}" class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
-    <img src="/jupyter-book/assets/images/copy-button.svg" alt="Copy to clipboard">
-  </a>`
-
-// Clears selected text since ClipboardJS will select the text when copying
-const clearSelection = () => {
-  if (window.getSelection) {
-    window.getSelection().removeAllRanges()
-  } else if (document.selection) {
-    document.selection.empty()
-  }
-}
-
-// Changes tooltip text for two seconds, then changes it back
-const temporarilyChangeTooltip = (el, newText) => {
-  const oldText = el.getAttribute('data-tooltip')
-  el.setAttribute('data-tooltip', newText)
-  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
-}
-
-const addCopyButtonToCodeCells = () => {
-  // If ClipboardJS hasn't loaded, wait a bit and try again. This
-  // happens because we load ClipboardJS asynchronously.
-  if (window.ClipboardJS === undefined) {
-    setTimeout(addCopyButtonToCodeCells, 250)
-    return
-  }
-
-  const codeCells = document.querySelectorAll('div.c-textbook__content > div.highlighter-rouge > div.highlight > pre, div.input_area pre')
-  codeCells.forEach((codeCell, index) => {
-    const id = codeCellId(index)
-    codeCell.setAttribute('id', id)
-    if (document.getElementById("copy-button" + id) == null) {
-      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
-    }
-  })
-
-  const clipboard = new ClipboardJS('.copybtn')
-  clipboard.on('success', event => {
-    clearSelection()
-    temporarilyChangeTooltip(event.trigger, 'Copied!')
-  })
-
-  clipboard.on('error', event => {
-    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
-  })
-
-  // Get rid of clipboard before the next page visit to avoid memory leak
-  document.addEventListener('turbolinks:before-visit', () =>
-    clipboard.destroy()
-  )
-}
-
-initFunction(addCopyButtonToCodeCells);
-</script>
-
-
-  <!-- Hide cell code -->
-  <script>
-    /**
-    Add buttons to hide code cells
-    */
-
-
-    var setCodeCellVisibility = function (inputField, kind) {
-        // Update the image and class for hidden
-        var id = inputField.getAttribute('data-id');
-        var codeCell = document.querySelector(`#${id} div.highlight`);
-
-        if (kind === "visible") {
-            codeCell.classList.remove('hidden');
-            inputField.checked = true;
-        } else {
-            codeCell.classList.add('hidden');
-            inputField.checked = false;
-        }
-    }
-
-    var toggleCodeCellVisibility = function (event) {
-        // The label is clicked, and now we decide what to do based on the input field's clicked status
-        if (event.target.tagName === "LABEL") {
-            var inputField = event.target.previousElementSibling;
-        } else {
-            // It is the span inside the target
-            var inputField = event.target.parentElement.previousElementSibling;
-        }
-
-        if (inputField.checked === true) {
-            setCodeCellVisibility(inputField, "visible");
-        } else {
-            setCodeCellVisibility(inputField, "hidden");
-        }
-    }
-
-
-    // Button constructor
-    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
-
-    var addHideButton = function () {
-        // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
-            return;
-        }
-
-        // Find the input cells and add a hide button
-        document.querySelectorAll('div.input_area').forEach(function (item, index) {
-            if (!item.classList.contains("hidecode")) {
-                // Skip the cell if it doesn't have a hidecode class
-                return;
-            }
-
-            const id = codeCellId(index)
-            item.setAttribute('id', id);
-            // Insert the button just inside the end of the next div
-            item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
-
-            // Set up the visibility toggle
-            hideLink = document.querySelector(`#${id} div.highlight + input + label`);
-            hideLink.addEventListener('click', toggleCodeCellVisibility)
-        });
-    }
-
-
-    // Initialize the hide buttos
-    var initHiddenCells = function () {
-        // Add hide buttons to the cells
-        addHideButton();
-
-        // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
-            setCodeCellVisibility(item, 'hidden');
-            item.checked = true;
-        })
-    }
-
-    initFunction(initHiddenCells);
-
-</script>
 
   <!-- Load custom website scripts -->
   <script src="/jupyter-book/assets/js/scripts.js" async></script>
@@ -685,6 +577,148 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 };
 
 initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const clipboardButton = id =>
+  `<a id="copy-button-${id}" class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/jupyter-book/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  pageElements['codeCells'].forEach((codeCell) => {
+    const id = codeCell.getAttribute('id')
+    if (document.getElementById("copy-button" + id) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+
+  <!-- Hide cell code -->
+  <script>
+    /**
+    Add buttons to hide code cells
+    */
+
+
+    var setCodeCellVisibility = function (inputField, kind) {
+        // Update the image and class for hidden
+        var id = inputField.getAttribute('data-id');
+        var codeCell = document.querySelector(`#${id} div.highlight`);
+
+        if (kind === "visible") {
+            codeCell.classList.remove('hidden');
+            inputField.checked = true;
+        } else {
+            codeCell.classList.add('hidden');
+            inputField.checked = false;
+        }
+    }
+
+    var toggleCodeCellVisibility = function (event) {
+        // The label is clicked, and now we decide what to do based on the input field's clicked status
+        if (event.target.tagName === "LABEL") {
+            var inputField = event.target.previousElementSibling;
+        } else {
+            // It is the span inside the target
+            var inputField = event.target.parentElement.previousElementSibling;
+        }
+
+        if (inputField.checked === true) {
+            setCodeCellVisibility(inputField, "visible");
+        } else {
+            setCodeCellVisibility(inputField, "hidden");
+        }
+    }
+
+
+    // Button constructor
+    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+    var addHideButton = function () {
+        // If a hide button is already added, don't add another
+        if (document.querySelector('div.hidecode input') !== null) {
+            return;
+        }
+
+        // Find the input cells and add a hide button
+        pageElements['inputCells'].forEach(function (inputCell) {
+            if (!inputCell.classList.contains("hidecode")) {
+                // Skip the cell if it doesn't have a hidecode class
+                return;
+            }
+            const id = inputCell.getAttribute('id')
+
+            // Insert the button just inside the end of the next div
+            inputCell.querySelector('div.input').insertAdjacentHTML('beforeend', hideCodeButton(id))
+
+            // Set up the visibility toggle
+            hideLink = document.querySelector(`#${id} div.inner_cell + input + label`);
+            hideLink.addEventListener('click', toggleCodeCellVisibility)
+        });
+    }
+
+
+    // Initialize the hide buttos
+    var initHiddenCells = function () {
+        // Add hide buttons to the cells
+        addHideButton();
+
+        // Toggle the code cells that should be hidden
+        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+            setCodeCellVisibility(item, 'hidden');
+            item.checked = true;
+        })
+    }
+
+    initFunction(initHiddenCells);
+
 </script>
 </head>
 
@@ -1527,85 +1561,212 @@ initFunction(initQuery);
 
 
             <div class="c-textbook__content">
-              <p>Much of the world’s data is text, and a piece of text represented in a computer is called a <em>string</em>. A string can represent a word, a sentence, or even the contents of every book in a library. Since text can include numbers (like this: 5) or truth values (True), a string can also describe those things.</p>
-
+              <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Much of the world's data is text, and a piece of text represented in a computer is called a <em>string</em>. A string can represent a word, a sentence, or even the contents of every book in a library. Since text can include numbers (like this: 5) or truth values (True), a string can also describe those things.</p>
 <p>The meaning of an expression depends both upon its structure and the types of values that are being combined. So, for instance, adding two strings together produces another string. This expression is still an addition expression, but it is combining a different type of value.</p>
 
-<div class="cell code_cell">
-  <div class="input_area">
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"data"</span> <span class="o">+</span> <span class="s">"science"</span>
-
-</code></pre></div>    </div>
-  </div>
-
-  <div class="output_wrapper">
-    <div class="output_subarea">
-
-      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'datascience'
-</code></pre></div>      </div>
-
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
-<p>Addition is completely literal; it combines these two strings together without regard for their contents. It doesn’t add a space because these are different words; that’s up to the programmer (you) to specify.</p>
 
-<div class="cell code_cell">
-  <div class="input_area">
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"data"</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="s">"science"</span>
 
-</code></pre></div>    </div>
-  </div>
+<div class="cell border-box-sizing code_cell rendered">
 
-  <div class="output_wrapper">
-    <div class="output_subarea">
+<div class="jb_input" >
+<div class="input">
 
-      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'data science'
-</code></pre></div>      </div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;data&quot;</span> <span class="o">+</span> <span class="s2">&quot;science&quot;</span>
+</pre></div>
 
     </div>
-  </div>
+</div>
 </div>
 
-<p>Single and double quotes can both be used to create strings: <code class="highlighter-rouge">'hi'</code> and <code class="highlighter-rouge">"hi"</code> are identical expressions. Double quotes are often preferred because they allow you to include apostrophes inside of strings.</p>
+</div>
 
-<div class="cell code_cell">
-  <div class="input_area">
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"This won't work with a single-quoted string!"</span>
 
-</code></pre></div>    </div>
-  </div>
 
-  <div class="output_wrapper">
-    <div class="output_subarea">
+<div class="output_wrapper">
+<div class="output">
 
-      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"This won't work with a single-quoted string!"
-</code></pre></div>      </div>
+<div class="jb_output_wrapper">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;datascience&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Addition is completely literal; it combines these two strings together without regard for their contents. It doesn't add a space because these are different words; that's up to the programmer (you) to specify.</p>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="jb_input" >
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;data&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;science&quot;</span>
+</pre></div>
 
     </div>
-  </div>
+</div>
 </div>
 
+</div>
+
+
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;data science&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Single and double quotes can both be used to create strings: <code>'hi'</code> and <code>"hi"</code> are identical expressions. Double quotes are often preferred because they allow you to include apostrophes inside of strings.</p>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="jb_input" >
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;This won&#39;t work with a single-quoted string!&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;This won&#39;t work with a single-quoted string!&#34;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Why not? Try it out.</p>
 
-<p>The <code class="highlighter-rouge">str</code> function returns a string representation of any value. Using this function, strings can be constructed that have embedded values.</p>
+</div>
+</div>
+</div>
 
-<div class="cell code_cell">
-  <div class="input_area">
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"That's "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">' '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
-</code></pre></div>    </div>
-  </div>
 
-  <div class="output_wrapper">
-    <div class="output_subarea">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>str</code> function returns a string representation of any value. Using this function, strings can be constructed that have embedded values.</p>
 
-      <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"That's 2 True"
-</code></pre></div>      </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="jb_input" >
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;That&#39;s &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
 
     </div>
-  </div>
 </div>
+</div>
+
+</div>
+
+
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;That&#39;s 2 True&#34;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+ 
 
 
               <nav class="c-page__nav">

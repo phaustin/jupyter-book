@@ -31,9 +31,9 @@
   "headline":
     "Search the site",
   "datePublished":
-    "2019-07-30T00:41:12+00:00",
+    "2019-07-30T01:18:05+00:00",
   "dateModified":
-    "2019-07-30T00:41:12+00:00",
+    "2019-07-30T01:18:05+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -140,6 +140,45 @@ initFunction(function () {
   <script src="/jupyter-book/assets/js/turbolinks.js" async></script>
   <meta name="turbolinks-cache-control" content="no-cache">
 
+  <!-- Selectors for elements on the page -->
+  <script>
+/**
+ * Select various elements on the page for later use
+ */
+
+// IDs we'll attach to cells
+const codeCellId = index => `codecell${index}`
+const inputCellId = index => `inputcell${index}`
+
+pageElements = {}
+
+// All code cells
+findCodeCells = function() {
+    var codeCells = document.querySelectorAll('div.c-textbook__content > div.highlighter-rouge > div.highlight > pre, div.input_area pre, div.text_cell_render div.highlight pre')
+    pageElements['codeCells'] = codeCells;
+
+    codeCells.forEach((codeCell, index) => {
+      const id = codeCellId(index)
+      codeCell.setAttribute('id', id)
+    })
+};
+
+initFunction(findCodeCells);
+
+
+findInputCells = function() {
+    var inputCells = document.querySelectorAll('div.jb_input')
+    pageElements['inputCells'] = inputCells;
+
+    inputCells.forEach((inputCell, index) => {
+        const id = inputCellId(index)
+        inputCell.setAttribute('id', id)
+    })
+};
+
+initFunction(findInputCells);
+</script>
+
   <!-- Load nbinteract for widgets -->
   
 
@@ -161,7 +200,7 @@ const thebelabCellButton = id =>
 
 const addThebelabButtonToCodeCells =  () => {
 
-  const codeCells = document.querySelectorAll('div.input_area > div.highlighter-rouge:not(.output) pre')
+  const codeCells = document.querySelectorAll('div.input_area > div.highlight:not(.output) pre')
   codeCells.forEach((codeCell, index) => {
     const id = codeCellId(index)
     codeCell.setAttribute('id', id)
@@ -300,153 +339,6 @@ initFunction(initToc);
 
   <!-- Clipboard copy button -->
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
-
-  <!-- Load JS that depends on site variables -->
-  <script>
-/**
- * Set up copy/paste for code blocks
- */
-const codeCellId = index => `codecell${index}`
-
-const clipboardButton = id =>
-  `<a id="copy-button-${id}" class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
-    <img src="/jupyter-book/assets/images/copy-button.svg" alt="Copy to clipboard">
-  </a>`
-
-// Clears selected text since ClipboardJS will select the text when copying
-const clearSelection = () => {
-  if (window.getSelection) {
-    window.getSelection().removeAllRanges()
-  } else if (document.selection) {
-    document.selection.empty()
-  }
-}
-
-// Changes tooltip text for two seconds, then changes it back
-const temporarilyChangeTooltip = (el, newText) => {
-  const oldText = el.getAttribute('data-tooltip')
-  el.setAttribute('data-tooltip', newText)
-  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
-}
-
-const addCopyButtonToCodeCells = () => {
-  // If ClipboardJS hasn't loaded, wait a bit and try again. This
-  // happens because we load ClipboardJS asynchronously.
-  if (window.ClipboardJS === undefined) {
-    setTimeout(addCopyButtonToCodeCells, 250)
-    return
-  }
-
-  const codeCells = document.querySelectorAll('div.c-textbook__content > div.highlighter-rouge > div.highlight > pre, div.input_area pre')
-  codeCells.forEach((codeCell, index) => {
-    const id = codeCellId(index)
-    codeCell.setAttribute('id', id)
-    if (document.getElementById("copy-button" + id) == null) {
-      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
-    }
-  })
-
-  const clipboard = new ClipboardJS('.copybtn')
-  clipboard.on('success', event => {
-    clearSelection()
-    temporarilyChangeTooltip(event.trigger, 'Copied!')
-  })
-
-  clipboard.on('error', event => {
-    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
-  })
-
-  // Get rid of clipboard before the next page visit to avoid memory leak
-  document.addEventListener('turbolinks:before-visit', () =>
-    clipboard.destroy()
-  )
-}
-
-initFunction(addCopyButtonToCodeCells);
-</script>
-
-
-  <!-- Hide cell code -->
-  <script>
-    /**
-    Add buttons to hide code cells
-    */
-
-
-    var setCodeCellVisibility = function (inputField, kind) {
-        // Update the image and class for hidden
-        var id = inputField.getAttribute('data-id');
-        var codeCell = document.querySelector(`#${id} div.highlight`);
-
-        if (kind === "visible") {
-            codeCell.classList.remove('hidden');
-            inputField.checked = true;
-        } else {
-            codeCell.classList.add('hidden');
-            inputField.checked = false;
-        }
-    }
-
-    var toggleCodeCellVisibility = function (event) {
-        // The label is clicked, and now we decide what to do based on the input field's clicked status
-        if (event.target.tagName === "LABEL") {
-            var inputField = event.target.previousElementSibling;
-        } else {
-            // It is the span inside the target
-            var inputField = event.target.parentElement.previousElementSibling;
-        }
-
-        if (inputField.checked === true) {
-            setCodeCellVisibility(inputField, "visible");
-        } else {
-            setCodeCellVisibility(inputField, "hidden");
-        }
-    }
-
-
-    // Button constructor
-    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
-
-    var addHideButton = function () {
-        // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
-            return;
-        }
-
-        // Find the input cells and add a hide button
-        document.querySelectorAll('div.input_area').forEach(function (item, index) {
-            if (!item.classList.contains("hidecode")) {
-                // Skip the cell if it doesn't have a hidecode class
-                return;
-            }
-
-            const id = codeCellId(index)
-            item.setAttribute('id', id);
-            // Insert the button just inside the end of the next div
-            item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
-
-            // Set up the visibility toggle
-            hideLink = document.querySelector(`#${id} div.highlight + input + label`);
-            hideLink.addEventListener('click', toggleCodeCellVisibility)
-        });
-    }
-
-
-    // Initialize the hide buttos
-    var initHiddenCells = function () {
-        // Add hide buttons to the cells
-        addHideButton();
-
-        // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
-            setCodeCellVisibility(item, 'hidden');
-            item.checked = true;
-        })
-    }
-
-    initFunction(initHiddenCells);
-
-</script>
 
   <!-- Load custom website scripts -->
   <script src="/jupyter-book/assets/js/scripts.js" async></script>
@@ -685,6 +577,148 @@ document.addEventListener('turbolinks:load', updateInteractLink)
 };
 
 initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const clipboardButton = id =>
+  `<a id="copy-button-${id}" class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/jupyter-book/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  pageElements['codeCells'].forEach((codeCell) => {
+    const id = codeCell.getAttribute('id')
+    if (document.getElementById("copy-button" + id) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+
+  <!-- Hide cell code -->
+  <script>
+    /**
+    Add buttons to hide code cells
+    */
+
+
+    var setCodeCellVisibility = function (inputField, kind) {
+        // Update the image and class for hidden
+        var id = inputField.getAttribute('data-id');
+        var codeCell = document.querySelector(`#${id} div.highlight`);
+
+        if (kind === "visible") {
+            codeCell.classList.remove('hidden');
+            inputField.checked = true;
+        } else {
+            codeCell.classList.add('hidden');
+            inputField.checked = false;
+        }
+    }
+
+    var toggleCodeCellVisibility = function (event) {
+        // The label is clicked, and now we decide what to do based on the input field's clicked status
+        if (event.target.tagName === "LABEL") {
+            var inputField = event.target.previousElementSibling;
+        } else {
+            // It is the span inside the target
+            var inputField = event.target.parentElement.previousElementSibling;
+        }
+
+        if (inputField.checked === true) {
+            setCodeCellVisibility(inputField, "visible");
+        } else {
+            setCodeCellVisibility(inputField, "hidden");
+        }
+    }
+
+
+    // Button constructor
+    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+    var addHideButton = function () {
+        // If a hide button is already added, don't add another
+        if (document.querySelector('div.hidecode input') !== null) {
+            return;
+        }
+
+        // Find the input cells and add a hide button
+        pageElements['inputCells'].forEach(function (inputCell) {
+            if (!inputCell.classList.contains("hidecode")) {
+                // Skip the cell if it doesn't have a hidecode class
+                return;
+            }
+            const id = inputCell.getAttribute('id')
+
+            // Insert the button just inside the end of the next div
+            inputCell.querySelector('div.input').insertAdjacentHTML('beforeend', hideCodeButton(id))
+
+            // Set up the visibility toggle
+            hideLink = document.querySelector(`#${id} div.inner_cell + input + label`);
+            hideLink.addEventListener('click', toggleCodeCellVisibility)
+        });
+    }
+
+
+    // Initialize the hide buttos
+    var initHiddenCells = function () {
+        // Add hide buttons to the cells
+        addHideButton();
+
+        // Toggle the code cells that should be hidden
+        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+            setCodeCellVisibility(item, 'hidden');
+            item.checked = true;
+        })
+    }
+
+    initFunction(initHiddenCells);
+
 </script>
 </head>
 
@@ -1647,7 +1681,7 @@ initFunction(initQuery);
         "title": "Numbers",
         
         "excerpt":
-            "Computers are designed to perform numerical calculations, but there are some important details about working with numbers that every programmer working with quantitative data should know. Python (and most other programming languages) distinguishes between two different types of numbers: Integers are called int values in the Python language. They can only represent whole numbers (negative, zero, or positive) that don’t have a fractional component Real numbers are called float values (or floating point values) in the Python language. They can represent whole or fractional numbers but have some limitations. The type of a number is evident from the way it...",
+            "Computers are designed to perform numerical calculations, but there are some important details about working with numbers that every programmer working with quantitative data should know. Python (and most other programming languages) distinguishes between two different types of numbers: Integers are called int values in the Python language. They can only represent whole numbers (negative, zero, or positive) that don't have a fractional component Real numbers are called float values (or floating point values) in the Python language. They can represent whole or fractional numbers but have some limitations. The type of a number is evident from the way it...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/04/1/Numbers.html",
@@ -1655,7 +1689,7 @@ initFunction(initQuery);
         "title": "Strings",
         
         "excerpt":
-            "Much of the world’s data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the contents of every book in a library. Since text can include numbers (like this: 5) or truth values (True), a string can also describe those things. The meaning of an expression depends both upon its structure and the types of values that are being combined. So, for instance, adding two strings together produces another string. This expression is still an addition expression, but it is combining a different type...",
+            "Much of the world's data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the contents of every book in a library. Since text can include numbers (like this: 5) or truth values (True), a string can also describe those things. The meaning of an expression depends both upon its structure and the types of values that are being combined. So, for instance, adding two strings together produces another string. This expression is still an addition expression, but it is combining a different type...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/04/2/Strings.html",
@@ -1671,7 +1705,7 @@ initFunction(initQuery);
         "title": "Data Types",
         
         "excerpt":
-            "Every value has a type, and the built-in type function returns the type of the result of any expression.   One type we have encountered already is a built-in function. Python indicates that the type is a builtin_function_or_method; the distinction between a function and a method is not important at this stage.           type(abs)                          builtin_function_or_method                   This chapter will explore many useful types of data.   ",
+            "  Every value has a type, and the built-in type function returns the type of the result of any expression.           One type we have encountered already is a built-in function. Python indicates that the type is a builtin_function_or_method; the distinction between a function and a method is not important at this stage.                    type(abs)                        builtin_function_or_method              This chapter will explore many useful types of data.          ",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/04/Types.html",
@@ -1679,7 +1713,7 @@ initFunction(initQuery);
         "title": "Citations and bibliographies",
         
         "excerpt":
-            "Including citations in your book Because jupyter-book is built on top of Jekyll, we can use the excellent jekyll-scholar book to include citations and a bibliography with your book. Note that this only works if you’re building your book HTML locally and hosting the HTML files online somewhere. This can still use GitHub pages, but not the auto-generation of a cite from markdown files feature of GitHub pages. This is because GitHub pages doesn’t include the jekyll-scholar plugin. How to use citations Including citations with your markdown files or notebooks is done in the following way. Modify the file in...",
+            "Including citations in your book Because jupyter-book is built on top of Jekyll, we can use the excellent jekyll-scholar book to include citations and a bibliography with your book. Note that this only works if you're building your book HTML locally and hosting the HTML files online somewhere. This can still use GitHub pages, but not the auto-generation of a cite from markdown files feature of GitHub pages. This is because GitHub pages doesn't include the jekyll-scholar plugin. How to use citations Including citations with your markdown files or notebooks is done in the following way. Modify the file in...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/citations.html",
@@ -1695,7 +1729,7 @@ initFunction(initQuery);
         "title": "Hiding code blocks or entire cells",
         
         "excerpt":
-            "Hiding or removing code blocks or entire cells It’s possible to control which cells show up in your final book pages. For example, you may want to display a complex visualization to illustrate an idea, but don’t want the page to be cluttered with a large code cell that generated the viz. In other cases, you may want to remove a code cell entirely. In this case, you have two options: Hiding the inputs of a code cell will hide the cell’s contents and provide a button that lets readers reveal the content. Removing the inputs (or the entire cell)...",
+            "Hiding or removing code blocks or entire cells It's possible to control which cells show up in your final book pages. For example, you may want to display a complex visualization to illustrate an idea, but don't want the page to be cluttered with a large code cell that generated the viz. In other cases, you may want to remove a code cell entirely. In this case, you have two options: Hiding the inputs of a code cell will hide the cell's contents and provide a button that lets readers reveal the content. Removing the inputs (or the entire cell)...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/hiding.html",
@@ -1711,7 +1745,7 @@ initFunction(initQuery);
         "title": "Adding interactivity to your book pages",
         
         "excerpt":
-            "Interactive code in your book Sometimes you’d rather let people interact with code directly on the page instead of sending them off to a Binder or a JupyterHub. There are currently a few ways to make this happen in Jupyter Book (both of which are experimental). This page describes how to bring interactivity to your book. Both of these tools use MyBinder to provide a remote kernel. Making your page inputs interactive ✨experimental✨ If you’d like to provide interactivity for your content without making your readers leave the Jupyter Book site, you can use a project called Thebelab. This provides...",
+            "Interactive code in your book Sometimes you'd rather let people interact with code directly on the page instead of sending them off to a Binder or a JupyterHub. There are currently a few ways to make this happen in Jupyter Book (both of which are experimental). This page describes how to bring interactivity to your book. Both of these tools use MyBinder to provide a remote kernel. Making your page inputs interactive ✨experimental✨ If you'd like to provide interactivity for your content without making your readers leave the Jupyter Book site, you can use a project called Thebelab. This provides...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/interactive_cells.html",
@@ -1735,7 +1769,7 @@ initFunction(initQuery);
         "title": "Jupyter notebooks",
         
         "excerpt":
-            "Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is contained in a Jupyter Notebook in the notebooks/ folder of the repository. This means that we can include code blocks and their outputs, and export them to Jekyll markdown. You can find the original notebook for this page at this address Markdown + notebooks As it is markdown, you can embed images, HTML, etc into your posts! You an also $add_{math}$ and or But make sure you \\$Escape \\$your \\$dollar signs \\$you want to keep! Code blocks and image outputs Textbooks with...",
+            "Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is contained in a Jupyter Notebook in the notebooks/ folder of the repository. This means that we can include code blocks and their outputs, and export them to Jekyll markdown. You can find the original notebook for this page at this address Markdown + notebooks As it is markdown, you can embed images, HTML, etc into your posts! You an also $add_{math}$ and $$ math^{blocks} $$or $$ \\begin{align*} \\mbox{mean} la_{tex} \\\\ \\\\ math blocks \\end{align*} $$But make sure you \\$Escape \\$your \\$dollar signs...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/notebooks.html",
@@ -1743,7 +1777,7 @@ initFunction(initQuery);
         "title": "Searching your book",
         
         "excerpt":
-            "Searching your book It’s possible to enable search in your book so that users can find the content they’re looking for. This uses a nifty package called lunr.js. To add search to your book, simple add the following entry to _data/toc.yml. - title: Search (whatever title you like) search: true The result will be a link in your Table of Contents that directs users to a search page. For example, click the Search link in the TOC of this demo book. Customizing how much text is stored in search The Jupyter-Book search works by storing excerpts of text from each...",
+            "Searching your book It's possible to enable search in your book so that users can find the content they're looking for. This uses a nifty package called lunr.js. To add search to your book, simple add the following entry to _data/toc.yml. - title: Search (whatever title you like) search: true The result will be a link in your Table of Contents that directs users to a search page. For example, click the Search link in the TOC of this demo book. Customizing how much text is stored in search The Jupyter-Book search works by storing excerpts of text from each...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/search.html",
