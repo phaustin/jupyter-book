@@ -17,7 +17,9 @@
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Building and publishing your book" />
 <meta property="og:description" content="This is an example book built with Jupyter Books." />
-<meta property="og:image"       content="" />
+<meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary_large_image">
 
 
   <script type="application/ld+json">
@@ -29,9 +31,9 @@
   "headline":
     "Building and publishing your book",
   "datePublished":
-    "2019-07-26T23:29:49+00:00",
+    "2019-07-30T00:15:20+00:00",
   "dateModified":
-    "2019-07-26T23:29:49+00:00",
+    "2019-07-30T00:15:20+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -1639,7 +1641,24 @@ you should see a preview copy of your book.</p>
 
 <p>You can also choose to build your site locally without a container.
 In this case, you’ll need Ruby, an open-source programming language, to build your site’s
-HTML with Jekyll. The easiest way to install Ruby on <em>nix systems is to use
+HTML with Jekyll.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> If these instructions don’t work, you can also try installing Jekyll at the
+following URLs.</p>
+
+  <ul>
+    <li><a href="https://jekyllrb.com/docs/installation/macos/">MacOS Instructions</a></li>
+    <li><a href="https://jekyllrb.com/docs/installation/ubuntu/">Ubuntu Instructions</a></li>
+    <li><a href="https://jekyllrb.com/docs/installation/other-linux">Linux (non-Ubuntu) Instructions</a></li>
+    <li><a href="https://jekyllrb.com/docs/installation/windows/">Windows Instructions</a></li>
+  </ul>
+
+  <p>Once you’ve finished those steps, head to <a href="#install-ruby-plugins">install ruby plugins</a>
+and follow the directions.</p>
+</blockquote>
+
+<p>The easiest way to install Ruby on <em>nix systems is to use
 the *<code class="highlighter-rouge">conda</code></em> package manager:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge ruby
