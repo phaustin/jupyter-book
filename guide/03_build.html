@@ -31,9 +31,9 @@
   "headline":
     "Build and publish your book",
   "datePublished":
-    "2019-08-10T19:12:47+00:00",
+    "2019-08-13T00:23:36+00:00",
   "dateModified":
-    "2019-08-10T19:12:47+00:00",
+    "2019-08-13T00:23:36+00:00",
   "description":
     "Building and publishing your book",
   "author": {
@@ -1548,7 +1548,7 @@ build the raw material that Jekyll will use to turn your book into a website.
 We’ll also cover how to turn this book into the HTML for a website that can
 be served online.</p>
 
-<h2 id="build-the-books-markdown">Build the book’s markdown</h2>
+<h2 id="build-the-books-intermediate-files">Build the book’s intermediate files</h2>
 
 <p>Now that you’ve got the files installed content is in the book, you can build
 your book.</p>
@@ -1564,7 +1564,7 @@ your book.</p>
   <li>Use the links specified in the <code class="highlighter-rouge">_data/toc.yml</code> file (pointing to files in <code class="highlighter-rouge">/content/</code>) and
 do the following:
     <ul>
-      <li>Run <code class="highlighter-rouge">nbconvert</code> to turn the <code class="highlighter-rouge">.ipynb</code> files into markdown</li>
+      <li>Run <code class="highlighter-rouge">nbconvert</code> to turn the <code class="highlighter-rouge">.ipynb</code> files into HTML</li>
       <li>Replace relative image file paths so that they work on your new built site</li>
       <li>Clean up formatting issues for things like MathJax to display properly</li>
       <li>Place all these generated files in the <code class="highlighter-rouge">mybookname/_build/</code> directory.</li>
@@ -1595,176 +1595,25 @@ push it online. It also gives you a bit more functionality than using
 GitHub Pages to build your book. However, it also requires you to install
 Docker or Singularity (containerization platforms) <em>or</em>
 Ruby (an open source programming language).
-If you’d like to build your site locally then jump to the next section.</p>
+If you’d like to build your site locally then see the
+<a href="05_advanced.html">Advanced topics page</a>.</p>
   </li>
 </ol>
-
-<h2 id="build-the-books-site-html-locally">Build the book’s site HTML locally</h2>
-
-<p>Once you’ve generated the markdown for your notebooks and installed the
-necessary dependencies. You are ready to build your site HTML.</p>
-
-<p>Ensure that your notebooks have been converted to markdown, there should be a
-collection of them in <code class="highlighter-rouge">_build/</code>.</p>
-
-<p>In order to locally build your site’s HTML with Jekyll, you’ll need to either install
-a container software (Docker or Singularity) or Ruby.</p>
-
-<p>In our experience, we’ve found that <a href="https://www.docker.com/resources/what-container">containers</a>
-provide an easier installation for most systems.
-If you are developing on a system where you have administrator privileges
-(i.e., you have <code class="highlighter-rouge">root</code> permissions), we recommend you use <a href="https://docs.docker.com/get-started/">Docker</a>.</p>
-
-<p>We also provide instructions for using <a href="https://www.sylabs.io/guides/2.6/user-guide/quick_start.html">Singularity</a>,
-an alternate containerization software for systems where you do not have administrator privileges.
-To learn more about using containers, please see the
-<a href="https://neurohackweek.github.io/docker-for-scientists/">Docker for scientists guide</a>.</p>
-
-<h3 id="building-your-site-locally-with-containers-docker">Building your site locally with Containers: Docker</h3>
-
-<p>First, you’ll need to make sure you have Docker installed.
-There are <a href="https://hub.docker.com/search/?type=edition&amp;offering=community">installation instructions for each operating system</a>
-to guide you through this process.</p>
-
-<p>Once Docker is available on your system, you can build the image locally with:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull emdupre/jupyter-book
-</code></pre></div></div>
-
-<p>You can then access this image with the following command.
-Make sure to specify the full path to your Jupyter Book, rather than the relative path!</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">--security-opt</span> label:disable  <span class="se">\</span>
-   <span class="nt">-v</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
-   <span class="nt">-p</span> 4000:4000 <span class="se">\</span>
-   <span class="nt">-it</span> <span class="nt">-u</span> 1000:1000 <span class="se">\</span>
-   emdupre/jupyter-book bundle <span class="nb">exec </span>jekyll serve <span class="nt">--host</span> 0.0.0.0
-</code></pre></div></div>
-
-<p>If you navigate to <code class="highlighter-rouge">http://0.0.0.0:4000/jupyter-book/</code> in your browser,
-you should see a preview copy of your book.
-If you instead see an error, please try to update your local book;
-see <a href="https://jupyter.org/jupyter-book/guide/04_faq.html#how-can-i-update-my-book">the Jupyter Book FAQ section</a>
-for more details on how to do so.</p>
-
-<h3 id="building-your-site-locally-with-containers-singularity">Building your site locally with Containers: Singularity</h3>
-
-<p>If you are on a system where you do not have administrator privileges (such as a shared
-computing cluster), you will not be able to use Docker.
-Instead, you can use Singularity.
-First, you’ll need to check with your resource manager that Singularity is available
-on your system.</p>
-
-<p>You can then create a Jupyter Book Singularity image using:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity build jupyter-book.simg docker://emdupre/jupyter-book
-</code></pre></div></div>
-
-<p>Next, you can access this image with the following command.
-Make sure to specify the full path to your Jupyter Book, rather than the relative path!</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity run <span class="nt">-B</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
-    <span class="nt">--pwd</span> /srv/jekyll <span class="se">\</span>
-    jupyter-book.simg bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>
-
-<p>And that’s it! If you navigate to <code class="highlighter-rouge">http://127.0.0.1:4000/jupyter-book/</code> in your browser,
-you should see a preview copy of your book.</p>
-
-<h3 id="building-your-site-locally-with-ruby">Building your site locally with Ruby</h3>
-
-<p>You can also choose to build your site locally without a container.
-In this case, you’ll need Ruby, an open-source programming language, to build your site’s
-HTML with Jekyll.</p>
-
-<blockquote>
-  <p><strong>NOTE:</strong> If these instructions don’t work, you can also try installing Jekyll at the
-following URLs.</p>
-
-  <ul>
-    <li><a href="https://jekyllrb.com/docs/installation/macos/">MacOS Instructions</a></li>
-    <li><a href="https://jekyllrb.com/docs/installation/ubuntu/">Ubuntu Instructions</a></li>
-    <li><a href="https://jekyllrb.com/docs/installation/other-linux">Linux (non-Ubuntu) Instructions</a></li>
-    <li><a href="https://jekyllrb.com/docs/installation/windows/">Windows Instructions</a></li>
-  </ul>
-
-  <p>Once you’ve finished those steps, head to <a href="#install-ruby-plugins">install ruby plugins</a>
-and follow the directions.</p>
-</blockquote>
-
-<p>The easiest way to install Ruby on <em>nix systems is to use
-the *<code class="highlighter-rouge">conda</code></em> package manager:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge ruby
-</code></pre></div></div>
-
-<p>Once you have Ruby installed, the conda-built clang compiler for your system need to be installed. Details depend on your OS.</p>
-
-<h4 id="on-osx">On OSX</h4>
-
-<p>Two steps are needed on OSX. First, install the <em><code class="highlighter-rouge">conda</code>’s</em> clang compiler:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge clangxx_osx-64
-</code></pre></div></div>
-
-<p>If you are running OSX 10.14 (Mojave) you also need to install system libraries in
-the default *nix locations by running</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
-</code></pre></div></div>
-
-<h4 id="on-linux">On Linux</h4>
-
-<p>Install <em><code class="highlighter-rouge">conda</code>’s</em> clang compiler:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge gxx_linux-64
-</code></pre></div></div>
-
-<h4 id="install-ruby-plugins">Install Ruby plugins</h4>
-
-<p>Finally, run</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make install
-</code></pre></div></div>
-
-<p>which will install Bundler (a Ruby dependency management tool) and then install the plugins
-needed to build the site for your book.</p>
-
-<p>You can then build the site locally by running:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make site
-</code></pre></div></div>
-
-<p>Alternatively, you can preview your book’s site locally by running this command:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make serve
-</code></pre></div></div>
-
-<p>This should open up a port on your computer with a live version of the book.</p>
-
-<h3 id="when-should-you-build-the-html-locally">When should you build the HTML locally?</h3>
-
-<p>You might ask: if GitHub pages can build my site automatically from the markdown files, why
-build it locally? The main reason for this is that you get more flexibility by building locally
-and serving raw HTML, as opposed to auto-building the site with GitHub-pages.</p>
-
-<p>In particular, if you wish to use any <strong>extra Jekyll plugins</strong>, such as the <code class="highlighter-rouge">jekyll-scholar</code> plugin that
-enables you to add citations and bibliographies, then you need to build your site
-locally as HTML. GitHub-pages doesn’t let you enable any extra plugins if it auto-builds your site.</p>
 
 <h2 id="create-an-online-repository-for-your-book">Create an <em>online</em> repository for your book</h2>
 
 <p>You’ve created your book on your own computer, but you haven’t yet added it
 online. This section covers the steps to create your own GitHub repository,
-and to add your book’s content to it.</p>
+and to add your book’s content to it. In this case, we’ll use GitHub-Pages
+to build the HTML for your book. If you wish to do this manually, see the
+advanced topic <a href="05_advanced.html">guide to building your book’s HTML locally</a></p>
 
 <ol>
-  <li>First, log-in to GitHub, then go to the “create a new repository” page:</li>
-</ol>
+  <li>
+    <p>First, log-in to GitHub, then go to the “create a new repository” page:</p>
 
-<p>https://github.com/new</p>
-
-<ol>
+    <p>https://github.com/new</p>
+  </li>
   <li>
     <p>Next, add a name and description for your book. You can choose whatever
 initialization you’d like.</p>
@@ -1800,13 +1649,13 @@ git push
 
 <h2 id="publish-your-book-online-with-github-pages">Publish your book online with GitHub Pages</h2>
 
-<p>Once you’ve built the markdown for your book (in <code class="highlighter-rouge">_build</code>) or built the HTML
+<p>Once you’ve built the intermediate files for your book (in <code class="highlighter-rouge">_build</code>) or built the HTML
 for your book (in <code class="highlighter-rouge">_site</code>), you can push your book contents to GitHub so that
 others can access your book. To do so, follow these steps:</p>
 
 <ol>
   <li>Confirm that your site files are built. You should see a
-collection of markdown files/folders in the <code class="highlighter-rouge">_build</code> folder,
+collection of HTML files/markdown files/folders in the <code class="highlighter-rouge">_build</code> folder,
 or a collection of HTML in your <code class="highlighter-rouge">_site/</code> folder.</li>
   <li>Commit and push the changes to your repository.</li>
   <li>

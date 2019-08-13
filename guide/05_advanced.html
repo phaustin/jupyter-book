@@ -31,9 +31,9 @@
   "headline":
     "How-to and advanced topics",
   "datePublished":
-    "2019-08-10T19:12:47+00:00",
+    "2019-08-13T00:23:36+00:00",
   "dateModified":
-    "2019-08-10T19:12:47+00:00",
+    "2019-08-13T00:23:36+00:00",
   "description":
     "This page contains more advanced and complete information about thejupyter-book repository. See the sections below.",
   "author": {
@@ -1586,6 +1586,202 @@ courses / workshops of less than 50-60 students.</p>
 <p>Once you have your JupyterHub set up, you can use the <a href="https://github.com/data-8/nbgitpuller">nbgitpuller</a>
 package to send links to course material to your students, or use the interact links that Textbooks for Jupyter
 automatically inserts into your course material.</p>
+
+<h2 id="build-the-books-site-html-locally">Build the book’s site HTML locally</h2>
+
+<p>Once you’ve generated the intermediate files for your notebooks and installed the
+necessary dependencies. You are ready to build your site HTML.</p>
+
+<p>Ensure that your notebooks have been converted to intermediate files, there should be a
+collection of them in <code class="highlighter-rouge">_build/</code>.</p>
+
+<p>In order to locally build your site’s HTML with Jekyll, you’ll take one of two approaches:</p>
+
+<ol>
+  <li>Use a container software (Docker or Singularity) along with a Docker image that we’ve
+prepared for you
+<a href="https://github.com/jupyter/jupyter-book/blob/master/jupyter_book/Dockerfile">from this Dockerfile</a>.</li>
+  <li>Install a copy of the Ruby language (which is a free open-source language, but can be a pain to install).</li>
+</ol>
+
+<p>In our experience, we’ve found that <a href="https://www.docker.com/resources/what-container">containers</a>
+provide an easier installation for most systems.
+If you are developing on a system where you have administrator privileges
+(i.e., you have <code class="highlighter-rouge">root</code> permissions), we recommend you use <a href="https://docs.docker.com/get-started/">Docker</a>.</p>
+
+<p>We also provide instructions for using <a href="https://www.sylabs.io/guides/2.6/user-guide/quick_start.html">Singularity</a>,
+an alternate containerization software for systems where you do not have administrator privileges.
+To learn more about using containers, please see the
+<a href="https://neurohackweek.github.io/docker-for-scientists/">Docker for scientists guide</a>.</p>
+
+<h3 id="building-your-site-locally-with-containers-docker">Building your site locally with Containers: Docker</h3>
+
+<p>First, you’ll need to make sure you have Docker installed.
+There are <a href="https://hub.docker.com/search/?type=edition&amp;offering=community">installation instructions for each operating system</a>
+to guide you through this process.</p>
+
+<p>Once Docker is available on your system, you can build the image locally with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull emdupre/jupyter-book
+</code></pre></div></div>
+
+<p>You can then access this image with the following command.
+Make sure to specify the full path to your Jupyter Book, rather than the relative path!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">--security-opt</span> label:disable  <span class="se">\</span>
+   <span class="nt">-v</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
+   <span class="nt">-p</span> 4000:4000 <span class="se">\</span>
+   <span class="nt">-it</span> <span class="nt">-u</span> 1000:1000 <span class="se">\</span>
+   emdupre/jupyter-book bundle <span class="nb">exec </span>jekyll serve <span class="nt">--host</span> 0.0.0.0
+</code></pre></div></div>
+
+<p>If you navigate to <code class="highlighter-rouge">http://0.0.0.0:4000/jupyter-book/</code> in your browser,
+you should see a preview copy of your book.
+If you instead see an error, please try to update your local book;
+see <a href="https://jupyter.org/jupyter-book/guide/04_faq.html#how-can-i-update-my-book">the Jupyter Book FAQ section</a>
+for more details on how to do so.</p>
+
+<p>You’ll find the HTML for your book in the <code class="highlighter-rouge">_site/</code> folder.</p>
+
+<h3 id="building-your-site-locally-with-containers-singularity">Building your site locally with Containers: Singularity</h3>
+
+<p>If you are on a system where you do not have administrator privileges (such as a shared
+computing cluster), you will not be able to use Docker.
+Instead, you can use Singularity.
+First, you’ll need to check with your resource manager that Singularity is available
+on your system.</p>
+
+<p>You can then create a Jupyter Book Singularity image using:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity build jupyter-book.simg docker://emdupre/jupyter-book
+</code></pre></div></div>
+
+<p>Next, you can access this image with the following command.
+Make sure to specify the full path to your Jupyter Book, rather than the relative path!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity run <span class="nt">-B</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
+    <span class="nt">--pwd</span> /srv/jekyll <span class="se">\</span>
+    jupyter-book.simg bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>And that’s it! If you navigate to <code class="highlighter-rouge">http://127.0.0.1:4000/jupyter-book/</code> in your browser,
+you should see a preview copy of your book.</p>
+
+<h3 id="building-your-site-locally-with-ruby">Building your site locally with Ruby</h3>
+
+<p>You can also choose to build your site locally without a container.
+In this case, you’ll need Ruby, an open-source programming language, to build your site’s
+HTML with Jekyll.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> If these instructions don’t work, you can also try installing Jekyll at the
+following URLs.</p>
+
+  <ul>
+    <li><a href="https://jekyllrb.com/docs/installation/macos/">MacOS Instructions</a></li>
+    <li><a href="https://jekyllrb.com/docs/installation/ubuntu/">Ubuntu Instructions</a></li>
+    <li><a href="https://jekyllrb.com/docs/installation/other-linux">Linux (non-Ubuntu) Instructions</a></li>
+    <li><a href="https://jekyllrb.com/docs/installation/windows/">Windows Instructions</a></li>
+  </ul>
+
+  <p>Once you’ve finished those steps, head to <a href="#install-ruby-plugins">install ruby plugins</a>
+and follow the directions.</p>
+</blockquote>
+
+<p>The easiest way to install Ruby on <em>nix systems is to use
+the *<code class="highlighter-rouge">conda</code></em> package manager:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge ruby
+</code></pre></div></div>
+
+<p>Once you have Ruby installed, the conda-built clang compiler for your system need to be installed. Details depend on your OS.</p>
+
+<h4 id="on-osx">On OSX</h4>
+
+<p>Two steps are needed on OSX. First, install the <em><code class="highlighter-rouge">conda</code>’s</em> clang compiler:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge clangxx_osx-64
+</code></pre></div></div>
+
+<p>If you are running OSX 10.14 (Mojave) you also need to install system libraries in
+the default *nix locations by running</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+</code></pre></div></div>
+
+<h4 id="on-linux">On Linux</h4>
+
+<p>Install <em><code class="highlighter-rouge">conda</code>’s</em> clang compiler:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge gxx_linux-64
+</code></pre></div></div>
+
+<h4 id="install-ruby-plugins">Install Ruby plugins</h4>
+
+<p>Finally, run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make install
+</code></pre></div></div>
+
+<p>which will install Bundler (a Ruby dependency management tool) and then install the plugins
+needed to build the site for your book.</p>
+
+<p>You can then build the site locally by running:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make site
+</code></pre></div></div>
+
+<p>Alternatively, you can preview your book’s site locally by running this command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make serve
+</code></pre></div></div>
+
+<p>This should open up a port on your computer with a live version of the book.</p>
+
+<h3 id="when-should-you-build-the-html-locally">When should you build the HTML locally?</h3>
+
+<p>You might ask: if GitHub pages can build my site automatically from the intermediate files, why
+build it locally? The main reason for this is that you get more flexibility by building locally
+and serving raw HTML, as opposed to auto-building the site with GitHub-pages.</p>
+
+<p>In particular, if you wish to use any <strong>extra Jekyll plugins</strong>, such as the <code class="highlighter-rouge">jekyll-scholar</code> plugin that
+enables you to add citations and bibliographies, then you need to build your site
+locally as HTML. GitHub-pages doesn’t let you enable any extra plugins if it auto-builds your site.</p>
+
+<h2 id="hosting-your-books-html-online">Hosting your book’s HTML online</h2>
+
+<p>If you’re choosing to build the HTML for your book by hand, there are a few options for
+where you should store the book. The two most common approaches are:</p>
+
+<ul>
+  <li><strong>Use the <code class="highlighter-rouge">gh-pages</code> or <code class="highlighter-rouge">master</code> branch of a GitHub repository</strong>. In this case, the build
+process is very similar to <a href="https://jupyter.org/jupyter-book/guide/03_build.html#publish-your-book-online-with-github-pages">using GH-pages to build the HTML for your site</a>.
+However, there is one caveat: you must include a file called <code class="highlighter-rouge">.nojekyll</code> along with the HTML
+files of your book. This tells GitHub <strong>not</strong> to use Jekyll to build the HTML.</li>
+  <li><strong>Use a static site hosting service like Netlify</strong>. There are many services that will simply
+host a collection of static HTML files for you in a public URL. The most common is
+<a href="https://www.netlifycms.org/">the Netlify CMS service</a>. Follow the instructions on this site
+for information on how you should upload your HTML files to work with Netlify.</li>
+</ul>
+
+<h3 id="automatically-build-your-book-html-with-cicd">Automatically build your book HTML with CI/CD</h3>
+
+<p>If you’re comfortable with continuous integration services like CircleCI, you can set up
+a build job to build your book’s HTML automatically and push them to an online repository
+(such as a <code class="highlighter-rouge">gh-pages</code> branch). This is a fairly advanced topic, but for some guidance,
+check out these resources:</p>
+
+<ul>
+  <li><strong><a href="https://predictablynoisy.com/circleci-mirror">This blog post on pushing changes from a CircleCI Job</a></strong>
+covers how you can give CircleCI permissions to push to a branch from within a job.</li>
+  <li><strong><a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml">The Jupyter Book CircleCI configuration file</a></strong>
+automatically deploys changes to the <code class="highlighter-rouge">jupyter-book</code> master branch to the live book. In
+particular, <a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml#L74">this section builds the book HTML files</a>
+while <a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml#L31">this section builds the HTML and pushes them to a <code class="highlighter-rouge">gh-pages</code> branch</a>.</li>
+</ul>
+
+<p>This process can be tricky to set up initially, but is quite useful in ensuring that your live book
+always stays up-to-date.</p>
 
               <nav class="c-page__nav">
   
