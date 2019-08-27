@@ -31,9 +31,9 @@
   "headline":
     "How-to and advanced topics",
   "datePublished":
-    "2019-08-27T14:31:26+00:00",
+    "2019-08-27T16:20:22+00:00",
   "dateModified":
-    "2019-08-27T14:31:26+00:00",
+    "2019-08-27T16:20:22+00:00",
   "description":
     "This page contains more advanced and complete information about thejupyter-book repository. See the sections below.",
   "author": {
@@ -1577,6 +1577,36 @@ courses / workshops of less than 50-60 students.</p>
 <p>Once you have your JupyterHub set up, you can use the <a href="https://github.com/data-8/nbgitpuller">nbgitpuller</a>
 package to send links to course material to your students, or use the interact links that Textbooks for Jupyter
 automatically inserts into your course material.</p>
+
+<h2 id="auto-generating-a-toc-file-for-your-book">Auto-generating a TOC file for your book</h2>
+
+<p>Sometimes it can be a pain to create the Table of Contents YAML file by hand.
+Jupyter Book has a convenience function to automatically create this file
+using the alpha-numeric sorting of the file/folder names in your content folder.
+To use it, simply use the following command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book toc path/to/mybook
+</code></pre></div></div>
+
+<p>This put all <code class="highlighter-rouge">.md</code> and <code class="highlighter-rouge">.ipynb</code> files in the root of the <strong>content folder</strong> 
+as top-level pages. For any files that are in folders, it will create one
+section per <strong>top-level folder</strong> and place all content files inside that
+section.</p>
+
+<p>By default, running this command will print the TOC YAML to the screen.
+If you’d like to overwrite your <code class="highlighter-rouge">_data/toc.yml</code> file with the result of
+running this command, you can use the <code class="highlighter-rouge">--path-output</code> argument like so</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book toc path/to/mybook --path-output path/to/mybook/_data/toc.yml
+</code></pre></div></div>
+
+<p>This will overwrite the contents of <code class="highlighter-rouge">toc.yml</code> with the new TOC.</p>
+
+<blockquote>
+  <p>Note: this will make some assumptions about how you’d like your book to
+be structured. We recommend using this command as a starting point, and
+then customizing your TOC how you’d like.</p>
+</blockquote>
 
 <h2 id="build-the-books-site-html-locally">Build the book’s site HTML locally</h2>
 
