@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Jupyter notebooks</title>
-  <meta name="description" content="Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is containedin a Jupyter Notebook in the notebook...">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/features/notebooks.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/features/notebooks.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Jupyter notebooks" />
-<meta property="og:description" content="Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is containedin a Jupyter Notebook in the notebook..." />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "Jupyter notebooks",
   "datePublished":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "dateModified":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "description":
-    "Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is containedin a Jupyter Notebook in the notebook...",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -156,9 +156,9 @@ findCodeCells = function() {
 
 initFunction(findCodeCells);
 
-
+// All cells in general
 findInputCells = function() {
-    var inputCells = document.querySelectorAll('div.jb_input')
+    var inputCells = document.querySelectorAll('div.jb_cell')
     pageElements['inputCells'] = inputCells;
 
     inputCells.forEach((inputCell, index) => {
@@ -674,16 +674,17 @@ initFunction(addCopyButtonToCodeCells);
 
     var addHideButton = function () {
         // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
+        if (document.querySelector('div.tag_hide_input input') !== null) {
             return;
         }
 
         // Find the input cells and add a hide button
         pageElements['inputCells'].forEach(function (inputCell) {
-            if (!inputCell.classList.contains("hidecode")) {
+            if (!inputCell.classList.contains("tag_hide_input")) {
                 // Skip the cell if it doesn't have a hidecode class
                 return;
             }
+
             const id = inputCell.getAttribute('id')
 
             // Insert the button just inside the end of the next div
@@ -702,7 +703,7 @@ initFunction(addCopyButtonToCodeCells);
         addHideButton();
 
         // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        document.querySelectorAll('div.tag_hide_input input').forEach(function (item) {
             setCodeCellVisibility(item, 'hidden');
             item.checked = true;
         })
@@ -1514,9 +1515,7 @@ initFunction(addCopyButtonToCodeCells);
           </nav>
       </aside>
       
-      <main class="c-textbook__page" tabindex="-1">
-          <div class="o-wrapper">
-            <div class="c-sidebar-toggle">
+      <div class="c-topbar" id="top-navbar">
   <!-- We show the sidebar by default so we use .is-active -->
   <button
     id="js-sidebar-toggle"
@@ -1525,11 +1524,8 @@ initFunction(addCopyButtonToCodeCells);
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
   </button>
-</div>
-
-            
+  
 <div class="buttons">
 <a href="/jupyter-book/content/features/notebooks.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
@@ -1551,8 +1547,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content">
-              <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+              <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Content-with-notebooks">Content with notebooks<a class="anchor-link" href="#Content-with-notebooks"> </a></h1><p>You can also create content with Jupyter Notebooks. The content for the current page is contained
 in a Jupyter Notebook in the <code>notebooks/</code> folder of the repository. This means that we can include
@@ -1576,9 +1577,11 @@ For example, here's some sample Matplotlib code:</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1594,11 +1597,11 @@ For example, here's some sample Matplotlib code:</p>
 </div>
 
 </div>
-
 </div>
-<div class="cell border-box-sizing code_cell rendered">
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1627,12 +1630,10 @@ For example, here's some sample Matplotlib code:</p>
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1648,6 +1649,10 @@ For example, here's some sample Matplotlib code:</p>
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note that the image above is captured and displayed by Jekyll.</p>
@@ -1655,6 +1660,10 @@ For example, here's some sample Matplotlib code:</p>
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Removing-content-before-publishing">Removing content before publishing<a class="anchor-link" href="#Removing-content-before-publishing"> </a></h2><p>You can also remove some content before publishing your book to the web. For example,
@@ -1664,6 +1673,10 @@ used to be a cell below...</p>
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can also <strong>remove only the code</strong> so that images and other output still show up.</p>
@@ -1673,9 +1686,11 @@ which you can <a href="https://github.com/jupyter/jupyter-book/blob/master/jupyt
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input hidecode" >
+<div class="jb_cell tag_hide_input">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1694,12 +1709,10 @@ which you can <a href="https://github.com/jupyter/jupyter-book/blob/master/jupyt
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1715,6 +1728,10 @@ which you can <a href="https://github.com/jupyter/jupyter-book/blob/master/jupyt
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And here we'll <em>only</em> display a Pandas DataFrame. Again, this was generated with Python code
@@ -1723,9 +1740,11 @@ from <a href="https://github.com/jupyter/textbooks-with-jupyter/blob/master/note
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input hidecode" >
+<div class="jb_cell tag_hide_input">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1738,12 +1757,10 @@ from <a href="https://github.com/jupyter/textbooks-with-jupyter/blob/master/note
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1797,6 +1814,10 @@ from <a href="https://github.com/jupyter/textbooks-with-jupyter/blob/master/note
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can configure the text that <em>Textbooks with Jupyter</em> uses for this by modifying your site's <code>_config.yml</code> file.</p>
@@ -1804,6 +1825,10 @@ from <a href="https://github.com/jupyter/textbooks-with-jupyter/blob/master/note
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Interactive-outputs">Interactive outputs<a class="anchor-link" href="#Interactive-outputs"> </a></h2><p>We can even do the same for <em>interactive</em> material. Below we'll display a map using <code>ipyleaflet</code>. When the notebook
@@ -1814,9 +1839,11 @@ depend on an underlying Python kernel to work.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1829,11 +1856,11 @@ depend on an underlying Python kernel to work.</p>
 </div>
 
 </div>
-
 </div>
-<div class="cell border-box-sizing code_cell rendered">
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1870,12 +1897,10 @@ depend on an underlying Python kernel to work.</p>
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1889,12 +1914,20 @@ depend on an underlying Python kernel to work.</p>
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Rich-outputs-from-notebook-cells">Rich outputs from notebook cells<a class="anchor-link" href="#Rich-outputs-from-notebook-cells"> </a></h2>
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Because notebooks have rich text outputs, you can store these in
@@ -1903,9 +1936,11 @@ your Jupyter Book as well!</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1917,12 +1952,10 @@ your Jupyter Book as well!</p>
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1977,9 +2010,11 @@ optional arguments:
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1991,12 +2026,10 @@ optional arguments:
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 <div class="output_subarea output_text output_error">
@@ -2014,10 +2047,13 @@ optional arguments:
 </div>
 
 </div>
+</div>
+
  
 
 
-              <nav class="c-page__nav">
+            </div>
+            <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/features/markdown.html">
@@ -2033,12 +2069,10 @@ optional arguments:
   
 </nav>
 
-            </div>
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>
 
-          </div>
         </div>
       </main>
     </div>

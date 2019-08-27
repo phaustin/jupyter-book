@@ -31,9 +31,9 @@
   "headline":
     "Data Science",
   "datePublished":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "dateModified":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "description":
     "What is Data Science",
   "author": {
@@ -156,9 +156,9 @@ findCodeCells = function() {
 
 initFunction(findCodeCells);
 
-
+// All cells in general
 findInputCells = function() {
-    var inputCells = document.querySelectorAll('div.jb_input')
+    var inputCells = document.querySelectorAll('div.jb_cell')
     pageElements['inputCells'] = inputCells;
 
     inputCells.forEach((inputCell, index) => {
@@ -674,16 +674,17 @@ initFunction(addCopyButtonToCodeCells);
 
     var addHideButton = function () {
         // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
+        if (document.querySelector('div.tag_hide_input input') !== null) {
             return;
         }
 
         // Find the input cells and add a hide button
         pageElements['inputCells'].forEach(function (inputCell) {
-            if (!inputCell.classList.contains("hidecode")) {
+            if (!inputCell.classList.contains("tag_hide_input")) {
                 // Skip the cell if it doesn't have a hidecode class
                 return;
             }
+
             const id = inputCell.getAttribute('id')
 
             // Insert the button just inside the end of the next div
@@ -702,7 +703,7 @@ initFunction(addCopyButtonToCodeCells);
         addHideButton();
 
         // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        document.querySelectorAll('div.tag_hide_input input').forEach(function (item) {
             setCodeCellVisibility(item, 'hidden');
             item.checked = true;
         })
@@ -1514,9 +1515,7 @@ initFunction(addCopyButtonToCodeCells);
           </nav>
       </aside>
       
-      <main class="c-textbook__page" tabindex="-1">
-          <div class="o-wrapper">
-            <div class="c-sidebar-toggle">
+      <div class="c-topbar" id="top-navbar">
   <!-- We show the sidebar by default so we use .is-active -->
   <button
     id="js-sidebar-toggle"
@@ -1525,12 +1524,12 @@ initFunction(addCopyButtonToCodeCells);
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
   </button>
+  
+
 </div>
 
-            
-
+      <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content">
               <h1 id="what-is-data-science">What is Data Science</h1>
 
@@ -1554,7 +1553,8 @@ because of the applications. Through understanding a particular domain, data
 scientists learn to ask appropriate questions about their data and correctly
 interpret the answers provided by our inferential and computational tools.</p>
 
-              <nav class="c-page__nav">
+            </div>
+            <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="https://github.com/jupyter/jupyter-book">
@@ -1570,12 +1570,10 @@ interpret the answers provided by our inferential and computational tools.</p>
   
 </nav>
 
-            </div>
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>
 
-          </div>
         </div>
       </main>
     </div>

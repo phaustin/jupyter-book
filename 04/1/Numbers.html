@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Numbers</title>
-  <meta name="description" content="Computers are designed to perform numerical calculations, but there are some important details about working with numbers that every programmer working with ...">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/04/1/Numbers.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/04/1/Numbers.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Numbers" />
-<meta property="og:description" content="Computers are designed to perform numerical calculations, but there are some important details about working with numbers that every programmer working with ..." />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "Numbers",
   "datePublished":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "dateModified":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "description":
-    "Computers are designed to perform numerical calculations, but there are some important details about working with numbers that every programmer working with ...",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -156,9 +156,9 @@ findCodeCells = function() {
 
 initFunction(findCodeCells);
 
-
+// All cells in general
 findInputCells = function() {
-    var inputCells = document.querySelectorAll('div.jb_input')
+    var inputCells = document.querySelectorAll('div.jb_cell')
     pageElements['inputCells'] = inputCells;
 
     inputCells.forEach((inputCell, index) => {
@@ -674,16 +674,17 @@ initFunction(addCopyButtonToCodeCells);
 
     var addHideButton = function () {
         // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
+        if (document.querySelector('div.tag_hide_input input') !== null) {
             return;
         }
 
         // Find the input cells and add a hide button
         pageElements['inputCells'].forEach(function (inputCell) {
-            if (!inputCell.classList.contains("hidecode")) {
+            if (!inputCell.classList.contains("tag_hide_input")) {
                 // Skip the cell if it doesn't have a hidecode class
                 return;
             }
+
             const id = inputCell.getAttribute('id')
 
             // Insert the button just inside the end of the next div
@@ -702,7 +703,7 @@ initFunction(addCopyButtonToCodeCells);
         addHideButton();
 
         // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        document.querySelectorAll('div.tag_hide_input input').forEach(function (item) {
             setCodeCellVisibility(item, 'hidden');
             item.checked = true;
         })
@@ -1514,9 +1515,7 @@ initFunction(addCopyButtonToCodeCells);
           </nav>
       </aside>
       
-      <main class="c-textbook__page" tabindex="-1">
-          <div class="o-wrapper">
-            <div class="c-sidebar-toggle">
+      <div class="c-topbar" id="top-navbar">
   <!-- We show the sidebar by default so we use .is-active -->
   <button
     id="js-sidebar-toggle"
@@ -1525,11 +1524,8 @@ initFunction(addCopyButtonToCodeCells);
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
   </button>
-</div>
-
-            
+  
 <div class="buttons">
 <a href="/jupyter-book/content/04/1/Numbers.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
@@ -1551,8 +1547,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content">
-              <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+              <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Computers are designed to perform numerical calculations, but there are some important details about working with numbers that every programmer working with quantitative data should know. Python (and most other programming languages) distinguishes between two different types of numbers:</p>
 <ul>
@@ -1564,9 +1565,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1579,12 +1582,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1599,9 +1600,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1613,12 +1616,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1633,9 +1634,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1647,12 +1650,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1667,9 +1668,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1682,12 +1685,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1702,9 +1703,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1716,12 +1719,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1736,6 +1737,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>When a <code>float</code> value is combined with an <code>int</code> value using some arithmetic operator, then the result is always a <code>float</code> value. In most cases, two integers combine to form another integer, but any number (<code>int</code> or <code>float</code>) divided by another will be a <code>float</code> value. Very large or very small <code>float</code> values are displayed using scientific notation.</p>
@@ -1743,9 +1748,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1757,12 +1764,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1777,9 +1782,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1791,12 +1798,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1811,9 +1816,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1825,12 +1832,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1845,6 +1850,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The <code>type</code> function can be used to find the type of any number.</p>
@@ -1852,9 +1861,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1866,12 +1877,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1886,9 +1895,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1900,12 +1911,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1920,6 +1929,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The <code>type</code> of an expression is the type of its final value. So, the <code>type</code> function will never indicate that the type of an expression is a name, because names are always evaluated to their assigned values.</p>
@@ -1927,9 +1940,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1942,12 +1957,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1962,9 +1975,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1976,12 +1991,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1996,6 +2009,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="More-About-Float-Values">More About Float Values<a class="anchor-link" href="#More-About-Float-Values"> </a></h2><p>Float values are very flexible, but they do have limits.</p>
@@ -2009,9 +2026,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2023,12 +2042,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2043,9 +2060,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2057,12 +2076,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2077,9 +2094,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2091,12 +2110,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2111,9 +2128,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2125,12 +2144,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2145,6 +2162,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The second limit can be observed by an expression that involves numbers with more than 15 significant digits. These extra digits are discarded before any arithmetic is carried out.</p>
@@ -2152,9 +2173,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2166,12 +2189,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2186,6 +2207,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The third limit can be observed when taking the difference between two expressions that should be equivalent. For example, the expression <code>2 ** 0.5</code> computes the square root of 2, but squaring this value does not exactly recover 2.</p>
@@ -2193,9 +2218,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2207,12 +2234,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2227,9 +2252,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2241,12 +2268,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2261,9 +2286,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2275,12 +2302,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2295,6 +2320,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The final result above is <code>0.0000000000000004440892098500626</code>, a number that is very close to zero. The correct answer to this arithmetic expression is 0, but a small error in the final significant digit appears very different in scientific notation. This behavior appears in almost all programming languages because it is the result of the standard way that arithmetic is carried out on computers.</p>
@@ -2303,10 +2332,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
+</div>
+
  
 
 
-              <nav class="c-page__nav">
+            </div>
+            <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/04/Types.html">
@@ -2322,12 +2354,10 @@ initFunction(addCopyButtonToCodeCells);
   
 </nav>
 
-            </div>
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>
 
-          </div>
         </div>
       </main>
     </div>

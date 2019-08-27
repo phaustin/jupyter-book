@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Plotting the Classics</title>
-  <meta name="description" content="In this example, we will explore statistics for two classic novels: The Adventures of Huckleberry Finn by Mark Twain, and Little Women by Louisa May Alcott. ...">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/01/3/Plotting_the_Classics.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/01/3/Plotting_the_Classics.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Plotting the Classics" />
-<meta property="og:description" content="In this example, we will explore statistics for two classic novels: The Adventures of Huckleberry Finn by Mark Twain, and Little Women by Louisa May Alcott. ..." />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "Plotting the Classics",
   "datePublished":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "dateModified":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "description":
-    "In this example, we will explore statistics for two classic novels: The Adventures of Huckleberry Finn by Mark Twain, and Little Women by Louisa May Alcott. ...",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -156,9 +156,9 @@ findCodeCells = function() {
 
 initFunction(findCodeCells);
 
-
+// All cells in general
 findInputCells = function() {
-    var inputCells = document.querySelectorAll('div.jb_input')
+    var inputCells = document.querySelectorAll('div.jb_cell')
     pageElements['inputCells'] = inputCells;
 
     inputCells.forEach((inputCell, index) => {
@@ -674,16 +674,17 @@ initFunction(addCopyButtonToCodeCells);
 
     var addHideButton = function () {
         // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
+        if (document.querySelector('div.tag_hide_input input') !== null) {
             return;
         }
 
         // Find the input cells and add a hide button
         pageElements['inputCells'].forEach(function (inputCell) {
-            if (!inputCell.classList.contains("hidecode")) {
+            if (!inputCell.classList.contains("tag_hide_input")) {
                 // Skip the cell if it doesn't have a hidecode class
                 return;
             }
+
             const id = inputCell.getAttribute('id')
 
             // Insert the button just inside the end of the next div
@@ -702,7 +703,7 @@ initFunction(addCopyButtonToCodeCells);
         addHideButton();
 
         // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        document.querySelectorAll('div.tag_hide_input input').forEach(function (item) {
             setCodeCellVisibility(item, 'hidden');
             item.checked = true;
         })
@@ -1514,9 +1515,7 @@ initFunction(addCopyButtonToCodeCells);
           </nav>
       </aside>
       
-      <main class="c-textbook__page" tabindex="-1">
-          <div class="o-wrapper">
-            <div class="c-sidebar-toggle">
+      <div class="c-topbar" id="top-navbar">
   <!-- We show the sidebar by default so we use .is-active -->
   <button
     id="js-sidebar-toggle"
@@ -1525,11 +1524,8 @@ initFunction(addCopyButtonToCodeCells);
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
   </button>
-</div>
-
-            
+  
 <div class="buttons">
 <a href="/jupyter-book/content/01/3/Plotting_the_Classics.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
@@ -1551,8 +1547,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content">
-              <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+              <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this example, we will explore statistics for two classic novels: <em>The Adventures of Huckleberry Finn</em> by Mark Twain, and <em>Little Women</em> by Louisa May Alcott. The text of any book can be read by a computer at great speed. Books published before 1923 are currently in the <em>public domain</em>, meaning that everyone has the right to copy or use the text in any way. <a href="http://www.gutenberg.org/">Project Gutenberg</a> is a website that publishes public domain books online. Using Python, we can load the text of these books directly from the web.</p>
 <p>This example is meant to illustrate some of the broad themes of this text. Don't worry if the details of the program don't yet make sense. Instead, focus on interpreting the images generated below. Later sections of the text will describe most of the features of the Python programming language used below.</p>
@@ -1561,9 +1562,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1584,8 +1587,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
-
 </div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>While a computer cannot understand the text of a book, it can provide us with some insight into the structure of the text. The name <code>huck_finn_chapters</code> is currently bound to a list of all the chapters in the book. We can place them into a table to see how each chapter begins.</p>
@@ -1593,9 +1598,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1609,12 +1616,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1667,6 +1672,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Each chapter begins with a chapter number in Roman numerals, followed by the first sentence of the chapter. Project Gutenberg has printed the first word of each chapter in upper case.</p>
@@ -1674,10 +1683,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
+</div>
+
  
 
 
-              <nav class="c-page__nav">
+            </div>
+            <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/01/2/why-data-science.html">
@@ -1693,12 +1705,10 @@ initFunction(addCopyButtonToCodeCells);
   
 </nav>
 
-            </div>
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>
 
-          </div>
         </div>
       </main>
     </div>

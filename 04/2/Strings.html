@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Strings</title>
-  <meta name="description" content="Much of the world's data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the co...">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/04/2/Strings.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/04/2/Strings.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Strings" />
-<meta property="og:description" content="Much of the world's data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the co..." />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "Strings",
   "datePublished":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "dateModified":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "description":
-    "Much of the world's data is text, and a piece of text represented in a computer is called a string. A string can represent a word, a sentence, or even the co...",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -156,9 +156,9 @@ findCodeCells = function() {
 
 initFunction(findCodeCells);
 
-
+// All cells in general
 findInputCells = function() {
-    var inputCells = document.querySelectorAll('div.jb_input')
+    var inputCells = document.querySelectorAll('div.jb_cell')
     pageElements['inputCells'] = inputCells;
 
     inputCells.forEach((inputCell, index) => {
@@ -674,16 +674,17 @@ initFunction(addCopyButtonToCodeCells);
 
     var addHideButton = function () {
         // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
+        if (document.querySelector('div.tag_hide_input input') !== null) {
             return;
         }
 
         // Find the input cells and add a hide button
         pageElements['inputCells'].forEach(function (inputCell) {
-            if (!inputCell.classList.contains("hidecode")) {
+            if (!inputCell.classList.contains("tag_hide_input")) {
                 // Skip the cell if it doesn't have a hidecode class
                 return;
             }
+
             const id = inputCell.getAttribute('id')
 
             // Insert the button just inside the end of the next div
@@ -702,7 +703,7 @@ initFunction(addCopyButtonToCodeCells);
         addHideButton();
 
         // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        document.querySelectorAll('div.tag_hide_input input').forEach(function (item) {
             setCodeCellVisibility(item, 'hidden');
             item.checked = true;
         })
@@ -1514,9 +1515,7 @@ initFunction(addCopyButtonToCodeCells);
           </nav>
       </aside>
       
-      <main class="c-textbook__page" tabindex="-1">
-          <div class="o-wrapper">
-            <div class="c-sidebar-toggle">
+      <div class="c-topbar" id="top-navbar">
   <!-- We show the sidebar by default so we use .is-active -->
   <button
     id="js-sidebar-toggle"
@@ -1525,11 +1524,8 @@ initFunction(addCopyButtonToCodeCells);
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
   </button>
-</div>
-
-            
+  
 <div class="buttons">
 <a href="/jupyter-book/content/04/2/Strings.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
@@ -1551,8 +1547,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content">
-              <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+              <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Much of the world's data is text, and a piece of text represented in a computer is called a <em>string</em>. A string can represent a word, a sentence, or even the contents of every book in a library. Since text can include numbers (like this: 5) or truth values (True), a string can also describe those things.</p>
 <p>The meaning of an expression depends both upon its structure and the types of values that are being combined. So, for instance, adding two strings together produces another string. This expression is still an addition expression, but it is combining a different type of value.</p>
@@ -1560,9 +1561,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1574,12 +1577,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1594,6 +1595,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Addition is completely literal; it combines these two strings together without regard for their contents. It doesn't add a space because these are different words; that's up to the programmer (you) to specify.</p>
@@ -1601,9 +1606,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1615,12 +1622,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1635,6 +1640,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Single and double quotes can both be used to create strings: <code>'hi'</code> and <code>"hi"</code> are identical expressions. Double quotes are often preferred because they allow you to include apostrophes inside of strings.</p>
@@ -1642,9 +1651,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1656,12 +1667,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1676,6 +1685,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Why not? Try it out.</p>
@@ -1683,6 +1696,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The <code>str</code> function returns a string representation of any value. Using this function, strings can be constructed that have embedded values.</p>
@@ -1690,9 +1707,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1704,12 +1723,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1724,10 +1741,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
  
 
 
-              <nav class="c-page__nav">
+            </div>
+            <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/04/1/Numbers.html">
@@ -1743,12 +1763,10 @@ initFunction(addCopyButtonToCodeCells);
   
 </nav>
 
-            </div>
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>
 
-          </div>
         </div>
       </main>
     </div>

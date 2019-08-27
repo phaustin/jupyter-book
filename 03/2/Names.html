@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Names</title>
-  <meta name="description" content="3.2 Names Names are given to values in Python using an assignment statement. In an assignment, a name is followed by =, which is followed by any expression. ...">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/03/2/Names.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/03/2/Names.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Names" />
-<meta property="og:description" content="3.2 Names Names are given to values in Python using an assignment statement. In an assignment, a name is followed by =, which is followed by any expression. ..." />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "Names",
   "datePublished":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "dateModified":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "description":
-    "3.2 Names Names are given to values in Python using an assignment statement. In an assignment, a name is followed by =, which is followed by any expression. ...",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -156,9 +156,9 @@ findCodeCells = function() {
 
 initFunction(findCodeCells);
 
-
+// All cells in general
 findInputCells = function() {
-    var inputCells = document.querySelectorAll('div.jb_input')
+    var inputCells = document.querySelectorAll('div.jb_cell')
     pageElements['inputCells'] = inputCells;
 
     inputCells.forEach((inputCell, index) => {
@@ -674,16 +674,17 @@ initFunction(addCopyButtonToCodeCells);
 
     var addHideButton = function () {
         // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
+        if (document.querySelector('div.tag_hide_input input') !== null) {
             return;
         }
 
         // Find the input cells and add a hide button
         pageElements['inputCells'].forEach(function (inputCell) {
-            if (!inputCell.classList.contains("hidecode")) {
+            if (!inputCell.classList.contains("tag_hide_input")) {
                 // Skip the cell if it doesn't have a hidecode class
                 return;
             }
+
             const id = inputCell.getAttribute('id')
 
             // Insert the button just inside the end of the next div
@@ -702,7 +703,7 @@ initFunction(addCopyButtonToCodeCells);
         addHideButton();
 
         // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        document.querySelectorAll('div.tag_hide_input input').forEach(function (item) {
             setCodeCellVisibility(item, 'hidden');
             item.checked = true;
         })
@@ -1514,9 +1515,7 @@ initFunction(addCopyButtonToCodeCells);
           </nav>
       </aside>
       
-      <main class="c-textbook__page" tabindex="-1">
-          <div class="o-wrapper">
-            <div class="c-sidebar-toggle">
+      <div class="c-topbar" id="top-navbar">
   <!-- We show the sidebar by default so we use .is-active -->
   <button
     id="js-sidebar-toggle"
@@ -1525,11 +1524,8 @@ initFunction(addCopyButtonToCodeCells);
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
   </button>
-</div>
-
-            
+  
 <div class="buttons">
 <a href="/jupyter-book/content/03/2/Names.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
@@ -1551,17 +1547,24 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content">
-              <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+              <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.2-Names">3.2 Names<a class="anchor-link" href="#3.2-Names"> </a></h2><p>Names are given to values in Python using an <em>assignment</em> statement. In an assignment, a name is followed by <code>=</code>, which is followed by any expression. The value of the expression to the right of <code>=</code> is <em>assigned</em> to the name. Once a name has a value assigned to it, the value will be substituted for that name in future expressions.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1575,12 +1578,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1595,6 +1596,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A previously assigned name can be used in the expression to the right of <code>=</code>.</p>
@@ -1602,9 +1607,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1618,12 +1625,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1638,6 +1643,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>However, only the current value of an expression is assigned to a name. If that value changes later, names that were defined in terms of that value will not change automatically.</p>
@@ -1645,9 +1654,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1660,12 +1671,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1680,6 +1689,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Names must start with a letter, but can contain both letters and numbers. A name cannot contain a space; instead, it is common to use an underscore character <code>_</code> to replace each space. Names are only as useful as you make them; it's up to the programmer to choose names that are easy to interpret. Typically, more meaningful names can be invented than <code>a</code> and <code>b</code>. For example, to describe the sales tax on a $5 purchase in Berkeley, CA, the following names clarify the meaning of the various quantities involved.</p>
@@ -1687,9 +1700,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1707,12 +1722,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1727,10 +1740,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
  
 
 
-              <nav class="c-page__nav">
+            </div>
+            <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/03/1/Expressions.html">
@@ -1746,12 +1762,10 @@ initFunction(addCopyButtonToCodeCells);
   
 </nav>
 
-            </div>
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>
 
-          </div>
         </div>
       </main>
     </div>

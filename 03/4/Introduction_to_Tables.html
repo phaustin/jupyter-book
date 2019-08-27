@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Introduction to Tables</title>
-  <meta name="description" content="We can now apply Python to analyze data. We will work with data stored in Table structures.Tables are a fundamental way of representing data sets. A table ca...">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/03/4/Introduction_to_Tables.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/03/4/Introduction_to_Tables.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Introduction to Tables" />
-<meta property="og:description" content="We can now apply Python to analyze data. We will work with data stored in Table structures.Tables are a fundamental way of representing data sets. A table ca..." />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "Introduction to Tables",
   "datePublished":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "dateModified":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "description":
-    "We can now apply Python to analyze data. We will work with data stored in Table structures.Tables are a fundamental way of representing data sets. A table ca...",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -156,9 +156,9 @@ findCodeCells = function() {
 
 initFunction(findCodeCells);
 
-
+// All cells in general
 findInputCells = function() {
-    var inputCells = document.querySelectorAll('div.jb_input')
+    var inputCells = document.querySelectorAll('div.jb_cell')
     pageElements['inputCells'] = inputCells;
 
     inputCells.forEach((inputCell, index) => {
@@ -674,16 +674,17 @@ initFunction(addCopyButtonToCodeCells);
 
     var addHideButton = function () {
         // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
+        if (document.querySelector('div.tag_hide_input input') !== null) {
             return;
         }
 
         // Find the input cells and add a hide button
         pageElements['inputCells'].forEach(function (inputCell) {
-            if (!inputCell.classList.contains("hidecode")) {
+            if (!inputCell.classList.contains("tag_hide_input")) {
                 // Skip the cell if it doesn't have a hidecode class
                 return;
             }
+
             const id = inputCell.getAttribute('id')
 
             // Insert the button just inside the end of the next div
@@ -702,7 +703,7 @@ initFunction(addCopyButtonToCodeCells);
         addHideButton();
 
         // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        document.querySelectorAll('div.tag_hide_input input').forEach(function (item) {
             setCodeCellVisibility(item, 'hidden');
             item.checked = true;
         })
@@ -1514,9 +1515,7 @@ initFunction(addCopyButtonToCodeCells);
           </nav>
       </aside>
       
-      <main class="c-textbook__page" tabindex="-1">
-          <div class="o-wrapper">
-            <div class="c-sidebar-toggle">
+      <div class="c-topbar" id="top-navbar">
   <!-- We show the sidebar by default so we use .is-active -->
   <button
     id="js-sidebar-toggle"
@@ -1525,11 +1524,8 @@ initFunction(addCopyButtonToCodeCells);
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
   </button>
-</div>
-
-            
+  
 <div class="buttons">
 <a href="/jupyter-book/content/03/4/Introduction_to_Tables.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
@@ -1551,8 +1547,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content">
-              <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+              <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can now apply Python to analyze data. We will work with data stored in Table structures.</p>
 <p>Tables are a fundamental way of representing data sets. A table can be viewed in two ways:</p>
@@ -1566,9 +1567,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1580,12 +1583,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1625,6 +1626,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The table has six rows. Each row corresponds to one ice cream cone. The ice cream cones are the <em>individuals</em>.</p>
@@ -1636,9 +1641,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1650,12 +1657,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1684,6 +1689,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can replace 2 by any number of rows. If you ask for more than six, you will only get six, because <code>cones</code> only has six rows.</p>
@@ -1691,6 +1700,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Choosing-Sets-of-Columns">Choosing Sets of Columns<a class="anchor-link" href="#Choosing-Sets-of-Columns"> </a></h3><p>The method <code>select</code> creates a new table consisting of only the specified columns.</p>
@@ -1698,9 +1711,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1712,12 +1727,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1757,6 +1770,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This leaves the original table unchanged.</p>
@@ -1764,9 +1781,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1778,12 +1797,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1823,6 +1840,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can select more than one column, by separating the column labels by commas.</p>
@@ -1830,9 +1851,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1844,12 +1867,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1889,6 +1910,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can also <em>drop</em> columns you don't want. The table above can be created by dropping the <code>Color</code> column.</p>
@@ -1896,9 +1921,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1910,12 +1937,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1955,6 +1980,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can name this new table and look at it again by just typing its name.</p>
@@ -1962,9 +1991,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1978,12 +2009,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2023,6 +2052,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Like <code>select</code>, the <code>drop</code> method creates a smaller table and leaves the original table unchanged. In order to explore your data, you can create any number of smaller tables by using choosing or dropping columns. It will do no harm to your original data table.</p>
@@ -2030,12 +2063,20 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Sorting-Rows">Sorting Rows<a class="anchor-link" href="#Sorting-Rows"> </a></h3>
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The <code>sort</code> method creates a new table by arranging the rows of the original table in ascending order of the values in the specified column. Here the <code>cones</code> table has been sorted in ascending order of the price of the cones.</p>
@@ -2043,9 +2084,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2057,12 +2100,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2102,6 +2143,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To sort in descending order, you can use an <em>optional</em> argument to <code>sort</code>. As the name implies, optional arguments don't have to be used, but they can be used if you want to change the default behavior of a method.</p>
@@ -2110,9 +2155,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2124,12 +2171,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2169,6 +2214,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Like <code>select</code> and <code>drop</code>, the <code>sort</code> method leaves the original table unchanged.</p>
@@ -2176,6 +2225,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Selecting-Rows-that-Satisfy-a-Condition">Selecting Rows that Satisfy a Condition<a class="anchor-link" href="#Selecting-Rows-that-Satisfy-a-Condition"> </a></h3><p>The <code>where</code> method creates a new table consisting only of the rows that satisfy a given condition. In this section we will work with a very simple condition, which is that the value in a specified column must be equal to a value that we also specify. Thus the <code>where</code> method has two arguments.</p>
@@ -2184,9 +2237,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2198,12 +2253,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2234,6 +2287,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The arguments, separated by a comma, are the label of the column and the value we are looking for in that column. The <code>where</code> method can also be used when the condition that the rows must satisfy is more complicated. In those situations the call will be a little more complicated as well.</p>
@@ -2242,9 +2299,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2256,12 +2315,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2283,6 +2340,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Like all the other table methods in this section, <code>where</code> leaves the original table unchanged.</p>
@@ -2290,12 +2351,20 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Example:-Salaries-in-the-NBA">Example: Salaries in the NBA<a class="anchor-link" href="#Example:-Salaries-in-the-NBA"> </a></h3>
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>"The NBA is the highest paying professional sports league in the world," <a href="http://edition.cnn.com/2015/12/04/sport/gallery/highest-paid-nba-players/">reported CNN</a> in March 2016. The table <code>nba</code> contains the <a href="https://www.statcrunch.com/app/index.php?dataid=1843341">salaries of all National Basketball Association players</a> in 2015-2016.</p>
@@ -2331,9 +2400,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2345,12 +2416,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2403,6 +2472,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Fans of Stephen Curry can find his row by using <code>where</code>.</p>
@@ -2410,9 +2483,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2424,12 +2499,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2454,6 +2527,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can also create a new table called <code>warriors</code> consisting of just the data for the Golden State Warriors.</p>
@@ -2461,9 +2538,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2476,12 +2555,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2534,6 +2611,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>By default, the first 10 lines of a table are displayed. You can use <code>show</code> to display more or fewer. To display the entire table, use <code>show</code> with no argument in the parentheses.</p>
@@ -2541,9 +2622,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2555,12 +2638,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2624,6 +2705,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The <code>nba</code> table is sorted in alphabetical order of the team names. To see how the players were paid in 2015-2016, it is useful to sort the data by salary. Remember that by default, the sorting is in increasing order.</p>
@@ -2631,9 +2716,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2645,12 +2732,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2703,6 +2788,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>These figures are somewhat difficult to compare as some of these players changed teams during the season and received salaries from more than one team; only the salary from the last team appears in the table.</p>
@@ -2711,9 +2800,11 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -2725,12 +2816,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -2783,6 +2872,10 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Kobe Bryant, since retired, was the highest earning NBA player in 2015-2016.</p>
@@ -2790,10 +2883,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 </div>
 </div>
+</div>
+
  
 
 
-              <nav class="c-page__nav">
+            </div>
+            <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/03/3/Calls.html">
@@ -2809,12 +2905,10 @@ initFunction(addCopyButtonToCodeCells);
   
 </nav>
 
-            </div>
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>
 
-          </div>
         </div>
       </main>
     </div>

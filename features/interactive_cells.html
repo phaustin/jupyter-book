@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Adding interactivity to your book pages</title>
-  <meta name="description" content="Interactive code in your book Sometimes you'd rather let people interact with code directly on the pageinstead of sending them off to a Binder or a JupyterHu...">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/features/interactive_cells.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/features/interactive_cells.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Adding interactivity to your book pages" />
-<meta property="og:description" content="Interactive code in your book Sometimes you'd rather let people interact with code directly on the pageinstead of sending them off to a Binder or a JupyterHu..." />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "Adding interactivity to your book pages",
   "datePublished":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "dateModified":
-    "2019-08-27T16:20:22+00:00",
+    "2019-08-27T20:21:34+00:00",
   "description":
-    "Interactive code in your book Sometimes you'd rather let people interact with code directly on the pageinstead of sending them off to a Binder or a JupyterHu...",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -156,9 +156,9 @@ findCodeCells = function() {
 
 initFunction(findCodeCells);
 
-
+// All cells in general
 findInputCells = function() {
-    var inputCells = document.querySelectorAll('div.jb_input')
+    var inputCells = document.querySelectorAll('div.jb_cell')
     pageElements['inputCells'] = inputCells;
 
     inputCells.forEach((inputCell, index) => {
@@ -706,16 +706,17 @@ initFunction(addCopyButtonToCodeCells);
 
     var addHideButton = function () {
         // If a hide button is already added, don't add another
-        if (document.querySelector('div.hidecode input') !== null) {
+        if (document.querySelector('div.tag_hide_input input') !== null) {
             return;
         }
 
         // Find the input cells and add a hide button
         pageElements['inputCells'].forEach(function (inputCell) {
-            if (!inputCell.classList.contains("hidecode")) {
+            if (!inputCell.classList.contains("tag_hide_input")) {
                 // Skip the cell if it doesn't have a hidecode class
                 return;
             }
+
             const id = inputCell.getAttribute('id')
 
             // Insert the button just inside the end of the next div
@@ -734,7 +735,7 @@ initFunction(addCopyButtonToCodeCells);
         addHideButton();
 
         // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        document.querySelectorAll('div.tag_hide_input input').forEach(function (item) {
             setCodeCellVisibility(item, 'hidden');
             item.checked = true;
         })
@@ -1546,9 +1547,7 @@ initFunction(addCopyButtonToCodeCells);
           </nav>
       </aside>
       
-      <main class="c-textbook__page" tabindex="-1">
-          <div class="o-wrapper">
-            <div class="c-sidebar-toggle">
+      <div class="c-topbar" id="top-navbar">
   <!-- We show the sidebar by default so we use .is-active -->
   <button
     id="js-sidebar-toggle"
@@ -1557,11 +1556,8 @@ initFunction(addCopyButtonToCodeCells);
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
   </button>
-</div>
-
-            
+  
 <div class="buttons">
 <a href="/jupyter-book/content/features/interactive_cells.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
@@ -1584,8 +1580,13 @@ initFunction(addCopyButtonToCodeCells);
 </div>
 
 
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content">
-              <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+              <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Interactive-code-in-your-book">Interactive code in your book<a class="anchor-link" href="#Interactive-code-in-your-book"> </a></h1><p>Sometimes you'd rather let people interact with code <em>directly on the page</em>
 instead of sending them off to a Binder or a JupyterHub. There are currently
@@ -1612,9 +1613,11 @@ buttons described above.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input" >
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1634,12 +1637,10 @@ buttons described above.</p>
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper">
+<div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
@@ -1654,6 +1655,10 @@ buttons described above.</p>
 </div>
 
 </div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Using-interactive-widgets-on-your-page">Using interactive widgets on your page<a class="anchor-link" href="#Using-interactive-widgets-on-your-page"> </a></h2><p>✨<strong>experimental</strong>✨</p>
@@ -1683,9 +1688,11 @@ the right!</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+</div>
 
-<div class="jb_input hidecode" >
+<div class="jb_cell tag_hide_input tag_interactive">
+
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -1713,12 +1720,10 @@ the right!</p>
 </div>
 </div>
 
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
-<div class="jb_output_wrapper output_widget_view">
+<div class="jb_output_wrapper output_widget_view  }}">
 <div class="output_area">
 
 
@@ -1726,10 +1731,10 @@ the right!</p>
 
  
  
-<div id="53de5440-0784-40cf-9fa9-0f4e9b1f4162"></div>
+<div id="bd9a91a4-0266-450a-b28e-d24590dfef26"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#53de5440-0784-40cf-9fa9-0f4e9b1f4162');
+var element = $('#bd9a91a4-0266-450a-b28e-d24590dfef26');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "7db97110f70e4753addb351e55df6af6", "version_major": 2, "version_minor": 0}
@@ -1742,10 +1747,13 @@ var element = $('#53de5440-0784-40cf-9fa9-0f4e9b1f4162');
 </div>
 
 </div>
+</div>
+
  
 
 
-              <nav class="c-page__nav">
+            </div>
+            <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/features/interact.html">
@@ -1761,12 +1769,10 @@ var element = $('#53de5440-0784-40cf-9fa9-0f4e9b1f4162');
   
 </nav>
 
-            </div>
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>
 
-          </div>
         </div>
       </main>
     </div>
