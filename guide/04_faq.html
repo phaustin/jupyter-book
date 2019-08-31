@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>FAQ</title>
-  <meta name="description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/04_faq.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/04_faq.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="FAQ" />
-<meta property="og:description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll." />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "FAQ",
   "datePublished":
-    "2019-08-31T17:03:24+00:00",
+    "2019-08-31T17:29:23+00:00",
   "dateModified":
-    "2019-08-31T17:03:24+00:00",
+    "2019-08-31T17:29:23+00:00",
   "description":
-    "The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -1022,6 +1022,23 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
+                  href="/jupyter-book/features/jupytext.html"
+                >
+                  
+                  Using Jupytext for text-based Notebook content
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
                   href="/jupyter-book/features/search.html"
                 >
                   
@@ -1556,6 +1573,32 @@ initFunction(initPrint)
       </span>
     </button>
     
+<div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><i class="fa fa-download"></i></button>
+    <div class="download-buttons">
+        <a href="/jupyter-book/content/guide/04_faq.md" download>
+        <button id="interact-button-download" class="interact-button">IPYNB</button>
+        </a>
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">PDF</button></a>
+    </div>
+</div>
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Fguide%2F04_faq.md"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+
+
+</div>
+
 
   </div>
   <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
@@ -1569,70 +1612,108 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <p>The following are some common issues and questions that have arisen when
+              <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following are some common issues and questions that have arisen when
 building your textbook with Jekyll.</p>
-
-<h2 id="how-can-i-update-my-book">How can I update my book?</h2>
-
-<p>Sometimes Jupyter Book will get updates that you want to incorporate into
-a book you’ve already built. The easiest way to do this is to use the Command-Line Interface to
+<h2 id="How-can-I-update-my-book?">How can I update my book?<a class="anchor-link" href="#How-can-I-update-my-book?"> </a></h2><p>Sometimes Jupyter Book will get updates that you want to incorporate into
+a book you've already built. The easiest way to do this is to use the Command-Line Interface to
 upgrade your book.</p>
-
 <p>To upgrade a pre-existing Jupyter Book, run the following command:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book upgrade path/to/mybook
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">upgrade</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mybook</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>This will do the following:</p>
-
 <ol>
-  <li>Generate a fresh Jupyter Book in <code class="highlighter-rouge">mybook_UPGRADED</code> using the content files in your
+<li>Generate a fresh Jupyter Book in <code>mybook_UPGRADED</code> using the content files in your
 current book.</li>
-  <li>If this succeeds, copy over the contents of <code class="highlighter-rouge">mybook_UPGRADED</code> into your current book folder.</li>
-  <li>If this succeeds, delete the <code class="highlighter-rouge">mybook_UPGRADED</code> folder.</li>
+<li>If this succeeds, copy over the contents of <code>mybook_UPGRADED</code> into your current book folder.</li>
+<li>If this succeeds, delete the <code>mybook_UPGRADED</code> folder.</li>
 </ol>
-
-<p>Note that only the content that you can manually specify via the <code class="highlighter-rouge">jupyter-book create</code> command
+<p>Note that only the content that you can manually specify via the <code>jupyter-book create</code> command
 will be retained in your upgraded book. For a list of these options, see the help menu for this command:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create <span class="nt">-h</span>
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">create</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>You should check out the content in your upgraded book to make sure it looks correct, then
 commit the changes to your repository.</p>
-
-<h2 id="does-the-book-behave-differently-depending-on-the-browser">Does the book behave differently depending on the browser?</h2>
-
-<p>Maybe - Jupyter Book does use some features that might have different behaviors in
+<h2 id="Does-the-book-behave-differently-depending-on-the-browser?">Does the book behave differently depending on the browser?<a class="anchor-link" href="#Does-the-book-behave-differently-depending-on-the-browser?"> </a></h2><p>Maybe - Jupyter Book does use some features that might have different behaviors in
 some browsers. For example, Safari <a href="https://github.com/jupyter/jupyter-book/pull/104#issuecomment-462461188">tends to treat downloadable objects</a>
 differently for some reason.</p>
-
 <p>The two browsers on which Jupyter Book should always behave as expected are
 <strong>Firefox</strong> and <strong>Chrome</strong>.</p>
-
-<h2 id="why-isnt-my-math-showing-up-properly">Why isn’t my math showing up properly?</h2>
-
-<p>This site uses MathJax to render all math, with <code class="highlighter-rouge">$</code> denoting inline math,
-and <code class="highlighter-rouge">$$</code> denoting multi-line math blocks. Make sure that all of your math
+<h2 id="Why-isn't-my-math-showing-up-properly?">Why isn't my math showing up properly?<a class="anchor-link" href="#Why-isn't-my-math-showing-up-properly?"> </a></h2><p>This site uses MathJax to render all math, with <code>$</code> denoting inline math,
+and <code>$$</code> denoting multi-line math blocks. Make sure that all of your math
 is wrapped in these characters.</p>
-
-<p>Another tip is to make sure that your math isn’t being escaped improperly.
+<p>Another tip is to make sure that your math isn't being escaped improperly.
 Jekyll strips escape characters, so you should make sure to add <strong>two</strong>
 escape characters when needed. This is done automatically for many escape
-characters in <code class="highlighter-rouge">generate_book.py</code>, and if you notice something that should
+characters in <code>generate_book.py</code>, and if you notice something that should
 be included in this script, please open an issue
 <a href="https://github.com/jupyter/jupyter-book/issues">at the textbook template issues page</a></p>
-
-<h2 id="how-can-i-include-interactive-plotly-figures">How can I include interactive Plotly figures?</h2>
-
-<p>To display interactive <a href="https://plot.ly/python/">Plotly</a> figures, they must
+<h2 id="How-can-I-include-interactive-Plotly-figures?">How can I include interactive Plotly figures?<a class="anchor-link" href="#How-can-I-include-interactive-Plotly-figures?"> </a></h2><p>To display interactive <a href="https://plot.ly/python/">Plotly</a> figures, they must
 first be generated in a Jupyter notebook using the <a href="https://plot.ly/python/offline/">offline mode</a>.
-You must then plot the figure with <code class="highlighter-rouge">plotly.offline.plot()</code>, which generates an HTML file (<code class="highlighter-rouge">plotly.offline.iplot()</code> does not),
-and then load the HTML into the notebook with <code class="highlighter-rouge">display(HTML('file.html'))</code> prior to saving your *.ipynb file.</p>
-
+You must then plot the figure with <code>plotly.offline.plot()</code>, which generates an HTML file (<code>plotly.offline.iplot()</code> does not),
+and then load the HTML into the notebook with <code>display(HTML('file.html'))</code> prior to saving your *.ipynb file.</p>
 <p>e.g.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from IPython.core.display import display, HTML
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+from IPython.core.display import display, HTML
 from plotly.offline import init_notebook_mode, plot
 init_notebook_mode(connected=True)
 .
@@ -1640,53 +1721,49 @@ init_notebook_mode(connected=True)
 .
 plot(fig, filename = 'figure.html')
 display(HTML('figure.html')
-</code></pre></div></div>
+</div>
 
-<p>Note that, if viewing the file on a Jupyter Notebook session, the figure will not be displayed there (<code class="highlighter-rouge">iplot</code> is needed for this). However, if working on a <a href="https://github.com/binder-examples/jupyterlab">JupyterLab</a> session, the figure can be displayed there using the <code class="highlighter-rouge">plot</code> code above by having the <a href="https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension">JupyterLab plotly extension</a> installed.</p>
+<div class="jb_cell">
 
-<h2 id="what-if-i-have-an-issue-or-question">What if I have an issue or question?</h2>
-
-<p>If you’ve got questions, concerns, or suggestions, please open an issue at
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that, if viewing the file on a Jupyter Notebook session, the figure will not be displayed there (<code>iplot</code> is needed for this). However, if working on a <a href="https://github.com/binder-examples/jupyterlab">JupyterLab</a> session, the figure can be displayed there using the <code>plot</code> code above by having the <a href="https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension">JupyterLab plotly extension</a> installed.</p>
+<h2 id="What-if-I-have-an-issue-or-question?">What if I have an issue or question?<a class="anchor-link" href="#What-if-I-have-an-issue-or-question?"> </a></h2><p>If you've got questions, concerns, or suggestions, please open an issue at
 <a href="https://github.com/jupyter/jupyter-book/issues">at the jupyter book issues page</a></p>
-
-<h2 id="how-should-i-add-cell-tags-to-my-notebooks">How should I add cell tags to my notebooks?</h2>
-
-<p>You can control the behavior of Jupyter Book by putting custom tags
+<h2 id="How-should-I-add-cell-tags-to-my-notebooks?">How should I add cell tags to my notebooks?<a class="anchor-link" href="#How-should-I-add-cell-tags-to-my-notebooks?"> </a></h2><p>You can control the behavior of Jupyter Book by putting custom tags
 in the metadata of your cells. This allows you to do things like
 <a href="../features/hiding">automatically hide code cells</a> as well as
 <a href="../features/interactive_cells">adding interactive widgets to cells</a>.</p>
-
 <p>There are two straightforward ways to add metadata to cells:</p>
-
 <ol>
-  <li>
-    <p><strong>Use the Jupyter Notebook cell tag editor</strong>. The Jupyter Notebook ships with a
+<li><p><strong>Use the Jupyter Notebook cell tag editor</strong>. The Jupyter Notebook ships with a
 cell tag editor by default. This lets you add cell tags to each cell quickly.</p>
-
-    <p>To enable the cell tag editor, go click <code class="highlighter-rouge">View -&gt; Cell Toolbar -&gt; Tags</code>. This
-will enable the tags UI. Here’s what the menu looks like.</p>
-
-    <p><img src="../images/tags_notebook.png" alt="" /></p>
-  </li>
-  <li>
-    <p><strong>Use the JupyterLab Cell Tags plugin</strong>. JupyterLab is an IDE-like Jupyter
+<p>To enable the cell tag editor, go click <code>View -&gt; Cell Toolbar -&gt; Tags</code>. This
+will enable the tags UI. Here's what the menu looks like.</p>
+<p><img src="../images/tags_notebook.png" alt=""></p>
+</li>
+<li><p><strong>Use the JupyterLab Cell Tags plugin</strong>. JupyterLab is an IDE-like Jupyter
 environment that runs in your browser. It has a rich extension ecosystem.
 A particularly useful extension
-<a href="https://github.com/jupyterlab/jupyterlab-celltags">is the “cell tags” plugin</a>,
+<a href="https://github.com/jupyterlab/jupyterlab-celltags">is the "cell tags" plugin</a>,
 which exposes a user interface that lets you quickly insert cell tags.</p>
-
-    <p>You can install the cell tags plugin with the following command (after installing
+<p>You can install the cell tags plugin with the following command (after installing
 JupyterLab).</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter labextension install @jupyterlab/celltags
-</code></pre></div>    </div>
-
-    <p>Then, you’ll find tags under the “wrench” menu section.
-Here’s what the tags UI in JupyterLab looks like.</p>
-
-    <p><img src="../images/tags_jupyterlab.png" alt="" /></p>
-  </li>
+<pre><code>jupyter labextension install @jupyterlab/celltags</code></pre>
+<p>Then, you'll find tags under the "wrench" menu section.
+Here's what the tags UI in JupyterLab looks like.</p>
+<p><img src="../images/tags_jupyterlab.png" alt=""></p>
+</li>
 </ol>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
 
             </div>
             <nav class="c-page__nav">

@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Markdown files</title>
-  <meta name="description" content="Creating book content">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/features/markdown.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/features/markdown.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Markdown files" />
-<meta property="og:description" content="Creating book content" />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "Markdown files",
   "datePublished":
-    "2019-08-31T17:03:24+00:00",
+    "2019-08-31T17:29:23+00:00",
   "dateModified":
-    "2019-08-31T17:03:24+00:00",
+    "2019-08-31T17:29:23+00:00",
   "description":
-    "Creating book content",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -1022,6 +1022,23 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
+                  href="/jupyter-book/features/jupytext.html"
+                >
+                  
+                  Using Jupytext for text-based Notebook content
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
                   href="/jupyter-book/features/search.html"
                 >
                   
@@ -1556,6 +1573,32 @@ initFunction(initPrint)
       </span>
     </button>
     
+<div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><i class="fa fa-download"></i></button>
+    <div class="download-buttons">
+        <a href="/jupyter-book/content/features/markdown.md" download>
+        <button id="interact-button-download" class="interact-button">IPYNB</button>
+        </a>
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">PDF</button></a>
+    </div>
+</div>
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Ffeatures%2Fmarkdown.md"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+
+
+</div>
+
 
   </div>
   <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
@@ -1569,58 +1612,72 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <h1 id="creating-book-content">Creating book content</h1>
+              <div class="jb_cell">
 
-<p>The two kinds of files that contain course content are:</p>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Creating-book-content">Creating book content<a class="anchor-link" href="#Creating-book-content"> </a></h1><p>The two kinds of files that contain course content are:</p>
 <ul>
-  <li>Jupyter Notebooks</li>
-  <li>Markdown files</li>
+<li>Jupyter Notebooks</li>
+<li>Markdown files</li>
 </ul>
-
-<p>Each are contained in the <code class="highlighter-rouge">content/</code> folder and referenced from <code class="highlighter-rouge">_data/toc.yml</code>.</p>
-
+<p>Each are contained in the <code>content/</code> folder and referenced from <code>_data/toc.yml</code>.</p>
 <p>If the file is markdown, it will be copied over with front-matter YAML added so
 that Jekyll can parse it.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Python (and any language-specific) code still works as expected"</span><span class="p">)</span>
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>As does non-language code.
-</code></pre></div></div>
+<div class="jb_cell">
 
-<h2 id="sidebars-with-jekyll">Sidebars with Jekyll</h2>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-<p>You may notice that there’s a sidebar to the right (if your screen is wide enough).
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python (and any language-specific) code still works as expected&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+As does non-language code.
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sidebars-with-Jekyll">Sidebars with Jekyll<a class="anchor-link" href="#Sidebars-with-Jekyll"> </a></h2><p>You may notice that there's a sidebar to the right (if your screen is wide enough).
 These are automatically generated from the headers that are present in your page.
 The sidebar will automatically capture all 2nd and 3rd level section headers.
-The best way to designate these headers is with <code class="highlighter-rouge">#</code> characters at the beginning
+The best way to designate these headers is with <code>#</code> characters at the beginning
 of a line.</p>
-
-<h3 id="heres-a-third-level-header">Here’s a third-level header</h3>
-
-<p>This section is here purely to demonstrate the third-level header of the
+<h3 id="Here's-a-third-level-header">Here's a third-level header<a class="anchor-link" href="#Here's-a-third-level-header"> </a></h3><p>This section is here purely to demonstrate the third-level header of the
 rendered page in the sidebar!</p>
-
-<h2 id="embedding-media">Embedding media</h2>
-
-<h3 id="adding-images">Adding images</h3>
-
-<p>You can reference external media like images from your markdown file. If you use
+<h2 id="Embedding-media">Embedding media<a class="anchor-link" href="#Embedding-media"> </a></h2><h3 id="Adding-images">Adding images<a class="anchor-link" href="#Adding-images"> </a></h3><p>You can reference external media like images from your markdown file. If you use
 relative paths, then they will continue to work when the markdown files are copied over,
-so long as they point to a file that’s inside of the repository.</p>
-
-<p>Here’s an image relative to the site root</p>
-
-<p><img src="../images/C-3PO_droid.png" alt="" /></p>
-
-<h3 id="adding-movies">Adding movies</h3>
-
-<p>You can even embed references to movies on the web! For example, here’s a little gif for you!</p>
-
-<p><img src="https://media.giphy.com/media/yoJC2A59OCZHs1LXvW/giphy.gif" alt="" /></p>
-
+so long as they point to a file that's inside of the repository.</p>
+<p>Here's an image relative to the site root</p>
+<p><img src="../images/C-3PO_droid.png" alt=""></p>
+<h3 id="Adding-movies">Adding movies<a class="anchor-link" href="#Adding-movies"> </a></h3><p>You can even embed references to movies on the web! For example, here's a little gif for you!</p>
+<p><img src="https://media.giphy.com/media/yoJC2A59OCZHs1LXvW/giphy.gif" alt=""></p>
 <p>This will be included in your website when it is built.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
 
             </div>
             <nav class="c-page__nav">

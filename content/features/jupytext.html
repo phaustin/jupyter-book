@@ -7,16 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Create your book</title>
-  <meta name="description" content="">
+  <title>Jupytext with Jupyter Book</title>
+  <meta name="description" content="This is an example book built with Jupyter Books.">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/02_create.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/content/features/jupytext.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/02_create.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/content/features/jupytext.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Create your book" />
-<meta property="og:description" content="" />
+<meta property="og:title"       content="Jupytext with Jupyter Book" />
+<meta property="og:description" content="This is an example book built with Jupyter Books." />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -27,15 +27,15 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/guide/02_create.html",
+    "https://jupyter.org/jupyter-book/content/features/jupytext.html",
   "headline":
-    "Create your book",
+    "Jupytext with Jupyter Book",
   "datePublished":
     "2019-08-31T17:29:23+00:00",
   "dateModified":
     "2019-08-31T17:29:23+00:00",
   "description":
-    "",
+    "This is an example book built with Jupyter Books.",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -801,7 +801,7 @@ initFunction(initPrint)
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry c-sidebar__entry--active"
+                <a class="c-sidebar__entry "
                   href="/jupyter-book/guide/02_create.html"
                 >
                   
@@ -1021,7 +1021,7 @@ initFunction(initPrint)
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
+                <a class="c-sidebar__entry c-sidebar__entry--active"
                   href="/jupyter-book/features/jupytext.html"
                 >
                   
@@ -1573,32 +1573,6 @@ initFunction(initPrint)
       </span>
     </button>
     
-<div class="buttons">
-<div class="download-buttons-dropdown">
-    <button id="dropdown-button-trigger" class="interact-button"><i class="fa fa-download"></i></button>
-    <div class="download-buttons">
-        <a href="/jupyter-book/content/guide/02_create.md" download>
-        <button id="interact-button-download" class="interact-button">IPYNB</button>
-        </a>
-        
-        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">PDF</button></a>
-    </div>
-</div>
-<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
-
-
-
-
-
-
-
-
-
-<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Fguide%2F02_create.md"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
-
-
-</div>
-
 
   </div>
   <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
@@ -1612,153 +1586,72 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <div class="jb_cell">
+              <h1 id="jupytext-with-jupyter-book">Jupytext with Jupyter Book</h1>
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Create-your-Jupyter-Book">Create your Jupyter Book<a class="anchor-link" href="#Create-your-Jupyter-Book"> </a></h1><p>This page covers how to create a Jupyter Book with your own content.
-You've got three primary ways to create your Jupyter Book.</p>
-<h2 id="by-starting-with-a-minimal-book">by starting with a minimal book<a class="anchor-link" href="#by-starting-with-a-minimal-book"> </a></h2><p>Running the following command will create a new Jupyter Book with a few
-content pages and a Table of Contents to get you started:</p>
+<p>It’s also possible to build Jupyter Books using <a href="https://jupytext.readthedocs.io">Jupytext</a>, a tool for
+two-way conversion between Jupyter Notebooks an text-based versions of a Jupyter Notebook (e.g., <code class="highlighter-rouge">.md</code> or <code class="highlighter-rouge">.py</code>).</p>
 
-</div>
-</div>
-</div>
-</div>
+<p>Using Jupytext allows you to store your Jupyter Notebooks as <strong>text files</strong>, which makes them much better for
+collaboration and “diffing” using a tool like Git. The drawbacks are that you no longer keep the outputs with
+your files, which means building your book with outputs requires running each file at build-time.</p>
 
-<div class="jb_cell">
-jupyter-book create mybookname
-</div>
+<h2 id="this-notebook-is-stored-in-jupytext-format">This notebook is stored in Jupytext format!</h2>
 
-<div class="jb_cell">
+<p>For example, the notebook for this page is stored in a Jupytext format. In this case, we’ve used
+a markdown file. <a href="https://github.com/jupyter/jupyter-book/blob/master/jupyter_book/book_template/content/features/jupytext.md">You can find the original (text-based) format here</a>.</p>
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This will create a new book using your content in <code>mybookname/</code>. You'll then need to</p>
-<ol>
-<li>Add your content to <code>mybookname/content/</code></li>
-<li>Modify <code>mybookname/_data/toc.yml</code> to match your content</li>
-<li>Modify <code>mybookname/_config.yml</code> to the configuration you'd like</li>
-</ol>
-<p>Note that if you choose to create the book template and later add content
-to it, you can quickly <strong>generate a basic Table of Contents</strong> by running
-the following command:</p>
+<p>Below we’ll show some Python code, which Jupyter Book can execute at build time.</p>
 
-</div>
-</div>
-</div>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Import some data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+</code></pre></div></div>
 
-<div class="jb_cell">
-jupyter-book toc mybookname/
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We'll make a simple plot!</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
-<div class="jb_cell">
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"Jupytext is great!"</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s">'size'</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s">'horizontalalignment'</span><span class="p">:</span> <span class="s">'center'</span><span class="p">})</span>
+</code></pre></div></div>
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="by-modifying-the-Demo-Book">by modifying the Demo Book<a class="anchor-link" href="#by-modifying-the-Demo-Book"> </a></h2><p>If you'd like to see a more fully-functioning demo book for inspiration, you can
-create the book that lives at the <a href="https://jupyter.org/jupyter-book">jupyter-book website</a>
-by adding the <code>--demo</code> flag:</p>
+<h2 id="jupytext-works-with-cell-tags">Jupytext works with cell tags</h2>
 
-</div>
-</div>
-</div>
-</div>
+<p>You can still use cell tags in your Jupytext files by using the format that Jupytext expects.
+For example, the Python code below will have its code cell hidden:</p>
 
-<div class="jb_cell">
-jupyter-book create mybookname --demo
-</div>
+<p>```python tags=[“hide_input”]</p>
+<h1 id="well-make-a-simple-plot">We’ll make a simple plot!</h1>
+<p>data = np.random.randn(2, 100)</p>
 
-<div class="jb_cell">
+<p>fig, ax = plt.subplots()
+ax.scatter(*data, c=data[1], s=500, cmap=’coolwarm’)
+ax.text(0, 0, “Jupytext is great!”, fontdict={‘size’: 40, ‘horizontalalignment’: ‘center’})
+```</p>
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>See the previous section for a description of all of the relevant files you
-should modify for your book.</p>
+<h2 id="supported-jupytext-formats">Supported Jupytext formats</h2>
 
-</div>
-</div>
-</div>
-</div>
+<p>There are <a href="https://jupytext.readthedocs.io/en/latest/formats.html">many supported formats in Jupytext</a>. Jupyter
+Book works with a subset of common ones:</p>
 
-<div class="jb_cell">
+<ul>
+  <li>Markdown files (<code class="highlighter-rouge">.md</code> or <code class="highlighter-rouge">.markdown</code>)</li>
+  <li>Python files meant for Jupytext (<code class="highlighter-rouge">.py</code> with Sphinx-Gallery or <code class="highlighter-rouge">%%</code> syntax to break cells)</li>
+  <li>RMarkdown files (<code class="highlighter-rouge">.Rmd</code>)</li>
+</ul>
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="by-using-a-pre-existing-book-configuration">by using a pre-existing book configuration<a class="anchor-link" href="#by-using-a-pre-existing-book-configuration"> </a></h2><p>If you've used Jupyter Book before, you can quickly generate a <em>new</em> book using a pre-existing
-set of folders and files. These are all available as arguments in the command line interface.</p>
-<p>For example, if you have your book's content in a folder structure like this:</p>
+<h2 id="a-recommended-workflow-with-jupytext-and-notebooks">A recommended workflow with Jupytext and notebooks</h2>
 
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-myoldbook/
-├── content
-│   ├── root_test.md
-│   └── tests
-├── _data
-│   └── toc.yml
-├── images
-│   └── tests
-├── mylicense.md
-├── myextrafolder
-│   └── myextrafile.txt
-└── config.yml
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>You can generate a Jupyter Book from it with the following command:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-jupyter-book create mybookname --content-folder myoldbook/content \
-                               --toc myoldbook/_data/toc.yml \
-                               --config myoldbook/_config.yml \
-                               --license myoldbook/mylicense.md \
-                               --extra-files myoldbook/myextrafolder
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This will create a new Jupyter Book using these files. In this case, you need to ensure
-that the values in <code>_config.yml</code> are correct, and that the Table of Contents (<code>toc.yml</code>) file
-has the structure that you want.</p>
-
-</div>
-</div>
-</div>
-</div>
-
- 
-
+<p>Even if you’re storing your content in a text-based file, it’s useful to <strong>write your content in notebooks</strong>
+and convert them to text format before committing them in Git. This allows you to add <strong>tags</strong> to your notebooks
+that propagate to your Jupytext format. This allows you to use the editing capabilities of a Jupyter interface, but
+the version-control benefits of a text-based file.</p>
 
             </div>
             <nav class="c-page__nav">
   
-    
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/01_overview.html">
-      〈 <span class="u-margin-right-tiny"></span> Getting started
-    </a>
-  
 
-  
-    
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/03_build.html">
-      Build and publish your book <span class="u-margin-right-tiny"></span> 〉
-    </a>
   
 </nav>
 

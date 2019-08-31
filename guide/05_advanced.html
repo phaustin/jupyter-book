@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>How-to and advanced topics</title>
-  <meta name="description" content="This page contains more advanced and complete information about thejupyter-book repository. See the sections below.">
+  <meta name="description" content="">
 
   <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/05_advanced.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
@@ -16,7 +16,7 @@
   <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/05_advanced.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="How-to and advanced topics" />
-<meta property="og:description" content="This page contains more advanced and complete information about thejupyter-book repository. See the sections below." />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -31,11 +31,11 @@
   "headline":
     "How-to and advanced topics",
   "datePublished":
-    "2019-08-31T17:03:24+00:00",
+    "2019-08-31T17:29:23+00:00",
   "dateModified":
-    "2019-08-31T17:03:24+00:00",
+    "2019-08-31T17:29:23+00:00",
   "description":
-    "This page contains more advanced and complete information about thejupyter-book repository. See the sections below.",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -1022,6 +1022,23 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
+                  href="/jupyter-book/features/jupytext.html"
+                >
+                  
+                  Using Jupytext for text-based Notebook content
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
                   href="/jupyter-book/features/search.html"
                 >
                   
@@ -1556,6 +1573,32 @@ initFunction(initPrint)
       </span>
     </button>
     
+<div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><i class="fa fa-download"></i></button>
+    <div class="download-buttons">
+        <a href="/jupyter-book/content/guide/05_advanced.md" download>
+        <button id="interact-button-download" class="interact-button">IPYNB</button>
+        </a>
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">PDF</button></a>
+    </div>
+</div>
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Fguide%2F05_advanced.md"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+
+
+</div>
+
 
   </div>
   <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
@@ -1569,16 +1612,26 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <p>This page contains more advanced and complete information about the
-<a href="https://github.com/jupyter/jupyter-book"><code class="highlighter-rouge">jupyter-book</code> repository</a>. See the sections below.</p>
+              <div class="jb_cell">
 
-<h2 id="enable-google-analytics">Enable Google Analytics</h2>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This page contains more advanced and complete information about the
+<a href="https://github.com/jupyter/jupyter-book"><code>jupyter-book</code> repository</a>. See the sections below.</p>
 
-<p>If you have a Google Account, you can use Google Analytics to collect some 
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Enable-Google-Analytics">Enable Google Analytics<a class="anchor-link" href="#Enable-Google-Analytics"> </a></h2><p>If you have a Google Account, you can use Google Analytics to collect some 
 information on the traffic to your Jupyter Book. With this tool, you can find 
 out how many people are using your site, where they come from and how they 
 access it, wether they are using the Desktop or the mobile version etc.</p>
-
 <p>To add Google Analytics to your Jupyter Book, navigate to 
 <a href="https://analytics.google.com/analytics/web/">Google Analytics</a>, create a new 
 Google Analytics account and add the url of your Jupyter Book to a new 
@@ -1587,259 +1640,484 @@ will have a so-called Tracking-ID, that typically starts with the letters UA.
 All that you need to do is to copy this ID and paste it into your 
 configuration file:</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">google_analytics</span><span class="pi">:</span>
-  <span class="na">mytrackingcode</span><span class="pi">:</span> <span class="s">UA-XXXXXXXXX-X</span>
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
-<h2 id="retain-custom-yaml-front-matter-in-your-files">Retain custom YAML front-matter in your files</h2>
+<div class="jb_cell">
+google_analytics:
+  mytrackingcode: UA-XXXXXXXXX-X
+</div>
 
-<p>Jupyter book will check your files for YAML front-matter and will <strong>append</strong>
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Retain-custom-YAML-front-matter-in-your-files">Retain custom YAML front-matter in your files<a class="anchor-link" href="#Retain-custom-YAML-front-matter-in-your-files"> </a></h2><p>Jupyter book will check your files for YAML front-matter and will <strong>append</strong>
 any newly-generated YAML to the built files for the page. This means you
-can provide your own custom YAML to files (which may be useful if you’d like
-to modify this site’s HTML).</p>
-
+can provide your own custom YAML to files (which may be useful if you'd like
+to modify this site's HTML).</p>
 <p>Be careful not to add YAML with the same key names as the auto-generated YAML, as
-this will create duplicated keys in your page’s front-matter.</p>
+this will create duplicated keys in your page's front-matter.</p>
 
-<h2 id="deploying-a-jupyterhub">Deploying a JupyterHub</h2>
+</div>
+</div>
+</div>
+</div>
 
-<p>If you wish, you may deploy a JupyterHub alongside your textbook. This way, for pages that are built from
-Jupyter Notebooks, students can click the “interact” links
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Deploying-a-JupyterHub">Deploying a JupyterHub<a class="anchor-link" href="#Deploying-a-JupyterHub"> </a></h2><p>If you wish, you may deploy a JupyterHub alongside your textbook. This way, for pages that are built from
+Jupyter Notebooks, students can click the "interact" links
 at the top of each page and be taken to a live Jupyter Notebook running on your JupyterHub.</p>
-
 <p>The easiest way to set up a JupyterHub is to follow <a href="https://the-littlest-jupyterhub.readthedocs.io/en/latest/index.html">The Littlest JupyterHub guide</a>.
 This is a straightforward deployment of JupyterHub on a single VM, and is suitable for
 courses / workshops of less than 50-60 students.</p>
-
 <p>Once you have your JupyterHub set up, you can use the <a href="https://github.com/data-8/nbgitpuller">nbgitpuller</a>
 package to send links to course material to your students, or use the interact links that Textbooks for Jupyter
 automatically inserts into your course material.</p>
-
-<h2 id="auto-generating-a-toc-file-for-your-book">Auto-generating a TOC file for your book</h2>
-
-<p>Sometimes it can be a pain to create the Table of Contents YAML file by hand.
+<h2 id="Auto-generating-a-TOC-file-for-your-book">Auto-generating a TOC file for your book<a class="anchor-link" href="#Auto-generating-a-TOC-file-for-your-book"> </a></h2><p>Sometimes it can be a pain to create the Table of Contents YAML file by hand.
 Jupyter Book has a convenience function to automatically create this file
 using the alpha-numeric sorting of the file/folder names in your content folder.
 To use it, simply use the following command:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book toc path/to/mybook
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
-<p>This put all <code class="highlighter-rouge">.md</code> and <code class="highlighter-rouge">.ipynb</code> files in the root of the <strong>content folder</strong> 
+<div class="jb_cell">
+jupyter-book toc path/to/mybook
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This put all <code>.md</code> and <code>.ipynb</code> files in the root of the <strong>content folder</strong> 
 as top-level pages. For any files that are in folders, it will create one
 section per <strong>top-level folder</strong> and place all content files inside that
 section.</p>
-
 <p>By default, running this command will print the TOC YAML to the screen.
-If you’d like to overwrite your <code class="highlighter-rouge">_data/toc.yml</code> file with the result of
-running this command, you can use the <code class="highlighter-rouge">--path-output</code> argument like so</p>
+If you'd like to overwrite your <code>_data/toc.yml</code> file with the result of
+running this command, you can use the <code>--path-output</code> argument like so</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book toc path/to/mybook --path-output path/to/mybook/_data/toc.yml
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
-<p>This will overwrite the contents of <code class="highlighter-rouge">toc.yml</code> with the new TOC.</p>
+<div class="jb_cell">
+jupyter-book toc path/to/mybook --path-output path/to/mybook/_data/toc.yml
+</div>
 
-<blockquote>
-  <p>Note: this will make some assumptions about how you’d like your book to
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This will overwrite the contents of <code>toc.yml</code> with the new TOC.</p>
+<blockquote><p>Note: this will make some assumptions about how you'd like your book to
 be structured. We recommend using this command as a starting point, and
-then customizing your TOC how you’d like.</p>
+then customizing your TOC how you'd like.</p>
 </blockquote>
-
-<h2 id="build-the-books-site-html-locally">Build the book’s site HTML locally</h2>
-
-<p>Once you’ve generated the intermediate files for your notebooks and installed the
+<h2 id="Build-the-book's-site-HTML-locally">Build the book's site HTML locally<a class="anchor-link" href="#Build-the-book's-site-HTML-locally"> </a></h2><p>Once you've generated the intermediate files for your notebooks and installed the
 necessary dependencies. You are ready to build your site HTML.</p>
-
 <p>Ensure that your notebooks have been converted to intermediate files, there should be a
-collection of them in <code class="highlighter-rouge">_build/</code>.</p>
-
-<p>In order to locally build your site’s HTML with Jekyll, you’ll take one of two approaches:</p>
-
+collection of them in <code>_build/</code>.</p>
+<p>In order to locally build your site's HTML with Jekyll, you'll take one of two approaches:</p>
 <ol>
-  <li>Use a container software (Docker or Singularity) along with a Docker image that we’ve
+<li>Use a container software (Docker or Singularity) along with a Docker image that we've
 prepared for you
 <a href="https://github.com/jupyter/jupyter-book/blob/master/jupyter_book/Dockerfile">from this Dockerfile</a>.</li>
-  <li>Install a copy of the Ruby language (which is a free open-source language, but can be a pain to install).</li>
+<li>Install a copy of the Ruby language (which is a free open-source language, but can be a pain to install).</li>
 </ol>
-
-<p>In our experience, we’ve found that <a href="https://www.docker.com/resources/what-container">containers</a>
+<p>In our experience, we've found that <a href="https://www.docker.com/resources/what-container">containers</a>
 provide an easier installation for most systems.
 If you are developing on a system where you have administrator privileges
-(i.e., you have <code class="highlighter-rouge">root</code> permissions), we recommend you use <a href="https://docs.docker.com/get-started/">Docker</a>.</p>
-
+(i.e., you have <code>root</code> permissions), we recommend you use <a href="https://docs.docker.com/get-started/">Docker</a>.</p>
 <p>We also provide instructions for using <a href="https://www.sylabs.io/guides/2.6/user-guide/quick_start.html">Singularity</a>,
 an alternate containerization software for systems where you do not have administrator privileges.
 To learn more about using containers, please see the
 <a href="https://neurohackweek.github.io/docker-for-scientists/">Docker for scientists guide</a>.</p>
-
-<h3 id="building-your-site-locally-with-containers-docker">Building your site locally with Containers: Docker</h3>
-
-<p>First, you’ll need to make sure you have Docker installed.
+<h3 id="Building-your-site-locally-with-Containers:-Docker">Building your site locally with Containers: Docker<a class="anchor-link" href="#Building-your-site-locally-with-Containers:-Docker"> </a></h3><p>First, you'll need to make sure you have Docker installed.
 There are <a href="https://hub.docker.com/search/?type=edition&amp;offering=community">installation instructions for each operating system</a>
 to guide you through this process.</p>
-
 <p>Once Docker is available on your system, you can build the image locally with:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull emdupre/jupyter-book
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">emdupre</span><span class="o">/</span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>You can then access this image with the following command.
 Make sure to specify the full path to your Jupyter Book, rather than the relative path!</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">--security-opt</span> label:disable  <span class="se">\</span>
-   <span class="nt">-v</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
-   <span class="nt">-p</span> 4000:4000 <span class="se">\</span>
-   <span class="nt">-it</span> <span class="nt">-u</span> 1000:1000 <span class="se">\</span>
-   emdupre/jupyter-book bundle <span class="nb">exec </span>jekyll serve <span class="nt">--host</span> 0.0.0.0
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
-<p>If you navigate to <code class="highlighter-rouge">http://0.0.0.0:4000/jupyter-book/</code> in your browser,
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">security</span><span class="o">-</span><span class="n">opt</span> <span class="n">label</span><span class="p">:</span><span class="n">disable</span>  \
+   <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">book</span><span class="p">:</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">jekyll</span> \
+   <span class="o">-</span><span class="n">p</span> <span class="mi">4000</span><span class="p">:</span><span class="mi">4000</span> \
+   <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">u</span> <span class="mi">1000</span><span class="p">:</span><span class="mi">1000</span> \
+   <span class="n">emdupre</span><span class="o">/</span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">bundle</span> <span class="n">exec</span> <span class="n">jekyll</span> <span class="n">serve</span> <span class="o">--</span><span class="n">host</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you navigate to <code>http://0.0.0.0:4000/jupyter-book/</code> in your browser,
 you should see a preview copy of your book.
 If you instead see an error, please try to update your local book;
 see <a href="https://jupyter.org/jupyter-book/guide/04_faq.html#how-can-i-update-my-book">the Jupyter Book FAQ section</a>
 for more details on how to do so.</p>
-
-<p>You’ll find the HTML for your book in the <code class="highlighter-rouge">_site/</code> folder.</p>
-
-<h3 id="building-your-site-locally-with-containers-singularity">Building your site locally with Containers: Singularity</h3>
-
-<p>If you are on a system where you do not have administrator privileges (such as a shared
+<p>You'll find the HTML for your book in the <code>_site/</code> folder.</p>
+<h3 id="Building-your-site-locally-with-Containers:-Singularity">Building your site locally with Containers: Singularity<a class="anchor-link" href="#Building-your-site-locally-with-Containers:-Singularity"> </a></h3><p>If you are on a system where you do not have administrator privileges (such as a shared
 computing cluster), you will not be able to use Docker.
 Instead, you can use Singularity.
-First, you’ll need to check with your resource manager that Singularity is available
+First, you'll need to check with your resource manager that Singularity is available
 on your system.</p>
-
 <p>You can then create a Jupyter Book Singularity image using:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity build jupyter-book.simg docker://emdupre/jupyter-book
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">singularity</span> <span class="n">build</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">book</span><span class="o">.</span><span class="n">simg</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">emdupre</span><span class="o">/</span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, you can access this image with the following command.
 Make sure to specify the full path to your Jupyter Book, rather than the relative path!</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity run <span class="nt">-B</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
-    <span class="nt">--pwd</span> /srv/jekyll <span class="se">\</span>
-    jupyter-book.simg bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
-<p>And that’s it! If you navigate to <code class="highlighter-rouge">http://127.0.0.1:4000/jupyter-book/</code> in your browser,
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">singularity</span> <span class="n">run</span> <span class="o">-</span><span class="n">B</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">book</span><span class="p">:</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">jekyll</span> \
+    <span class="o">--</span><span class="n">pwd</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">jekyll</span> \
+    <span class="n">jupyter</span><span class="o">-</span><span class="n">book</span><span class="o">.</span><span class="n">simg</span> <span class="n">bundle</span> <span class="n">exec</span> <span class="n">jekyll</span> <span class="n">serve</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And that's it! If you navigate to <code>http://127.0.0.1:4000/jupyter-book/</code> in your browser,
 you should see a preview copy of your book.</p>
-
-<h3 id="building-your-site-locally-with-ruby">Building your site locally with Ruby</h3>
-
-<p>You can also choose to build your site locally without a container.
-In this case, you’ll need Ruby, an open-source programming language, to build your site’s
+<h3 id="Building-your-site-locally-with-Ruby">Building your site locally with Ruby<a class="anchor-link" href="#Building-your-site-locally-with-Ruby"> </a></h3><p>You can also choose to build your site locally without a container.
+In this case, you'll need Ruby, an open-source programming language, to build your site's
 HTML with Jekyll.</p>
-
-<blockquote>
-  <p><strong>NOTE:</strong> If these instructions don’t work, you can also try installing Jekyll at the
+<blockquote><p><strong>NOTE:</strong> If these instructions don't work, you can also try installing Jekyll at the
 following URLs.</p>
-
-  <ul>
-    <li><a href="https://jekyllrb.com/docs/installation/macos/">MacOS Instructions</a></li>
-    <li><a href="https://jekyllrb.com/docs/installation/ubuntu/">Ubuntu Instructions</a></li>
-    <li><a href="https://jekyllrb.com/docs/installation/other-linux">Linux (non-Ubuntu) Instructions</a></li>
-    <li><a href="https://jekyllrb.com/docs/installation/windows/">Windows Instructions</a></li>
-  </ul>
-
-  <p>Once you’ve finished those steps, head to <a href="#install-ruby-plugins">install ruby plugins</a>
+<ul>
+<li><a href="https://jekyllrb.com/docs/installation/macos/">MacOS Instructions</a></li>
+<li><a href="https://jekyllrb.com/docs/installation/ubuntu/">Ubuntu Instructions</a></li>
+<li><a href="https://jekyllrb.com/docs/installation/other-linux">Linux (non-Ubuntu) Instructions</a></li>
+<li><a href="https://jekyllrb.com/docs/installation/windows/">Windows Instructions</a></li>
+</ul>
+<p>Once you've finished those steps, head to <a href="#install-ruby-plugins">install ruby plugins</a>
 and follow the directions.</p>
 </blockquote>
-
 <p>The easiest way to install Ruby on <em>nix systems is to use
-the *<code class="highlighter-rouge">conda</code></em> package manager:</p>
+the </em><code>conda</code>* package manager:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge ruby
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">ruby</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Once you have Ruby installed, the conda-built clang compiler for your system need to be installed. Details depend on your OS.</p>
+<h4 id="On-OSX">On OSX<a class="anchor-link" href="#On-OSX"> </a></h4><p>Two steps are needed on OSX. First, install the <em><code>conda</code>'s</em> clang compiler:</p>
 
-<h4 id="on-osx">On OSX</h4>
+</div>
+</div>
+</div>
+</div>
 
-<p>Two steps are needed on OSX. First, install the <em><code class="highlighter-rouge">conda</code>’s</em> clang compiler:</p>
+<div class="jb_cell">
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge clangxx_osx-64
-</code></pre></div></div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">clangxx_osx</span><span class="o">-</span><span class="mi">64</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>If you are running OSX 10.14 (Mojave) you also need to install system libraries in
 the default *nix locations by running</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
-<h4 id="on-linux">On Linux</h4>
+<div class="jb_cell">
 
-<p>Install <em><code class="highlighter-rouge">conda</code>’s</em> clang compiler:</p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda install <span class="nt">-c</span> conda-forge gxx_linux-64
-</code></pre></div></div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">open</span> <span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">CommandLineTools</span><span class="o">/</span><span class="n">Packages</span><span class="o">/</span><span class="n">macOS_SDK_headers_for_macOS_10</span><span class="o">.</span><span class="mf">14.</span><span class="n">pkg</span>
+</pre></div>
 
-<h4 id="install-ruby-plugins">Install Ruby plugins</h4>
+    </div>
+</div>
+</div>
 
-<p>Finally, run</p>
+</div>
+</div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make install
-</code></pre></div></div>
+<div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="On-Linux">On Linux<a class="anchor-link" href="#On-Linux"> </a></h4><p>Install <em><code>conda</code>'s</em> clang compiler:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">gxx_linux</span><span class="o">-</span><span class="mi">64</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Install-Ruby-plugins">Install Ruby plugins<a class="anchor-link" href="#Install-Ruby-plugins"> </a></h4><p>Finally, run</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">make</span> <span class="n">install</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>which will install Bundler (a Ruby dependency management tool) and then install the plugins
 needed to build the site for your book.</p>
-
 <p>You can then build the site locally by running:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make site
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
-<p>Alternatively, you can preview your book’s site locally by running this command:</p>
+<div class="jb_cell">
+make site
+</div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make serve
-</code></pre></div></div>
+<div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Alternatively, you can preview your book's site locally by running this command:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+make serve
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>This should open up a port on your computer with a live version of the book.</p>
 
-<h3 id="when-should-you-build-the-html-locally">When should you build the HTML locally?</h3>
+</div>
+</div>
+</div>
+</div>
 
-<p>You might ask: if GitHub pages can build my site automatically from the intermediate files, why
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="When-should-you-build-the-HTML-locally?">When should you build the HTML locally?<a class="anchor-link" href="#When-should-you-build-the-HTML-locally?"> </a></h3><p>You might ask: if GitHub pages can build my site automatically from the intermediate files, why
 build it locally? The main reason for this is that you get more flexibility by building locally
 and serving raw HTML, as opposed to auto-building the site with GitHub-pages.</p>
-
-<p>In particular, if you wish to use any <strong>extra Jekyll plugins</strong>, such as the <code class="highlighter-rouge">jekyll-scholar</code> plugin that
+<p>In particular, if you wish to use any <strong>extra Jekyll plugins</strong>, such as the <code>jekyll-scholar</code> plugin that
 enables you to add citations and bibliographies, then you need to build your site
-locally as HTML. GitHub-pages doesn’t let you enable any extra plugins if it auto-builds your site.</p>
-
-<h2 id="hosting-your-books-html-online">Hosting your book’s HTML online</h2>
-
-<p>If you’re choosing to build the HTML for your book by hand, there are a few options for
+locally as HTML. GitHub-pages doesn't let you enable any extra plugins if it auto-builds your site.</p>
+<h2 id="Hosting-your-book's-HTML-online">Hosting your book's HTML online<a class="anchor-link" href="#Hosting-your-book's-HTML-online"> </a></h2><p>If you're choosing to build the HTML for your book by hand, there are a few options for
 where you should store the book. The two most common approaches are:</p>
-
 <ul>
-  <li><strong>Use the <code class="highlighter-rouge">gh-pages</code> or <code class="highlighter-rouge">master</code> branch of a GitHub repository</strong>. In this case, the build
+<li><strong>Use the <code>gh-pages</code> or <code>master</code> branch of a GitHub repository</strong>. In this case, the build
 process is very similar to <a href="https://jupyter.org/jupyter-book/guide/03_build.html#publish-your-book-online-with-github-pages">using GH-pages to build the HTML for your site</a>.
-However, there is one caveat: you must include a file called <code class="highlighter-rouge">.nojekyll</code> along with the HTML
+However, there is one caveat: you must include a file called <code>.nojekyll</code> along with the HTML
 files of your book. This tells GitHub <strong>not</strong> to use Jekyll to build the HTML.</li>
-  <li><strong>Use a static site hosting service like Netlify</strong>. There are many services that will simply
+<li><strong>Use a static site hosting service like Netlify</strong>. There are many services that will simply
 host a collection of static HTML files for you in a public URL. The most common is
 <a href="https://www.netlifycms.org/">the Netlify CMS service</a>. Follow the instructions on this site
 for information on how you should upload your HTML files to work with Netlify.</li>
 </ul>
-
-<h3 id="automatically-build-your-book-html-with-cicd">Automatically build your book HTML with CI/CD</h3>
-
-<p>If you’re comfortable with continuous integration services like CircleCI, you can set up
-a build job to build your book’s HTML automatically and push them to an online repository
-(such as a <code class="highlighter-rouge">gh-pages</code> branch). This is a fairly advanced topic, but for some guidance,
+<h3 id="Automatically-build-your-book-HTML-with-CI/CD">Automatically build your book HTML with CI/CD<a class="anchor-link" href="#Automatically-build-your-book-HTML-with-CI/CD"> </a></h3><p>If you're comfortable with continuous integration services like CircleCI, you can set up
+a build job to build your book's HTML automatically and push them to an online repository
+(such as a <code>gh-pages</code> branch). This is a fairly advanced topic, but for some guidance,
 check out these resources:</p>
-
 <ul>
-  <li><strong><a href="https://predictablynoisy.com/circleci-mirror">This blog post on pushing changes from a CircleCI Job</a></strong>
+<li><strong><a href="https://predictablynoisy.com/circleci-mirror">This blog post on pushing changes from a CircleCI Job</a></strong>
 covers how you can give CircleCI permissions to push to a branch from within a job.</li>
-  <li><strong><a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml">The Jupyter Book CircleCI configuration file</a></strong>
-automatically deploys changes to the <code class="highlighter-rouge">jupyter-book</code> master branch to the live book. In
+<li><strong><a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml">The Jupyter Book CircleCI configuration file</a></strong>
+automatically deploys changes to the <code>jupyter-book</code> master branch to the live book. In
 particular, <a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml#L74">this section builds the book HTML files</a>
-while <a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml#L31">this section builds the HTML and pushes them to a <code class="highlighter-rouge">gh-pages</code> branch</a>.</li>
+while <a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml#L31">this section builds the HTML and pushes them to a <code>gh-pages</code> branch</a>.</li>
 </ul>
-
 <p>This process can be tricky to set up initially, but is quite useful in ensuring that your live book
 always stays up-to-date.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
 
             </div>
             <nav class="c-page__nav">
