@@ -7,16 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Getting started</title>
-  <meta name="description" content="The Jupyter Book Guide">
+  <title>Controlling page layout</title>
+  <meta name="description" content="">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/01_overview.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/features/layout.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/01_overview.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/features/layout.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Getting started" />
-<meta property="og:description" content="The Jupyter Book Guide" />
+<meta property="og:title"       content="Controlling page layout" />
+<meta property="og:description" content="" />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -27,15 +27,15 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "https://jupyter.org/jupyter-book/guide/01_overview.html",
+    "https://jupyter.org/jupyter-book/features/layout.html",
   "headline":
-    "Getting started",
+    "Controlling page layout",
   "datePublished":
     "2019-08-31T01:49:36+00:00",
   "dateModified":
     "2019-08-31T01:49:36+00:00",
   "description":
-    "The Jupyter Book Guide",
+    "",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -756,7 +756,7 @@ initFunction(addCopyButtonToCodeCells);
       
       
       <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry c-sidebar__entry--active"
+        <a class="c-sidebar__entry "
           href="/jupyter-book/guide/01_overview.html"
         >
           
@@ -913,7 +913,7 @@ initFunction(addCopyButtonToCodeCells);
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
+                <a class="c-sidebar__entry c-sidebar__entry--active"
                   href="/jupyter-book/features/layout.html"
                 >
                   
@@ -1533,6 +1533,26 @@ initFunction(addCopyButtonToCodeCells);
       </span>
     </button>
     
+<div class="buttons">
+<a href="/jupyter-book/content/features/layout.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Ffeatures%2Flayout.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+
+
+</div>
+
 
   </div>
   <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
@@ -1547,212 +1567,287 @@ initFunction(addCopyButtonToCodeCells);
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content">
-              <h1 id="the-jupyter-book-guide">The Jupyter Book Guide</h1>
+              <div class="jb_cell">
 
-<p>This is a guide for creating your own book using
-Jupyter Notebooks and Jekyll. Book content is written in markdown and
-Jupyter Notebooks, and <code class="highlighter-rouge">jupyter-book</code> converts these into
-a book fit for hosting on the web.</p>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Controlling-the-page-layout">Controlling the page layout<a class="anchor-link" href="#Controlling-the-page-layout"> </a></h1><p>There are a few ways to control the layout of a page with Jupyter Book. Many of these
+ideas take inspiration from the <a href="https://edwardtufte.github.io/tufte-css/">Edward Tufte layout CSS guide</a>.</p>
+<h2 id="Our-plot">Our plot<a class="anchor-link" href="#Our-plot"> </a></h2><p>Let's begin with a sample plot. Here's the code we'll use:</p>
 
-<h2 id="install-the-command-line-interface">Install the command-line interface</h2>
+</div>
+</div>
+</div>
+</div>
 
-<p>First off, make sure you have the CLI installed so that you can work with Jupyter Book.
-The Jupyter-Book CLI allows you to create, build, upgrade, and otherwise control your
-Jupyter Book. You can install it via pip with the following command:</p>
+<div class="jb_cell">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install jupyter-book
-</code></pre></div></div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-<h2 id="a-quick-tour-of-a-jupyter-book">A quick tour of a Jupyter Book</h2>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
 
-<p>Jupyter-Book comes with a demo book so that you can see how the content files
-are used in the book. We’ll begin with a quick tour of these files, as they are
-the pieces that you’ll modify for your own book.</p>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="o">.</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
 
-<p>To create a <strong>demo Jupyter Book</strong> to use as a template, run the following command:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create mybookname --demo
-</code></pre></div></div>
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="k">import</span> <span class="n">Line2D</span>
+<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
 
-<p>A new book will be created at the path that you’ve given (in this case, <code class="highlighter-rouge">mybookname/</code>).</p>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
+</pre></div>
 
-<p>Let’s take a quick look at some important files in the demo book you created:</p>
+    </div>
+</div>
+</div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
-├── assets
-│   └── custom
-│       ├── custom.css
-│       └── custom.js
-├── _config.yml
-├── content
-│   ├── features
-│   │  ├── features.md
-│   │  └── notebooks.ipynb
-│   └── LICENSE.md
-├── _data
-│   └── toc.yml
-└── requirements.txt
-</code></pre></div></div>
+<div class="output_wrapper">
+<div class="output">
 
-<p>Here’s a quick rundown of the files you can modify for yourself, and that
-ultimately make up your book.</p>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
 
-<h3 id="book-configuration">Book configuration</h3>
 
-<p>All of the configuration for your book is in the following file:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
-├── _config.yml
-</code></pre></div></div>
+<div class="output_png output_subarea ">
+<img src="../images/features/layout_1_0.png"
+>
+</div>
 
-<p>You can define metadata for your book (such as its title), add
-a book logo, turn on different “interactive” buttons (such as a
-Binder button for pages built from a Jupyter Notebook), and more.</p>
+</div>
+</div>
+</div>
+</div>
 
-<h3 id="book-content">Book content</h3>
+</div>
+</div>
 
-<p>Your book’s content can be found in the <code class="highlighter-rouge">content/</code> folder. Some content
-files for the demo book are shown below:</p>
+<div class="jb_cell">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
-├── content
-    └── features
-       ├── features.md
-       └── notebooks.ipynb
-</code></pre></div></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Using-popouts-to-the-right-sidebar">Using popouts to the right sidebar<a class="anchor-link" href="#Using-popouts-to-the-right-sidebar"> </a></h2><p>Sometimes you want to quickly point out an extra piece of information, but
+you don't want to break your narrative flow. Use a popout for this!</p>
 
-<p>Note that the content files are either <strong>Jupyter Notebooks</strong> or <strong>Markdown</strong>
-files. These are the files that define “pages” in your book.</p>
+</div>
+</div>
+</div>
+</div>
 
-<p>You can store these files in whatever collection of folders you’d like, note that
-the <em>structure</em> of your book when it is built will depend solely on the order of
-items in your <code class="highlighter-rouge">_data/toc.yml</code> file (see below section)</p>
+<div class="jb_cell tag_popout">
 
-<h3 id="table-of-contents">Table of Contents</h3>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>For example</strong>, here's some popout content! It was created by adding the
+<code>popout</code> tag to a cell in the notebook. Jupyter Book automatically converts these
+cells into helpful side content.</p>
 
-<p>Jupyter Book uses your Table of Contents to define the structure of your book.
-For example, your chapters, sub-chapters, etc.</p>
+</div>
+</div>
+</div>
+</div>
 
-<p>The Table of Contents lives at this location:</p>
+<div class="jb_cell">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
-├── _data
-    └── toc.yml
-</code></pre></div></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Add a popout cell by adding <code>popout</code> to your cell's tags. Here's what the
+cell metadata for a popout cell looks like:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;popout&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<p><strong>Popouts behave differently depending on the screen size</strong>. If the screen is narrow
+enough, the popout will exist in-line with your content. Make the screen
+wider and it'll pop out to the right.</p>
+<p>Look to the right and play around with your window width to see how this looks!</p>
 
-<p>This is a YAML file with a collection of pages, each one linking to a
-file in your <code class="highlighter-rouge">content/</code> folder. Here’s an example of a few pages defined in <code class="highlighter-rouge">toc.yml</code>.</p>
+</div>
+</div>
+</div>
+</div>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Features and customization</span>
-  <span class="na">url</span><span class="pi">:</span> <span class="s">/features/features</span>
-  <span class="na">not_numbered</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="na">expand_sections</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="na">sections</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Markdown files</span>
-    <span class="na">url</span><span class="pi">:</span> <span class="s">/features/markdown</span>
-    <span class="na">not_numbered</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Jupyter notebooks</span>
-    <span class="na">url</span><span class="pi">:</span> <span class="s">/features/notebooks</span>
-    <span class="na">not_numbered</span><span class="pi">:</span> <span class="no">true</span>
-</code></pre></div></div>
+<div class="jb_cell">
 
-<p>The top-most level of your TOC file are <strong>book chapters</strong>. Above, this is the
-“Features and customization” page. Each chapter can have
-several sections (defined in <code class="highlighter-rouge">sections:</code>) and each section can have several sub-sections
-(which would be define with a deeper level of <code class="highlighter-rouge">sections:</code>). In addition, you can
-use a few extra YAML values to control the behavior of Jupyter-Book (for example,
-<code class="highlighter-rouge">not_numbered: true</code> will prevent Jupyter Book from numbering the pages in that chapter).</p>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>You can include images in popouts!</strong> For example, let's see what the plot above looks like in a popout window.</p>
 
-<p>Each item in the YAML file points to a single content file. The links
-should be <strong>relative to the <code class="highlighter-rouge">/content/</code> folder and with no extension.</strong></p>
+</div>
+</div>
+</div>
+</div>
 
-<p>For example, in the example above there is a file in
-<code class="highlighter-rouge">mybookname/content/features/notebooks.ipynb</code>. The TOC entry that points to
-this file is here:</p>
+<div class="jb_cell tag_popout tag_remove_input">
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Jupyter notebooks</span>
-        <span class="s">url</span><span class="pi">:</span> <span class="s">/features/notebooks</span>
-</code></pre></div></div>
+<div class="cell border-box-sizing code_cell rendered">
 
-<h3 id="a-license-for-your-content">A license for your content</h3>
+<div class="output_wrapper">
+<div class="output">
 
-<p>When you share content online, it’s a good idea to add a license so that others know
-what rights you retain to the work. This can make your book more sharable and (re)usable.</p>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
 
-<p>The license for a Jupyter Book lives in this location:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
-├── content
-    └── LICENSE.md
-</code></pre></div></div>
 
-<p>When you create a new book, if you don’t specify a license, then <code class="highlighter-rouge">jupyter-book</code> will by default
-add a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a>
-(CC BY-SA 4.0) license to your book. CC BY-SA requires attribution of
-your work, and also requires that any derivations someone creates are released
-under a license <em>at least as permissive</em> as CC BY-SA.</p>
+<div class="output_png output_subarea ">
+<img src="../images/features/layout_6_0.png"
+>
+</div>
 
-<p>If you’d like to choose a different license, you can add whatever text you like to the file
-in <code class="highlighter-rouge">/content/LICENSE.md</code>. We commend checking out the <a href="https://creativecommons.org/licenses">Creative Commons licenses page</a>
-for several options for licenses that may suit your needs.</p>
+</div>
+</div>
+</div>
+</div>
 
-<h3 id="book-code-requirements-files">Book code requirements files</h3>
+</div>
+</div>
 
-<p>Since your Jupyter Book likely has computational material specified in Jupyter
-Notebooks, you should specify the packages needed to run your Jupyter Book.
-In this case, we use a <code class="highlighter-rouge">requirements.txt</code> file:</p>
+<div class="jb_cell tag_popout">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
-└── requirements.txt
-</code></pre></div></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>My popout explanation</strong>. Since we've put a markdown cell underneath the code above,
+we can turn this into a popout as well, and use it as a quick caption to explain
+the content above (we have hidden the code for the above plot with a <code>remove_input</code>
+tag). However, in the case of this figure, there's not a whole lot to explain :-)</p>
 
-<p>The demo book uses <code class="highlighter-rouge">requirements.txt</code> because it has Python code, but you can
-include any other files that you’d like to.</p>
+</div>
+</div>
+</div>
+</div>
 
-<h3 id="book-bibliography-for-citations">Book bibliography for citations</h3>
+<div class="jb_cell">
 
-<p>If you’d like to build a bibliography for your book, you can do so by including
-the following file:</p>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Wide-format-cells">Wide-format cells<a class="anchor-link" href="#Wide-format-cells"> </a></h2><p>Sometimes, you'd like to use <strong>all</strong> of the horizontal space available to you. This allows
+you to highlight particular ideas, visualizations, etc.</p>
+<p>In Jupyter Book, you can specify that a cell (and its outputs) should take up all of
+the horizonal space (including the sidebar where popouts normally live) using the
+following cell metadata tag:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;full_width&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mybookname/
-├── _bibliography
-    └── references.bib
-</code></pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
-<p>This BiBTex file can be used along with the <code class="highlighter-rouge">jekyll-scholar</code> extension. For more information
-on how to use citations in Jupyter Book, see <a href="../features/citations">Citations with Jupyter Book</a></p>
+<div class="jb_cell">
 
-<h3 id="custom-javascript-and-css">Custom Javascript and CSS</h3>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For example, let's take a look at the figure at full-width. We'll tell Matplotlib
+to make it a bit wider so we can take advantage of the extra space!</p>
 
-<p>These are the files in this location:</p>
+</div>
+</div>
+</div>
+</div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── assets
-    └── custom
-        ├── custom.css
-        └── custom.js
-</code></pre></div></div>
+<div class="jb_cell tag_hide_input tag_full_width">
 
-<p>Jupyter Book lets you supply your own CSS and Javascript that will be
-built into your book. Feel free to edit these files with whatever you like.</p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-<h2 id="next-section">Next section</h2>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
 
-<p>Now that you’re familiar with the Jupyter Book structure, head to the next section
-to learn how to create your own!</p>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
+
+
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="k">import</span> <span class="n">Line2D</span>
+<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Smoother linez&quot;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/features/layout_10_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Be careful about mixing popouts and full-width content</strong>. Sometimes these can conflict
+with one another in visual space. You should use them relatively sparingly in order
+for them to have their full effect of highlighting information.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {}, "version_major": 2, "version_minor": 0}
+</script>
+
 
             </div>
             <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/intro.html">
-      〈 <span class="u-margin-right-tiny"></span> Home
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/features/notebooks.html">
+      〈 <span class="u-margin-right-tiny"></span> Jupyter notebooks
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/02_create.html">
-      Create your book <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/features/hiding.html">
+      Hiding code blocks or entire cells <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

@@ -31,9 +31,9 @@
   "headline":
     "Snow’s “Grand Experiment”",
   "datePublished":
-    "2019-08-27T20:21:34+00:00",
+    "2019-08-31T01:49:36+00:00",
   "dateModified":
-    "2019-08-27T20:21:34+00:00",
+    "2019-08-31T01:49:36+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -749,10 +749,6 @@ initFunction(addCopyButtonToCodeCells);
     
       
       
-        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/jupyter-book/search.html">Search</a></li>
-        
-      
-      
 
       
       
@@ -905,6 +901,23 @@ initFunction(addCopyButtonToCodeCells);
                 >
                   
                   Jupyter notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/jupyter-book/features/layout.html"
+                >
+                  
+                  Controlling page layout
                 </a>
 
                 
@@ -1508,24 +1521,27 @@ initFunction(addCopyButtonToCodeCells);
 </nav>
 
       
-      <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
-      <aside class="sidebar__right">
-          <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
-          <nav class="onthispage">
-          </nav>
-      </aside>
-      
       <div class="c-topbar" id="top-navbar">
   <!-- We show the sidebar by default so we use .is-active -->
-  <button
-    id="js-sidebar-toggle"
-    class="hamburger hamburger--arrowalt is-active"
-  >
-    <span class="hamburger-box">
-      <span class="hamburger-inner"></span>
-    </span>
-  </button>
-  
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/jupyter-book/search.html" id="search-button"><i class="fa fa-search"></i></a>
 
 </div>
 
