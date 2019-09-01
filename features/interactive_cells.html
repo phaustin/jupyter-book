@@ -31,9 +31,9 @@
   "headline":
     "Adding interactivity to your book pages",
   "datePublished":
-    "2019-09-01T15:59:13+00:00",
+    "2019-09-01T16:36:16+00:00",
   "dateModified":
-    "2019-09-01T15:59:13+00:00",
+    "2019-09-01T16:36:16+00:00",
   "description":
     "",
   "author": {
@@ -754,12 +754,23 @@ initFunction(addCopyButtonToCodeCells);
 <script src="/jupyter-book/assets/js/print.min.js"  type="text/javascript"></script>
 <script>
 printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
     printJS({
         printable: 'textbook_content',
         type: 'html',
         css: "/jupyter-book/assets/css/styles.css",
         scanStyles: false,
         targetStyles: ["*"],
+        ignoreElements: ignoreAssistList
     })
 };
 
@@ -1795,10 +1806,10 @@ the right!</p>
 
  
  
-<div id="b0b25cdd-08e2-45e7-961f-c642071b76c5"></div>
+<div id="d29759e8-6520-473f-8b2e-8dce80c90b70"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b0b25cdd-08e2-45e7-961f-c642071b76c5');
+var element = $('#d29759e8-6520-473f-8b2e-8dce80c90b70');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "7db97110f70e4753addb351e55df6af6", "version_major": 2, "version_minor": 0}
