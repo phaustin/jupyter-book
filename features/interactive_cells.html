@@ -31,9 +31,9 @@
   "headline":
     "Adding interactivity to your book pages",
   "datePublished":
-    "2019-08-31T17:39:00+00:00",
+    "2019-09-01T15:59:13+00:00",
   "dateModified":
-    "2019-08-31T17:39:00+00:00",
+    "2019-09-01T15:59:13+00:00",
   "description":
     "",
   "author": {
@@ -73,6 +73,8 @@
 
   <!-- MathJax Config -->
   <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -81,14 +83,16 @@ MathJax.Hub.Config({
         processEscapes: true,
         processEnvironments: true
     },
-    CommonHTML: {
-        linebreaks: {
-            automatic: true,
-        },
-    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    }
 });
 </script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
 
   <!-- DOM updating function -->
   <script>
@@ -756,7 +760,6 @@ printContent = () => {
         css: "/jupyter-book/assets/css/styles.css",
         scanStyles: false,
         targetStyles: ["*"],
-        ignoreElements: [".copybtn"]
     })
 };
 
@@ -765,7 +768,7 @@ initPrint = () => {
 }
 
 initFunction(initPrint)
-    
+
 </script>
 </head>
 
@@ -1792,10 +1795,10 @@ the right!</p>
 
  
  
-<div id="84497d17-d963-4003-9b06-0eced8ee3786"></div>
+<div id="b0b25cdd-08e2-45e7-961f-c642071b76c5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#84497d17-d963-4003-9b06-0eced8ee3786');
+var element = $('#b0b25cdd-08e2-45e7-961f-c642071b76c5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "7db97110f70e4753addb351e55df6af6", "version_major": 2, "version_minor": 0}

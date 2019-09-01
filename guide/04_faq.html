@@ -31,9 +31,9 @@
   "headline":
     "FAQ",
   "datePublished":
-    "2019-08-31T17:39:00+00:00",
+    "2019-09-01T15:59:13+00:00",
   "dateModified":
-    "2019-08-31T17:39:00+00:00",
+    "2019-09-01T15:59:13+00:00",
   "description":
     "",
   "author": {
@@ -73,6 +73,8 @@
 
   <!-- MathJax Config -->
   <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -81,14 +83,16 @@ MathJax.Hub.Config({
         processEscapes: true,
         processEnvironments: true
     },
-    CommonHTML: {
-        linebreaks: {
-            automatic: true,
-        },
-    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    }
 });
 </script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
 
   <!-- DOM updating function -->
   <script>
@@ -724,7 +728,6 @@ printContent = () => {
         css: "/jupyter-book/assets/css/styles.css",
         scanStyles: false,
         targetStyles: ["*"],
-        ignoreElements: [".copybtn"]
     })
 };
 
@@ -733,7 +736,7 @@ initPrint = () => {
 }
 
 initFunction(initPrint)
-    
+
 </script>
 </head>
 
@@ -1756,6 +1759,23 @@ Here's what the tags UI in JupyterLab looks like.</p>
 <p><img src="../images/tags_jupyterlab.png" alt=""></p>
 </li>
 </ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-doesn't-math-show-properly-when-printing?">Why doesn't math show properly when printing?<a class="anchor-link" href="#Why-doesn't-math-show-properly-when-printing?"> </a></h2><p>Currently, we use a library called <a href="https://printjs.crabbly.com/">PrintJS</a> to handle
+printing of <em>just</em> the notebook content (when you click the "print -&gt; PDF" buttons).</p>
+<p>However, a drawback of this approach is that MathJax mathematics cannot access the
+same fonts available when you're viewing a page live. This means that mathematics often
+look simplified and incorrectly-formatted.</p>
+<p>If you have an idea for how to improve this, please
+<a href="https://github.com/jupyter/jupyter-book/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc">open an issue</a>!</p>
 
 </div>
 </div>
