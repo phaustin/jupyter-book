@@ -31,9 +31,9 @@
   "headline":
     "FAQ",
   "datePublished":
-    "2019-09-01T17:29:37+00:00",
+    "2019-09-02T15:18:13+00:00",
   "dateModified":
-    "2019-09-01T17:29:37+00:00",
+    "2019-09-02T15:18:13+00:00",
   "description":
     "",
   "author": {
@@ -1636,33 +1636,8 @@ building your textbook with Jekyll.</p>
 a book you've already built. The easiest way to do this is to use the Command-Line Interface to
 upgrade your book.</p>
 <p>To upgrade a pre-existing Jupyter Book, run the following command:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">upgrade</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mybook</span>
+<div class="highlight"><pre><span></span>jupyter-book upgrade path/to/mybook
 </pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>This will do the following:</p>
 <ol>
 <li>Generate a fresh Jupyter Book in <code>mybook_UPGRADED</code> using the content files in your
@@ -1672,33 +1647,8 @@ current book.</li>
 </ol>
 <p>Note that only the content that you can manually specify via the <code>jupyter-book create</code> command
 will be retained in your upgraded book. For a list of these options, see the help menu for this command:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">create</span> <span class="o">-</span><span class="n">h</span>
+<div class="highlight"><pre><span></span>jupyter-book create -h
 </pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>You should check out the content in your upgraded book to make sure it looks correct, then
 commit the changes to your repository.</p>
 <h2 id="Does-the-book-behave-differently-depending-on-the-browser?">Does the book behave differently depending on the browser?<a class="anchor-link" href="#Does-the-book-behave-differently-depending-on-the-browser?"> </a></h2><p>Maybe - Jupyter Book does use some features that might have different behaviors in
@@ -1721,26 +1671,14 @@ You must then plot the figure with <code>plotly.offline.plot()</code>, which gen
 and then load the HTML into the notebook with <code>display(HTML('file.html'))</code> prior to saving your *.ipynb file.</p>
 <p>e.g.</p>
 
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-from IPython.core.display import display, HTML
+<pre><code>from IPython.core.display import display, HTML
 from plotly.offline import init_notebook_mode, plot
 init_notebook_mode(connected=True)
 .
 .
 .
 plot(fig, filename = 'figure.html')
-display(HTML('figure.html')
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+display(HTML('figure.html')</code></pre>
 <p>Note that, if viewing the file on a Jupyter Notebook session, the figure will not be displayed there (<code>iplot</code> is needed for this). However, if working on a <a href="https://github.com/binder-examples/jupyterlab">JupyterLab</a> session, the figure can be displayed there using the <code>plot</code> code above by having the <a href="https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension">JupyterLab plotly extension</a> installed.</p>
 <h2 id="What-if-I-have-an-issue-or-question?">What if I have an issue or question?<a class="anchor-link" href="#What-if-I-have-an-issue-or-question?"> </a></h2><p>If you've got questions, concerns, or suggestions, please open an issue at
 <a href="https://github.com/jupyter/jupyter-book/issues">at the jupyter book issues page</a></p>
@@ -1770,16 +1708,6 @@ Here's what the tags UI in JupyterLab looks like.</p>
 <p><img src="../images/tags_jupyterlab.png" alt=""></p>
 </li>
 </ol>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Why-doesn't-math-show-properly-when-printing?">Why doesn't math show properly when printing?<a class="anchor-link" href="#Why-doesn't-math-show-properly-when-printing?"> </a></h2><p>Currently, we use a library called <a href="https://printjs.crabbly.com/">PrintJS</a> to handle
 printing of <em>just</em> the notebook content (when you click the "print -&gt; PDF" buttons).</p>
 <p>However, a drawback of this approach is that MathJax mathematics cannot access the

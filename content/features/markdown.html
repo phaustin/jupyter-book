@@ -31,9 +31,9 @@
   "headline":
     "Creating book content",
   "datePublished":
-    "2019-09-01T17:29:37+00:00",
+    "2019-09-02T15:18:13+00:00",
   "dateModified":
-    "2019-09-01T17:29:37+00:00",
+    "2019-09-02T15:18:13+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -1622,11 +1622,13 @@ initFunction(initPrint)
 <p>If the file is markdown, it will be copied over with front-matter YAML added so
 that Jekyll can parse it.</p>
 
+<!-- #region -->
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Python (and any language-specific) code still works as expected"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>As does non-language code.
 </code></pre></div></div>
+<!-- #endregion -->
 
 <h2 id="page-navigation-table-of-contents">Page navigation Table of Contents</h2>
 
@@ -1655,12 +1657,14 @@ P(A_1 \cup A_2 \cup A_3) ~ = ~ P(B \cup A_3) &amp;= ~ P(B) + P(A_3) - P(BA_3) <b
 
 <p>And here is the code that was used to generate it:</p>
 
+<!-- #region -->
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="n">begin</span><span class="p">{</span><span class="n">align</span><span class="o">*</span><span class="p">}</span>
 <span class="n">P</span><span class="p">(</span><span class="n">A_1</span> \<span class="n">cup</span> <span class="n">A_2</span> \<span class="n">cup</span> <span class="n">A_3</span><span class="p">)</span> <span class="o">~</span> <span class="o">=</span> <span class="o">~</span> <span class="n">P</span><span class="p">(</span><span class="n">B</span> \<span class="n">cup</span> <span class="n">A_3</span><span class="p">)</span> <span class="o">&amp;=</span> <span class="o">~</span> <span class="n">P</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="o">+</span> <span class="n">P</span><span class="p">(</span><span class="n">A_3</span><span class="p">)</span> <span class="o">-</span> <span class="n">P</span><span class="p">(</span><span class="n">BA_3</span><span class="p">)</span> \\
 <span class="o">&amp;=</span> <span class="o">~</span> <span class="n">P</span><span class="p">(</span><span class="n">A_1</span><span class="p">)</span> <span class="o">+</span> <span class="n">P</span><span class="p">(</span><span class="n">A_2</span><span class="p">)</span> <span class="o">-</span> <span class="n">P</span><span class="p">(</span><span class="n">A_1A_2</span><span class="p">)</span> <span class="o">+</span> <span class="n">P</span><span class="p">(</span><span class="n">A_3</span><span class="p">)</span> <span class="o">-</span> <span class="n">P</span><span class="p">(</span><span class="n">A_1A_3</span> \<span class="n">cup</span> <span class="n">A_2A_3</span><span class="p">)</span>\\
 <span class="o">&amp;=</span> <span class="o">~</span> \<span class="n">sum_</span><span class="p">{</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">}</span><span class="o">^</span><span class="mi">3</span> <span class="n">P</span><span class="p">(</span><span class="n">A_i</span><span class="p">)</span> <span class="o">-</span> \<span class="n">mathop</span><span class="p">{</span>\<span class="nb">sum</span> \<span class="nb">sum</span><span class="p">}</span><span class="n">_</span><span class="p">{</span><span class="mi">1</span> \<span class="n">le</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span> \<span class="n">le</span> <span class="mi">3</span><span class="p">}</span> <span class="n">P</span><span class="p">(</span><span class="n">A_iA_j</span><span class="p">)</span> <span class="o">+</span> <span class="n">P</span><span class="p">(</span><span class="n">A_1A_2A_3</span><span class="p">)</span>
 \<span class="n">end</span><span class="p">{</span><span class="n">align</span><span class="o">*</span><span class="p">}</span>
 </code></pre></div></div>
+<!-- #endregion -->
 
 <!-- #region {"tags": ["popout"]} -->
 <p><strong>Note</strong>: If you print your page (using the print button), then mathematics may not show
