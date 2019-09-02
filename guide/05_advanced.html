@@ -31,9 +31,9 @@
   "headline":
     "How-to and advanced topics",
   "datePublished":
-    "2019-09-02T15:18:13+00:00",
+    "2019-09-02T19:18:27+00:00",
   "dateModified":
-    "2019-09-02T15:18:13+00:00",
+    "2019-09-02T19:18:27+00:00",
   "description":
     "",
   "author": {
@@ -1681,6 +1681,67 @@ running this command, you can use the <code>--path-output</code> argument like s
 be structured. We recommend using this command as a starting point, and
 then customizing your TOC how you'd like.</p>
 </blockquote>
+<h2 id="Adding-tags-to-notebook-cells-based-on-their-content">Adding tags to notebook cells based on their content<a class="anchor-link" href="#Adding-tags-to-notebook-cells-based-on-their-content"> </a></h2><p>Sometimes you'd like to quickly scan through a notebook's cells in order to
+add tags based on the content of the cell. For example, you might want to
+hide any cell with an import statement in it using the <code>remove_input</code> tag.</p>
+<p>Here's a short Python snippet to accomplish something close to this.
+First change directories into the root of your book folder, and then
+run the script below as a Python script or within a Jupyter Notebook
+(modifying as necessary for your use case).
+Finally, check the changes that will be made and commit them to your repository.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nbformat</span> <span class="kn">as</span> <span class="nn">nbf</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+
+<span class="c1"># Collect a list of all notebooks in the content folder</span>
+<span class="n">notebooks</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s2">&quot;./content/**/*.ipynb&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Text to look for in adding tags</span>
+<span class="n">text_search_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;# HIDDEN&quot;</span><span class="p">:</span> <span class="s2">&quot;remove_cell&quot;</span><span class="p">,</span>  <span class="c1"># Remove the whole cell</span>
+    <span class="s2">&quot;# NO CODE&quot;</span><span class="p">:</span> <span class="s2">&quot;remove_input&quot;</span><span class="p">,</span>  <span class="c1"># Remove only the input</span>
+    <span class="s2">&quot;# HIDE CODE&quot;</span><span class="p">:</span> <span class="s2">&quot;hide_input&quot;</span>  <span class="c1"># Hide the input w/ a button to show</span>
+<span class="p">}</span>
+
+<span class="c1"># Search through each notebook and look for th text, add a tag if necessary</span>
+<span class="k">for</span> <span class="n">ipath</span> <span class="ow">in</span> <span class="n">notebooks</span><span class="p">:</span>
+    <span class="n">ntbk</span> <span class="o">=</span> <span class="n">nbf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ipath</span><span class="p">,</span> <span class="n">nbf</span><span class="o">.</span><span class="n">NO_CONVERT</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">ntbk</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="n">cell_tags</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">text_search_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cell_tags</span><span class="p">:</span>
+                    <span class="n">cell_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cell_tags</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cell_tags</span>
+
+    <span class="n">nbf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ntbk</span><span class="p">,</span> <span class="n">ipath</span><span class="p">)</span>
+</pre></div>
+<h2 id="Customizing-your-toc.yml-file">Customizing your <code>toc.yml</code> file<a class="anchor-link" href="#Customizing-your-toc.yml-file"> </a></h2><p>The <code>toc.yml</code> file is used to control the chapter order etc of your book.
+There are a few extra features you can use to trigger certain kinds of behavior.
+This section explains the possible structure of this file so you can customize it
+as you like.</p>
+<h3 id="The-structure-of-a-single-page">The structure of a single page<a class="anchor-link" href="#The-structure-of-a-single-page"> </a></h3><p>Below is all of the possible fields in the entry of a single page in <code>toc.yml</code>:</p>
+
+<pre><code>- title: mytitle   # Title of chapter or section
+  url: /myurl  # URL of section relative to the /content/ folder.
+  not_numbered: true  # if the section shouldn't have a number in the sidebar
+    (e.g. Introduction or appendices) (default: true)
+  expand_sections: true  # if you'd like the sections of this chapter to always
+    be expanded in the sidebar. (default: true)
+  sections:  # Contains an optional list of more entries that make up the chapter's sections</code></pre>
+<h3 id="Adding-an-external-link-in-your-TOC">Adding an external link in your TOC<a class="anchor-link" href="#Adding-an-external-link-in-your-TOC"> </a></h3><p>To add an external link in your TOC, simply make the url point to a fully-resolved
+URL and add the <code>external: true</code> field. Here's an example:</p>
+
+<pre><code>- title: Jupyter Homepage   # Title of chapter or section
+  url: https://jupyter.org  # URL of external site
+  external: true</code></pre>
+<h3 id="Extra-TOC-entries">Extra TOC entries<a class="anchor-link" href="#Extra-TOC-entries"> </a></h3><p>These are special entries that will trigger different behavior if they are
+in the <code>toc.yml</code> file:</p>
+
+<pre><code>- search: true  # Will provide a link to a search page
+- divider: true  # Will insert a divider in the sidebar
+- header: My Header  # Will insert a header with no link in the sidebar</code></pre>
 <h2 id="Build-the-book's-site-HTML-locally">Build the book's site HTML locally<a class="anchor-link" href="#Build-the-book's-site-HTML-locally"> </a></h2><p>Once you've generated the intermediate files for your notebooks and installed the
 necessary dependencies. You are ready to build your site HTML.</p>
 <p>Ensure that your notebooks have been converted to intermediate files, there should be a
