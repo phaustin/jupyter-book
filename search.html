@@ -31,9 +31,9 @@
   "headline":
     "Search the site",
   "datePublished":
-    "2019-09-03T01:22:44+00:00",
+    "2019-09-04T15:46:28+00:00",
   "dateModified":
-    "2019-09-03T01:22:44+00:00",
+    "2019-09-04T15:46:28+00:00",
   "description":
     "This is an example book built with Jupyter Books.",
   "author": {
@@ -962,23 +962,6 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/layout.html"
-                >
-                  
-                  Controlling page layout
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
                   href="/jupyter-book/features/hiding.html"
                 >
                   
@@ -1016,7 +999,7 @@ initFunction(initPrint)
                   href="/jupyter-book/features/interactive_cells.html"
                 >
                   
-                  Adding interactivity to your book pages
+                  BETA - Adding interactivity to your book pages
                 </a>
 
                 
@@ -1033,7 +1016,7 @@ initFunction(initPrint)
                   href="/jupyter-book/features/citations.html"
                 >
                   
-                  Citations and bibliographies
+                  BETA - Citations and bibliographies
                 </a>
 
                 
@@ -1050,7 +1033,7 @@ initFunction(initPrint)
                   href="/jupyter-book/features/jupytext.html"
                 >
                   
-                  Using Jupytext for text-based Notebook content
+                  BETA - Using Jupytext for text-based Notebook content
                 </a>
 
                 
@@ -1064,10 +1047,10 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/search.html"
+                  href="/jupyter-book/features/layout.html"
                 >
                   
-                  Searching your book
+                  BETA - Controlling page layout
                 </a>
 
                 
@@ -1796,10 +1779,10 @@ initFunction(initPrint)
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/04/Types.html",
         "teaser":null},{
-        "title": "Citations and bibliographies",
+        "title": "BETA - Citations and bibliographies",
         
         "excerpt":
-            "Including citations in your book Because jupyter-book is built on top of Jekyll, we can use the excellent jekyll-scholar book to include citations and a bibliography with your book. Note that this only works if you're building your book HTML locally and hosting the HTML files online somewhere. This can still use GitHub pages, but not the auto-generation of a cite from markdown files feature of GitHub pages. This is because GitHub pages doesn't include the jekyll-scholar plugin. How to use citations Including citations with your markdown files or notebooks is done in the following way. Modify the file in...",
+            "Including citations in your book ✨experimental✨ Because jupyter-book is built on top of Jekyll, we can use the excellent jekyll-scholar book to include citations and a bibliography with your book. Note that this only works if you're building your book HTML locally and hosting the HTML files online somewhere. This can still use GitHub pages, but not the auto-generation of a cite from markdown files feature of GitHub pages. This is because GitHub pages doesn't include the jekyll-scholar plugin. How to use citations Including citations with your markdown files or notebooks is done in the following way. Modify the file...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/citations.html",
@@ -1828,7 +1811,7 @@ initFunction(initPrint)
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/interact.html",
         "teaser":null},{
-        "title": "Adding interactivity to your book pages",
+        "title": "BETA - Adding interactivity to your book pages",
         
         "excerpt":
             "Interactive code in your book Sometimes you'd rather let people interact with code directly on the page instead of sending them off to a Binder or a JupyterHub. There are currently a few ways to make this happen in Jupyter Book (both of which are experimental). This page describes how to bring interactivity to your book. Both of these tools use MyBinder to provide a remote kernel. Making your page inputs interactive ✨experimental✨ If you'd like to provide interactivity for your content without making your readers leave the Jupyter Book site, you can use a project called Thebelab. This provides...",
@@ -1836,18 +1819,18 @@ initFunction(initPrint)
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/interactive_cells.html",
         "teaser":null},{
-        "title": "Using Jupytext for text-based Notebook content",
+        "title": "BETA - Using Jupytext for text-based Notebook content",
         
         "excerpt":
-            "Jupytext with Jupyter Book It's also possible to build Jupyter Books using Jupytext, a tool for two-way conversion between Jupyter Notebooks an text-based versions of a Jupyter Notebook (e.g., .md or .py). Using Jupytext allows you to store your Jupyter Notebooks as text files, which makes them much better for collaboration and \"diffing\" using a tool like Git. The drawbacks are that you no longer keep the outputs with your files, which means building your book with outputs requires running each file at build-time. This notebook is stored in Jupytext format! For example, the notebook for this page is stored...",
+            "Jupytext with Jupyter Book ✨experimental✨ It's also possible to build Jupyter Books using Jupytext, a tool for two-way conversion between Jupyter Notebooks an text-based versions of a Jupyter Notebook (e.g., .md or .py). Using Jupytext allows you to store your Jupyter Notebooks as text files, which makes them much better for collaboration and \"diffing\" using a tool like Git. The drawbacks are that you no longer keep the outputs with your files, which means building your book with outputs requires running each file at build-time. This notebook is stored in Jupytext format! For example, the notebook for this page is...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/jupytext.html",
         "teaser":null},{
-        "title": "Controlling page layout",
+        "title": "BETA - Controlling page layout",
         
         "excerpt":
-            "Controlling the page layout There are a few ways to control the layout of a page with Jupyter Book. Many of these ideas take inspiration from the Edward Tufte layout CSS guide. Our plot Let's begin with a sample plot. Here's the code we'll use: # Fixing random state for reproducibility np.random.seed(19680801) N = 10 data = [np.logspace(0, 1, 100) + .2 * np.random.randn(100) + ii for ii in range(N)] data = np.array(data).T cmap = plt.cm.coolwarm rcParams[&#39;axes.prop_cycle&#39;] = cycler(color=cmap(np.linspace(0, 1, N))) from matplotlib.lines import Line2D custom_lines = [Line2D([0], [0], color=cmap(0.), lw=4), Line2D([0], [0], color=cmap(.5), lw=4), Line2D([0], [0], color=cmap(1.), lw=4)] fig,...",
+            "Controlling the page layout ✨experimental✨ There are a few ways to control the layout of a page with Jupyter Book. Many of these ideas take inspiration from the Edward Tufte layout CSS guide. Our plot Let's begin with a sample plot. Here's the code we'll use: # Fixing random state for reproducibility np.random.seed(19680801) N = 10 data = [np.logspace(0, 1, 100) + .2 * np.random.randn(100) + ii for ii in range(N)] data = np.array(data).T cmap = plt.cm.coolwarm rcParams[&#39;axes.prop_cycle&#39;] = cycler(color=cmap(np.linspace(0, 1, N))) from matplotlib.lines import Line2D custom_lines = [Line2D([0], [0], color=cmap(0.), lw=4), Line2D([0], [0], color=cmap(.5), lw=4), Line2D([0], [0], color=cmap(1.), lw=4)]...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/layout.html",
@@ -1875,14 +1858,6 @@ initFunction(initPrint)
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/features/notebooks.html",
-        "teaser":null},{
-        "title": "Searching your book",
-        
-        "excerpt":
-            "Searching your book It's possible to enable search in your book so that users can find the content they're looking for. This uses a nifty package called lunr.js. To add search to your book, simple add the following entry to _data/toc.yml. - title: Search (whatever title you like) search: true The result will be a link in your Table of Contents that directs users to a search page. For example, click the Search link in the TOC of this demo book. Customizing how much text is stored in search The Jupyter-Book search works by storing excerpts of text from each...",
-        "categories": [],
-        "tags": [],
-        "url": "https://jupyter.org/jupyter-book/features/search.html",
         "teaser":null},{
         "title": "Getting started",
         

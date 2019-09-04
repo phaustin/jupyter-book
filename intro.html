@@ -31,9 +31,9 @@
   "headline":
     "Home",
   "datePublished":
-    "2019-09-03T01:22:44+00:00",
+    "2019-09-04T15:46:28+00:00",
   "dateModified":
-    "2019-09-03T01:22:44+00:00",
+    "2019-09-04T15:46:28+00:00",
   "description":
     "",
   "author": {
@@ -962,23 +962,6 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/layout.html"
-                >
-                  
-                  Controlling page layout
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
                   href="/jupyter-book/features/hiding.html"
                 >
                   
@@ -1016,7 +999,7 @@ initFunction(initPrint)
                   href="/jupyter-book/features/interactive_cells.html"
                 >
                   
-                  Adding interactivity to your book pages
+                  BETA - Adding interactivity to your book pages
                 </a>
 
                 
@@ -1033,7 +1016,7 @@ initFunction(initPrint)
                   href="/jupyter-book/features/citations.html"
                 >
                   
-                  Citations and bibliographies
+                  BETA - Citations and bibliographies
                 </a>
 
                 
@@ -1050,7 +1033,7 @@ initFunction(initPrint)
                   href="/jupyter-book/features/jupytext.html"
                 >
                   
-                  Using Jupytext for text-based Notebook content
+                  BETA - Using Jupytext for text-based Notebook content
                 </a>
 
                 
@@ -1064,10 +1047,10 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/search.html"
+                  href="/jupyter-book/features/layout.html"
                 >
                   
-                  Searching your book
+                  BETA - Controlling page layout
                 </a>
 
                 
@@ -1601,7 +1584,7 @@ initFunction(initPrint)
 <div class="download-buttons-dropdown">
     <button id="dropdown-button-trigger" class="interact-button"><i class="fa fa-download"></i></button>
     <div class="download-buttons">
-        <a href="/jupyter-book/content/intro.md" download>
+        <a href="/jupyter-book/content/intro.ipynb" download>
         <button id="interact-button-download" class="interact-button">ORIG</button>
         </a>
         
@@ -1619,7 +1602,7 @@ initFunction(initPrint)
 
 
 
-<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Fintro.md"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Fintro.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
   
 
 
@@ -1660,7 +1643,36 @@ automatically added for interactivity.</li>
 Turbolinks fast-navigation and click-to-copy in code cells.</li>
 </ul>
 <p>Check out other features in the <a href="features/features">Features section</a>.</p>
-<h2 id="Getting-started">Getting started<a class="anchor-link" href="#Getting-started"> </a></h2><p>To get started, you may be interested in the following links.
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell tag_popout">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Note:</strong> Throughout this guide you may see an experimental tag that looks
+like this:</p>
+<p>✨<strong>experimental</strong>✨</p>
+<p>These are features that we are playing around with, but might change in how they
+behave or are controlled. Please use them and give feedback, but note that they
+may be a bit unstable!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Getting-started">Getting started<a class="anchor-link" href="#Getting-started"> </a></h2><p><em>This documentation is for the <a href="https://github.com/jupyter/jupyter-book">master branch of Jupyter Book</a>, which
+means that it might be slightly out-of-date with the
+<a href="https://pypi.org/project/jupyter-book/">latest version released</a> on pip</em>.</p>
+<p>To get started, you may be interested in the following links.
 Here are a few links of interest:</p>
 <ul>
 <li><p><strong><a href="features/features">Jupyter Book features</a></strong> is a quick demo and overview
@@ -1673,6 +1685,12 @@ will step you through the process of configuring and building your own Jupyter B
 <h3 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h3><p>To install the Jupyter Book command-line interface (CLI), use <code>pip</code>!</p>
 
 <pre><code>pip install jupyter-book</code></pre>
+<p>alternatively, if you'd like to install the latest version from GitHub,
+you can run:</p>
+
+<pre><code>pip install git+https://github.com/jupyter/jupyter-book</code></pre>
+<p>This will install the <em>master branch</em> of Jupyter Book (what these docs are
+built from), though it might be a bit less-stable.</p>
 <h3 id="Create-a-new-book">Create a new book<a class="anchor-link" href="#Create-a-new-book"> </a></h3><p>Once you've installed the CLI, create a new book using the demo book content
 (the website that you're viewing now) with this command:</p>
 
@@ -1692,6 +1710,10 @@ with support of the <strong>UC Berkeley Data Science Education Program and the
 </div>
 
  
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {}, "version_major": 2, "version_minor": 0}
+</script>
 
 
             </div>
