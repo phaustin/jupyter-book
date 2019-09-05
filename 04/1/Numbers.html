@@ -31,9 +31,9 @@
   "headline":
     "Numbers",
   "datePublished":
-    "2019-09-05T16:28:57+00:00",
+    "2019-09-05T16:30:34+00:00",
   "dateModified":
-    "2019-09-05T16:28:57+00:00",
+    "2019-09-05T16:30:34+00:00",
   "description":
     "",
   "author": {
@@ -324,6 +324,14 @@ const initToc = () => {
     return
   }
 
+  // Check whether we have any sidebar content. If not, then show the sidebar earlier.
+  var SIDEBAR_CONTENT_TAGS = ['.tag_full_width', '.tag_popout'];
+  var sidebar_content_query = SIDEBAR_CONTENT_TAGS.join(', ')
+  if (document.querySelectorAll(sidebar_content_query).length === 0) {
+    document.querySelector('nav.onthispage').classList.add('no_sidebar_content')
+  }
+
+  // Initialize the TOC bot
   tocbot.init({
     tocSelector: 'nav.onthispage',
     contentSelector: '.c-textbook__content',
