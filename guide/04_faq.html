@@ -28,8 +28,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyter.org/jupyter-book/guide/04_faq.html",
   "headline": "FAQ",
-  "datePublished": "2019-09-06T18:39:03+00:00",
-  "dateModified": "2019-09-06T18:39:03+00:00",
+  "datePublished": "2019-09-16T01:16:18+00:00",
+  "dateModified": "2019-09-16T01:16:18+00:00",
   "description": "The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.How can I update my book? Sometimes Jupyter Book w...",
   "author": {
     "@type": "Person",
@@ -1656,12 +1656,10 @@ differently for some reason.</p>
 <h2 id="Why-isn't-my-math-showing-up-properly?">Why isn't my math showing up properly?<a class="anchor-link" href="#Why-isn't-my-math-showing-up-properly?"> </a></h2><p>This site uses MathJax to render all math, with <code>$</code> denoting inline math,
 and <code>$$</code> denoting multi-line math blocks. Make sure that all of your math
 is wrapped in these characters.</p>
-<p>Another tip is to make sure that your math isn't being escaped improperly.
-Jekyll strips escape characters, so you should make sure to add <strong>two</strong>
-escape characters when needed. This is done automatically for many escape
-characters in <code>generate_book.py</code>, and if you notice something that should
-be included in this script, please open an issue
-<a href="https://github.com/jupyter/jupyter-book/issues">at the textbook template issues page</a></p>
+<p>Another tip is to remember to use <strong>escape characters</strong> when you <em>don't</em> want
+math to be rendered and instead want an actual dollar sign to show up.
+To do so, simply add a <code>\</code> in front of the dollar sign. For example, I 
+can write \$35 by writing it like `\\$35` in the markdown.</p>
 <h2 id="How-can-I-include-interactive-Plotly-figures?">How can I include interactive Plotly figures?<a class="anchor-link" href="#How-can-I-include-interactive-Plotly-figures?"> </a></h2><p>To display interactive <a href="https://plot.ly/python/">Plotly</a> figures, they must
 first be generated in a Jupyter notebook using the <a href="https://plot.ly/python/offline/">offline mode</a>.
 You must then plot the figure with <code>plotly.offline.plot()</code>, which generates an HTML file (<code>plotly.offline.iplot()</code> does not),
