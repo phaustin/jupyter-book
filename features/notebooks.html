@@ -28,8 +28,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyter.org/jupyter-book/features/notebooks.html",
   "headline": "Jupyter notebooks",
-  "datePublished": "2019-09-17T19:30:18+00:00",
-  "dateModified": "2019-09-17T19:30:18+00:00",
+  "datePublished": "2019-09-17T21:36:18+00:00",
+  "dateModified": "2019-09-17T21:36:18+00:00",
   "description": "Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is containedin a Jupyter Notebook in the notebook...",
   "author": {
     "@type": "Person",
@@ -1003,6 +1003,23 @@ initFunction(initPrint)
                 >
                   
                   Connecting content with JupyterHub and Binder
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/jupyter-book/features/executing.html"
+                >
+                  
+                  Running each page when building your book
                 </a>
 
                 
@@ -2222,66 +2239,6 @@ optional arguments:
 </div>
 </div>
 
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Executing-notebooks">Executing notebooks<a class="anchor-link" href="#Executing-notebooks"> </a></h2><p>✨<strong>experimental</strong>✨</p>
-<p>By default, Jupyter Book will not run any of your notebooks when you build your
-book. It assumes you have already run each one, and simply converts each page to
-HTML.</p>
-<p>However, sometimes you'd like to store <em>just</em> the book content, and then <em>run</em> this content
-when you build your book. This helps you ensure that your content still runs, and
-that you've always got the latest outputs in your book. The drawback to this is that
-your book will take longer to build, especially if your content takes a long time
-to run.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell tag_popout">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Note:</strong> If you store your Notebook content as <a href="jupytext.html">Jupytext documents</a>, then
-they will automatically be run each time you build your book. This is because Jupytext
-documents don't contain any outputs at all, and we make the assumption that they should
-be run first before finishing your book.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>It's possible to <strong>execute your book content at build time</strong>. There are a few convenience
-functions and options for this:</p>
-<h3 id="jupyter-book-run"><strong><code>jupyter-book run</code></strong><a class="anchor-link" href="#jupyter-book-run"> </a></h3><p>This is a command-line function that allows you to quickly execute pages of
-your book and store the content in-line. You can use it with a path to a single
-book page like so:</p>
-
-<pre><code>jupyter-book run path/to/notebook.ipynb</code></pre>
-<p>And it will simply run the execute in-place.</p>
-<p>You can also specify a folder with a <strong>collection</strong> of pages as the first argument:</p>
-
-<pre><code>jupyter-book run path/to/notebook_folder</code></pre>
-<p>In this case, all notebooks in this folder and sub-folders will be run in-place.</p>
-<h3 id="jupyter-book-build---execute"><strong><code>jupyter-book build --execute</code></strong><a class="anchor-link" href="#jupyter-book-build---execute"> </a></h3><p>Another option is to pass the <code>--execute</code> flag when you build your book. This
-will cause each page to be <strong>executed</strong> when it is built. Remember that the HTML
-for pages is cached until you update your content, so while this will take a long
-time the first time you run it (since all your book content will need to run), it
-should be incrementally faster in subsequent builds.</p>
-
-</div>
-</div>
 </div>
 </div>
 
