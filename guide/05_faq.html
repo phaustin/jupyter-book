@@ -7,16 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Create your book</title>
-  <meta name="description" content="Create your Jupyter Book This page covers how to create a Jupyter Book with your own content.You've got three primary ways to create your Jupyter Book.by sta...">
+  <title>Frequently Asked Questions (FAQ)</title>
+  <meta name="description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.How can I update my book? Sometimes Jupyter Book w...">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/02_create.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/05_faq.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/02_create.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/05_faq.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Create your book" />
-<meta property="og:description" content="Create your Jupyter Book This page covers how to create a Jupyter Book with your own content.You've got three primary ways to create your Jupyter Book.by sta..." />
+<meta property="og:title"       content="Frequently Asked Questions (FAQ)" />
+<meta property="og:description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.How can I update my book? Sometimes Jupyter Book w..." />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -26,11 +26,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://jupyter.org/jupyter-book/guide/02_create.html",
-  "headline": "Create your book",
+  "mainEntityOfPage": "https://jupyter.org/jupyter-book/guide/05_faq.html",
+  "headline": "Frequently Asked Questions (FAQ)",
   "datePublished": "2019-09-17T15:58:45+00:00",
   "dateModified": "2019-09-17T15:58:45+00:00",
-  "description": "Create your Jupyter Book This page covers how to create a Jupyter Book with your own content.You've got three primary ways to create your Jupyter Book.by sta...",
+  "description": "The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.How can I update my book? Sometimes Jupyter Book w...",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -829,7 +829,7 @@ initFunction(initPrint)
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry c-sidebar__entry--active"
+                <a class="c-sidebar__entry "
                   href="/jupyter-book/guide/02_create.html"
                 >
                   
@@ -880,7 +880,7 @@ initFunction(initPrint)
               
 
               <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
+                <a class="c-sidebar__entry c-sidebar__entry--active"
                   href="/jupyter-book/guide/05_faq.html"
                 >
                   
@@ -1604,7 +1604,7 @@ initFunction(initPrint)
 <div class="download-buttons-dropdown">
     <button id="dropdown-button-trigger" class="interact-button"><i class="fa fa-download"></i></button>
     <div class="download-buttons">
-        <a href="/jupyter-book/content/guide/02_create.md" download>
+        <a href="/jupyter-book/content/guide/05_faq.md" download>
         <button id="interact-button-download" class="interact-button">ORIG</button>
         </a>
         
@@ -1622,7 +1622,7 @@ initFunction(initPrint)
 
 
 
-<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Fguide%2F02_create.md"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Fguide%2F05_faq.md"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
   
 
 
@@ -1644,59 +1644,89 @@ initFunction(initPrint)
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Create-your-Jupyter-Book">Create your Jupyter Book<a class="anchor-link" href="#Create-your-Jupyter-Book"> </a></h1><p>This page covers how to create a Jupyter Book with your own content.
-You've got three primary ways to create your Jupyter Book.</p>
-<h2 id="by-starting-with-a-minimal-book">by starting with a minimal book<a class="anchor-link" href="#by-starting-with-a-minimal-book"> </a></h2><p>Running the following command will create a new Jupyter Book with a few
-content pages and a Table of Contents to get you started:</p>
-
-<pre><code>jupyter-book create mybookname</code></pre>
-<p>This will create a new book using your content in <code>mybookname/</code>. You'll then need to</p>
+<p>The following are some common issues and questions that have arisen when
+building your textbook with Jekyll.</p>
+<h2 id="How-can-I-update-my-book?">How can I update my book?<a class="anchor-link" href="#How-can-I-update-my-book?"> </a></h2><p>Sometimes Jupyter Book will get updates that you want to incorporate into
+a book you've already built. The easiest way to do this is to use the Command-Line Interface to
+upgrade your book.</p>
+<p>To upgrade a pre-existing Jupyter Book, run the following command:</p>
+<div class="highlight"><pre><span></span>jupyter-book upgrade path/to/mybook
+</pre></div>
+<p>This will do the following:</p>
 <ol>
-<li>Add your content to <code>mybookname/content/</code></li>
-<li>Modify <code>mybookname/_data/toc.yml</code> to match your content</li>
-<li>Modify <code>mybookname/_config.yml</code> to the configuration you'd like</li>
+<li>Generate a fresh Jupyter Book in <code>mybook_UPGRADED</code> using the content files in your
+current book.</li>
+<li>If this succeeds, copy over the contents of <code>mybook_UPGRADED</code> into your current book folder.</li>
+<li>If this succeeds, delete the <code>mybook_UPGRADED</code> folder.</li>
 </ol>
-<p>Note that if you choose to create the book template and later add content
-to it, you can quickly <strong>generate a basic Table of Contents</strong> by running
-the following command:</p>
+<p>Note that only the content that you can manually specify via the <code>jupyter-book create</code> command
+will be retained in your upgraded book. For a list of these options, see the help menu for this command:</p>
+<div class="highlight"><pre><span></span>jupyter-book create -h
+</pre></div>
+<p>You should check out the content in your upgraded book to make sure it looks correct, then
+commit the changes to your repository.</p>
+<h2 id="Does-the-book-behave-differently-depending-on-the-browser?">Does the book behave differently depending on the browser?<a class="anchor-link" href="#Does-the-book-behave-differently-depending-on-the-browser?"> </a></h2><p>Maybe - Jupyter Book does use some features that might have different behaviors in
+some browsers. For example, Safari <a href="https://github.com/jupyter/jupyter-book/pull/104#issuecomment-462461188">tends to treat downloadable objects</a>
+differently for some reason.</p>
+<p>The two browsers on which Jupyter Book should always behave as expected are
+<strong>Firefox</strong> and <strong>Chrome</strong>.</p>
+<h2 id="Why-isn't-my-math-showing-up-properly?">Why isn't my math showing up properly?<a class="anchor-link" href="#Why-isn't-my-math-showing-up-properly?"> </a></h2><p>This book uses MathJax to render all math, with <code>$</code> denoting inline math,
+and <code>$$</code> denoting multi-line math blocks. Make sure that all of your math
+is wrapped in these characters.</p>
+<p>Another tip is to remember to use <strong>escape characters</strong> when you <em>don't</em> want
+math to be rendered and instead want an actual dollar sign to show up.
+To do so, simply add a <code>\</code> in front of the dollar sign. For example, I
+can write \$35 by writing it like `\\$35` in the markdown.</p>
+<h2 id="How-can-I-include-interactive-Plotly-figures?">How can I include interactive Plotly figures?<a class="anchor-link" href="#How-can-I-include-interactive-Plotly-figures?"> </a></h2><p>To display interactive <a href="https://plot.ly/python/">Plotly</a> figures, they must
+first be generated in a Jupyter notebook using the <a href="https://plot.ly/python/offline/">offline mode</a>.
+You must then plot the figure with <code>plotly.offline.plot()</code>, which generates an HTML file (<code>plotly.offline.iplot()</code> does not),
+and then load the HTML into the notebook with <code>display(HTML('file.html'))</code> prior to saving your *.ipynb file.</p>
+<p>e.g.</p>
 
-<pre><code>jupyter-book toc mybookname/</code></pre>
-<h2 id="by-modifying-the-Demo-Book">by modifying the Demo Book<a class="anchor-link" href="#by-modifying-the-Demo-Book"> </a></h2><p>If you'd like to see a more fully-functioning demo book for inspiration, you can
-create the book that lives at the <a href="https://jupyter.org/jupyter-book">jupyter-book website</a>
-by adding the <code>--demo</code> flag:</p>
+<pre><code>from IPython.core.display import display, HTML
+from plotly.offline import init_notebook_mode, plot
+init_notebook_mode(connected=True)
+.
+.
+.
+plot(fig, filename = 'figure.html')
+display(HTML('figure.html')</code></pre>
+<p>Note that, if viewing the file on a Jupyter Notebook session, the figure will not be displayed there (<code>iplot</code> is needed for this). However, if working on a <a href="https://github.com/binder-examples/jupyterlab">JupyterLab</a> session, the figure can be displayed there using the <code>plot</code> code above by having the <a href="https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension">JupyterLab plotly extension</a> installed.</p>
+<h2 id="What-if-I-have-an-issue-or-question?">What if I have an issue or question?<a class="anchor-link" href="#What-if-I-have-an-issue-or-question?"> </a></h2><p>If you've got questions, concerns, or suggestions, please open an issue at
+<a href="https://github.com/jupyter/jupyter-book/issues">at the jupyter book issues page</a></p>
+<h2 id="How-should-I-add-cell-tags-to-my-notebooks?">How should I add cell tags to my notebooks?<a class="anchor-link" href="#How-should-I-add-cell-tags-to-my-notebooks?"> </a></h2><p>You can control the behavior of Jupyter Book by putting custom tags
+in the metadata of your cells. This allows you to do things like
+<a href="../features/hiding">automatically hide code cells</a> as well as
+<a href="../features/interactive_cells">adding interactive widgets to cells</a>.</p>
+<p>There are two straightforward ways to add metadata to cells:</p>
+<ol>
+<li><p><strong>Use the Jupyter Notebook cell tag editor</strong>. The Jupyter Notebook ships with a
+cell tag editor by default. This lets you add cell tags to each cell quickly.</p>
+<p>To enable the cell tag editor, go click <code>View -&gt; Cell Toolbar -&gt; Tags</code>. This
+will enable the tags UI. Here's what the menu looks like.</p>
+<p><img src="../images/tags_notebook.png" alt=""></p>
+</li>
+<li><p><strong>Use the JupyterLab Cell Tags plugin</strong>. JupyterLab is an IDE-like Jupyter
+environment that runs in your browser. It has a rich extension ecosystem.
+A particularly useful extension
+<a href="https://github.com/jupyterlab/jupyterlab-celltags">is the "cell tags" plugin</a>,
+which exposes a user interface that lets you quickly insert cell tags.</p>
+<p>You can install the cell tags plugin with the following command (after installing
+JupyterLab).</p>
 
-<pre><code>jupyter-book create mybookname --demo</code></pre>
-<p>See the previous section for a description of all of the relevant files you
-should modify for your book.</p>
-<h2 id="by-using-a-pre-existing-book-configuration">by using a pre-existing book configuration<a class="anchor-link" href="#by-using-a-pre-existing-book-configuration"> </a></h2><p>If you've used Jupyter Book before, you can quickly generate a <em>new</em> book using a pre-existing
-set of folders and files. These are all available as arguments in the command line interface.</p>
-<p>For example, if you have your book's content in a folder structure like this:</p>
-
-<pre><code>myoldbook/
-├── content
-│   ├── root_test.md
-│   └── tests
-├── _data
-│   └── toc.yml
-├── images
-│   └── tests
-├── mylicense.md
-├── myextrafolder
-│   └── myextrafile.txt
-└── config.yml</code></pre>
-<p>You can generate a Jupyter Book from it with the following command:</p>
-
-<pre><code>jupyter-book create mybookname --content-folder myoldbook/content \
-                               --toc myoldbook/_data/toc.yml \
-                               --config myoldbook/_config.yml \
-                               --license myoldbook/mylicense.md \
-                               --extra-files myoldbook/myextrafolder</code></pre>
-<p>This will create a new Jupyter Book using these files. In this case, you need to ensure
-that the values in <code>_config.yml</code> are correct, and that the Table of Contents (<code>toc.yml</code>) file
-has the structure that you want.</p>
-<h2 id="Next-step:-convert-your-book-content-into-HTML">Next step: convert your book content into HTML<a class="anchor-link" href="#Next-step:-convert-your-book-content-into-HTML"> </a></h2><p>Now that you've got a Jupyter Book folder structure, we can create
-the HTML for each of your book's pages. That's covered in the next
-section.</p>
+<pre><code>jupyter labextension install @jupyterlab/celltags</code></pre>
+<p>Then, you'll find tags under the "wrench" menu section.
+Here's what the tags UI in JupyterLab looks like.</p>
+<p><img src="../images/tags_jupyterlab.png" alt=""></p>
+</li>
+</ol>
+<h2 id="Why-doesn't-math-show-properly-when-printing?">Why doesn't math show properly when printing?<a class="anchor-link" href="#Why-doesn't-math-show-properly-when-printing?"> </a></h2><p>Currently, we use a library called <a href="https://printjs.crabbly.com/">PrintJS</a> to handle
+printing of <em>just</em> the notebook content (when you click the "print -&gt; PDF" buttons).</p>
+<p>However, a drawback of this approach is that MathJax mathematics cannot access the
+same fonts available when you're viewing a page live. This means that mathematics often
+look simplified and incorrectly-formatted.</p>
+<p>If you have an idea for how to improve this, please
+<a href="https://github.com/jupyter/jupyter-book/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc">open an issue</a>!</p>
 
 </div>
 </div>
@@ -1710,15 +1740,15 @@ section.</p>
             <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/01_overview.html">
-      〈 <span class="u-margin-right-tiny"></span> Getting started
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/04_publish.html">
+      〈 <span class="u-margin-right-tiny"></span> Build and publish your book online
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/03_build.html">
-      Build HTML for each page of your book <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/06_advanced.html">
+      How-to and advanced topics <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

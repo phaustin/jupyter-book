@@ -7,16 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Jupyter Book</title>
-  <meta name="description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.## How can I update my book?Sometimes Jupyter Book...">
+  <title>How-to and advanced topics</title>
+  <meta name="description" content="This page contains more advanced and complete information about thejupyter-book repository. See the sections below.Enable Google Analytics If you have a Goog...">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/content/guide/04_faq.html">
+  <link rel="canonical" href="https://jupyter.org/jupyter-book/guide/06_advanced.html">
   <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/content/guide/04_faq.html" />
+  <meta property="og:url"         content="https://jupyter.org/jupyter-book/guide/06_advanced.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Jupyter Book" />
-<meta property="og:description" content="The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.## How can I update my book?Sometimes Jupyter Book..." />
+<meta property="og:title"       content="How-to and advanced topics" />
+<meta property="og:description" content="This page contains more advanced and complete information about thejupyter-book repository. See the sections below.Enable Google Analytics If you have a Goog..." />
 <meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
@@ -26,11 +26,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://jupyter.org/jupyter-book/content/guide/04_faq.html",
-  "headline": "Jupyter Book",
-  "datePublished": "2019-09-17T02:52:14+00:00",
-  "dateModified": "2019-09-17T02:52:14+00:00",
-  "description": "The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.## How can I update my book?Sometimes Jupyter Book...",
+  "mainEntityOfPage": "https://jupyter.org/jupyter-book/guide/06_advanced.html",
+  "headline": "How-to and advanced topics",
+  "datePublished": "2019-09-17T15:58:45+00:00",
+  "dateModified": "2019-09-17T15:58:45+00:00",
+  "description": "This page contains more advanced and complete information about thejupyter-book repository. See the sections below.Enable Google Analytics If you have a Goog...",
   "author": {
     "@type": "Person",
     "name": "The Jupyter Book Community"
@@ -850,24 +850,7 @@ initFunction(initPrint)
                   href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Build and publish your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/jupyter-book/guide/04_faq.html"
-                >
-                  
-                  FAQ
+                  Build HTML for each page of your book
                 </a>
 
                 
@@ -881,7 +864,41 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_advanced.html"
+                  href="/jupyter-book/guide/04_publish.html"
+                >
+                  
+                  Build and publish your book online
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/jupyter-book/guide/05_faq.html"
+                >
+                  
+                  Frequently Asked Questions (FAQ)
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/jupyter-book/guide/06_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1587,10 +1604,27 @@ initFunction(initPrint)
 <div class="download-buttons-dropdown">
     <button id="dropdown-button-trigger" class="interact-button"><i class="fa fa-download"></i></button>
     <div class="download-buttons">
+        <a href="/jupyter-book/content/guide/06_advanced.md" download>
+        <button id="interact-button-download" class="interact-button">ORIG</button>
+        </a>
         
         <a id="interact-button-print"><button id="interact-button-download" class="interact-button">PDF</button></a>
     </div>
 </div>
+
+  <button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+  
+  
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Fguide%2F06_advanced.md"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+  
+
 
 </div>
 
@@ -1606,139 +1640,159 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <p>The following are some common issues and questions that have arisen when
-building your textbook with Jekyll.</p>
+              <div class="jb_cell">
 
-<h2 id="how-can-i-update-my-book">How can I update my book?</h2>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This page contains more advanced and complete information about the
+<a href="https://github.com/jupyter/jupyter-book"><code>jupyter-book</code> repository</a>. See the sections below.</p>
+<h2 id="Enable-Google-Analytics">Enable Google Analytics<a class="anchor-link" href="#Enable-Google-Analytics"> </a></h2><p>If you have a Google Account, you can use Google Analytics to collect some
+information on the traffic to your Jupyter Book. With this tool, you can find
+out how many people are using your book, where they come from and how they
+access it, wether they are using the Desktop or the mobile version etc.</p>
+<p>To add Google Analytics to your Jupyter Book, navigate to
+<a href="https://analytics.google.com/analytics/web/">Google Analytics</a>, create a new
+Google Analytics account and add the url of your Jupyter Book to a new
+<em>property</em>. Once you have set everything up, your Google Analytics property
+will have a so-called Tracking-ID, that typically starts with the letters UA.
+All that you need to do is to copy this ID and paste it into your
+configuration file:</p>
+<div class="highlight"><pre><span></span><span class="nt">google_analytics</span><span class="p">:</span>
+  <span class="nt">mytrackingcode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">UA-XXXXXXXXX-X</span>
+</pre></div>
+<h2 id="Retain-custom-YAML-front-matter-in-your-files">Retain custom YAML front-matter in your files<a class="anchor-link" href="#Retain-custom-YAML-front-matter-in-your-files"> </a></h2><p>Jupyter book will check your files for YAML front-matter and will <strong>append</strong>
+any newly-generated YAML to the built files for the page. This means you
+can provide your own custom YAML to files (which may be useful if you'd like
+to modify this book's HTML).</p>
+<p>Be careful not to add YAML with the same key names as the auto-generated YAML, as
+this will create duplicated keys in your page's front-matter.</p>
+<h2 id="Deploying-a-JupyterHub">Deploying a JupyterHub<a class="anchor-link" href="#Deploying-a-JupyterHub"> </a></h2><p>If you wish, you may deploy a JupyterHub alongside your textbook. This way, for pages that are built from
+Jupyter Notebooks, students can click the "interact" links
+at the top of each page and be taken to a live Jupyter Notebook running on your JupyterHub.</p>
+<p>The easiest way to set up a JupyterHub is to follow <a href="https://the-littlest-jupyterhub.readthedocs.io/en/latest/index.html">The Littlest JupyterHub guide</a>.
+This is a straightforward deployment of JupyterHub on a single VM, and is suitable for
+courses / workshops of less than 50-60 students.</p>
+<p>Once you have your JupyterHub set up, you can use the <a href="https://github.com/data-8/nbgitpuller">nbgitpuller</a>
+package to send links to course material to your students, or use the interact links that Textbooks for Jupyter
+automatically inserts into your course material.</p>
+<h2 id="Auto-generating-a-TOC-file-for-your-book">Auto-generating a TOC file for your book<a class="anchor-link" href="#Auto-generating-a-TOC-file-for-your-book"> </a></h2><p>Sometimes it can be a pain to create the Table of Contents YAML file by hand.
+Jupyter Book has a convenience function to automatically create this file
+using the alpha-numeric sorting of the file/folder names in your content folder.
+To use it, simply use the following command:</p>
 
-<p>Sometimes Jupyter Book will get updates that you want to incorporate into
-a book you’ve already built. The easiest way to do this is to use the Command-Line Interface to
-upgrade your book.</p>
+<pre><code>jupyter-book toc path/to/mybook</code></pre>
+<p>This put all <code>.md</code> and <code>.ipynb</code> files in the root of the <strong>content folder</strong>
+as top-level pages. For any files that are in folders, it will create one
+section per <strong>top-level folder</strong> and place all content files inside that
+section.</p>
+<p>By default, running this command will print the TOC YAML to the screen.
+If you'd like to overwrite your <code>_data/toc.yml</code> file with the result of
+running this command, you can use the <code>--path-output</code> argument like so</p>
 
-<p>To upgrade a pre-existing Jupyter Book, run the following command:</p>
+<pre><code>jupyter-book toc path/to/mybook --path-output path/to/mybook/_data/toc.yml</code></pre>
+<p>This will overwrite the contents of <code>toc.yml</code> with the new TOC.</p>
+<blockquote><p>Note: this will make some assumptions about how you'd like your book to
+be structured. We recommend using this command as a starting point, and
+then customizing your TOC how you'd like.</p>
+</blockquote>
+<h2 id="Adding-tags-to-notebook-cells-based-on-their-content">Adding tags to notebook cells based on their content<a class="anchor-link" href="#Adding-tags-to-notebook-cells-based-on-their-content"> </a></h2><p>Sometimes you'd like to quickly scan through a notebook's cells in order to
+add tags based on the content of the cell. For example, you might want to
+hide any cell with an import statement in it using the <code>remove_input</code> tag.</p>
+<p>Here's a short Python snippet to accomplish something close to this.
+First change directories into the root of your book folder, and then
+run the script below as a Python script or within a Jupyter Notebook
+(modifying as necessary for your use case).
+Finally, check the changes that will be made and commit them to your repository.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nbformat</span> <span class="kn">as</span> <span class="nn">nbf</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book upgrade path/to/mybook
-</code></pre></div></div>
+<span class="c1"># Collect a list of all notebooks in the content folder</span>
+<span class="n">notebooks</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s2">&quot;./content/**/*.ipynb&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-<p>This will do the following:</p>
+<span class="c1"># Text to look for in adding tags</span>
+<span class="n">text_search_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;# HIDDEN&quot;</span><span class="p">:</span> <span class="s2">&quot;remove_cell&quot;</span><span class="p">,</span>  <span class="c1"># Remove the whole cell</span>
+    <span class="s2">&quot;# NO CODE&quot;</span><span class="p">:</span> <span class="s2">&quot;remove_input&quot;</span><span class="p">,</span>  <span class="c1"># Remove only the input</span>
+    <span class="s2">&quot;# HIDE CODE&quot;</span><span class="p">:</span> <span class="s2">&quot;hide_input&quot;</span>  <span class="c1"># Hide the input w/ a button to show</span>
+<span class="p">}</span>
 
-<ol>
-  <li>Generate a fresh Jupyter Book in <code class="highlighter-rouge">mybook_UPGRADED</code> using the content files in your
-current book.</li>
-  <li>If this succeeds, copy over the contents of <code class="highlighter-rouge">mybook_UPGRADED</code> into your current book folder.</li>
-  <li>If this succeeds, delete the <code class="highlighter-rouge">mybook_UPGRADED</code> folder.</li>
-</ol>
+<span class="c1"># Search through each notebook and look for th text, add a tag if necessary</span>
+<span class="k">for</span> <span class="n">ipath</span> <span class="ow">in</span> <span class="n">notebooks</span><span class="p">:</span>
+    <span class="n">ntbk</span> <span class="o">=</span> <span class="n">nbf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ipath</span><span class="p">,</span> <span class="n">nbf</span><span class="o">.</span><span class="n">NO_CONVERT</span><span class="p">)</span>
 
-<p>Note that only the content that you can manually specify via the <code class="highlighter-rouge">jupyter-book create</code> command
-will be retained in your upgraded book. For a list of these options, see the help menu for this command:</p>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">ntbk</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="n">cell_tags</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">text_search_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cell_tags</span><span class="p">:</span>
+                    <span class="n">cell_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cell_tags</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cell_tags</span>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter-book create <span class="nt">-h</span>
-</code></pre></div></div>
+    <span class="n">nbf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ntbk</span><span class="p">,</span> <span class="n">ipath</span><span class="p">)</span>
+</pre></div>
+<h2 id="Customizing-your-toc.yml-file">Customizing your <code>toc.yml</code> file<a class="anchor-link" href="#Customizing-your-toc.yml-file"> </a></h2><p>The <code>toc.yml</code> file is used to control the chapter order etc of your book.
+There are a few extra features you can use to trigger certain kinds of behavior.
+This section explains the possible structure of this file so you can customize it
+as you like.</p>
+<h3 id="The-structure-of-a-single-page">The structure of a single page<a class="anchor-link" href="#The-structure-of-a-single-page"> </a></h3><p>Below is all of the possible fields in the entry of a single page in <code>toc.yml</code>:</p>
 
-<p>You should check out the content in your upgraded book to make sure it looks correct, then
-commit the changes to your repository.</p>
+<pre><code>- title: mytitle   # Title of chapter or section
+  url: /myurl  # URL of section relative to the /content/ folder.
+  not_numbered: true  # if the section shouldn't have a number in the sidebar
+    (e.g. Introduction or appendices) (default: true)
+  expand_sections: true  # if you'd like the sections of this chapter to always
+    be expanded in the sidebar. (default: true)
+  sections:  # Contains an optional list of more entries that make up the chapter's sections</code></pre>
+<h3 id="Adding-an-external-link-in-your-TOC">Adding an external link in your TOC<a class="anchor-link" href="#Adding-an-external-link-in-your-TOC"> </a></h3><p>To add an external link in your TOC, simply make the url point to a fully-resolved
+URL and add the <code>external: true</code> field. Here's an example:</p>
 
-<h2 id="does-the-book-behave-differently-depending-on-the-browser">Does the book behave differently depending on the browser?</h2>
+<pre><code>- title: Jupyter Homepage   # Title of chapter or section
+  url: https://jupyter.org  # URL of external site
+  external: true</code></pre>
+<h3 id="Extra-TOC-entries">Extra TOC entries<a class="anchor-link" href="#Extra-TOC-entries"> </a></h3><p>These are special entries that will trigger different behavior if they are
+in the <code>toc.yml</code> file:</p>
 
-<p>Maybe - Jupyter Book does use some features that might have different behaviors in
-some browsers. For example, Safari <a href="https://github.com/jupyter/jupyter-book/pull/104#issuecomment-462461188">tends to treat downloadable objects</a>
-differently for some reason.</p>
+<pre><code>- search: true  # Will provide a link to a search page
+- divider: true  # Will insert a divider in the sidebar
+- header: My Header  # Will insert a header with no link in the sidebar</code></pre>
+<h2 id="Automatically-build-your-book-HTML-with-CI/CD">Automatically build your book HTML with CI/CD<a class="anchor-link" href="#Automatically-build-your-book-HTML-with-CI/CD"> </a></h2><p>If you're comfortable with continuous integration services like CircleCI, you can set up
+a build job to build your book's HTML automatically and push them to an online repository
+(such as a <code>gh-pages</code> branch). This is a fairly advanced topic, but for some guidance,
+check out these resources:</p>
+<ul>
+<li><strong><a href="https://predictablynoisy.com/circleci-mirror">This blog post on pushing changes from a CircleCI Job</a></strong>
+covers how you can give CircleCI permissions to push to a branch from within a job.</li>
+<li><strong><a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml">The Jupyter Book CircleCI configuration file</a></strong>
+automatically deploys changes to the <code>jupyter-book</code> master branch to the live book. In
+particular, <a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml#L74">this section builds the book HTML files</a>
+while <a href="https://github.com/jupyter/jupyter-book/blob/master/.circleci/config.yml#L31">this section builds the HTML and pushes them to a <code>gh-pages</code> branch</a>.</li>
+</ul>
+<p>This process can be tricky to set up initially, but is quite useful in ensuring that your live book
+always stays up-to-date.</p>
 
-<p>The two browsers on which Jupyter Book should always behave as expected are
-<strong>Firefox</strong> and <strong>Chrome</strong>.</p>
+</div>
+</div>
+</div>
+</div>
 
-<h2 id="why-isnt-my-math-showing-up-properly">Why isn’t my math showing up properly?</h2>
+ 
 
-<p>This site uses MathJax to render all math, with <code class="highlighter-rouge">$</code> denoting inline math,
-and <code class="highlighter-rouge">$$</code> denoting multi-line math blocks. Make sure that all of your math
-is wrapped in these characters.</p>
-
-<p>Another tip is to remember to use <strong>escape characters</strong> when you <em>don’t</em> want
-math to be rendered and instead want an actual dollar sign to show up.
-To do so, simply add a <code class="highlighter-rouge">\</code> in front of the dollar sign. For example, I 
-can write $35 by writing it like <code class="highlighter-rouge">\\$35</code> in the markdown.</p>
-
-<h2 id="how-can-i-include-interactive-plotly-figures">How can I include interactive Plotly figures?</h2>
-
-<p>To display interactive <a href="https://plot.ly/python/">Plotly</a> figures, they must
-first be generated in a Jupyter notebook using the <a href="https://plot.ly/python/offline/">offline mode</a>.
-You must then plot the figure with <code class="highlighter-rouge">plotly.offline.plot()</code>, which generates an HTML file (<code class="highlighter-rouge">plotly.offline.iplot()</code> does not),
-and then load the HTML into the notebook with <code class="highlighter-rouge">display(HTML('file.html'))</code> prior to saving your *.ipynb file.</p>
-
-<p>e.g.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from IPython.core.display import display, HTML
-from plotly.offline import init_notebook_mode, plot
-init_notebook_mode(connected=True)
-.
-.
-.
-plot(fig, filename = 'figure.html')
-display(HTML('figure.html')
-</code></pre></div></div>
-
-<p>Note that, if viewing the file on a Jupyter Notebook session, the figure will not be displayed there (<code class="highlighter-rouge">iplot</code> is needed for this). However, if working on a <a href="https://github.com/binder-examples/jupyterlab">JupyterLab</a> session, the figure can be displayed there using the <code class="highlighter-rouge">plot</code> code above by having the <a href="https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension">JupyterLab plotly extension</a> installed.</p>
-
-<h2 id="what-if-i-have-an-issue-or-question">What if I have an issue or question?</h2>
-
-<p>If you’ve got questions, concerns, or suggestions, please open an issue at
-<a href="https://github.com/jupyter/jupyter-book/issues">at the jupyter book issues page</a></p>
-
-<h2 id="how-should-i-add-cell-tags-to-my-notebooks">How should I add cell tags to my notebooks?</h2>
-
-<p>You can control the behavior of Jupyter Book by putting custom tags
-in the metadata of your cells. This allows you to do things like
-<a href="../features/hiding">automatically hide code cells</a> as well as
-<a href="../features/interactive_cells">adding interactive widgets to cells</a>.</p>
-
-<p>There are two straightforward ways to add metadata to cells:</p>
-
-<ol>
-  <li>
-    <p><strong>Use the Jupyter Notebook cell tag editor</strong>. The Jupyter Notebook ships with a
-cell tag editor by default. This lets you add cell tags to each cell quickly.</p>
-
-    <p>To enable the cell tag editor, go click <code class="highlighter-rouge">View -&gt; Cell Toolbar -&gt; Tags</code>. This
-will enable the tags UI. Here’s what the menu looks like.</p>
-
-    <p><img src="/jupyter-book/content/images/tags_notebook.png" alt="" /></p>
-  </li>
-  <li>
-    <p><strong>Use the JupyterLab Cell Tags plugin</strong>. JupyterLab is an IDE-like Jupyter
-environment that runs in your browser. It has a rich extension ecosystem.
-A particularly useful extension
-<a href="https://github.com/jupyterlab/jupyterlab-celltags">is the “cell tags” plugin</a>,
-which exposes a user interface that lets you quickly insert cell tags.</p>
-
-    <p>You can install the cell tags plugin with the following command (after installing
-JupyterLab).</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter labextension install @jupyterlab/celltags
-</code></pre></div>    </div>
-
-    <p>Then, you’ll find tags under the “wrench” menu section.
-Here’s what the tags UI in JupyterLab looks like.</p>
-
-    <p><img src="/jupyter-book/content/images/tags_jupyterlab.png" alt="" /></p>
-  </li>
-</ol>
-
-<h2 id="why-doesnt-math-show-properly-when-printing">Why doesn’t math show properly when printing?</h2>
-
-<p>Currently, we use a library called <a href="https://printjs.crabbly.com/">PrintJS</a> to handle
-printing of <em>just</em> the notebook content (when you click the “print -&gt; PDF” buttons).</p>
-
-<p>However, a drawback of this approach is that MathJax mathematics cannot access the
-same fonts available when you’re viewing a page live. This means that mathematics often
-look simplified and incorrectly-formatted.</p>
-
-<p>If you have an idea for how to improve this, please
-<a href="https://github.com/jupyter/jupyter-book/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc">open an issue</a>!</p>
 
             </div>
             <nav class="c-page__nav">
   
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/jupyter-book/guide/05_faq.html">
+      〈 <span class="u-margin-right-tiny"></span> Frequently Asked Questions (FAQ)
+    </a>
+  
 
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/features/features.html">
+      Features and customization <span class="u-margin-right-tiny"></span> 〉
+    </a>
   
 </nav>
 

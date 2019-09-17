@@ -28,8 +28,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyter.org/jupyter-book/search",
   "headline": "Search the site",
-  "datePublished": "2019-09-17T02:52:14+00:00",
-  "dateModified": "2019-09-17T02:52:14+00:00",
+  "datePublished": "2019-09-17T15:58:45+00:00",
+  "dateModified": "2019-09-17T15:58:45+00:00",
   "description": "        ",
   "author": {
     "@type": "Person",
@@ -850,7 +850,7 @@ initFunction(initPrint)
                   href="/jupyter-book/guide/03_build.html"
                 >
                   
-                  Build and publish your book
+                  Build HTML for each page of your book
                 </a>
 
                 
@@ -864,10 +864,10 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_faq.html"
+                  href="/jupyter-book/guide/04_publish.html"
                 >
                   
-                  FAQ
+                  Build and publish your book online
                 </a>
 
                 
@@ -881,7 +881,24 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_advanced.html"
+                  href="/jupyter-book/guide/05_faq.html"
+                >
+                  
+                  Frequently Asked Questions (FAQ)
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/jupyter-book/guide/06_advanced.html"
                 >
                   
                   How-to and advanced topics
@@ -1878,29 +1895,37 @@ initFunction(initPrint)
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/guide/02_create.html",
         "teaser":null},{
-        "title": "Build and publish your book",
+        "title": "Build HTML for each page of your book",
         
         "excerpt":
-            "Building and publishing your book Once you've added content and configured your book, it's time to build the raw material that Jekyll will use to turn your book into a website. We'll also cover how to turn this book into the HTML for a website that can be served online. Build the book's intermediate files Now that you've got the files installed content is in the book, you can build your book. Build your book by running the following command: jupyter-book build mybookname/ This will: Use the links specified in the _data/toc.yml file (pointing to files in /content/) and do...",
+            "Building and publishing your book Once you've added content and configured your book, it's time to build the HTML for each page of your book. We'll use the jupyter-book build command-line tool for this. In the next step, we'll stitch these HTML pages into a book. Prerequisites In order to build the HTML for each page, you should have followed the steps in creating your Jupyter Book structure. You should have a Jupyter Book structure in a local folder on your computer, a collection of notebook/markdown files in your content/ folder, a _data/toc.yml file that defines the structure of your...",
         "categories": [],
         "tags": [],
         "url": "https://jupyter.org/jupyter-book/guide/03_build.html",
         "teaser":null},{
-        "title": "FAQ",
+        "title": "Build and publish your book online",
+        
+        "excerpt":
+            "Publishing your book online Now that you've built the HTML for each page, it's time to stitch together these pages into HTML for a book and host it online. This means building the left Table of Contents and stitching each of your pages together. You've got two options to do this. Option 1: GitHub builds and hosts your book with GitHub Pages: When you run jupyter-book create it generates the structure of a Jekyll template. GitHub Pages can automatically build a website from a Jekyll template, and you can use this to automatically generate the HTML for your book. Option...",
+        "categories": [],
+        "tags": [],
+        "url": "https://jupyter.org/jupyter-book/guide/04_publish.html",
+        "teaser":null},{
+        "title": "Frequently Asked Questions (FAQ)",
         
         "excerpt":
             "The following are some common issues and questions that have arisen when building your textbook with Jekyll. How can I update my book? Sometimes Jupyter Book will get updates that you want to incorporate into a book you've already built. The easiest way to do this is to use the Command-Line Interface to upgrade your book. To upgrade a pre-existing Jupyter Book, run the following command: jupyter-book upgrade path/to/mybook This will do the following: Generate a fresh Jupyter Book in mybook_UPGRADED using the content files in your current book. If this succeeds, copy over the contents of mybook_UPGRADED into your...",
         "categories": [],
         "tags": [],
-        "url": "https://jupyter.org/jupyter-book/guide/04_faq.html",
+        "url": "https://jupyter.org/jupyter-book/guide/05_faq.html",
         "teaser":null},{
         "title": "How-to and advanced topics",
         
         "excerpt":
-            "This page contains more advanced and complete information about the jupyter-book repository. See the sections below. Enable Google Analytics If you have a Google Account, you can use Google Analytics to collect some information on the traffic to your Jupyter Book. With this tool, you can find out how many people are using your site, where they come from and how they access it, wether they are using the Desktop or the mobile version etc. To add Google Analytics to your Jupyter Book, navigate to Google Analytics, create a new Google Analytics account and add the url of your Jupyter...",
+            "This page contains more advanced and complete information about the jupyter-book repository. See the sections below. Enable Google Analytics If you have a Google Account, you can use Google Analytics to collect some information on the traffic to your Jupyter Book. With this tool, you can find out how many people are using your book, where they come from and how they access it, wether they are using the Desktop or the mobile version etc. To add Google Analytics to your Jupyter Book, navigate to Google Analytics, create a new Google Analytics account and add the url of your Jupyter...",
         "categories": [],
         "tags": [],
-        "url": "https://jupyter.org/jupyter-book/guide/05_advanced.html",
+        "url": "https://jupyter.org/jupyter-book/guide/06_advanced.html",
         "teaser":null},{
         "title": "Home",
         
