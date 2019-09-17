@@ -28,8 +28,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyter.org/jupyter-book/guide/05_advanced.html",
   "headline": "How-to and advanced topics",
-  "datePublished": "2019-09-17T02:47:57+00:00",
-  "dateModified": "2019-09-17T02:47:57+00:00",
+  "datePublished": "2019-09-17T02:52:14+00:00",
+  "dateModified": "2019-09-17T02:52:14+00:00",
   "description": "This page contains more advanced and complete information about thejupyter-book repository. See the sections below.Enable Google Analytics If you have a Goog...",
   "author": {
     "@type": "Person",
@@ -1809,7 +1809,11 @@ following URLs.</p>
 and follow the directions.</p>
 </blockquote>
 <p>The easiest way to install Ruby on <em>nix systems is to use
-the </em><code>conda</code>* package manager:</p>
+the </em><code>conda</code>* package manager. On some systems the following should work:</p>
+<div class="highlight"><pre><span></span>conda install -c conda-forge rb-github-pages
+</pre></div>
+<p>This will install pre-compiled binaries for the Ruby package GitHub pages, Jekyll, and all of their dependencies. If this works for you, you can skip straight to <a href="#install-ruby-plugins">the section using <code>make install</code></a>.</p>
+<p>However, if you are on a platform for which the <code>rb-github-pages</code> package isn't available, you can also try install Ruby and a C++ compiler manually using <em><code>conda</code></em>, as follows:</p>
 <div class="highlight"><pre><span></span>conda install -c conda-forge ruby
 </pre></div>
 <p>Once you have Ruby installed, the conda-built clang compiler for your system need to be installed. Details depend on your OS.</p>
@@ -1826,15 +1830,12 @@ the default *nix locations by running</p>
 <h4 id="Install-Ruby-plugins">Install Ruby plugins<a class="anchor-link" href="#Install-Ruby-plugins"> </a></h4><p>Finally, run</p>
 <div class="highlight"><pre><span></span>make install
 </pre></div>
-<p>which will install Bundler (a Ruby dependency management tool) and then install the plugins
+<p>which will install Bundler (a Ruby dependency management tool) if Bundler is not already installed (e.g. by running <code>conda install -c conda-forge rb-github-pages</code>), and then it will use Bundler to install the plugins
 needed to build the site for your book.</p>
-<p>You can then build the site locally by running:</p>
-
-<pre><code>make site</code></pre>
-<p>Alternatively, you can preview your book's site locally by running this command:</p>
+<p>You can then preview your book's site locally by running this command:</p>
 
 <pre><code>make serve</code></pre>
-<p>This should open up a port on your computer with a live version of the book.</p>
+<p>This should run Jekyll, building your site, and then open up a port on your computer with a live version of the book.</p>
 <h3 id="When-should-you-build-the-HTML-locally?">When should you build the HTML locally?<a class="anchor-link" href="#When-should-you-build-the-HTML-locally?"> </a></h3><p>You might ask: if GitHub pages can build my site automatically from the intermediate files, why
 build it locally? The main reason for this is that you get more flexibility by building locally
 and serving raw HTML, as opposed to auto-building the site with GitHub-pages.</p>
