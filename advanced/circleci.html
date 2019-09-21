@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyter.org/jupyter-book/advanced/circleci.html",
   "headline": "Building, previewing, and publishing your book with CircleCI",
-  "datePublished": "2019-09-20T03:10:13+00:00",
-  "dateModified": "2019-09-20T03:10:13+00:00",
+  "datePublished": "2019-09-21T21:36:46+00:00",
+  "dateModified": "2019-09-21T21:36:46+00:00",
   "description": "Automatically building, previewing, and pushing your book with CircleCI CircleCI is a continuous integration service that lets you run various commandsevery ...",
   "author": {
     "@type": "Person",
@@ -53,7 +53,8 @@
 
   </script>
   <link rel="stylesheet" href="/jupyter-book/assets/css/styles.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/regular.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/solid.css">
 
   <!-- <link rel="manifest" href="/manifest.json"> -->
   <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
@@ -87,26 +88,12 @@ MathJax.Hub.Config({
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
 
-  <!-- DOM updating function -->
-  <script>
-const runWhenDOMLoaded = cb => {
-  if (document.readyState != 'loading') {
-    cb()
-  } else if (document.addEventListener) {
-    document.addEventListener('DOMContentLoaded', cb)
-  } else {
-    document.attachEvent('onreadystatechange', function() {
-      if (document.readyState == 'complete') cb()
-    })
-  }
-}
 
-// Helper function to init things quickly
-initFunction = function(myfunc) {
-  runWhenDOMLoaded(myfunc);
-  document.addEventListener('turbolinks:load', myfunc);
-};
-</script>
+  <!-- DOM updating function -->
+  <script src="/jupyter-book/assets/js/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/jupyter-book/assets/js/documentSelectors.js"></script>
 
   <!-- Define some javascript variables that will be useful in other javascript -->
   <script>
@@ -115,62 +102,12 @@ initFunction = function(myfunc) {
 
   <!-- Add AnchorJS to let headers be linked -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
-  <script>
-const initAnchors = () => {
-  if (window.anchors === undefined) {
-    setTimeout(initAnchors, 250)
-    return
-  }
-  anchors.add("main h1, main h2, main h3, main h4")
-}
-
-initFunction(initAnchors);
-</script>
-
+  <script src="/jupyter-book/assets/js/anchors.js" async></script>
 
   <!-- Include Turbolinks to make page loads fast -->
   <!-- https://github.com/turbolinks/turbolinks -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
   <meta name="turbolinks-cache-control" content="no-cache">
-
-  <!-- Selectors for elements on the page -->
-  <script>
-/**
- * Select various elements on the page for later use
- */
-
-// IDs we'll attach to cells
-const codeCellId = index => `codecell${index}`
-const inputCellId = index => `inputcell${index}`
-
-pageElements = {}
-
-// All code cells
-findCodeCells = function() {
-    var codeCells = document.querySelectorAll('div.c-textbook__content > div.highlighter-rouge > div.highlight > pre, div.input_area pre, div.text_cell_render div.highlight pre')
-    pageElements['codeCells'] = codeCells;
-
-    codeCells.forEach((codeCell, index) => {
-      const id = codeCellId(index)
-      codeCell.setAttribute('id', id)
-    })
-};
-
-initFunction(findCodeCells);
-
-// All cells in general
-findInputCells = function() {
-    var inputCells = document.querySelectorAll('div.jb_cell')
-    pageElements['inputCells'] = inputCells;
-
-    inputCells.forEach((inputCell, index) => {
-        const id = inputCellId(index)
-        inputCell.setAttribute('id', id)
-    })
-};
-
-initFunction(findInputCells);
-</script>
 
   <!-- Load nbinteract for widgets -->
   
@@ -308,38 +245,9 @@ initFunction(addThebelabButtonToCodeCells);
 
 
 
-  <!-- Load the auto-generating TOC -->
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" async></script>
-<script>
-const initToc = () => {
-  if (window.tocbot === undefined) {
-    setTimeout(initToc, 250)
-    return
-  }
-
-  // Check whether we have any sidebar content. If not, then show the sidebar earlier.
-  var SIDEBAR_CONTENT_TAGS = ['.tag_full_width', '.tag_popout'];
-  var sidebar_content_query = SIDEBAR_CONTENT_TAGS.join(', ')
-  if (document.querySelectorAll(sidebar_content_query).length === 0) {
-    document.querySelector('nav.onthispage').classList.add('no_sidebar_content')
-  }
-
-  // Initialize the TOC bot
-  tocbot.init({
-    tocSelector: 'nav.onthispage',
-    contentSelector: '.c-textbook__content',
-    headingSelector: 'h2, h3',
-    orderedList: false,
-    collapseDepth: 6,
-    listClass: 'toc__menu',
-    activeListItemClass: "",  // Not using
-    activeLinkClass: "", // Not using
-  });
-
-}
-initFunction(initToc);
-</script>
-
+  <script src="/jupyter-book/assets/js/tocbot.js"></script>
 
   <!-- Google analytics -->
   
@@ -598,147 +506,10 @@ initFunction(initQuery);
 </script>
 
   <!-- Load JS that depends on site variables -->
-  <script>
-/**
- * Set up copy/paste for code blocks
- */
-const clipboardButton = id =>
-  `<a id="copy-button-${id}" class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
-    <img src="/jupyter-book/assets/images/copy-button.svg" alt="Copy to clipboard">
-  </a>`
-
-// Clears selected text since ClipboardJS will select the text when copying
-const clearSelection = () => {
-  if (window.getSelection) {
-    window.getSelection().removeAllRanges()
-  } else if (document.selection) {
-    document.selection.empty()
-  }
-}
-
-// Changes tooltip text for two seconds, then changes it back
-const temporarilyChangeTooltip = (el, newText) => {
-  const oldText = el.getAttribute('data-tooltip')
-  el.setAttribute('data-tooltip', newText)
-  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
-}
-
-const addCopyButtonToCodeCells = () => {
-  // If ClipboardJS hasn't loaded, wait a bit and try again. This
-  // happens because we load ClipboardJS asynchronously.
-  if (window.ClipboardJS === undefined) {
-    setTimeout(addCopyButtonToCodeCells, 250)
-    return
-  }
-
-  pageElements['codeCells'].forEach((codeCell) => {
-    const id = codeCell.getAttribute('id')
-    if (document.getElementById("copy-button" + id) == null) {
-      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
-    }
-  })
-
-  const clipboard = new ClipboardJS('.copybtn')
-  clipboard.on('success', event => {
-    clearSelection()
-    temporarilyChangeTooltip(event.trigger, 'Copied!')
-  })
-
-  clipboard.on('error', event => {
-    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
-  })
-
-  // Get rid of clipboard before the next page visit to avoid memory leak
-  document.addEventListener('turbolinks:before-visit', () =>
-    clipboard.destroy()
-  )
-}
-
-initFunction(addCopyButtonToCodeCells);
-</script>
-
+  <script src="/jupyter-book/assets/js/copy-button.js" async></script>
 
   <!-- Hide cell code -->
-  <script>
-    /**
-    Add buttons to hide code cells
-    */
-
-
-    var setCodeCellVisibility = function (inputField, kind) {
-        // Update the image and class for hidden
-        var id = inputField.getAttribute('data-id');
-        var codeCell = document.querySelector(`#${id} div.highlight`);
-
-        if (kind === "visible") {
-            codeCell.classList.remove('hidden');
-            inputField.checked = true;
-        } else {
-            codeCell.classList.add('hidden');
-            inputField.checked = false;
-        }
-    }
-
-    var toggleCodeCellVisibility = function (event) {
-        // The label is clicked, and now we decide what to do based on the input field's clicked status
-        if (event.target.tagName === "LABEL") {
-            var inputField = event.target.previousElementSibling;
-        } else {
-            // It is the span inside the target
-            var inputField = event.target.parentElement.previousElementSibling;
-        }
-
-        if (inputField.checked === true) {
-            setCodeCellVisibility(inputField, "visible");
-        } else {
-            setCodeCellVisibility(inputField, "hidden");
-        }
-    }
-
-
-    // Button constructor
-    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
-
-    var addHideButton = function () {
-        // If a hide button is already added, don't add another
-        if (document.querySelector('div.tag_hide_input input') !== null) {
-            return;
-        }
-
-        // Find the input cells and add a hide button
-        pageElements['inputCells'].forEach(function (inputCell) {
-            if (!inputCell.classList.contains("tag_hide_input")) {
-                // Skip the cell if it doesn't have a hidecode class
-                return;
-            }
-
-            const id = inputCell.getAttribute('id')
-
-            // Insert the button just inside the end of the next div
-            inputCell.querySelector('div.input').insertAdjacentHTML('beforeend', hideCodeButton(id))
-
-            // Set up the visibility toggle
-            hideLink = document.querySelector(`#${id} div.inner_cell + input + label`);
-            hideLink.addEventListener('click', toggleCodeCellVisibility)
-        });
-    }
-
-
-    // Initialize the hide buttos
-    var initHiddenCells = function () {
-        // Add hide buttons to the cells
-        addHideButton();
-
-        // Toggle the code cells that should be hidden
-        document.querySelectorAll('div.tag_hide_input input').forEach(function (item) {
-            setCodeCellVisibility(item, 'hidden');
-            item.checked = true;
-        })
-    }
-
-    initFunction(initHiddenCells);
-
-</script>
+  <script src="/jupyter-book/assets/js/hide-cell.js" async></script>
 
   <!-- Printing the screen -->
   <!-- Include nbinteract for interactive widgets -->
@@ -1716,7 +1487,12 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <div class="jb_cell">
+              <main class="jupyter-page">
+<div class="jb_cell">
+
+</div>
+
+<div class="jb_cell tag_jekyll-raw">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1736,7 +1512,7 @@ your book repository. Follow these steps:</p>
 <li><p><strong>Tell CircleCI to build pull-requests to your repository</strong>. To do so,
 go to</p>
 
-<pre><code>https://circleci.com/gh///edit#advanced-settings</code></pre>
+<pre><code>https://circleci.com/gh/{{YOUR-GITHUB-ORG}}/{{YOUR-GITHUB-REPO}}/edit#advanced-settings</code></pre>
 <p>Find the "<em>build forked pull requests</em>" section, and switch it to <strong>ON</strong>.</p>
 </li>
 </ul>
@@ -1749,6 +1525,10 @@ but we'll add to it later:</p>
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 </div>
 
 <div class="jb_cell tag_full_width">
@@ -1831,6 +1611,16 @@ add to the skeleton configuration you've created above:</p>
           <span class="nt">paths</span><span class="p">:</span>
             <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./_build/</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Note that, at the end of this job, we've persisted the contents of the <code>_build/</code> folder.
 This allows us to re-use these contents in subsequent jobs.</p>
 
@@ -1913,7 +1703,7 @@ install Jekyll and the dependencies needed to build your book's HTML using
 </div>
 </div>
 
-<div class="jb_cell">
+<div class="jb_cell tag_full_width">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1934,6 +1724,16 @@ using Circle artifacts. Add the job below to your CircleCI configuration file.</
           <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">_site/</span>
           <span class="nt">destination</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">html</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>After the Jekyll installation command, it then runs the build command from Jekyll,
 which outputs all the HTML for your site. We add the <code>--baseurl /0/html</code> because this
 is the prefix for the Jekyll artifact URL. Finally, we use the <code>store_artifacts</code>
@@ -1955,7 +1755,11 @@ to tell Circle to automatically push to this repository.</p>
 </div>
 </div>
 
-<div class="jb_cell tag_full_width">
+<div class="jb_cell">
+
+</div>
+
+<div class="jb_cell tag_full_width tag_jekyll-raw">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1967,7 +1771,7 @@ to tell Circle to automatically push to this repository.</p>
       <span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span>
       <span class="p p-Indicator">-</span> <span class="nt">add_ssh_keys</span><span class="p">:</span>
           <span class="nt">fingerprints</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="s">&quot;&quot;</span>
+            <span class="p p-Indicator">-</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">YOUR</span><span class="nv"> </span><span class="s">SSH</span><span class="nv"> </span><span class="s">KEY</span><span class="nv"> </span><span class="s">FINGERPRINT</span><span class="nv"> </span><span class="s">}}&quot;</span>
 
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">prepare_jekyll_installation</span>
       <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
@@ -1981,6 +1785,24 @@ to tell Circle to automatically push to this repository.</p>
             <span class="no">pip install ghp-import</span>
             <span class="no">ghp-import -p -f -n ./_site/</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+</div>
+
+<div class="jb_cell">
+
+</div>
+
+<div class="jb_cell tag_jekyll-raw">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>In this case we've used the excellent <a href="https://github.com/davisp/ghp-import">ghp-import tool for pushing to github pages</a>.
 The command pushes the contents of <code>./_site</code> (your book's HTML) to the <code>gh-pages</code>
 branch of the repository. The <code>-n</code> flag adds a <code>.nojekyll</code> file to the built HTML,
@@ -1989,6 +1811,10 @@ which ensures that Jekyll will treat it as raw HTML.</p>
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
 </div>
 
 <div class="jb_cell">
@@ -2055,7 +1881,11 @@ step above in a <em>single</em> file.</p>
 </div>
 </div>
 
-<div class="jb_cell tag_full_width">
+<div class="jb_cell">
+
+</div>
+
+<div class="jb_cell tag_full_width tag_jekyll-raw">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -2104,7 +1934,7 @@ step above in a <em>single</em> file.</p>
       <span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span>
       <span class="p p-Indicator">-</span> <span class="nt">add_ssh_keys</span><span class="p">:</span>
           <span class="nt">fingerprints</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="s">&quot;&quot;</span>
+            <span class="p p-Indicator">-</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">YOUR</span><span class="nv"> </span><span class="s">SSH</span><span class="nv"> </span><span class="s">FINGERPRINT</span><span class="nv"> </span><span class="s">}}&quot;</span>
 
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">prepare_jekyll_installation</span>
       <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
@@ -2194,12 +2024,18 @@ step above in a <em>single</em> file.</p>
 </div>
 </div>
 
+<div class="jb_cell">
+
+</div>
+
  
 
 <script type="application/vnd.jupyter.widget-state+json">
 {"state": {}, "version_major": 2, "version_minor": 0}
 </script>
 
+
+</main>
 
             </div>
             <nav class="c-page__nav">
