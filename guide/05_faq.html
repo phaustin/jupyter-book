@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyter.org/jupyter-book/guide/05_faq.html",
   "headline": "Frequently Asked Questions (FAQ)",
-  "datePublished": "2019-09-25T16:05:33+00:00",
-  "dateModified": "2019-09-25T16:05:33+00:00",
+  "datePublished": "2019-09-25T20:57:51+00:00",
+  "dateModified": "2019-09-25T20:57:51+00:00",
   "description": "The following are some common issues and questions that have arisen whenbuilding your textbook with Jekyll.How can I update my book? Sometimes Jupyter Book w...",
   "author": {
     "@type": "Person",
@@ -1599,6 +1599,18 @@ same fonts available when you're viewing a page live. This means that mathematic
 look simplified and incorrectly-formatted.</p>
 <p>If you have an idea for how to improve this, please
 <a href="https://github.com/jupyter/jupyter-book/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc">open an issue</a>!</p>
+<h2 id="What-is-this-Gemfile.lock-file-or-why-am-I-getting-Jekyll-dependency-warnings?">What is this <code>Gemfile.lock</code> file or why am I getting Jekyll dependency warnings?<a class="anchor-link" href="#What-is-this-Gemfile.lock-file-or-why-am-I-getting-Jekyll-dependency-warnings?"> </a></h2><p>The way that you define dependencies in the Ruby language is with a <code>Gemfile</code>. This is
+like a <code>requirements.txt</code> file in Python - it defines the packages needed to deploy
+a web application (in this case, our Jupyter Book). When you build the book, a new
+file will be created called <code>Gemfile.lock</code>. This freezes the dependency versions that
+are specified in your <code>Gemfile</code>, which is useful for things like cacheing your builds
+to make them faster.</p>
+<p>However, sometimes you want to <strong>un-freeze your dependency versions</strong>, often because
+you either wish to use new functionality in a package, or because you're getting
+a warning that there is a <em>vulnerability</em> in an old version of a package.</p>
+<p><strong>To update your Gemfile packages, simply delete <code>Gemfile.lock</code> and re-run <code>make install</code></strong>.
+This will generate a new <code>Gemfile.lock</code> with the latest versions of each package
+specified in your <code>Gemfile</code> (unless you have explicitly provided a version number there).</p>
 
 </div>
 </div>
