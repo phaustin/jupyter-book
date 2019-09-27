@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyter.org/jupyter-book/content/guide/04_publish.html",
   "headline": "Publishing your book online",
-  "datePublished": "2019-09-26T22:12:22+00:00",
-  "dateModified": "2019-09-26T22:12:22+00:00",
+  "datePublished": "2019-09-27T05:16:20+00:00",
+  "dateModified": "2019-09-27T05:16:20+00:00",
   "description": "# Publishing your book onlineNow that you've built the HTML for each **page**, it'stime to stitch together these pages into HTML for a **book**and host it on...",
   "author": {
     "@type": "Person",
@@ -1714,7 +1714,7 @@ Make sure to specify the full path to your Jupyter Book, rather than the relativ
    <span class="nt">-v</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
    <span class="nt">-p</span> 4000:4000 <span class="se">\</span>
    <span class="nt">-it</span> <span class="nt">-u</span> 1000:1000 <span class="se">\</span>
-   emdupre/jupyter-book bundle <span class="nb">exec </span>jekyll serve <span class="nt">--host</span> 0.0.0.0
+   emdupre/jupyter-book
 </code></pre></div></div>
 
 <p>If you navigate to <code class="highlighter-rouge">http://0.0.0.0:4000/jupyter-book/</code> in your browser,
@@ -1743,7 +1743,7 @@ Make sure to specify the full path to your Jupyter Book, rather than the relativ
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>singularity run <span class="nt">-B</span> /full/path/to/your/book:/srv/jekyll <span class="se">\</span>
     <span class="nt">--pwd</span> /srv/jekyll <span class="se">\</span>
-    jupyter-book.simg bundle <span class="nb">exec </span>jekyll serve
+    jupyter-book.simg
 </code></pre></div></div>
 
 <p>And that’s it! If you navigate to <code class="highlighter-rouge">http://127.0.0.1:4000/jupyter-book/</code> in your browser,
