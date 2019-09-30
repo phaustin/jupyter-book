@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://jupyter.org/jupyter-book/features/layout.html",
   "headline": "BETA - Controlling page layout",
-  "datePublished": "2019-09-30T15:13:41+00:00",
-  "dateModified": "2019-09-30T15:13:41+00:00",
+  "datePublished": "2019-09-30T15:15:52+00:00",
+  "dateModified": "2019-09-30T15:15:52+00:00",
   "description": "        Controlling the page layout ✨experimental✨There are a few ways to control the layout of a page with Jupyter Book. Many of theseideas take inspiration...",
   "author": {
     "@type": "Person",
@@ -1679,6 +1679,70 @@ tag). However, in the case of this figure, there's not a whole lot to explain :-
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Quotations">Quotations<a class="anchor-link" href="#Quotations"> </a></h2><p>There are two types of quotations in Jupyter Book: <strong>blockquotes</strong>
+and <strong>epigraphs</strong>.</p>
+<p><strong>Blockquotes</strong> are useful for calling out some information provided
+by another source. They don't break much with the content of the
+page.</p>
+<blockquote><p>Here's an example of a blockquote. It is triggered by using the
+"caret" (<code>&gt;</code>) symbol at the beginning of each line that you'd
+like to add a blockquote for. If you finish the quote with a
+<code>-</code> symbol, it will be treated as an "attribution" line and
+will be right-aligned.</p>
+<ul>
+<li>Jo the Jovyan</li>
+</ul>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell tag_epigraph">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Epigraphs</strong> are useful for introducing a particular page or idea.
+They're inspired by <a href="https://edwardtufte.github.io/tufte-css/#epigraphs">Edward Tufte's epigraph CSS</a>.
+Epigraphs have a bit more emphasis and also differ in style a bit more from
+your page's content in order to draw attention to them.</p>
+<blockquote><p>Here's an example of an epigraph quote. Note that in this case,
+the quote itself is a bit larger and italicized. You probably
+shouldn't make this <em>too</em> long so that they don't stand out
+too much.</p>
+<ul>
+<li>Jo the Jovyan</li>
+</ul>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To indicate that you'd like an <em>epigraph</em> instead of a <em>blockquote</em>, add
+the following tag your cell's tag list:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;epigraph&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Wide-format-cells">Wide-format cells<a class="anchor-link" href="#Wide-format-cells"> </a></h2><p>Sometimes, you'd like to use <strong>all</strong> of the horizontal space available to you. This allows
 you to highlight particular ideas, visualizations, etc.</p>
 <p>In Jupyter Book, you can specify that a cell (and its outputs) should take up all of
@@ -1749,7 +1813,7 @@ to make it a bit wider so we can take advantage of the extra space!</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/layout_10_0.png"
+<img src="../images/features/layout_13_0.png"
 >
 </div>
 
