@@ -1,8 +1,7 @@
 #!/Users/phil/a50037/envs/ebp/bin/python3.7
 # -*- coding: utf-8 -*-
-import re
-import sys
 from jupyter_book.commands import main
+from pathlib import Path
 import shutil
 
 if __name__ == "__main__":

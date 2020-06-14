@@ -158,9 +158,8 @@ def add_toctree(app, docname, source):
         source[0] = nbf.writes(ntbk)
     else:
         _error("Only markdown, ipynb, and rst files are supported in the TOC.")
-    pass
     # pdb.set_trace()
-    print("done with toc")
+    print("PHA --------- do it ---------done with toc")
 
 
 def update_indexname(app, config):
