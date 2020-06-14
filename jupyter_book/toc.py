@@ -4,6 +4,7 @@ import yaml
 from textwrap import dedent
 from pathlib import Path
 from sphinx.util import logging
+import pdb
 
 from .utils import _filename_to_title, SUPPORTED_FILE_SUFFIXES, _error
 
@@ -157,6 +158,7 @@ def add_toctree(app, docname, source):
         source[0] = nbf.writes(ntbk)
     else:
         _error("Only markdown, ipynb, and rst files are supported in the TOC.")
+    pdb.set_trace()
 
 
 def update_indexname(app, config):
