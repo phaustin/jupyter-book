@@ -84,14 +84,14 @@ def build_sphinx(
     sphinx_config = DEFAULT_CONFIG.copy()
 
     # Update with the *default* config.yml
-    default_yaml_config = yaml.safe_load(PATH_YAML_DEFAULT.read_text())
+    default_yaml_config = yaml.safe_load(PATH_YAML_DEFAULT.read_text(encoding="utf-8"))
     new_config = yaml_to_sphinx(default_yaml_config)
     _recursive_update(sphinx_config, new_config)
 
     # Update with the given config file, if it exists
     if path_config:
         path_config = Path(path_config)
-        yaml_config = yaml.safe_load(path_config.read_text())
+        yaml_config = yaml.safe_load(path_config.read_text(encoding="utf-8"))
 
         # Check for manual Sphinx over-rides which we'll apply later to take precedence
         sphinx_overrides = yaml_config.get("sphinx", {}).get("config")
@@ -115,7 +115,7 @@ def build_sphinx(
 
     # Manual configuration overrides from the CLI
     _recursive_update(sphinx_config, confoverrides)
-
+    print(f"pha D {sphinx_config}")
     # HTML-specific configuration from the CLI
     if htmloverrides is None:
         htmloverrides = {}
@@ -247,7 +247,7 @@ def build_sphinx(
                 else:
                     first_page = toc[0]["file"]
                 first_page = first_page.split(".")[0] + ".html"
-                with open(path_index, "w") as ff:
+                with open(path_index, "w", encoding="utf-8") as ff:
                     ff.write(REDIRECT_TEXT.format(first_page=first_page))
             return app.statuscode
     except (Exception, KeyboardInterrupt) as exc:

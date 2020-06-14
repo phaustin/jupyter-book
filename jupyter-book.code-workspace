@@ -3,6 +3,18 @@
 		{
 			"path": "."
 		},
+		{
+			"path": "..\\MyST-NB"
+		},
+		{
+			"path": "..\\jupyter-cache"
+		},
+		{
+			"path": "..\\jupyter-sphinx"
+		},
+		{
+			"path": "..\\MyST-Parser"
+		}
 	],
 	"settings": {
 		"python.pythonPath": "C:\\Users\\Phil\\miniwin\\envs\\wintest\\python.exe"
