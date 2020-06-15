@@ -50,7 +50,7 @@ Here is a note
 In your built book.
 
 For more information on writing directives, see the
-[MyST documentation](https://myst-parser.readthedocs.io/).
+[MyST documentation](https://ha-parser.readthedocs.io/).
 
 
 ### Using a role

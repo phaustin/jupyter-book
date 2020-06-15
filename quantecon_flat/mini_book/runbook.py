@@ -4,7 +4,8 @@ import shutil
 
 if __name__ == "__main__":
     this_dir = Path().resolve()
-    build_dir = this_dir / "testbook/_build"
+    build_dir = this_dir / "docs/_build"
     if build_dir.is_dir():
+        print(f"removing {build_dir}")
         shutil.rmtree(build_dir)
     main()
