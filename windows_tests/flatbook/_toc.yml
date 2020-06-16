@@ -1,0 +1,7 @@
+file: principium
+title: Principium
+sections:
+- file: lipsum_secundus
+  title: Lipsum Secundus
+- file: lipsum_prima
+  title: Lipsum Prima

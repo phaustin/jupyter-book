@@ -1,0 +1,18 @@
+name: buildit
+channels:
+  - eoas_ubc
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7.*
+  - click
+  - sphinx=2.4.4
+  - jupyter
+  - pip
+  - pip:
+    - click_log
+    - click_completion
+    - git+https://github.com/jupyter/jupyter-sphinx.git
+    - git+https://github.com/phaustin/MyST-NB.git@windows
+    - git+https://github.com/phaustin/jupyter-cache/@windows
+    - git+https://github.com/mwouts/jupytext.git
