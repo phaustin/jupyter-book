@@ -1,0 +1,51 @@
+name: build-deploy-book
+
+# Only run this when the master branch changes
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+# This job installs dependencies, build the book, and pushes it to `gh-pages`
+jobs:
+  build-deploy-book:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v2
+
+    # Install dependencies
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    # Set up Miniconda with environment
+    - name: Setup Miniconda
+      uses: goanpeca/setup-miniconda@v1.1.2
+      with:
+        environment-file: windows_tests/environment.yml
+        activate-environment: buildit
+        python-version: 3.7
+        auto-activate-base: false
+
+    # Build the book
+    - name: Build the book
+      shell: bash -l {0}
+      run: |
+        pip install -e . --upgrade
+        cd windows_tests/quantecon_flat/mini_book
+        jupyter-book build docs
+
+    # Push the book's HTML to github-pages
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.5.10
+      if: matrix.os == 'ubuntu-latest' && github.event_name == 'push'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./windows_tests/quantecon_flat/mini_book/_build/html
