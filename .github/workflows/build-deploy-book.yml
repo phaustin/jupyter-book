@@ -43,8 +43,9 @@ jobs:
         mkdir -p html_out
         cd windows_tests/quantecon_flat/mini_book
         jupyter-book build docs
-        cp -a docs/_build/html $ORIG_DIR/html_out/flat_test
-        cd $ORIG_DIR/html_out/flat_test
+        echo "changing to ${ORIG_DIR}/html_out/flat_test"
+        cp -a docs/_build/html "${ORIG_DIR}/html_out/flat_test"
+        cd "${ORIG_DIR}/html_out/flat_test"
         echo "now in ${CWD}"
         ls -lrtd *
 
