@@ -1,12 +1,26 @@
 ---
 jupytext:
+  cell_metadata_filter: all
+  notebook_metadata_filter: all,-toc,-latex_envs
   text_representation:
     extension: .md
     format_name: myst
+    format_version: '0.8'
+    jupytext_version: 1.5.0-dev
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+language_info:
+  codemirror_mode:
+    name: ipython
+    version: 3
+  file_extension: .py
+  mimetype: text/x-python
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
+  version: 3.7.6
 ---
 
 (about_py)=
@@ -114,6 +128,17 @@ Closely related to elegant syntax is an elegant design.
 Features like iterators, generators, decorators and list comprehensions
 make Python highly expressive, allowing you to get more done with less
 code.
+
++++
+
+### Testing greek characters
+
+Here's ⌘ in a sentence.
+
+```{code-cell} ipython3
+η =5
+print(f"η={η}")
+```
 
 [Namespaces](https://en.wikipedia.org/wiki/Namespace) improve
 productivity by cutting down on bugs and syntax errors.
