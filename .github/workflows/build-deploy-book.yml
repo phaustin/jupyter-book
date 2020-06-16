@@ -39,7 +39,7 @@ jobs:
       shell: bash -l {0}
       run: |
         pip install -e . --upgrade
-        ORIG_DIR = $CWD
+        ORIG_DIR="${PWD}"
         mkdir -p html_out
         cd windows_tests/quantecon_flat/mini_book
         jupyter-book build docs
