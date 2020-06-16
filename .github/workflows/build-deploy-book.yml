@@ -4,10 +4,10 @@ name: build-deploy-book
 on:
   push:
     branches:
-    - master
+    - windows
   pull_request:
     branches:
-    - master
+    - windows
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
