@@ -7,7 +7,7 @@ on:
     - windows
   pull_request:
     branches:
-    - windowso
+    - windows
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [windows-latest]
     steps:
     - uses: actions/checkout@v2
 
@@ -39,8 +39,15 @@ jobs:
       shell: bash -l {0}
       run: |
         pip install -e . --upgrade
+        ORIG_DIR = $CWD
+        mkdir -p html_out
         cd windows_tests/quantecon_flat/mini_book
         jupyter-book build docs
+        cp -a docs/_build/html $ORIG_DIR/html_out/flat_test
+        cd $ORIG_DIR/html_out/flat_test
+        echo "now in ${CWD}"
+        ls -lrtd *
+
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
@@ -48,4 +55,4 @@ jobs:
       if: matrix.os == 'ubuntu-latest' && github.event_name == 'push'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./windows_tests/quantecon_flat/mini_book/docs/_build/html
+        publish_dir: ./html_out
