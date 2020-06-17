@@ -7,7 +7,6 @@ from .directive.toc import TableofContents
 
 __version__ = "0.7.1dev0"
 
-
 def add_static_files(app, config):
     """Search the static files paths and initialize any CSS of JS files."""
     static_paths = config.html_static_path
