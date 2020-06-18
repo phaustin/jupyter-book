@@ -2,8 +2,9 @@
 import os
 import yaml
 from textwrap import dedent
-from pathlib import Path
+from pathlib import Path, PosixPath
 from sphinx.util import logging
+import pdb
 
 from .utils import _filename_to_title, SUPPORTED_FILE_SUFFIXES, _error
 
@@ -22,11 +23,13 @@ def find_name(pages, name):
     and searches all dicts for a key of the field
     provided.
     """
+    pdb.set_trace()
     page = None
     if isinstance(pages, dict):
         pages = [pages]
     for page in pages:
-        if _no_suffix(page.get("file")) == name:
+        target = _no_suffix(page.get("file"))
+        if  target == name:
             return page
         else:
             sections = page.get("sections", [])
@@ -42,19 +45,22 @@ def add_toctree(app, docname, source):
 
     # First check whether this page has any descendants
     # If so, then we'll manually add them as a toctree object
+    #pdb.set_trace()
     path_parent = None
     root_dir = Path(app.config.overrides["globaltoc_path"]).parent
     # make sure at least one of these files exists
+    pdb.set_trace()
     for suffix in [".rst", ".md", ".ipynb"]:
         the_file = f"{docname}{suffix}"
         the_path = root_dir / Path(the_file)
         if the_path.is_file():
-            the_path = the_path.relative_to(root_dir)
-            path_parent = str(the_path)
+            rel_path = the_path.relative_to(root_dir)
+            path_parent = str(Path(rel_path))
     toc = app.config["globaltoc"]
     parent_page = find_name(toc, _no_suffix(path_parent))
     parent_suff = Path(path_parent).suffix
     # If we didn't find this page in the TOC, raise a warning
+    pdb.set_trace()
     if parent_page is None:
         logger.warning(f"Found a content page that is not in _toc.yml: {path_parent}.")
         return
