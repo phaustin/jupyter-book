@@ -4,7 +4,6 @@ import yaml
 from textwrap import dedent
 from pathlib import Path
 from sphinx.util import logging
-import pdb
 
 from .utils import _filename_to_title, SUPPORTED_FILE_SUFFIXES, _error
 
@@ -26,7 +25,6 @@ def find_name(pages, name):
     page = None
     if isinstance(pages, dict):
         pages = [pages]
-    pdb.set_trace()
     for page in pages:
         if _no_suffix(page.get("file")) == name:
             return page
@@ -39,13 +37,20 @@ def find_name(pages, name):
 
 def add_toctree(app, docname, source):
     # If no globaltoc is given, we'll skip this part
-    pdb.set_trace()
     if not app.config["globaltoc_path"]:
         return
 
     # First check whether this page has any descendants
     # If so, then we'll manually add them as a toctree object
-    path_parent = app.env.doc2path(docname, base=None)
+    path_parent = None
+    root_dir = Path(app.config.overrides["globaltoc_path"]).parent
+    # make sure at least one of these files exists
+    for suffix in [".rst", ".md", ".ipynb"]:
+        the_file = f"{docname}{suffix}"
+        the_path = root_dir / Path(the_file)
+        if the_path.is_file():
+            the_path = the_path.relative_to(root_dir)
+            path_parent = str(the_path)
     toc = app.config["globaltoc"]
     parent_page = find_name(toc, _no_suffix(path_parent))
     parent_suff = Path(path_parent).suffix
@@ -64,7 +69,6 @@ def add_toctree(app, docname, source):
         expanded_sections = app.config.html_theme_options.get("expand_sections", [])
         expanded_sections.append(docname)
         app.config.html_theme_options["expand_sections"] = expanded_sections
-    
 
     def gen_toctree(options, subsections):
 
@@ -91,12 +95,17 @@ def add_toctree(app, docname, source):
             toctree_template = toctree_text_md
         elif parent_suff == ".rst":
             toctree_template = toctree_text_rst
+        else:
+            error_msg = (
+                f"suffix needs to be one of ['.md','.ipynb','.rst']"
+                f"found  suffix {parent_suff}"
+            )
+            raise ValueError(error_msg)
 
         # Create the markdown directive for our toctree
         toctree = dedent(toctree_template).format(
             options="\n".join(options), sections="\n".join(subsections)
         )
-        print(f"pha toctree -- {toctree}")
         return toctree
 
     # Build toctrees for the page. We may need more than one
@@ -145,7 +154,6 @@ def add_toctree(app, docname, source):
         final_toctree = gen_toctree(toc_options, toc_sections)
         toctrees.append(final_toctree)
     toctrees = "\n".join(toctrees)
-    print(f"pha  toctrees -- {toctrees}")
 
     # Figure out what kind of text defines a toctree directive for this file
     # currently, assumed to be markdown
@@ -195,7 +203,6 @@ def update_indexname(app, config):
 
     # Update the main toctree file for whatever the first file here is
     app.config["master_doc"] = _no_suffix(toc["file"])
-    print(f"pha -- app config {app.config.__getstate__()}")
 
 
 def _content_path_to_yaml(path, root_path, split_char="_", add_titles=True):
