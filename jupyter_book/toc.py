@@ -4,6 +4,7 @@ import yaml
 from textwrap import dedent
 from pathlib import Path
 from sphinx.util import logging
+import pdb
 
 from .utils import _filename_to_title, SUPPORTED_FILE_SUFFIXES, _error
 
@@ -93,6 +94,7 @@ def add_toctree(app, docname, source):
         toctree = dedent(toctree_template).format(
             options="\n".join(options), sections="\n".join(subsections)
         )
+        print(f"pha toctree -- {toctree}")
         return toctree
 
     # Build toctrees for the page. We may need more than one
@@ -141,6 +143,7 @@ def add_toctree(app, docname, source):
         final_toctree = gen_toctree(toc_options, toc_sections)
         toctrees.append(final_toctree)
     toctrees = "\n".join(toctrees)
+    print(f"pha  toctrees -- {toctrees}")
 
     # Figure out what kind of text defines a toctree directive for this file
     # currently, assumed to be markdown
@@ -190,6 +193,7 @@ def update_indexname(app, config):
 
     # Update the main toctree file for whatever the first file here is
     app.config["master_doc"] = _no_suffix(toc["file"])
+    print(f"pha -- app config {app.config.__getstate__()}")
 
 
 def _content_path_to_yaml(path, root_path, split_char="_", add_titles=True):
