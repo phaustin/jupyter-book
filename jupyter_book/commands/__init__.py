@@ -1,4 +1,5 @@
 """Defines the commands that the CLI will use."""
+import pdb
 import sys
 import os
 import os.path as op

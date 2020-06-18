@@ -26,7 +26,7 @@ def find_name(pages, name):
     page = None
     if isinstance(pages, dict):
         pages = [pages]
-
+    pdb.set_trace()
     for page in pages:
         if _no_suffix(page.get("file")) == name:
             return page
@@ -39,6 +39,7 @@ def find_name(pages, name):
 
 def add_toctree(app, docname, source):
     # If no globaltoc is given, we'll skip this part
+    pdb.set_trace()
     if not app.config["globaltoc_path"]:
         return
 
@@ -63,6 +64,7 @@ def add_toctree(app, docname, source):
         expanded_sections = app.config.html_theme_options.get("expand_sections", [])
         expanded_sections.append(docname)
         app.config.html_theme_options["expand_sections"] = expanded_sections
+    
 
     def gen_toctree(options, subsections):
 
