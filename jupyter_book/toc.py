@@ -2,9 +2,9 @@
 import os
 import yaml
 from textwrap import dedent
-from pathlib import Path, PosixPath
+from pathlib import Path
 from sphinx.util import logging
-import pdb
+
 
 from .utils import _filename_to_title, SUPPORTED_FILE_SUFFIXES, _error
 
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 def _no_suffix(path):
     if isinstance(path, str):
-        path = str(Path(path).with_suffix(""))
+        path = Path(path).with_suffix("").as_posix()
     return path
 
 
@@ -23,13 +23,12 @@ def find_name(pages, name):
     and searches all dicts for a key of the field
     provided.
     """
-    pdb.set_trace()
     page = None
     if isinstance(pages, dict):
         pages = [pages]
+
     for page in pages:
-        target = _no_suffix(page.get("file"))
-        if  target == name:
+        if _no_suffix(page.get("file")) == name:
             return page
         else:
             sections = page.get("sections", [])
@@ -45,22 +44,12 @@ def add_toctree(app, docname, source):
 
     # First check whether this page has any descendants
     # If so, then we'll manually add them as a toctree object
-    #pdb.set_trace()
-    path_parent = None
-    root_dir = Path(app.config.overrides["globaltoc_path"]).parent
-    # make sure at least one of these files exists
-    pdb.set_trace()
-    for suffix in [".rst", ".md", ".ipynb"]:
-        the_file = f"{docname}{suffix}"
-        the_path = root_dir / Path(the_file)
-        if the_path.is_file():
-            rel_path = the_path.relative_to(root_dir)
-            path_parent = str(Path(rel_path))
+    path_parent = Path(app.env.doc2path(docname, base=None)).as_posix()
     toc = app.config["globaltoc"]
     parent_page = find_name(toc, _no_suffix(path_parent))
     parent_suff = Path(path_parent).suffix
+    # pdb.set_trace()
     # If we didn't find this page in the TOC, raise a warning
-    pdb.set_trace()
     if parent_page is None:
         logger.warning(f"Found a content page that is not in _toc.yml: {path_parent}.")
         return
@@ -101,12 +90,6 @@ def add_toctree(app, docname, source):
             toctree_template = toctree_text_md
         elif parent_suff == ".rst":
             toctree_template = toctree_text_rst
-        else:
-            error_msg = (
-                f"suffix needs to be one of ['.md','.ipynb','.rst']"
-                f"found  suffix {parent_suff}"
-            )
-            raise ValueError(error_msg)
 
         # Create the markdown directive for our toctree
         toctree = dedent(toctree_template).format(
@@ -185,7 +168,7 @@ def update_indexname(app, config):
         return
 
     # Load the TOC and update the env so we have it later
-    toc = yaml.safe_load(Path(app.config["globaltoc_path"]).read_text(encoding="utf8"))
+    toc = yaml.safe_load(Path(app.config["globaltoc_path"]).read_text())
 
     # If it's a flat list, treat the first page as the master doc
     if isinstance(toc, list):
