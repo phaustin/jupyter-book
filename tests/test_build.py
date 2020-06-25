@@ -32,6 +32,10 @@ def test_build_book(tmpdir):
     assert '<h1 class="site-logo" id="site-title">TEST PROJECT NAME</h1>' in html
     assert '<div class="sphinx-tabs docutils container">' in html
     assert '<link rel="stylesheet" type="text/css" href="_static/mycss.css" />' in html
+    backup = Path() / "dumpit.html"
+    with open(backup, "w", encoding="utf8") as output:
+        output.write(html)
+    print(f"wrote {str(backup.resolve())}")
     assert '<script src="_static/js/myjs.js"></script>' in html
 
 
@@ -148,7 +152,7 @@ def test_build_errors(tmpdir):
 
 def test_build_docs(tmpdir):
     """Test building the documentation book."""
-    path_output = Path(tmpdir).absolute()
+    path_output = Path(tmpdir).resolve()
     path_docs = path_root.joinpath("docs")
     run(f"jb build {path_docs} --path-output {path_output}".split(), check=True)
     path_html = path_output.joinpath("_build", "html")
@@ -159,7 +163,7 @@ def test_build_docs(tmpdir):
 
 def test_build_page(tmpdir):
     """Test building the documentation book."""
-    path_output = Path(tmpdir).absolute()
+    path_output = Path(tmpdir).resolve()
     path_page = path_tests.joinpath("pages", "single_page.ipynb")
 
     run(f"jb page {path_page} --path-output {path_output}".split(), check=True)
