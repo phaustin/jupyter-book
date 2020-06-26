@@ -3,6 +3,7 @@ import yaml
 from textwrap import dedent
 from pathlib import Path
 from sphinx.util import logging
+import os
 
 from .utils import _filename_to_title, SUPPORTED_FILE_SUFFIXES, _error
 
@@ -119,7 +120,7 @@ def add_toctree(app, docname, source):
 
             # Update path so it is relative to the root of the parent
             path_parent_folder = Path(parent_page["file"]).parent
-            path_sec = path_sec.relative_to(path_parent_folder).as_posix()
+            path_sec = Path(os.path.relpath(path_sec, path_parent_folder)).as_posix()
 
         if ipage.get("url"):
             path_sec = ipage.get("url")
@@ -295,9 +296,12 @@ def build_toc(path, filename_split_char="_", skip_text=None, add_titles=True):
     add_titles : bool
         Whether to generate a page title from the file name.
     """
+    breakpoint()
+    the_path = Path(path)
+    root_dir = the_path
     structure = _find_content_structure(
-        path,
-        path,
+        the_path,
+        root_dir,
         split_char=filename_split_char,
         skip_text=skip_text,
         add_titles=add_titles,
