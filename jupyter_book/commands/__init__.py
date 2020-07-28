@@ -4,7 +4,6 @@ import os
 import os.path as op
 from pathlib import Path
 import click
-from glob import glob
 import shutil as sh
 import subprocess
 from textwrap import dedent
@@ -85,14 +84,14 @@ def build(path_book, path_output, config, toc, warningiserror, builder):
             "Couldn't find a Table of Contents file. To auto-generate "
             f"one, run\n\n\tjupyter-book toc {path_book}"
         )
-    book_config["globaltoc_path"] = str(toc)
+    book_config["globaltoc_path"] = Path(toc).as_posix()
 
     # Configuration file
     path_config = config
     if path_config is None:
         # Check if there's a `_config.yml` file in the source directory
         if PATH_BOOK.joinpath("_config.yml").exists():
-            path_config = str(PATH_BOOK.joinpath("_config.yml"))
+            path_config = PATH_BOOK.joinpath("_config.yml").as_posix()
     if path_config:
         if not Path(path_config).exists():
             raise ValueError(f"Config file path given, but not found: {path_config}")
@@ -217,7 +216,7 @@ def page(path_page, path_output, config, execute):
     """
     # Paths for our notebooks
     PATH_PAGE = Path(path_page)
-    PATH_PAGE_FOLDER = PATH_PAGE.parent.absolute()
+    PATH_PAGE_FOLDER = PATH_PAGE.parent
     PAGE_NAME = PATH_PAGE.with_suffix("").name
     if config is None:
         config = ""
@@ -229,17 +228,15 @@ def page(path_page, path_output, config, execute):
         jupyter_execute_notebooks = "off"
 
     OUTPUT_PATH = path_output if path_output is not None else PATH_PAGE_FOLDER
-    OUTPUT_PATH = Path(OUTPUT_PATH).joinpath("_build/html")
+    OUTPUT_PATH = Path(OUTPUT_PATH).joinpath("_build", "html")
 
     # Find all files that *aren't* the page we're building and exclude them
-    to_exclude = glob(str(PATH_PAGE_FOLDER.joinpath("**", "*")), recursive=True)
-    to_exclude = [
-        op.relpath(ifile, PATH_PAGE_FOLDER)
-        for ifile in to_exclude
-        if ifile != str(PATH_PAGE.absolute())
+    to_exclude = list(PATH_PAGE_FOLDER.glob("**/*"))
+    target_list = [
+        Path(op.relpath(ifile, PATH_PAGE_FOLDER)).as_posix() for ifile in to_exclude
     ]
+    to_exclude = [ifile for ifile in target_list if ifile != PATH_PAGE.name]
     to_exclude.extend(["_build", "Thumbs.db", ".DS_Store", "**.ipynb_checkpoints"])
-
     # Now call the Sphinx commands to build
     config_overrides = {
         "master_doc": PAGE_NAME,
@@ -248,7 +245,6 @@ def page(path_page, path_output, config, execute):
         "jupyter_execute_notebooks": jupyter_execute_notebooks,
         "html_theme_options": {"single_page": True},
     }
-
     build_sphinx(
         PATH_PAGE_FOLDER,
         OUTPUT_PATH,
