@@ -36,6 +36,7 @@ def test_build_book(tmpdir):
     assert '<script src="_static/js/myjs.js"></script>' in html
 
 
+@pytest.mark.failing
 def test_toc_builds(tmpdir):
     """Test building the book template with several different TOC files."""
     path_output = Path(tmpdir).joinpath("mybook").absolute()
@@ -52,7 +53,6 @@ def test_toc_builds(tmpdir):
     p_toc = path_books.joinpath("toc")
     path_toc = p_toc.joinpath("_toc_startwithlist.yml")
     out = run(f"jb build {p_toc} --path-output {tmpdir} --toc {path_toc} -W".split())
-
     # TOC should force a re-build of pages if it changes and no pages change
     # Only difference between these is the relative ordering of content pages
     toc_tmp = [
@@ -61,15 +61,16 @@ def test_toc_builds(tmpdir):
     ]
     for toc_tmp_text, first_page in toc_tmp:
         path_toctmp = Path(tmpdir).joinpath("_toc_tmp.yml")
-        path_toctmp.write_text(toc_tmp_text)
+        path_toctmp.write_text(toc_tmp_text, encoding="utf8")
         # Not using -W because we expect warnings for pages not listed in TOC
         out = run(
             f"jb build {p_toc} --path-output {tmpdir} --toc {path_toctmp}".split()
         )
         path_index = Path(tmpdir).joinpath("_build", "html", "index.html")
-        index_html = bs(path_index.read_text(), "html.parser")
+        index_html = bs(path_index.read_text(encoding="utf8"), "html.parser")
         sidebar_links = index_html.select(".bd-sidebar a.internal")
         # The first page should be different in each run bc of switched TOC order
+        breakpoint()
         assert sidebar_links[1].attrs["href"] == first_page
 
     ###############################
