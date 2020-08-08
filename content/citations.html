@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Citations and cross-references</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://jupyterbook.org/content/citations.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Math and Equations" href="math.html" />
+    <link rel="prev" title="Special content blocks with MyST" href="content-blocks.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://jupyterbook.org/content/citations.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Citations and cross-references" />
+<meta property="og:description" content="Citations and cross-references  Because jupyter-book is built on top of Sphinx, we can use the excellent sphinxcontrib-bibtex extension to include citations and" />
+<meta property="og:image"       content="https://jupyterbook.org/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Get started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start/overview.html">
+   Overview and installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start/build.html">
+   Build your book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start/publish.html">
+   Publish your book online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../customize/config.html">
+   Configure book settings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../customize/toc.html">
+   Table of Contents structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content-types/index.html">
+   Types of content source files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Write book content
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="myst.html">
+   MyST Markdown Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content-blocks.html">
+   Special content blocks with MyST
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Citations and cross-references
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math.html">
+   Math and Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="figures.html">
+   Figures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glue.html">
+   Insert code outputs into page content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout.html">
+   Control the page layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="execute.html">
+   Execute and cache your pages
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Make your book interactive
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interactive/launchbuttons.html">
+   Launch buttons for interactivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interactive/hiding.html">
+   Hide or remove content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interactive/interactive.html">
+   Interactive data visualizations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Advanced and miscellaneous
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../advanced/pdf.html">
+   PDFs for your book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../advanced/sphinx.html">
+   Custom Sphinx configuration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../advanced/advanced.html">
+   How-to and FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute/intro.html">
+   Contribute to Jupyter Book
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/cheatsheet.html">
+   MyST Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/cli.html">
+   The command-line interface
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/content/citations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/citations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/citations.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/content/citations.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/content/citations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#citations-and-bibliographies">
+   Citations and bibliographies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selecting-your-reference-style">
+     Selecting your reference style
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-bibliographies">
+     Local Bibliographies
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cross-references-and-labels">
+   Cross-references and labels
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#referencing-your-book-s-content">
+     Referencing your book’s content
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="citations-and-cross-references">
+<h1>Citations and cross-references<a class="headerlink" href="#citations-and-cross-references" title="Permalink to this headline">¶</a></h1>
+<p>Because <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> is built on top of <a class="reference internal" href="../reference/glossary.html#term-sphinx"><span class="xref std std-term">Sphinx</span></a>, we can use the excellent
+<a class="reference external" href="https://sphinxcontrib-bibtex.readthedocs.io/en/latest/">sphinxcontrib-bibtex</a>
+extension to include citations and a bibliography with your book.</p>
+<div class="section" id="citations-and-bibliographies">
+<h2>Citations and bibliographies<a class="headerlink" href="#citations-and-bibliographies" title="Permalink to this headline">¶</a></h2>
+<p>You can add citations and bibliographies using references that are stored in a
+<code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file that is in your book’s folder. You can then add a citation in-line in your
+markdown with the <strong><code class="docutils literal notranslate"><span class="pre">{cite}</span></code></strong> role, and add a bibliography from your bibtex file
+with the <code class="docutils literal notranslate"><span class="pre">{bibliography}</span></code> directive.</p>
+<p><strong>To add citations to your book</strong>, take the following steps:</p>
+<ol>
+<li><p><strong>Create a references bibtex file</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">references</span><span class="o">.</span><span class="n">bib</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Add references</strong>. Add some references to your BibTex file. See
+<a class="reference external" href="http://www.bibtex.org/Using/">the BibTex documentation</a> for information about
+the BibTex reference style. Here’s an example citation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">perez2011python</span>
+<span class="p">,</span>	<span class="n">title</span>	<span class="o">=</span> <span class="p">{</span><span class="n">Python</span><span class="p">:</span> <span class="n">an</span> <span class="n">ecosystem</span> <span class="k">for</span> <span class="n">scientific</span> <span class="n">computing</span><span class="p">}</span>
+<span class="p">,</span>	<span class="n">author</span>	<span class="o">=</span> <span class="p">{</span><span class="n">Perez</span><span class="p">,</span> <span class="n">Fernando</span> <span class="ow">and</span> <span class="n">Granger</span><span class="p">,</span> <span class="n">Brian</span> <span class="n">E</span> <span class="ow">and</span> <span class="n">Hunter</span><span class="p">,</span> <span class="n">John</span> <span class="n">D</span><span class="p">}</span>
+<span class="p">,</span>	<span class="n">journal</span>	<span class="o">=</span> <span class="p">{</span><span class="n">Computing</span> <span class="ow">in</span> <span class="n">Science</span> \\<span class="o">&amp;</span> <span class="n">Engineering</span><span class="p">}</span>
+<span class="p">,</span>	<span class="n">volume</span>	<span class="o">=</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>
+<span class="p">,</span>	<span class="n">number</span>	<span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>
+<span class="p">,</span>	<span class="n">pages</span>	<span class="o">=</span> <span class="p">{</span><span class="mi">13</span><span class="o">--</span><span class="mi">21</span><span class="p">}</span>
+<span class="p">,</span>	<span class="n">year</span>	<span class="o">=</span> <span class="p">{</span><span class="mi">2011</span><span class="p">}</span>
+<span class="p">,</span>	<span class="n">publisher</span>	<span class="o">=</span> <span class="p">{</span><span class="n">AIP</span> <span class="n">Publishing</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Add a citation</strong>. In your content, add the following text to include a citation</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{cite}`mybibtexcitation`
+</pre></div>
+</div>
+<p>For example, this text</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{cite}`perez2011python`
+</pre></div>
+</div>
+<p>generates this citation: <a class="bibtex reference internal" href="#perez2011python" id="id1">[PGH11]</a></p>
+<p>You can also include multiple citations in one go, like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{cite}`perez2011python,holdgraf_rapid_2016,RePEc:the:publsh:1367,caporaso2010qiime`
+</pre></div>
+</div>
+<p>becomes <a class="bibtex reference internal" href="#perez2011python" id="id2">[PGH11]</a><a class="bibtex reference internal" href="#holdgraf-rapid-2016" id="id3">[HdHP+16]</a><a class="bibtex reference internal" href="#repec-the-publsh-1367" id="id4">[SK14]</a><a class="bibtex reference internal" href="#caporaso2010qiime" id="id5">[CKS+10]</a>.</p>
+</li>
+<li><p><strong>Add a bibliography</strong>. Use the following directive to do so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{bibliography} path/to/references.bib
+```
+</pre></div>
+</div>
+<p>This will generate a bibliography for your entire bibtex file. See
+<a class="reference internal" href="#citations-bibliography"><span class="std std-ref">the bibliography at the end of this page</span></a> for an example.</p>
+</li>
+</ol>
+<p>When your book is built, the bibliography and citations will now be included.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are adding a bibliography to a <em>different</em> page from your references, then
+you may need to ensure that page is processed last, which Sphinx does alphabetically.
+For example, name the file <code class="docutils literal notranslate"><span class="pre">zreferences.rst</span></code>.</p>
+<p>See <a class="reference external" href="https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html#unresolved-citations-across-documents">this <code class="docutils literal notranslate"><span class="pre">sphinxcontrib-bibtex</span></code> section</a>
+for more information.</p>
+</div>
+<p>This feature uses <a class="reference external" href="https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html#roles-and-directives"><code class="docutils literal notranslate"><span class="pre">sphinxcontrib-bibtex</span></code></a>
+under the hood, see its documentation for more information on how to use and configure
+bibliographies in your book. Though note the documentation
+is written for rST and you’ll need to adapt the directive/role syntax for your
+markdown content.</p>
+<div class="section" id="selecting-your-reference-style">
+<h3>Selecting your reference style<a class="headerlink" href="#selecting-your-reference-style" title="Permalink to this headline">¶</a></h3>
+<p>You can also optionally customize the style of your references.
+By default, references are displayed in the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> style.
+Other currently supported styles include <code class="docutils literal notranslate"><span class="pre">plain</span></code>, <code class="docutils literal notranslate"><span class="pre">unsrt</span></code>, and <code class="docutils literal notranslate"><span class="pre">unsrtalpha</span></code>.
+These styles create the following bibliography formatting:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code>: Use alphanumeric reference labels, citations are sorted by author, year.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plain</span></code>: Use numeric reference labels, citations are sorted by author, year.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unsrt</span></code>: Use numeric reference labels, citations are sorted by order of appearance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unsrtalpha</span></code>: Use alphanumeric reference labels, citations are sorted by order of appearance.</p></li>
+</ul>
+<p>To set your reference style, use the style option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{bibliography} path/to/references.bib
+:style: unsrt
+```
+</pre></div>
+</div>
+</div>
+<div class="section" id="local-bibliographies">
+<h3>Local Bibliographies<a class="headerlink" href="#local-bibliographies" title="Permalink to this headline">¶</a></h3>
+<p>You may wish to include a bibliography listing at the end of each document
+rather than having a single bibliography contained in a separate document.
+Having multiple bibliography directives, however, can cause <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> to issue
+<code class="docutils literal notranslate"><span class="pre">duplicate</span> <span class="pre">citation</span> <span class="pre">warnings</span></code>.</p>
+<p>A common fix is to add a filter to the bibliography directives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{bibliography} path/to/references.bib
+:filter: docname in docnames
+```
+</pre></div>
+</div>
+<p>See <code class="docutils literal notranslate"><span class="pre">sphinxcontrib-bibtex</span></code> documentation for <a class="reference external" href="https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html#section-local-bibliographies">local bibliographies</a></p>
+</div>
+</div>
+<div class="section" id="cross-references-and-labels">
+<span id="labels-and-refs"></span><h2>Cross-references and labels<a class="headerlink" href="#cross-references-and-labels" title="Permalink to this headline">¶</a></h2>
+<p>Labels are a way to add tags to parts of your content that you can reference
+later on. This is helpful if you want to quickly insert links to other
+parts of your book. Labels can be added before major elements of a page,
+such as titles or figures.</p>
+<p>To add a label, use the following pattern <strong>before</strong> the element you wish
+to label:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">my</span><span class="o">-</span><span class="n">label</span><span class="p">)</span><span class="o">=</span>
+<span class="c1"># The thing to label</span>
+</pre></div>
+</div>
+<p>For example, we’ve added the following label above the header for this section:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>(labels-and-refs)=
+<span class="gu">##</span> Cross-references and labels
+</pre></div>
+</div>
+<p>You can insert cross-references to labels in your content with the following
+syntax: <code class="docutils literal notranslate"><span class="pre">{ref}`label-text`</span></code>. For example, the following syntax:
+<code class="docutils literal notranslate"><span class="pre">{ref}`labels-and-refs`</span></code> results in a link to this section like so:
+<a class="reference internal" href="#labels-and-refs"><span class="std std-ref">Cross-references and labels</span></a>.</p>
+<div class="section" id="referencing-your-book-s-content">
+<h3>Referencing your book’s content<a class="headerlink" href="#referencing-your-book-s-content" title="Permalink to this headline">¶</a></h3>
+<p>There are a few ways to reference your book’s content, depending on what kind of
+content you’d like to reference. Here is a quick overview of some common options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{ref}</span></code> is used to reference section labels that you define or figures with a <code class="docutils literal notranslate"><span class="pre">name</span></code> value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{numref}</span></code> is used to provide <em>numbered</em> references to figures</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{doc}</span></code> is used to reference other files in your book</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{eq}</span></code> is used to reference equations that have been given a <code class="docutils literal notranslate"><span class="pre">label</span></code> value</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can reference a section label through <code class="docutils literal notranslate"><span class="pre">{ref}`label`</span> </code> or <code class="docutils literal notranslate"><span class="pre">{ref}`some</span> <span class="pre">text</span> <span class="pre">&lt;label&gt;`</span> </code>.
+Documents can be referenced through <code class="docutils literal notranslate"><span class="pre">{doc}`path/to/document`</span> </code> or <code class="docutils literal notranslate"><span class="pre">{doc}`some</span> <span class="pre">text</span> <span class="pre">&lt;path/to/document&gt;`</span> </code></p>
+</div>
+</div>
+</div>
+<div class="section" id="bibliography">
+<span id="citations-bibliography"></span><h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-content/citations-0"><dl class="citation">
+<dt class="bibtex label" id="caporaso2010qiime"><span class="brackets"><a class="fn-backref" href="#id5">CKS+10</a></span></dt>
+<dd><p>J Gregory Caporaso, Justin Kuczynski, Jesse Stombaugh, Kyle Bittinger, Frederic D Bushman, Elizabeth K Costello, Noah Fierer, Antonio Gonzalez Pena, Julia K Goodrich, Jeffrey I Gordon, and others. Qiime allows analysis of high-throughput community sequencing data. <em>Nature methods</em>, 7(5):335–336, 2010.</p>
+</dd>
+<dt class="bibtex label" id="holdgraf-rapid-2016"><span class="brackets"><a class="fn-backref" href="#id3">HdHP+16</a></span></dt>
+<dd><p>Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, Jochem W. Rieger, Nathan Crone, Jack J. Lin, Robert T. Knight, and Frédéric E. Theunissen. Rapid tuning shifts in human auditory cortex enhance speech intelligibility. <em>Nature Communications</em>, 7(May):13654, 2016. URL: <a class="reference external" href="http://www.nature.com/doifinder/10.1038/ncomms13654">http://www.nature.com/doifinder/10.1038/ncomms13654</a>, <a class="reference external" href="https://doi.org/10.1038/ncomms13654">doi:10.1038/ncomms13654</a>.</p>
+</dd>
+<dt class="bibtex label" id="perez2011python"><span class="brackets">PGH11</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>Fernando Perez, Brian E Granger, and John D Hunter. Python: an ecosystem for scientific computing. <em>Computing in Science \&amp; Engineering</em>, 13(2):13–21, 2011.</p>
+</dd>
+<dt class="bibtex label" id="repec-the-publsh-1367"><span class="brackets"><a class="fn-backref" href="#id4">SK14</a></span></dt>
+<dd><p>John Stachurski and Takashi Kamihigashi. Stochastic stability in monotone economies. <em>Theoretical Economics</em>, 2014.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="content-blocks.html" title="previous page">Special content blocks with MyST</a>
+    <a class='right-next' id="next-link" href="math.html" title="next page">Math and Equations</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-52617120-7', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

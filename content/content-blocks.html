@@ -1,0 +1,722 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Special content blocks with MyST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://jupyterbook.org/content/content-blocks.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Citations and cross-references" href="citations.html" />
+    <link rel="prev" title="MyST Markdown Overview" href="myst.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://jupyterbook.org/content/content-blocks.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Special content blocks with MyST" />
+<meta property="og:description" content="Special content blocks with MyST  A common use of directives and roles is to designate “special blocks” of your content. This allows your to include more comple" />
+<meta property="og:image"       content="https://jupyterbook.org/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Get started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start/overview.html">
+   Overview and installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start/build.html">
+   Build your book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start/publish.html">
+   Publish your book online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../customize/config.html">
+   Configure book settings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../customize/toc.html">
+   Table of Contents structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content-types/index.html">
+   Types of content source files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Write book content
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="myst.html">
+   MyST Markdown Overview
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Special content blocks with MyST
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citations.html">
+   Citations and cross-references
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math.html">
+   Math and Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="figures.html">
+   Figures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glue.html">
+   Insert code outputs into page content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layout.html">
+   Control the page layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="execute.html">
+   Execute and cache your pages
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Make your book interactive
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interactive/launchbuttons.html">
+   Launch buttons for interactivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interactive/hiding.html">
+   Hide or remove content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interactive/interactive.html">
+   Interactive data visualizations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Advanced and miscellaneous
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../advanced/pdf.html">
+   PDFs for your book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../advanced/sphinx.html">
+   Custom Sphinx configuration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../advanced/advanced.html">
+   How-to and FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute/intro.html">
+   Contribute to Jupyter Book
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/cheatsheet.html">
+   MyST Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/cli.html">
+   The command-line interface
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/content-blocks.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/content-blocks.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/content/content-blocks.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#images">
+   Images
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notes-warnings-and-other-admonitions">
+   Notes, warnings, and other admonitions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#blocks-of-text-with-custom-titles">
+     Blocks of text with custom titles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-admonitions-with-dropdowns">
+     Interactive admonitions with dropdowns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insert-code-cell-outputs-into-admonitions">
+     Insert code cell outputs into admonitions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quotations-and-epigraphs">
+   Quotations and epigraphs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#footnotes">
+   Footnotes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossaries">
+   Glossaries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#citations-and-cross-references">
+   Citations and cross-references
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#figures">
+   Figures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#page-layout-and-sidebar-content">
+   Page layout and sidebar content
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="special-content-blocks-with-myst">
+<h1>Special content blocks with MyST<a class="headerlink" href="#special-content-blocks-with-myst" title="Permalink to this headline">¶</a></h1>
+<p>A common use of directives and roles is to designate “special blocks” of your
+content. This allows your to include more complex information such as warnings
+and notes, citations, and figures. This section covers a few common ones.</p>
+<div class="section" id="images">
+<span id="content-blocks-images"></span><h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
+<p>You can add images with more control using MyST markdown.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Note that the traditional way to add images with CommonMark will still work.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>![cool!](../images/cool.jpg)
+</pre></div>
+</div>
+</div>
+<p>If you’d like more control over an image, use the following
+MyST markdown syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{image} ../images/cool.jpg
+:alt: cool!
+:height: 100px
+```
+</pre></div>
+</div>
+<p>This allows you to control aspects of the image with
+<a class="reference internal" href="myst.html#directive-arguments"><span class="std std-ref">directive arguments</span></a>. For example, here we have
+controlled both the <em>alternative text</em> as well as the <em>height</em> of the image.
+Using html to control your image appearance is discouraged. If you insist,
+read more about <a class="reference internal" href="../advanced/advanced.html#raw-html-in-markdown"><span class="std std-ref">using raw html in Markdown</span></a>.</p>
+<p>For a list of all of the options you can supply to <code class="docutils literal notranslate"><span class="pre">image</span></code>, see the
+<a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html#image">reStructured Text image documentation</a>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title">A note on nesting</p>
+<p>You can nest admonitions (and other content blocks) inside one another. For example:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here’s a note block inside a margin block</p>
+</div>
+<p>See <a class="reference internal" href="myst.html#markdown-nexting"><span class="std std-ref">Nesting content blocks in markdown</span></a> for instructions to do this.</p>
+</div>
+</div>
+<div class="section" id="notes-warnings-and-other-admonitions">
+<h2>Notes, warnings, and other admonitions<a class="headerlink" href="#notes-warnings-and-other-admonitions" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say you wish to highlight a particular block of
+text that exists slightly apart from the narrative of your page. You can
+use the <strong><code class="docutils literal notranslate"><span class="pre">{note}</span></code></strong> directive for this.</p>
+<p>For example, the following text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{note}
+Here is a note!
+```
+</pre></div>
+</div>
+<p>Results in the following output:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here is a note!</p>
+</div>
+<p>There are a number of similarly-styled blocks of text. For example, here is a <code class="docutils literal notranslate"><span class="pre">{warning}</span></code>
+block:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Here’s a warning! It was created with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{warning}
+```
+</pre></div>
+</div>
+</div>
+<p>For a complete list of options, see <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/latest/reference/demo.html#admonitions">the <code class="docutils literal notranslate"><span class="pre">sphinx-book-theme</span></code> documentation</a>.</p>
+<div class="section" id="blocks-of-text-with-custom-titles">
+<h3>Blocks of text with custom titles<a class="headerlink" href="#blocks-of-text-with-custom-titles" title="Permalink to this headline">¶</a></h3>
+<p>You can also choose the title of your message box by using the
+<strong><code class="docutils literal notranslate"><span class="pre">{admonition}</span></code></strong> directive. For example, the following text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{admonition} Here&#39;s your admonition
+Here&#39;s the admonition content
+```
+</pre></div>
+</div>
+<p>Results in the following output:</p>
+<div class="admonition-here-s-your-admonition admonition">
+<p class="admonition-title">Here’s your admonition</p>
+<p>Here’s the admonition content</p>
+</div>
+<p>If you’d like to <strong>style these blocks</strong>, then use the <code class="docutils literal notranslate"><span class="pre">:class:</span></code> option. For
+example:</p>
+<div class="tip admonition">
+<p class="admonition-title">This admonition was styled…</p>
+<p>Using the following pattern:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{admonition} My title
+:class: tip
+My content
+```
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-admonitions-with-dropdowns">
+<span id="content-toggle-admonitions"></span><h3>Interactive admonitions with dropdowns<a class="headerlink" href="#interactive-admonitions-with-dropdowns" title="Permalink to this headline">¶</a></h3>
+<p>You can also hide the body of your admonition blocks so that users must click
+a button to reveal their content. This is helpful if you’d like to make a point
+that isn’t immediately visible to the user.</p>
+<p>To hide the body of admonition blocks, add a “dropdown” class to them, like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{note}
+:class: dropdown
+The note body will be hidden!
+```
+</pre></div>
+</div>
+<p>results in:</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>The note body will be hidden!</p>
+</div>
+<p>You can use this in conjunction with <code class="docutils literal notranslate"><span class="pre">{admonition}</span></code> directives to include your
+own titles and stylings. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{admonition} Click the + sign to see what&#39;s inside
+:class: dropdown, tip
+Here&#39;s what&#39;s inside!
+```
+</pre></div>
+</div>
+<p>results in:</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Click the + sign to see what’s inside</p>
+<p>Here’s what’s inside!</p>
+</div>
+</div>
+<div class="section" id="insert-code-cell-outputs-into-admonitions">
+<h3>Insert code cell outputs into admonitions<a class="headerlink" href="#insert-code-cell-outputs-into-admonitions" title="Permalink to this headline">¶</a></h3>
+<p>If you’d like to insert the outputs of running code <em>inside</em> admonition
+blocks, we recommend using <a class="reference internal" href="glue.html"><span class="doc">Glue functionality</span></a>. For example,
+we’ll insert one of the outputs that was glued into the book from the page
+<a class="reference internal" href="glue.html"><span class="doc">Insert code outputs into page content</span></a>.</p>
+<p>The below code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{note}
+Here&#39;s my figure:
+{glue:figure}`sorted_means_fig`
+```
+</pre></div>
+</div>
+<p>generates:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here’s my figure:
+<span class="pasted-inline"><img alt="../_images/glue_10_1.png" src="../_images/glue_10_1.png" /></span></p>
+</div>
+<p>See <a class="reference internal" href="glue.html"><span class="doc">Insert code outputs into page content</span></a> for more information on how to use Glue to insert your outputs
+directly into your content.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To hide code input and output that generated the variable you are inserting, use the <code class="docutils literal notranslate"><span class="pre">remove_cell</span></code> tag.
+See <a class="reference internal" href="../interactive/hiding.html"><span class="doc">Hide or remove content</span></a> for more information and other tag options.</p>
+</div>
+</div>
+</div>
+<div class="section" id="quotations-and-epigraphs">
+<h2>Quotations and epigraphs<a class="headerlink" href="#quotations-and-epigraphs" title="Permalink to this headline">¶</a></h2>
+<p>Quotations and epigraphs provide ways to highlight information given by others.
+They behave slightly differently.</p>
+<p><strong>Regular quotations</strong> are controlled with standard markdown syntax, i.e., by
+putting a caret (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>) symbol in front of one or more lines of text. For example,
+the following quotation:</p>
+<blockquote>
+<div><p>Here is a cool quotation.</p>
+<p>From me, Jo the Jovyan</p>
+</div></blockquote>
+<p>Was created with this text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Here</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">cool</span> <span class="n">quotation</span><span class="o">.</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">From</span> <span class="n">me</span><span class="p">,</span> <span class="n">Jo</span> <span class="n">the</span> <span class="n">Jovyan</span>
+</pre></div>
+</div>
+<p><strong>Epigraphs</strong> draw more attention to a quote and highlight its author. You should
+keep these relatively short so that they don’t take up too much vertical space. Here’s
+how an epigraph looks:</p>
+<blockquote class="epigraph">
+<div><p>Here is a cool quotation.</p>
+<p>From me, Jo the Jovyan</p>
+</div></blockquote>
+<p>Was generated with this markdown:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{epigraph}
+Here is a cool quotation.
+
+From me, Jo the Jovyan
+```
+</pre></div>
+</div>
+<p>You can provide an <strong>attribution</strong> to an epigraph by adding <code class="docutils literal notranslate"><span class="pre">--</span></code> to the final line, followed
+by the quote author. For example:</p>
+<blockquote class="epigraph">
+<div><p>Here is a cool quotation.</p>
+<p class="attribution">—Jo the Jovyan</p>
+</div></blockquote>
+<p>Was generated with this markdown:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{epigraph}
+Here is a cool quotation.
+
+-- Jo the Jovyan
+```
+</pre></div>
+</div>
+</div>
+<div class="section" id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
+<p>You can include footnotes in your book’s content using a standard markdown syntax.
+This will include a numbered reference to the footnote in-line, and insert the footnote
+to a list of footnotes at the bottom of the page.</p>
+<p>To create a footnote, first insert a reference in-line with this syntax: <code class="docutils literal notranslate"><span class="pre">[^mylabel]</span></code>.
+Then, define the text for that label like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">^</span><span class="n">mylabel</span><span class="p">]:</span> <span class="n">My</span> <span class="n">footnote</span> <span class="n">text</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>You can define <code class="docutils literal notranslate"><span class="pre">[^mylabel]</span></code> anywhere in the page, though its definition will always
+be placed at the bottom of your built page. For example, here’s a footnote <a class="footnote-reference brackets" href="#mynote" id="id1">1</a>
+and here’s another one <a class="footnote-reference brackets" href="#mynote2" id="id2">2</a>. You can click either of them to see the footnotes
+at the bottom of this page.</p>
+</div>
+<div class="section" id="glossaries">
+<h2>Glossaries<a class="headerlink" href="#glossaries" title="Permalink to this headline">¶</a></h2>
+<p>Glossaries allow you to define terms in a glossary, and then link back to the
+glossary throughout your content. You can create a glossary with the following
+syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{glossary}
+term one
+  An indented explanation of term 1
+
+A second term
+  An indented explanation of term2
+```
+</pre></div>
+</div>
+<p>which creates:</p>
+<dl class="glossary simple">
+<dt id="term-term-one">term one</dt><dd><p>An indented explanation of term 1</p>
+</dd>
+<dt id="term-a-second-term">A second term</dt><dd><p>An indented explanation of term2</p>
+</dd>
+</dl>
+<p>To reference terms in your glossary, use the <code class="docutils literal notranslate"><span class="pre">{term}</span></code> role. For example,
+<code class="docutils literal notranslate"><span class="pre">{term}`term</span> <span class="pre">one`</span></code> becomes <a class="reference internal" href="#term-term-one"><span class="xref std std-term">term one</span></a>. And <code class="docutils literal notranslate"><span class="pre">{term}`A</span> <span class="pre">second</span> <span class="pre">term`</span></code>
+becomes <a class="reference internal" href="#term-a-second-term"><span class="xref std std-term">A second term</span></a>.</p>
+</div>
+<div class="section" id="citations-and-cross-references">
+<h2>Citations and cross-references<a class="headerlink" href="#citations-and-cross-references" title="Permalink to this headline">¶</a></h2>
+<p>You can add citations and cross-references to your book’s content. See
+<a class="reference internal" href="citations.html"><span class="doc">Citations and cross-references</span></a> for more information.</p>
+</div>
+<div class="section" id="figures">
+<h2>Figures<a class="headerlink" href="#figures" title="Permalink to this headline">¶</a></h2>
+<p>You can control many aspects of figures in your book. See <a class="reference internal" href="figures.html"><span class="doc">Figures</span></a> for
+more information.</p>
+</div>
+<div class="section" id="page-layout-and-sidebar-content">
+<h2>Page layout and sidebar content<a class="headerlink" href="#page-layout-and-sidebar-content" title="Permalink to this headline">¶</a></h2>
+<p>You can also use MyST to control various aspects of the page layout. For more
+information on this, see <a class="reference internal" href="layout.html"><span class="doc">Control the page layout</span></a>.</p>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="mynote"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Here’s the text of my first note.</p>
+</dd>
+<dt class="label" id="mynote2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>And the text of my second note.
+Note that
+<a class="reference external" href="https://executablebooks.org">you can include markdown footnote definitions</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="myst.html" title="previous page">MyST Markdown Overview</a>
+    <a class='right-next' id="next-link" href="citations.html" title="next page">Citations and cross-references</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-52617120-7', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>How-to and FAQ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://jupyterbook.org/advanced/advanced.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contribute to Jupyter Book" href="../contribute/intro.html" />
+    <link rel="prev" title="Custom Sphinx configuration" href="sphinx.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://jupyterbook.org/advanced/advanced.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="How-to and FAQ" />
+<meta property="og:description" content="How-to and FAQ  This page contains more advanced and complete information about the jupyter-book repository. See the sections below.  Enable Google Analytics  I" />
+<meta property="og:image"       content="https://jupyterbook.org/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Get started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start/overview.html">
+   Overview and installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start/build.html">
+   Build your book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../start/publish.html">
+   Publish your book online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../customize/config.html">
+   Configure book settings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../customize/toc.html">
+   Table of Contents structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content-types/index.html">
+   Types of content source files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Write book content
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/myst.html">
+   MyST Markdown Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/content-blocks.html">
+   Special content blocks with MyST
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/citations.html">
+   Citations and cross-references
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/math.html">
+   Math and Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/figures.html">
+   Figures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/glue.html">
+   Insert code outputs into page content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/layout.html">
+   Control the page layout
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../content/execute.html">
+   Execute and cache your pages
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Make your book interactive
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interactive/launchbuttons.html">
+   Launch buttons for interactivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interactive/hiding.html">
+   Hide or remove content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interactive/interactive.html">
+   Interactive data visualizations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Advanced and miscellaneous
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pdf.html">
+   PDFs for your book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sphinx.html">
+   Custom Sphinx configuration
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   How-to and FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contribute/intro.html">
+   Contribute to Jupyter Book
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/cheatsheet.html">
+   MyST Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/cli.html">
+   The command-line interface
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/advanced/advanced.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fadvanced/advanced.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/advanced/advanced.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enable-google-analytics">
+   Enable Google Analytics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-external-links-in-your-book">
+   Check external links in your book
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clean-your-book-s-generated-files">
+   Clean your book’s generated files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-should-i-add-cell-tags-to-my-notebooks">
+   How should I add cell tags to my notebooks?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-tags-to-notebook-cells-based-on-their-content">
+     Add tags to notebook cells based on their content
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-raw-html-in-markdown">
+   Use raw html in Markdown
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-extra-html-to-your-book">
+   Adding extra HTML to your book
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extra-html-in-your-footer">
+     Extra HTML in your footer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extra-html-to-your-left-navbar">
+     Extra HTML to your left navbar
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-a-license-to-your-html-footer">
+   Adding a license to your HTML footer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-on-windows">
+   Working on Windows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-i-have-an-issue-or-question">
+   What if I have an issue or question?
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="how-to-and-faq">
+<h1>How-to and FAQ<a class="headerlink" href="#how-to-and-faq" title="Permalink to this headline">¶</a></h1>
+<p>This page contains more advanced and complete information about the
+<a class="reference external" href="https://github.com/executablebooks/jupyter-book"><code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> repository</a>. See the sections below.</p>
+<div class="section" id="enable-google-analytics">
+<h2>Enable Google Analytics<a class="headerlink" href="#enable-google-analytics" title="Permalink to this headline">¶</a></h2>
+<p>If you have a Google Account, you can use Google Analytics to collect some
+information on the traffic to your Jupyter Book. With this tool, you can find
+out how many people are using your book, where they come from and how they
+access it, wether they are using the Desktop or the mobile version etc.</p>
+<p>To add Google Analytics to your Jupyter Book, navigate to
+<a class="reference external" href="https://analytics.google.com/analytics/web/">Google Analytics</a>, create a new
+Google Analytics account and add the url of your Jupyter Book to a new
+<em>property</em>. Once you have set everything up, your Google Analytics property
+will have a so-called Tracking-ID, that typically starts with the letters UA.
+All that you need to do is to copy this ID and paste it into your
+configuration file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">html</span><span class="p">:</span>
+  <span class="nt">google_analytics_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">UA-XXXXXXXXX-X</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-external-links-in-your-book">
+<h2>Check external links in your book<a class="headerlink" href="#check-external-links-in-your-book" title="Permalink to this headline">¶</a></h2>
+<p>If you’d like to make sure that the links outside of your book are valid,
+run the Sphinx link checker with Jupyter Book. This will check each of your
+external links and ensure that it resolves.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Note that you must ensure each link is
+the <em>right</em> target, the link checker will only ensure that it resolves.</p>
+</div>
+<p>To run the link checker, use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="n">mybookname</span><span class="o">/</span> <span class="o">--</span><span class="n">builder</span> <span class="n">linkcheck</span>
+</pre></div>
+</div>
+<p>It will print the status of each link in your book so that you may resolve
+any incorrect links later on.</p>
+</div>
+<div class="section" id="clean-your-book-s-generated-files">
+<span id="clean-build"></span><h2>Clean your book’s generated files<a class="headerlink" href="#clean-your-book-s-generated-files" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to “clean up” the files that you generate when you build
+your book. This is often useful if you have recently changed a lot of content
+in order to ensure that you build your book from a clean slate.</p>
+<p>You can clean up your book’s generated content by running the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book clean mybookname/
+</pre></div>
+</div>
+<p>By default, this will delete all folders inside <code class="docutils literal notranslate"><span class="pre">mybookname/_build</span></code> <em>except</em>
+for a folder called <code class="docutils literal notranslate"><span class="pre">.jupyter_cache</span></code>. This ensures that the <em>content</em> of your book
+will be regenerated, while the cache that is generated by <em>running your book’s code</em>
+will not be deleted (because regenerating it may take some time).</p>
+<p>To delete the <code class="docutils literal notranslate"><span class="pre">.jupyter_cache</span></code> folder as well, add the <code class="docutils literal notranslate"><span class="pre">--all</span></code> flag like so:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book clean mybookname/ --all
+</pre></div>
+</div>
+<p>This will entirely remove the folders in the <code class="docutils literal notranslate"><span class="pre">_build/</span></code> directory.</p>
+</div>
+<div class="section" id="how-should-i-add-cell-tags-to-my-notebooks">
+<span id="jupyter-cell-tags"></span><h2>How should I add cell tags to my notebooks?<a class="headerlink" href="#how-should-i-add-cell-tags-to-my-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>You can control the behavior of Jupyter Book by putting custom tags
+in the metadata of your cells. This allows you to do things like
+<a class="reference internal" href="../interactive/hiding.html"><span class="doc">automatically hide code cells</span></a>) as well as
+<a class="reference internal" href="../interactive/launchbuttons.html#launch-thebelab"><span class="std std-ref">adding interactive widgets to cells</span></a>.</p>
+<p>There are two straightforward ways to add metadata to cells:</p>
+<ol>
+<li><p><strong>Use the Jupyter Notebook cell tag editor</strong>. The Jupyter Notebook ships with a
+cell tag editor by default. This lets you add cell tags to each cell quickly.</p>
+<p>To enable the cell tag editor, go click <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">-&gt;</span> <span class="pre">Cell</span> <span class="pre">Toolbar</span> <span class="pre">-&gt;</span> <span class="pre">Tags</span></code>. This
+will enable the tags UI. Here’s what the menu looks like.</p>
+<p><img alt="" src="../_images/tags_notebook.png" /></p>
+</li>
+<li><p><strong>Use the JupyterLab Cell Tags plugin</strong>. JupyterLab is an IDE-like Jupyter
+environment that runs in your browser. It has a “cell tags” plugin built-in,
+which exposes a user interface that lets you quickly insert cell tags.</p>
+<p>You’ll find tags under the “wrench” menu section.
+Here’s what the tags UI in JupyterLab looks like.</p>
+<p><img alt="" src="../_images/tags_jupyterlab.png" /></p>
+</li>
+</ol>
+<div class="section" id="add-tags-to-notebook-cells-based-on-their-content">
+<h3>Add tags to notebook cells based on their content<a class="headerlink" href="#add-tags-to-notebook-cells-based-on-their-content" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes you’d like to quickly scan through a notebook’s cells in order to
+add tags based on the content of the cell. For example, you might want to
+hide any cell with an import statement in it using the <code class="docutils literal notranslate"><span class="pre">remove-input</span></code> tag.</p>
+<p>Here’s a short Python snippet to accomplish something close to this.
+First change directories into the root of your book folder, and then
+run the script below as a Python script or within a Jupyter Notebook
+(modifying as necessary for your use case).
+Finally, check the changes that will be made and commit them to your repository.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nbformat</span> <span class="k">as</span> <span class="nn">nbf</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+
+<span class="c1"># Collect a list of all notebooks in the content folder</span>
+<span class="n">notebooks</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s2">&quot;./content/**/*.ipynb&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Text to look for in adding tags</span>
+<span class="n">text_search_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;# HIDDEN&quot;</span><span class="p">:</span> <span class="s2">&quot;remove-cell&quot;</span><span class="p">,</span>  <span class="c1"># Remove the whole cell</span>
+    <span class="s2">&quot;# NO CODE&quot;</span><span class="p">:</span> <span class="s2">&quot;remove-input&quot;</span><span class="p">,</span>  <span class="c1"># Remove only the input</span>
+    <span class="s2">&quot;# HIDE CODE&quot;</span><span class="p">:</span> <span class="s2">&quot;hide-input&quot;</span>  <span class="c1"># Hide the input w/ a button to show</span>
+<span class="p">}</span>
+
+<span class="c1"># Search through each notebook and look for th text, add a tag if necessary</span>
+<span class="k">for</span> <span class="n">ipath</span> <span class="ow">in</span> <span class="n">notebooks</span><span class="p">:</span>
+    <span class="n">ntbk</span> <span class="o">=</span> <span class="n">nbf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ipath</span><span class="p">,</span> <span class="n">nbf</span><span class="o">.</span><span class="n">NO_CONVERT</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">ntbk</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="n">cell_tags</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">text_search_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cell_tags</span><span class="p">:</span>
+                    <span class="n">cell_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cell_tags</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">cell</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cell_tags</span>
+
+    <span class="n">nbf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ntbk</span><span class="p">,</span> <span class="n">ipath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="use-raw-html-in-markdown">
+<span id="raw-html-in-markdown"></span><h2>Use raw html in Markdown<a class="headerlink" href="#use-raw-html-in-markdown" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter notebook markdown allows you to use pure HTML in markdown cells.
+This is strongly discouraged and not guaranteed to work in all cases.</p>
+<p>If, for instance, you use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;images/some/file.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Some image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width: 200px;&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>in your Markdown texts, the source file <code class="docutils literal notranslate"><span class="pre">images/some/file.png</span></code> will not
+be copied to the build directory when you run <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span></code>.
+You would have to copy the source file to the
+build directory manually. Note that MyST markdown gives you control over the
+<a class="reference internal" href="../content/content-blocks.html#content-blocks-images"><span class="std std-ref">image appearance</span></a> without having to resort
+to pure html.</p>
+</div>
+<div class="section" id="adding-extra-html-to-your-book">
+<h2>Adding extra HTML to your book<a class="headerlink" href="#adding-extra-html-to-your-book" title="Permalink to this headline">¶</a></h2>
+<p>There are a few places in Jupyter Book where you can add arbitrary extra HTML.
+In all cases, this is done with a configuration value in your <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> file.</p>
+<div class="section" id="extra-html-in-your-footer">
+<h3>Extra HTML in your footer<a class="headerlink" href="#extra-html-in-your-footer" title="Permalink to this headline">¶</a></h3>
+<p>To add extra HTML in your book’s footer, use the following configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">html</span><span class="p">:</span>
+    <span class="nt">extra_footer</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">&lt;div&gt;</span>
+            <span class="no">your html</span>
+        <span class="no">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>The contents of <code class="docutils literal notranslate"><span class="pre">extra_footer</span></code> will be inserted into your page’s HTML after
+all other footer content.</p>
+</div>
+<div class="section" id="extra-html-to-your-left-navbar">
+<h3>Extra HTML to your left navbar<a class="headerlink" href="#extra-html-to-your-left-navbar" title="Permalink to this headline">¶</a></h3>
+<p>To add extra HTML in your book’s left navbar, use the following configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">html</span><span class="p">:</span>
+    <span class="nt">extra_navbar</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">&lt;div&gt;</span>
+            <span class="no">your html</span>
+        <span class="no">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>The contents of <code class="docutils literal notranslate"><span class="pre">extra_navbar</span></code> will be inserted into your page’s HTML after
+all other html content.</p>
+</div>
+</div>
+<div class="section" id="adding-a-license-to-your-html-footer">
+<h2>Adding a license to your HTML footer<a class="headerlink" href="#adding-a-license-to-your-html-footer" title="Permalink to this headline">¶</a></h2>
+<p>If you’d like to add a more detailed license for your book, or would like to
+add a link to an external page for a license, the easiest way to do so is to
+use a custom footer for this. You can disable the “copyright” text that is
+automatically added to each footer, and add whatever footer HTML you’d like.</p>
+<p>For example, see this configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">html</span><span class="p">:</span>
+  <span class="nt">extra_footer</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">&lt;p&gt;</span>
+    <span class="no">... Add license info here...</span>
+    <span class="no">&lt;/p&gt;</span>
+<span class="nt">sphinx</span><span class="p">:</span>
+  <span class="nt">config</span><span class="p">:</span>
+    <span class="nt">html_show_copyright</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<p>Note that this may not work in latex-generated PDF builds of your page.</p>
+</div>
+<div class="section" id="working-on-windows">
+<span id="id1"></span><h2>Working on Windows<a class="headerlink" href="#working-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>As of June 5, 2020, there are three open issues that require Windows-specific changes.
+Work to complete windows compatibility is underway, in the meantime we provide these
+community tips, which are known to work for some users. Note that there is no
+guarantee that they will work on all windows installations.</p>
+<ol>
+<li><p>Character encoding</p>
+<p>Jupyter-book currently reads and writes files on windows in the native windows
+encoding, which causes encoding errors for some characters in UTF-8 encoded
+notebooks.</p>
+<p><strong>Work-around:</strong>  Beginning with
+<a class="reference external" href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUTF8">Python 3.7</a>
+cmd.exe or powershell enviroments that set PYTHONUTF8=1  override the native
+locale encoding and use UTF8 for all input/output.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To make it easier to use
+this option, the EOAS/UBC notebook courseware project has created a conda package
+<a class="reference external" href="https://anaconda.org/eoas_ubc/runjb">runjb</a> which
+<a class="reference external" href="https://github.com/eoas-ubc/eoas_tlef/blob/master/converted_docs/wintools/binwin/runjb.ps1">does this automatically for powershell</a></p>
+</div>
+</li>
+<li><p>A new windows event loop</p>
+<p>The asyncio event loop <a class="reference external" href="https://github.com/sphinx-doc/sphinx/issues/7310">has been changed for Python 3.8</a>
+causing sphinx-build to fail.</p>
+<p><strong>Work-around:</strong>  Pin to Python 3.7.6.  This
+<a class="reference external" href="https://github.com/eoas-ubc/quantecon-mini-example/blob/windows/environment_win.yml">environment_win.yml</a>
+file does that, and also installs runjb to fix issue 1.</p>
+</li>
+<li><p>Nested tables of contents</p>
+<p>Currently, <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> files that reference markdown files
+in subfolders are failing for some windows users.  That is, this
+<a class="reference external" href="https://github.com/eoas-ubc/quantecon-mini-example/blob/master/mini_book/_toc.yml">original _toc.yml</a>
+file will fail with a message saying jupyter-book “<code class="docutils literal notranslate"><span class="pre">cannot</span> <span class="pre">find</span> <span class="pre">index.md</span></code>”</p>
+<p><strong>Work-around</strong>: Flatten the layout of the book to a single level, i.e.
+<a class="reference external" href="https://github.com/eoas-ubc/quantecon-mini-example/blob/windows/mini_book/docs/_toc.yml">this _toc.yml</a>
+file works with windows.</p>
+</li>
+</ol>
+<p><strong>Summary</strong></p>
+<p>The following workflow should succeed using a miniconda powershell terminal on Windows 10:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/eoas-ubc/quantecon-mini-example.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">quantecon-mini-example</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment_win.yml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">wintest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">mini_book</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runjb</span> <span class="pre">docs</span></code></p></li>
+</ol>
+<p>After the build, view the html with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">docs\_build\html\index.html</span></code></p>
+</div>
+<div class="section" id="what-if-i-have-an-issue-or-question">
+<h2>What if I have an issue or question?<a class="headerlink" href="#what-if-i-have-an-issue-or-question" title="Permalink to this headline">¶</a></h2>
+<p>If you’ve got questions, concerns, or suggestions, please open an issue at
+<a class="reference external" href="https://github.com/executablebooks/jupyter-book/issues">at the jupyter book issues page</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./advanced"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="sphinx.html" title="previous page">Custom Sphinx configuration</a>
+    <a class='right-next' id="next-link" href="../contribute/intro.html" title="next page">Contribute to Jupyter Book</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-52617120-7', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
