@@ -65,7 +65,7 @@ setup(
         "sphinx-copybutton",
         "sphinx-comments",
         "sphinxcontrib-bibtex",
-        "sphinx_book_theme>=0.0.36",
+        "sphinx_book_theme>=0.0.36a0",
         "sphinx-thebe>=0.0.6",
         "sphinx-panels~=0.4.1",
     ],
